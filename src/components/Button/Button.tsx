@@ -9,6 +9,10 @@ export interface IButtonProps {
     status?: 'default' | 'loading' | 'disabled' | 'disabledLoading';
     type?: 'button' | 'submit' | 'reset';
     style?: React.CSSProperties;
+    loadingSpinner?: {
+        trackColor: string;
+        indicatorColor: string;
+    };
     tabIndex?: number;
     onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
@@ -64,7 +68,11 @@ export const Button: React.FC<IButtonProps> = (props: IButtonProps): JSX.Element
             style={requiredProps.style}
         >
             {requiredProps.status === 'loading' || requiredProps.status === 'disabledLoading' ? (
-                <Spinner />
+                <Spinner
+                    size={'small'}
+                    indicatorColor={requiredProps.loadingSpinner?.indicatorColor}
+                    trackColor={requiredProps.loadingSpinner?.trackColor}
+                />
             ) : null}
             {requiredProps.label}
         </StyledButton>

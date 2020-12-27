@@ -35,11 +35,11 @@ export const Spinner: React.FC<ISpinnerProps> = (props: ISpinnerProps): JSX.Elem
         animation: load8 1.1s infinite linear;
 
         font-size: ${{
-            extraSmall: '1px',
-            small: '2px',
-            medium: '3px',
-            large: '4px',
-        }[requiredProps.size] || '3px'};
+            extraSmall: '0.08em',
+            small: '0.1em',
+            medium: '0.15em',
+            large: '0.2em',
+        }[requiredProps.size] || '0.1em'};
 
         ::after {
             border-radius: 50%;
