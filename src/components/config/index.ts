@@ -10,6 +10,16 @@ export const cssColors = {
     '--danger-accent-color': '#ffdee3',
     '--info-color': '#2196F3',
     '--info-accent-color': '#CCEFFC',
+    '--disabled-color': '#ebebe4',
+    /* input colors */
+    '--input-background-color': '#ffffff',
+    '--input-border-color': '#909090',
+    '--input-focus-border-color': '#000000',
+    /* font colors */
+    '--primary-font-color': '#000000',
+    '--secondary-font-color': '#808080',
+    '--tertiary-font-color': '#a0a0a0',
+    '--light-font-color': '#ffffff',
 };
 
 export const cssVariables = {
@@ -25,4 +35,7 @@ export const cssVariables = {
     '--font-size-tertiary': '12px',
     /* animation-properties */
     '--transition-duration': '0.3s',
+    /* size-properties */
+    '--input-field-height': '40px',
+    '--input-field-small-height': '20px',
 };
