@@ -2,6 +2,8 @@ import path from 'path';
 import { Configuration } from 'webpack';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import WebpackShellPluginNext from 'webpack-shell-plugin-next';
+import webpack from 'webpack';
 
 const webpackConfiguration = (env: {
     production?: boolean;
@@ -15,17 +17,14 @@ const webpackConfiguration = (env: {
         },
         output: {
             path: path.join(__dirname, '/dist'),
-            module: true,
             filename: 'index.js',
-        },
-        experiments: {
-            asset: true,
-            outputModule: true,
+            libraryTarget: 'umd',
+            library: 'universal-components',
         },
         module: {
             rules: [
                 {
-                    test: /\.tsx?$/,
+                    test: /\.(ts|tsx)$/i,
                     loader: 'ts-loader',
                     options: {
                         transpileOnly: !isProduction, // this generates .d.ts when it is false
@@ -69,8 +68,18 @@ const webpackConfiguration = (env: {
                     files: './src',
                 },
             }),
+            !isProduction
+                ? new WebpackShellPluginNext({
+                      onDoneWatch: {
+                          scripts: ['npm run build'],
+                          blocking: false,
+                          parallel: true,
+                      },
+                      safe: true,
+                  })
+                : new webpack.DefinePlugin({}),
         ],
-        devtool: !isProduction ? 'source-map' : false,
+        devtool: 'source-map',
         watch: !isProduction,
     };
 };
