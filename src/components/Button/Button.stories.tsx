@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { Button, IButtonProps } from '../..';
+import { Button, IButtonProps } from './Button';
 
 export default {
     title: 'Components',
@@ -11,14 +11,7 @@ const Template: Story<IButtonProps> = (args: IButtonProps) => <Button {...args} 
 
 export const Buttons = Template.bind({});
 Buttons.args = {
-    label: 'Sample Label',
-    backgroundColor: '--success-color',
-    disabled: false,
-    labelColor: '--light-font-color',
-    shape: 'rectangle',
-    size: 'medium',
+    label: 'Sample Button',
+    status: 'default',
     type: 'button',
-    style: {},
-    variant: 'solid',
-    onClick: () => void 0,
 } as IButtonProps;
