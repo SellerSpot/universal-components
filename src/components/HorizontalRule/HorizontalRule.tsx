@@ -3,7 +3,7 @@ import { cssColors } from '../../config';
 import lodash from 'lodash';
 import { css } from '@emotion/css';
 
-interface IHorizontalRuleProps {
+export interface IHorizontalRuleProps {
     // check defaultProps for default values
     alignment?: 'left' | 'center' | 'right';
     ruleColor?: React.CSSProperties['color'];

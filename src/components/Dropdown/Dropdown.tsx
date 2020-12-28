@@ -5,7 +5,7 @@ import { FaCaretDown } from 'react-icons/fa';
 import { cssColors, cssVariables } from 'config';
 
 export interface IDropdownProps {
-    options: string[];
+    options?: string[];
     label?: string;
     helperText?: string;
     error?: {
