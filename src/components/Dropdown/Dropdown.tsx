@@ -14,6 +14,8 @@ export interface IDropdownProps {
     };
     onSelect: (option: string) => void;
     style?: React.CSSProperties;
+    labelStyle?: React.CSSProperties;
+    helperStyle?: React.CSSProperties;
 }
 
 export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.Element => {
@@ -123,7 +125,9 @@ export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.E
     return (
         <div>
             {requiredProps.label ?? false ? (
-                <label className={labelClass}>{requiredProps.label}</label>
+                <label className={labelClass} style={requiredProps.labelStyle}>
+                    {requiredProps.label}
+                </label>
             ) : null}
             <div className={dropDownBoxClass}>
                 <div
@@ -154,7 +158,7 @@ export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.E
                 </ul>
             </div>
             {requiredProps.helperText !== undefined || requiredProps.error !== undefined ? (
-                <label className={helperTextClass}>
+                <label className={helperTextClass} style={requiredProps.helperStyle}>
                     {requiredProps.error?.showError
                         ? requiredProps.error.errorMessage
                         : requiredProps.helperText}
