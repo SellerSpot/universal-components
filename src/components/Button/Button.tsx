@@ -35,11 +35,11 @@ export interface IButtonProps {
         /**
          * Color for the spinner track (static part of the spinner)
          */
-        trackColor: string;
+        trackColor: React.CSSProperties['color'];
         /**
          * Color for the spinner indicator (moving part of the spinner)
          */
-        indicatorColor: string;
+        indicatorColor: React.CSSProperties['color'];
         /**
          * Custom cssProperties styling for the loadingSpinner
          */

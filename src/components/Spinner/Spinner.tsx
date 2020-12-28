@@ -5,8 +5,8 @@ import { cssColors } from '../../config';
 
 export interface ISpinnerProps {
     size?: 'extraSmall' | 'small' | 'medium' | 'large';
-    indicatorColor?: string;
-    trackColor?: string;
+    indicatorColor?: React.CSSProperties['color'];
+    trackColor?: React.CSSProperties['color'];
     style?: React.CSSProperties;
 }
 
