@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { cssColors } from 'config';
 import lodash from 'lodash';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 interface IHorizontalRuleProps {
     // check defaultProps for default values

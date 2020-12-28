@@ -1,6 +1,6 @@
 import React from 'react';
 import lodash from 'lodash';
-import styled, { css } from 'styled-components';
+import styled, { css } from '@emotion/styled';
 import { cssColors, cssVariables } from '../../config';
 
 export interface IInputFieldProps {

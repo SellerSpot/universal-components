@@ -1,7 +1,7 @@
 import { cssColors, cssVariables, TMajorColors } from 'config';
 import lodash from 'lodash';
 import React, { ReactElement, useCallback, useEffect } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export interface INotifyProps {
     active: boolean;

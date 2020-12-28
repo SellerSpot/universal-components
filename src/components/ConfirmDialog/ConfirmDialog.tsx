@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { Button } from 'components/Button/Button';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { cssColors, cssVariables } from 'config';
 import lodash from 'lodash';
 

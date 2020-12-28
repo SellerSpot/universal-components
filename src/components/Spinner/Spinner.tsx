@@ -1,6 +1,6 @@
 import lodash from 'lodash';
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { cssColors } from '../../config';
 
 export interface ISpinnerProps {

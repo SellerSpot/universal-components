@@ -1,6 +1,6 @@
 import React from 'react';
 import { cssColors, cssVariables } from '../../config';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import lodash from 'lodash';
 import { Spinner } from '../Spinner/Spinner';
 
