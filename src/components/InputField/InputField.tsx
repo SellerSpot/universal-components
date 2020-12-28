@@ -1,6 +1,6 @@
 import React from 'react';
 import lodash from 'lodash';
-import styled, { css } from '@emotion/styled';
+import { css } from '@emotion/css';
 import { cssColors, cssVariables } from '../../config';
 
 export interface IInputFieldProps {
@@ -39,19 +39,19 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
 
     const requiredProps = lodash.merge(defaultProps, props);
 
-    const InputFieldWrapper = styled.div`
+    const inputFieldWrapperClass = css`
         width: 100%;
         height: auto;
     `;
 
-    const Label = styled.label`
+    const labelClass = css`
         display: block;
         font-size: ${cssVariables['--font-size-secondary']};
         font-weight: 600;
         margin-bottom: 5px;
     `;
 
-    const HelperLabel = styled.label`
+    const helperLabelClass = css`
         font-size: ${cssVariables['--font-size-tertiary']};
         margin-top: 2px;
         font-weight: 400;
@@ -60,18 +60,18 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
             : cssColors['--danger-color']};
     `;
 
-    const RequiredSpan = styled.span`
+    const requiredSpanClass = css`
         color: ${cssColors['--danger-color']};
     `;
 
-    const InputWrapperDiv = styled.div`
+    const inputWrapperDivClass = css`
         display: flex;
         height: ${requiredProps.size === 'compact'
             ? cssVariables['--input-field-small-height']
             : cssVariables['--input-field-height']};
     `;
 
-    const PrefixDiv = styled.div`
+    const prefixDivClass = css`
         width: ${cssVariables['--input-field-height']};
         border: 1px solid;
         border-radius: ${cssVariables['--border-radius']};
@@ -94,7 +94,7 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
             : cssColors['--input-border-color']};
     `;
 
-    const SuffixDiv = styled.div`
+    const suffixDivClass = css`
         width: ${cssVariables['--input-field-height']};
         border: 1px solid;
         border-radius: ${cssVariables['--border-radius']};
@@ -117,7 +117,7 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
             : cssColors['--input-border-color']};
     `;
 
-    const Input = styled.input`
+    const inputClass = css`
         box-sizing: border-box;
         width: 100%;
         height: 100%;
@@ -155,18 +155,21 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
     `;
 
     return (
-        <InputFieldWrapper>
+        <div className={inputFieldWrapperClass}>
             {lodash.isUndefined(requiredProps.label) ? null : (
-                <Label>
+                <label className={labelClass}>
                     {requiredProps.label}
-                    {requiredProps.required ?? false ? <RequiredSpan>&nbsp;*</RequiredSpan> : null}
-                </Label>
+                    {requiredProps.required ?? false ? (
+                        <span className={requiredSpanClass}>&nbsp;*</span>
+                    ) : null}
+                </label>
             )}
-            <InputWrapperDiv>
+            <div className={inputWrapperDivClass}>
                 {lodash.isUndefined(requiredProps.prefix) ? null : (
-                    <PrefixDiv>{requiredProps.prefix}</PrefixDiv>
+                    <div className={prefixDivClass}>{requiredProps.prefix}</div>
                 )}
-                <Input
+                <input
+                    className={inputClass}
                     onFocus={requiredProps.selectTextOnFocus ? selectInputFieldText : null}
                     disabled={requiredProps.disabled}
                     placeholder={requiredProps.placeHolder}
@@ -177,17 +180,17 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
                     style={requiredProps.style}
                 />
                 {lodash.isUndefined(requiredProps.suffix) ? null : (
-                    <SuffixDiv>{requiredProps.suffix}</SuffixDiv>
+                    <div className={suffixDivClass}>{requiredProps.suffix}</div>
                 )}
-            </InputWrapperDiv>
+            </div>
             {lodash.isUndefined(requiredProps.error) &&
             lodash.isUndefined(requiredProps.helperText) ? null : (
-                <HelperLabel>
+                <label className={helperLabelClass}>
                     {lodash.isUndefined(requiredProps.error)
                         ? requiredProps.helperText
                         : requiredProps.error.errorMessage}
-                </HelperLabel>
+                </label>
             )}
-        </InputFieldWrapper>
+        </div>
     );
 };

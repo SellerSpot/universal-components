@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
-import { cssColors } from 'config';
+import { cssColors } from '../../config';
 import lodash from 'lodash';
-import styled from '@emotion/styled';
+import { css } from '@emotion/css';
 
 interface IHorizontalRuleProps {
     // check defaultProps for default values
@@ -30,7 +30,7 @@ export const HorizontalRule = (props: IHorizontalRuleProps): ReactElement => {
 
     const requiredProps = lodash.merge(defaultProps, props);
 
-    const HorizontalRuleWrapper = styled.div`
+    const horizontalRuleWrapperClass = css`
         width: 100%;
         height: auto;
         display: flex;
@@ -44,7 +44,7 @@ export const HorizontalRule = (props: IHorizontalRuleProps): ReactElement => {
             : requiredProps.alignment};
     `;
 
-    const HorizontalRuler = styled.div`
+    const horizontalRulerClass = css`
         border-width: 1px;
         border-color: ${cssColors['--secondary-font-color']};
         border-style: solid;
@@ -54,8 +54,8 @@ export const HorizontalRule = (props: IHorizontalRuleProps): ReactElement => {
     `;
 
     return (
-        <HorizontalRuleWrapper>
-            <HorizontalRuler />
-        </HorizontalRuleWrapper>
+        <div className={horizontalRuleWrapperClass}>
+            <div className={horizontalRulerClass} />
+        </div>
     );
 };

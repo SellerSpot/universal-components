@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '@emotion/styled';
+import { css } from '@emotion/css';
 import {
     AiOutlineCheckCircle,
     AiOutlineCloseCircle,
@@ -27,7 +27,7 @@ export const AlertMessage: React.FC<IAlertMessageProps> = (
         showIcon: true,
     };
     const requiredProps = lodash.merge(defaultProps, props);
-    const AlertMessageWrapper = styled.div`
+    const alertMessageWrapperClass = css`
         width: 100%;
         min-height: 40px;
         padding: 0 10px;
@@ -61,7 +61,7 @@ export const AlertMessage: React.FC<IAlertMessageProps> = (
             : cssColors['--default-border-color']};
     `;
 
-    const IconWrapper = styled.div`
+    const iconWrapperClass = css`
         height: 100%;
         width: 25px;
         margin-right: 10px;
@@ -71,7 +71,7 @@ export const AlertMessage: React.FC<IAlertMessageProps> = (
         justify-content: center;
     `;
 
-    const LabelWrapper = styled.div`
+    const labelWrapperClass = css`
         width: 100%;
         height: 100%;
 
@@ -89,7 +89,7 @@ export const AlertMessage: React.FC<IAlertMessageProps> = (
             : cssColors['--default-border-color']};
     `;
 
-    const ActionButtonWrapper = styled.div`
+    const actionButtonWrapperClass = css`
         width: 30%;
 
         display: flex;
@@ -98,9 +98,9 @@ export const AlertMessage: React.FC<IAlertMessageProps> = (
     `;
 
     return (
-        <AlertMessageWrapper style={requiredProps.style}>
+        <div className={alertMessageWrapperClass} style={requiredProps.style}>
             {requiredProps.showIcon ? (
-                <IconWrapper>
+                <div className={iconWrapperClass}>
                     {lodash.isUndefined(requiredProps.customIcon) ? (
                         requiredProps.type === 'success' ? (
                             <AiOutlineCheckCircle
@@ -122,12 +122,12 @@ export const AlertMessage: React.FC<IAlertMessageProps> = (
                     ) : (
                         requiredProps.customIcon
                     )}
-                </IconWrapper>
+                </div>
             ) : null}
-            <LabelWrapper>{requiredProps.label}</LabelWrapper>
+            <div className={labelWrapperClass}>{requiredProps.label}</div>
             {lodash.isUndefined(requiredProps.actionButton) ? null : (
-                <ActionButtonWrapper>{requiredProps.actionButton}</ActionButtonWrapper>
+                <div className={actionButtonWrapperClass}>{requiredProps.actionButton}</div>
             )}
-        </AlertMessageWrapper>
+        </div>
     );
 };

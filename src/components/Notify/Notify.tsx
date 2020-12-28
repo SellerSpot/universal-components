@@ -1,7 +1,7 @@
-import { cssColors, cssVariables, TMajorColors } from 'config';
+import { cssColors, cssVariables, TMajorColors } from '../../config';
 import lodash from 'lodash';
 import React, { ReactElement, useCallback, useEffect } from 'react';
-import styled from '@emotion/styled';
+import { css } from '@emotion/css';
 
 export interface INotifyProps {
     active: boolean;
@@ -35,7 +35,7 @@ export const Notify = (props: INotifyProps): ReactElement => {
         };
     }, [requiredProps]);
 
-    const NotifyWrapper = styled.div`
+    const notifyWrapperClass = css`
         width: 300px;
         min-height: 50px;
         max-height: 100px;
@@ -55,5 +55,9 @@ export const Notify = (props: INotifyProps): ReactElement => {
         top: ${requiredProps.active ? '30px' : '-100%'};
     `;
 
-    return <NotifyWrapper style={requiredProps.style}>{requiredProps.content}</NotifyWrapper>;
+    return (
+        <div className={notifyWrapperClass} style={requiredProps.style}>
+            {requiredProps.content}
+        </div>
+    );
 };

@@ -1,6 +1,6 @@
 import lodash from 'lodash';
 import React from 'react';
-import styled from '@emotion/styled';
+import { css, cx } from '@emotion/css';
 import { cssColors } from '../../config';
 
 export interface ISpinnerProps {
@@ -18,7 +18,7 @@ export const Spinner: React.FC<ISpinnerProps> = (props: ISpinnerProps): JSX.Elem
     };
     const requiredProps = lodash.merge(defaultProps, props);
 
-    const LoaderDiv = styled.div`
+    const spinnerClass = css`
         border-radius: 50%;
         width: 10em;
         height: 10em;
@@ -69,5 +69,5 @@ export const Spinner: React.FC<ISpinnerProps> = (props: ISpinnerProps): JSX.Elem
         }
     `;
 
-    return <LoaderDiv style={requiredProps.style} />;
+    return <div className={spinnerClass} style={requiredProps.style} />;
 };

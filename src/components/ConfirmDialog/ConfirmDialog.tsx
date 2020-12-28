@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
-import { Button } from 'components/Button/Button';
-import styled from '@emotion/styled';
-import { cssColors, cssVariables } from 'config';
+import { Button } from '../Button/Button';
+import { css } from '@emotion/css';
+import { cssColors, cssVariables } from '../../config';
 import lodash from 'lodash';
 
 export interface IConfirmDialogProps {
@@ -26,7 +26,7 @@ export const ConfirmDialog = (props: IConfirmDialogProps): ReactElement => {
 
     const requiredProps = lodash.merge(defaultProps, props);
 
-    const ConfirmDialogWrapper = styled.div`
+    const confirmDialogWrapperClass = css`
         position: absolute;
         top: 0;
         left: 0;
@@ -39,7 +39,7 @@ export const ConfirmDialog = (props: IConfirmDialogProps): ReactElement => {
         background: ${requiredProps.active ? cssColors['--overlay-color'] : 'transparent'};
     `;
 
-    const ConfirmDialogContentWrapper = styled.div`
+    const confirmDialogContentWrapperClass = css`
         position: absolute;
         width: 100%;
         height: 100%;
@@ -50,7 +50,7 @@ export const ConfirmDialog = (props: IConfirmDialogProps): ReactElement => {
         opacity: ${requiredProps.active ? 1 : 0};
     `;
 
-    const Content = styled.div`
+    const contentClass = css`
         position: relative;
         width: 40%;
         height: 160px;
@@ -67,14 +67,14 @@ export const ConfirmDialog = (props: IConfirmDialogProps): ReactElement => {
     `;
 
     return (
-        <ConfirmDialogWrapper>
-            <ConfirmDialogContentWrapper>
-                <Content>
+        <div className={confirmDialogWrapperClass}>
+            <div className={confirmDialogContentWrapperClass}>
+                <div className={contentClass}>
                     {requiredProps.title}
                     {requiredProps.content}
                     {requiredProps.footer}
-                </Content>
-            </ConfirmDialogContentWrapper>
-        </ConfirmDialogWrapper>
+                </div>
+            </div>
+        </div>
     );
 };

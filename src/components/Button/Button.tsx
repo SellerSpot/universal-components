@@ -1,6 +1,6 @@
 import React from 'react';
 import { cssColors, cssVariables } from '../../config';
-import styled from '@emotion/styled';
+import { css } from '@emotion/css';
 import lodash from 'lodash';
 import { Spinner } from '../Spinner/Spinner';
 
@@ -72,7 +72,7 @@ export const Button: React.FC<IButtonProps> = (props: IButtonProps): JSX.Element
 
     const requiredProps = lodash.merge(defaultProps, props);
 
-    const StyledButton = styled.button`
+    const buttonClass = css`
         width: 100%;
         padding: 0.8em 1em;
         text-decoration: none;
@@ -104,7 +104,8 @@ export const Button: React.FC<IButtonProps> = (props: IButtonProps): JSX.Element
     `;
 
     return (
-        <StyledButton
+        <button
+            className={buttonClass}
             onClick={requiredProps.onClick}
             type={requiredProps.type}
             disabled={
@@ -121,6 +122,6 @@ export const Button: React.FC<IButtonProps> = (props: IButtonProps): JSX.Element
                 />
             ) : null}
             {requiredProps.label}
-        </StyledButton>
+        </button>
     );
 };
