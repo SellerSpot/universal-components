@@ -156,8 +156,12 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
 
     return (
         <InputFieldWrapper>
-            {lodash.isUndefined(requiredProps.label) ? null : <Label>{requiredProps.label}</Label>}
-            {requiredProps.required ?? false ? <RequiredSpan>*</RequiredSpan> : null}
+            {lodash.isUndefined(requiredProps.label) ? null : (
+                <Label>
+                    {requiredProps.label}
+                    {requiredProps.required ?? false ? <RequiredSpan>&nbsp;*</RequiredSpan> : null}
+                </Label>
+            )}
             <InputWrapperDiv>
                 {lodash.isUndefined(requiredProps.prefix) ? null : (
                     <PrefixDiv>{requiredProps.prefix}</PrefixDiv>

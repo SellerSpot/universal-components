@@ -14,12 +14,18 @@ const webpackConfiguration = (env: {
         entry: './src',
         resolve: {
             extensions: ['.ts', '.tsx', '.js'],
+            alias: { react: path.resolve('./node_modules/react') },
         },
         output: {
             path: path.join(__dirname, '/dist'),
             filename: 'index.js',
             libraryTarget: 'umd',
             library: 'universal-components',
+        },
+        externals: {
+            react: 'commonjs react',
+            'react-dom': 'commonjs react-dom',
+            'react-is': 'commonjs react-is',
         },
         module: {
             rules: [
