@@ -21,6 +21,10 @@ export interface IInputFieldProps {
     selectTextOnFocus?: boolean;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     style?: React.CSSProperties;
+    lableStyle?: React.CSSProperties;
+    hintTextStyle?: React.CSSProperties;
+    prefixStyle?: React.CSSProperties;
+    suffixStyle?: React.CSSProperties;
 }
 
 export const selectInputFieldText = (event: React.FocusEvent<HTMLInputElement>): void =>
@@ -157,7 +161,7 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
     return (
         <div className={inputFieldWrapperClass}>
             {lodash.isUndefined(requiredProps.label) ? null : (
-                <label className={labelClass}>
+                <label className={labelClass} style={requiredProps.lableStyle}>
                     {requiredProps.label}
                     {requiredProps.required ?? false ? (
                         <span className={requiredSpanClass}>&nbsp;*</span>
@@ -166,7 +170,9 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
             )}
             <div className={inputWrapperDivClass}>
                 {lodash.isUndefined(requiredProps.prefix) ? null : (
-                    <div className={prefixDivClass}>{requiredProps.prefix}</div>
+                    <div className={prefixDivClass} style={requiredProps.prefixStyle}>
+                        {requiredProps.prefix}
+                    </div>
                 )}
                 <input
                     className={inputClass}
@@ -180,12 +186,14 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
                     style={requiredProps.style}
                 />
                 {lodash.isUndefined(requiredProps.suffix) ? null : (
-                    <div className={suffixDivClass}>{requiredProps.suffix}</div>
+                    <div className={suffixDivClass} style={requiredProps.suffixStyle}>
+                        {requiredProps.suffix}
+                    </div>
                 )}
             </div>
             {lodash.isUndefined(requiredProps.error) &&
             lodash.isUndefined(requiredProps.helperText) ? null : (
-                <label className={helperLabelClass}>
+                <label className={helperLabelClass} style={requiredProps.hintTextStyle}>
                     {lodash.isUndefined(requiredProps.error)
                         ? requiredProps.helperText
                         : requiredProps.error.errorMessage}
