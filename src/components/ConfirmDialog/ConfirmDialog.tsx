@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { Button } from 'components/Button/Button';
 import styled from 'styled-components';
-import { cssColors, cssVariables } from 'components/config';
+import { cssColors, cssVariables } from 'config';
 import lodash from 'lodash';
 
 export interface IConfirmDialogProps {

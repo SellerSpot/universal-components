@@ -7,7 +7,7 @@ import {
     AiOutlineWarning,
 } from 'react-icons/ai';
 import lodash from 'lodash';
-import { cssColors, cssVariables } from '../config';
+import { cssColors, cssVariables } from '../../config';
 
 export interface IAlertMessageProps {
     type?: 'success' | 'warning' | 'danger' | 'info';

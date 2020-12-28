@@ -1,7 +1,7 @@
 import lodash from 'lodash';
 import React from 'react';
 import styled from 'styled-components';
-import { cssColors } from '../config';
+import { cssColors } from '../../config';
 
 export interface ISpinnerProps {
     size?: 'extraSmall' | 'small' | 'medium' | 'large';

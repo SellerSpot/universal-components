@@ -1,5 +1,5 @@
 import React from 'react';
-import { cssColors, cssVariables } from '../config';
+import { cssColors, cssVariables } from '../../config';
 import styled from 'styled-components';
 import lodash from 'lodash';
 import { Spinner } from '../Spinner/Spinner';

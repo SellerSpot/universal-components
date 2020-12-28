@@ -1,7 +1,7 @@
 import React from 'react';
 import lodash from 'lodash';
 import styled, { css } from 'styled-components';
-import { cssColors, cssVariables } from '../config';
+import { cssColors, cssVariables } from '../../config';
 
 export interface IInputFieldProps {
     placeHolder?: string;
