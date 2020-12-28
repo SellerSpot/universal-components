@@ -52,3 +52,5 @@ export const cssVariables = {
     /* div-values */
     '--shadow-style': '0px 0px 3px 0px var(--shadow-color)',
 };
+
+export type TMajorColors = 'success' | 'danger' | 'warning' | 'info';
