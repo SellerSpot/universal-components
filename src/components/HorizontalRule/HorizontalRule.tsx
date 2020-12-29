@@ -16,7 +16,7 @@ export interface IHorizontalRuleProps {
 export const HorizontalRule = (props: IHorizontalRuleProps): ReactElement => {
     const defaultProps: IHorizontalRuleProps = {
         alignment: 'center',
-        ruleColor: '--border-color',
+        ruleColor: cssColors['--secondary-font-color'],
         ruleSize: 1,
         ruleWidth: '75%',
         style: {
@@ -34,9 +34,8 @@ export const HorizontalRule = (props: IHorizontalRuleProps): ReactElement => {
         width: 100%;
         height: auto;
         display: flex;
-        align-items: center;
+        align-items: 'center';
         position: relative;
-
         justify-content: ${requiredProps.alignment === 'right'
             ? 'flex-end'
             : requiredProps.alignment === 'left'
@@ -45,16 +44,15 @@ export const HorizontalRule = (props: IHorizontalRuleProps): ReactElement => {
     `;
 
     const horizontalRulerClass = css`
-        border-width: 1px;
-        border-color: ${cssColors['--secondary-font-color']};
-        border-style: solid;
-        height: 1px;
+        background-color: ${requiredProps.ruleColor};
+        width: ${requiredProps.ruleWidth};
+        height: ${requiredProps.ruleSize}px;
         display: block;
         border-radius: 5px;
     `;
 
     return (
-        <div className={horizontalRuleWrapperClass}>
+        <div className={horizontalRuleWrapperClass} style={requiredProps.style}>
             <div className={horizontalRulerClass} />
         </div>
     );

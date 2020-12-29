@@ -1,8 +1,8 @@
-import React, { ReactElement, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import lodash from 'lodash';
 import { css } from '@emotion/css';
 
-interface ISliderModalProps {
+export interface ISliderModalProps {
     active: boolean;
     children: ReactNode;
     sliderSize?: '10%' | '20%' | '30%' | '40%' | '50%' | '60%' | '70%' | '80%' | '90%' | '100%'; // on small screeen by default slider width will span to entire width
@@ -53,6 +53,7 @@ export const SliderModal = (props: ISliderModalProps): JSX.Element => {
         overflow-y: auto;
         transition: right 0.2s ease-in-out;
 
+        width: ${requiredProps.sliderSize};
         right: ${requiredProps.active ? 0 : '-100%'};
     `;
 

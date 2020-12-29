@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { css } from '@emotion/css';
 import lodash from 'lodash';
 import { FaCaretDown } from 'react-icons/fa';
-import { cssColors, cssVariables } from 'config';
+import { cssColors, cssVariables } from '../../config';
 
 export interface IDropdownProps {
     options?: string[];

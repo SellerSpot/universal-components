@@ -49,7 +49,7 @@ export const Notify = (props: INotifyProps): ReactElement => {
         right: calc(50% - 150px);
         transition: top 0.2s ease-in;
         word-break: break-all;
-        color: ${cssColors['--light-font-color']};
+        color: ${cssColors['--primary-font-color']};
         background: ${cssColors['--primary-background-color']};
 
         top: ${requiredProps.active ? '30px' : '-100%'};

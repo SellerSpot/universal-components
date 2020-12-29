@@ -1,7 +1,7 @@
 import React from 'react';
 import lodash from 'lodash';
 import { css } from '@emotion/css';
-import { cssColors, cssVariables } from 'config';
+import { cssColors, cssVariables } from '../../config';
 
 export interface IStatusFlagProps {
     label?: string;
