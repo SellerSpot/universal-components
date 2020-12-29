@@ -24,6 +24,10 @@ export const cssColors = {
     '--light-font-color': '#ffffff',
     /* card backgrounds */
     '--primary-background-color': '#ffffff',
+    /* page background */
+    '--secondary-background-color': '#f3f4f6',
+    /* table header" background selected tab */
+    '--tertiary-background-color': '#e6e6e6',
 };
 
 export const cssVariables = {
