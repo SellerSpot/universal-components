@@ -20,3 +20,7 @@
 3. use the `npm install <directory-output-from-above-command-output>` in any project and do checks
 4. if everything ok, do `npm version <version-type> -m <changes-log-message-string>` => note:- version-type will be one of these `major | minor | patch`
 5. then run `npm publish --access public` note:- this needs authentication - should be the dev team member in npm.
+
+## Note - while setting dev env:
+
+`husky needs to be installed manually as the postinstall script of husky affects on global npm pacakge , when consumer installs`
