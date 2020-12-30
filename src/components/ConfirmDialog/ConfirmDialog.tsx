@@ -1,15 +1,25 @@
 import React, { ReactElement } from 'react';
 import { Button } from '../Button/Button';
-import { css } from '@emotion/css';
-import { cssColors, cssVariables } from '../../config';
+import { cssVariables } from '../../config';
 import lodash from 'lodash';
+import { getConfirmDialogClasses } from './confirmDialog.styles';
+import { cx } from '@emotion/css';
 
 export interface IConfirmDialogProps {
     active?: boolean;
     title?: JSX.Element;
     content?: JSX.Element;
     footer?: JSX.Element;
-    style?: React.CSSProperties;
+    className?: {
+        confirmDialogWrapper?: string;
+        confirmDialogContentWrapper?: string;
+        content?: string;
+    };
+    style?: {
+        confirmDialogWrapperStyle?: React.CSSProperties;
+        confirmDialogContentWrapperStyle?: React.CSSProperties;
+        contentStyle?: React.CSSProperties;
+    };
 }
 
 export const ConfirmDialog = (props: IConfirmDialogProps): ReactElement => {
@@ -25,51 +35,27 @@ export const ConfirmDialog = (props: IConfirmDialogProps): ReactElement => {
     };
 
     const requiredProps = lodash.merge(defaultProps, props);
-
-    const confirmDialogWrapper = css`
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: ${cssVariables['--z-index-confirm-dialog']};
-        overflow: hidden;
-        transition: background-color 0.2s ease-in-out 0s;
-        visibility: ${requiredProps.active ? 'visible' : 'hidden'};
-        background: ${requiredProps.active ? cssColors['--overlay-color'] : 'transparent'};
-    `;
-
-    const confirmDialogContentWrapper = css`
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: opacity 0.2s ease-in-out 0s;
-        opacity: ${requiredProps.active ? 1 : 0};
-    `;
-
-    const content = css`
-        position: relative;
-        width: 40%;
-        height: 160px;
-        background-color: ${cssColors['--primary-background-color']};
-        border: 1px solid ${cssColors['--primary-background-color']};
-        box-shadow: ${cssVariables['--shadow-style']};
-        border-radius: ${cssVariables['--border-radius']};
-        padding: 20px;
-        padding-bottom: 10px;
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 30px 1fr 30px;
-        row-gap: 10px;
-    `;
+    const classNames = getConfirmDialogClasses(requiredProps);
 
     return (
-        <div className={confirmDialogWrapper}>
-            <div className={confirmDialogContentWrapper}>
-                <div className={content}>
+        <div
+            className={cx(
+                classNames.confirmDialogWrapper,
+                requiredProps.className?.confirmDialogWrapper,
+            )}
+            style={requiredProps.style?.confirmDialogWrapperStyle}
+        >
+            <div
+                className={cx(
+                    classNames.confirmDialogContentWrapper,
+                    requiredProps.className?.confirmDialogContentWrapper,
+                )}
+                style={requiredProps.style?.confirmDialogContentWrapperStyle}
+            >
+                <div
+                    className={cx(classNames.content, requiredProps.className?.content)}
+                    style={requiredProps.style?.contentStyle}
+                >
                     {requiredProps.title}
                     {requiredProps.content}
                     {requiredProps.footer}
