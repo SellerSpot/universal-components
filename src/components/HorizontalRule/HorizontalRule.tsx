@@ -1,16 +1,22 @@
 import React, { ReactElement } from 'react';
 import { cssColors } from '../../config';
 import lodash from 'lodash';
-import { css } from '@emotion/css';
+import { css, cx } from '@emotion/css';
 
 export interface IHorizontalRuleProps {
-    // check defaultProps for default values
     alignment?: 'left' | 'center' | 'right';
     ruleColor?: React.CSSProperties['color'];
     ruleSize?: number;
     ruleWidth?: '100%' | '75%' | '50%' | '25%';
     ruleOpacity?: number;
-    style?: React.CSSProperties;
+    style?: {
+        horizontalRuleWrapperStyle?: React.CSSProperties;
+        horizontalRuler?: React.CSSProperties;
+    };
+    className?: {
+        horizontalRuleWrapper?: string;
+        horizontalRuler?: string;
+    };
 }
 
 export const HorizontalRule = (props: IHorizontalRuleProps): ReactElement => {
@@ -20,17 +26,19 @@ export const HorizontalRule = (props: IHorizontalRuleProps): ReactElement => {
         ruleSize: 1,
         ruleWidth: '75%',
         style: {
-            paddingTop: 25,
-            paddingBottom: 25,
-            paddingLeft: 0,
-            paddingRight: 0,
+            horizontalRuleWrapperStyle: {
+                paddingTop: 25,
+                paddingBottom: 25,
+                paddingLeft: 0,
+                paddingRight: 0,
+            },
         },
         ruleOpacity: 0.5,
     };
 
     const requiredProps = lodash.merge(defaultProps, props);
 
-    const horizontalRuleWrapperClass = css`
+    const horizontalRuleWrapper = css`
         width: 100%;
         height: auto;
         display: flex;
@@ -43,7 +51,7 @@ export const HorizontalRule = (props: IHorizontalRuleProps): ReactElement => {
             : requiredProps.alignment};
     `;
 
-    const horizontalRulerClass = css`
+    const horizontalRuler = css`
         background-color: ${requiredProps.ruleColor};
         width: ${requiredProps.ruleWidth};
         height: ${requiredProps.ruleSize}px;
@@ -52,8 +60,14 @@ export const HorizontalRule = (props: IHorizontalRuleProps): ReactElement => {
     `;
 
     return (
-        <div className={horizontalRuleWrapperClass} style={requiredProps.style}>
-            <div className={horizontalRulerClass} />
+        <div
+            className={cx(horizontalRuleWrapper, requiredProps.className?.horizontalRuleWrapper)}
+            style={requiredProps.style?.horizontalRuleWrapperStyle}
+        >
+            <div
+                className={cx(horizontalRuler, requiredProps.className?.horizontalRuler)}
+                style={requiredProps.style?.horizontalRuler}
+            />
         </div>
     );
 };

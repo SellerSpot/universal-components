@@ -14,5 +14,5 @@ Dropdowns.args = {
     options: ['hello', 'world'],
     helperText: 'helper text',
     label: 'Label',
-    onSelect: (option: string) => alert(option),
+    onSelect: (option: number) => alert(option),
 } as IDropdownProps;

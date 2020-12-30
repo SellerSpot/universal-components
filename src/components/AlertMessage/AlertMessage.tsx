@@ -1,5 +1,4 @@
 import React from 'react';
-import { css } from '@emotion/css';
 import {
     AiOutlineCheckCircle,
     AiOutlineCloseCircle,
@@ -7,7 +6,9 @@ import {
     AiOutlineWarning,
 } from 'react-icons/ai';
 import lodash from 'lodash';
-import { cssColors, cssVariables } from '../../config';
+import { cssColors } from '../../config';
+import { getAlertMessageClasses, IGetAlertMessageClasses } from './alertMessage.styles';
+import { cx } from '@emotion/css';
 
 export interface IAlertMessageProps {
     type?: 'success' | 'warning' | 'danger' | 'info';
@@ -15,7 +16,14 @@ export interface IAlertMessageProps {
     actionButton?: JSX.Element;
     showIcon?: boolean;
     customIcon?: JSX.Element;
-    style?: React.CSSProperties;
+    style?: {
+        alertMessageWrapperStyle?: React.CSSProperties;
+        iconWrapperStyle?: React.CSSProperties;
+        iconStyle?: React.CSSProperties;
+        labelWrapperStyle?: React.CSSProperties;
+        actionButtonWrapperStyle?: React.CSSProperties;
+    };
+    className?: IGetAlertMessageClasses;
 }
 
 export const AlertMessage: React.FC<IAlertMessageProps> = (
@@ -27,95 +35,47 @@ export const AlertMessage: React.FC<IAlertMessageProps> = (
         showIcon: true,
     };
     const requiredProps = lodash.merge(defaultProps, props);
-    const alertMessageWrapperClass = css`
-        width: 100%;
-        min-height: 40px;
-        padding: 0 10px;
-        font-size: ${cssVariables['--font-size-secondary']};
-
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        background-color: ${requiredProps.type === 'success'
-            ? cssColors['--success-accent-color']
-            : requiredProps.type === 'danger'
-            ? cssColors['--danger-accent-color']
-            : requiredProps.type === 'info'
-            ? cssColors['--info-accent-color']
-            : requiredProps.type === 'warning'
-            ? cssColors['--warning-accent-color']
-            : cssColors['--default-background-color']};
-
-        border-width: 1px;
-        border-style: solid;
-        border-radius: ${cssVariables['--border-radius']};
-        border-color: ${requiredProps.type === 'success'
-            ? cssColors['--success-color']
-            : requiredProps.type === 'danger'
-            ? cssColors['--danger-color']
-            : requiredProps.type === 'info'
-            ? cssColors['--info-color']
-            : requiredProps.type === 'warning'
-            ? cssColors['--warning-color']
-            : cssColors['--default-border-color']};
-    `;
-
-    const iconWrapperClass = css`
-        height: 100%;
-        width: 25px;
-        margin-right: 10px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    `;
-
-    const labelWrapperClass = css`
-        width: 100%;
-        height: 100%;
-
-        text-align: start;
-        vertical-align: text-top;
-
-        color: ${requiredProps.type === 'success'
-            ? cssColors['--success-color']
-            : requiredProps.type === 'danger'
-            ? cssColors['--danger-color']
-            : requiredProps.type === 'info'
-            ? cssColors['--info-color']
-            : requiredProps.type === 'warning'
-            ? cssColors['--warning-color']
-            : cssColors['--default-border-color']};
-    `;
-
-    const actionButtonWrapperClass = css`
-        width: 30%;
-
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-    `;
+    const classes = getAlertMessageClasses(requiredProps);
 
     return (
-        <div className={alertMessageWrapperClass} style={requiredProps.style}>
+        <div
+            className={cx(
+                classes.alertMessageWrapper,
+                requiredProps.className?.alertMessageWrapper,
+            )}
+            style={requiredProps.style?.alertMessageWrapperStyle}
+        >
             {requiredProps.showIcon ? (
-                <div className={iconWrapperClass}>
+                <div className={cx(classes.iconWrapper, requiredProps.className?.iconWrapper)}>
                     {lodash.isUndefined(requiredProps.customIcon) ? (
                         requiredProps.type === 'success' ? (
                             <AiOutlineCheckCircle
                                 size={'20px'}
                                 color={cssColors['--success-color']}
+                                className={requiredProps.className?.icon}
+                                style={requiredProps.style?.iconStyle}
                             />
                         ) : requiredProps.type === 'danger' ? (
                             <AiOutlineCloseCircle
                                 size={'20px'}
                                 color={cssColors['--danger-color']}
+                                className={requiredProps.className?.icon}
+                                style={requiredProps.style?.iconStyle}
                             />
                         ) : requiredProps.type === 'info' ? (
-                            <AiOutlineInfoCircle size={'20px'} color={cssColors['--info-color']} />
+                            <AiOutlineInfoCircle
+                                size={'20px'}
+                                color={cssColors['--info-color']}
+                                className={requiredProps.className?.icon}
+                                style={requiredProps.style?.iconStyle}
+                            />
                         ) : requiredProps.type === 'warning' ? (
-                            <AiOutlineWarning size={'20px'} color={cssColors['--warning-color']} />
+                            <AiOutlineWarning
+                                size={'20px'}
+                                color={cssColors['--warning-color']}
+                                className={requiredProps.className?.icon}
+                                style={requiredProps.style?.iconStyle}
+                            />
                         ) : (
                             cssColors['--default-border-color']
                         )
@@ -124,9 +84,22 @@ export const AlertMessage: React.FC<IAlertMessageProps> = (
                     )}
                 </div>
             ) : null}
-            <div className={labelWrapperClass}>{requiredProps.label}</div>
+            <div
+                className={cx(classes.labelWrapper, requiredProps.className?.labelWrapper)}
+                style={requiredProps.style?.labelWrapperStyle}
+            >
+                {requiredProps.label}
+            </div>
             {lodash.isUndefined(requiredProps.actionButton) ? null : (
-                <div className={actionButtonWrapperClass}>{requiredProps.actionButton}</div>
+                <div
+                    className={cx(
+                        classes.actionButtonWrapper,
+                        requiredProps.className?.actionButtonWrapper,
+                    )}
+                    style={requiredProps.style?.actionButtonWrapperStyle}
+                >
+                    {requiredProps.actionButton}
+                </div>
             )}
         </div>
     );
