@@ -8,3 +8,5 @@ export * from './Notify/Notify';
 export * from './SliderModal/SliderModal';
 export * from './Spinner/Spinner';
 export * from './StatusFlag/StatusFlag';
+export * from './Table/Table';
+export * from './ToggleButton/ToggleButton';
