@@ -2,7 +2,7 @@ import { css, cx } from '@emotion/css';
 import { cssColors, cssVariables } from '../../config';
 import { ITableProps } from './Table';
 
-interface ITableClasses {
+export interface ITableClasses {
     table: string;
     headerRow: string;
     headerCell: string;

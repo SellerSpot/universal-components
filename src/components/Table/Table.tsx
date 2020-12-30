@@ -1,7 +1,7 @@
 import { cx } from '@emotion/css';
 import lodash from 'lodash';
 import React from 'react';
-import { getTableClasses } from './table.styles';
+import { getTableClasses, ITableClasses } from './table.styles';
 
 export interface ITableProps {
     headers?: string[] | JSX.Element[];
@@ -12,13 +12,7 @@ export interface ITableProps {
         headerCellStyle?: React.CSSProperties;
         bodyRowStyle?: React.CSSProperties;
     };
-    className?: {
-        table?: string;
-        headerRow?: string;
-        headerCell?: string;
-        bodyRow?: string;
-        bodyCell?: string;
-    };
+    className?: ITableClasses;
 }
 
 export const Table: React.FC<ITableProps> = (props: ITableProps): JSX.Element => {
