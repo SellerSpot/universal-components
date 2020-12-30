@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import { Button } from '../Button/Button';
 import { cssVariables } from '../../config';
 import lodash from 'lodash';
-import { getConfirmDialogClasses } from './confirmDialog.styles';
+import { getConfirmDialogClasses, IGetConfirmDialogClasses } from './confirmDialog.styles';
 import { cx } from '@emotion/css';
 
 export interface IConfirmDialogProps {
@@ -10,11 +10,7 @@ export interface IConfirmDialogProps {
     title?: JSX.Element;
     content?: JSX.Element;
     footer?: JSX.Element;
-    className?: {
-        confirmDialogWrapper?: string;
-        confirmDialogContentWrapper?: string;
-        content?: string;
-    };
+    className?: IGetConfirmDialogClasses;
     style?: {
         confirmDialogWrapperStyle?: React.CSSProperties;
         confirmDialogContentWrapperStyle?: React.CSSProperties;

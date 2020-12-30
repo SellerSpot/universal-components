@@ -2,11 +2,12 @@ import { css } from '@emotion/css';
 import { cssColors, cssVariables } from '../../config';
 import { IAlertMessageProps } from './AlertMessage';
 
-interface IGetAlertMessageClasses {
-    alertMessageWrapper: string;
-    iconWrapper: string;
-    labelWrapper: string;
-    actionButtonWrapper: string;
+export interface IGetAlertMessageClasses {
+    alertMessageWrapper?: string;
+    iconWrapper?: string;
+    labelWrapper?: string;
+    actionButtonWrapper?: string;
+    icon?: string;
 }
 
 export const getAlertMessageClasses = (

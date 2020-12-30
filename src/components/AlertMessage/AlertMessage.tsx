@@ -7,7 +7,7 @@ import {
 } from 'react-icons/ai';
 import lodash from 'lodash';
 import { cssColors } from '../../config';
-import { getAlertMessageClasses } from './alertMessage.styles';
+import { getAlertMessageClasses, IGetAlertMessageClasses } from './alertMessage.styles';
 import { cx } from '@emotion/css';
 
 export interface IAlertMessageProps {
@@ -23,13 +23,7 @@ export interface IAlertMessageProps {
         labelWrapperStyle?: React.CSSProperties;
         actionButtonWrapperStyle?: React.CSSProperties;
     };
-    className?: {
-        alertMessageWrapper?: string;
-        iconWrapper?: string;
-        icon?: string;
-        labelWrapper?: string;
-        actionButtonWrapper?: string;
-    };
+    className?: IGetAlertMessageClasses;
 }
 
 export const AlertMessage: React.FC<IAlertMessageProps> = (

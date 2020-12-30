@@ -4,14 +4,14 @@ import lodash from 'lodash';
 import { IInputFieldProps } from './InputField';
 
 export interface IGetInputFieldClasses {
-    inputFieldWrapper: string;
-    label: string;
-    helperLabel: string;
-    requiredSpan: string;
-    inputWrapperDiv: string;
-    prefixDiv: string;
-    suffixDiv: string;
-    input: string;
+    inputFieldWrapper?: string;
+    label?: string;
+    helperLabel?: string;
+    requiredSpan?: string;
+    inputWrapperDiv?: string;
+    prefixDiv?: string;
+    suffixDiv?: string;
+    input?: string;
 }
 
 export const getInputFieldClasses = (requiredProps: IInputFieldProps): IGetInputFieldClasses => {

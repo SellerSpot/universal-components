@@ -1,7 +1,7 @@
 import { cssColors, cssVariables, TMajorColors } from '../../config';
 import lodash from 'lodash';
 import React, { ReactElement, useCallback, useEffect } from 'react';
-import { css } from '@emotion/css';
+import { css, cx } from '@emotion/css';
 
 export interface INotifyProps {
     active: boolean;
@@ -9,6 +9,9 @@ export interface INotifyProps {
     timeout: number;
     clearNotificationCallback: () => void;
     style?: React.CSSProperties;
+    className?: {
+        notifyWrapper: string;
+    };
 }
 
 export const Notify = (props: INotifyProps): ReactElement => {
@@ -56,7 +59,10 @@ export const Notify = (props: INotifyProps): ReactElement => {
     `;
 
     return (
-        <div className={notifyWrapper} style={requiredProps.style}>
+        <div
+            className={cx(notifyWrapper, requiredProps.className?.notifyWrapper)}
+            style={requiredProps.style}
+        >
             {requiredProps.content}
         </div>
     );

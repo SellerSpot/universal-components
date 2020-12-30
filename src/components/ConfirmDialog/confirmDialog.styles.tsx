@@ -2,10 +2,10 @@ import { css } from '@emotion/css';
 import { cssColors, cssVariables } from '../../config';
 import { IConfirmDialogProps } from './ConfirmDialog';
 
-interface IGetConfirmDialogClasses {
-    confirmDialogWrapper: string;
-    confirmDialogContentWrapper: string;
-    content: string;
+export interface IGetConfirmDialogClasses {
+    confirmDialogWrapper?: string;
+    confirmDialogContentWrapper?: string;
+    content?: string;
 }
 
 export const getConfirmDialogClasses = (
