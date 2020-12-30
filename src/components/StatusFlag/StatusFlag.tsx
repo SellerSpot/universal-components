@@ -1,12 +1,20 @@
 import React from 'react';
 import lodash from 'lodash';
-import { css } from '@emotion/css';
+import { css, cx } from '@emotion/css';
 import { cssColors, cssVariables } from '../../config';
 
 export interface IStatusFlagProps {
     label?: string;
-    style?: React.CSSProperties;
-    spotStyle?: React.CSSProperties;
+    style?: {
+        statusFlagWrapperStyle?: React.CSSProperties;
+        spotStyle?: React.CSSProperties;
+        labelStyle?: React.CSSProperties;
+    };
+    className?: {
+        statusFlagWrapper?: string;
+        spot?: string;
+        label?: string;
+    };
 }
 
 export const StatusFlag: React.FC<IStatusFlagProps> = (props: IStatusFlagProps): JSX.Element => {
@@ -15,7 +23,7 @@ export const StatusFlag: React.FC<IStatusFlagProps> = (props: IStatusFlagProps):
     };
     const requiredProps = lodash.merge(defaultProps, props);
 
-    const statusFlag = css`
+    const statusFlagWrapper = css`
         width: 120px;
         height: 30px;
         display: flex;
@@ -36,9 +44,17 @@ export const StatusFlag: React.FC<IStatusFlagProps> = (props: IStatusFlagProps):
     `;
 
     return (
-        <div className={statusFlag} style={requiredProps.style}>
-            <div className={spot}></div>
-            <div>{requiredProps.label.charAt(0).toUpperCase() + requiredProps.label.slice(1)}</div>
+        <div
+            className={cx(statusFlagWrapper, requiredProps.className?.statusFlagWrapper)}
+            style={requiredProps.style?.statusFlagWrapperStyle}
+        >
+            <div
+                className={cx(spot, requiredProps.className?.spot)}
+                style={requiredProps.style?.spotStyle}
+            />
+            <div className={requiredProps.className?.label} style={requiredProps.style?.labelStyle}>
+                {requiredProps.label.charAt(0).toUpperCase() + requiredProps.label.slice(1)}
+            </div>
         </div>
     );
 };
