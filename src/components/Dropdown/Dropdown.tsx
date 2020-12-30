@@ -22,6 +22,7 @@ export interface IDropdownProps {
         dropDownListStyle?: React.CSSProperties;
         dropDownItemStyle?: React.CSSProperties;
         helperTextStyle?: React.CSSProperties;
+        dropDownWrapperStyle?: React.CSSProperties;
     };
     className?: IGetDropdownClasses;
 }
@@ -56,7 +57,10 @@ export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.E
     }, [showOptions, handleClickOutsideHandler]);
 
     return (
-        <div>
+        <div
+            className={(classNames.dropDownWrapper, requiredProps.className?.dropDownWrapper)}
+            style={requiredProps.style?.dropDownWrapperStyle}
+        >
             {requiredProps.label ?? false ? (
                 <label
                     className={cx(classNames.label, requiredProps.className?.label)}
@@ -88,29 +92,25 @@ export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.E
                     className={cx(classNames.dropDownList, requiredProps.className?.dropDownList)}
                     style={requiredProps.style?.dropDownListStyle}
                 >
-                    <ul>
-                        {(requiredProps.options as Array<string | JSX.Element>).map(
-                            (option, index) => {
-                                return (
-                                    <li
-                                        onClick={() => {
-                                            setSelectedOption(index);
-                                            shouldShowOptions(false);
-                                            requiredProps.onSelect(index);
-                                        }}
-                                        key={index}
-                                        className={cx(
-                                            classNames.dropDownItem,
-                                            requiredProps.className?.dropDownItem,
-                                        )}
-                                        style={requiredProps.style?.dropDownItemStyle}
-                                    >
-                                        {option}
-                                    </li>
-                                );
-                            },
-                        )}
-                    </ul>
+                    {(requiredProps.options as Array<string | JSX.Element>).map((option, index) => {
+                        return (
+                            <li
+                                onClick={() => {
+                                    setSelectedOption(index);
+                                    shouldShowOptions(false);
+                                    requiredProps.onSelect(index);
+                                }}
+                                key={index}
+                                className={cx(
+                                    classNames.dropDownItem,
+                                    requiredProps.className?.dropDownItem,
+                                )}
+                                style={requiredProps.style?.dropDownItemStyle}
+                            >
+                                {option}
+                            </li>
+                        );
+                    })}
                 </div>
             </div>
             {requiredProps.helperText !== undefined || requiredProps.error !== undefined ? (

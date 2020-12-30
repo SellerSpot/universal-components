@@ -10,23 +10,30 @@ export interface IGetDropdownClasses {
     dropDownList?: string;
     dropDownItem?: string;
     helperText?: string;
+    dropDownWrapper?: string;
 }
 
 export const getDropdownClasses = (
     requiredProps: IDropdownProps,
     showOptions: boolean,
 ): IGetDropdownClasses => {
+    const dropDownWrapper = css`
+        box-sizing: border-box;
+        width: 100%;
+        height: ${cssVariables['--input-field-height']};
+    `;
+
     const label = css`
-        display: block;
+        box-sizing: border-box;
         font-size: ${cssVariables['--font-size-secondary']};
         font-weight: 600;
         margin-bottom: 5px;
     `;
 
     const dropDownBox = css`
-        display: block;
-        height: ${cssVariables['--input-field-height']};
+        box-sizing: border-box;
         width: 100%;
+        height: ${cssVariables['--input-field-height']};
         border: 1px solid ${cssColors['--input-border-color']};
         border-radius: ${cssVariables['--border-radius']};
         transition: all ${cssVariables['--transition-duration']};
@@ -44,6 +51,7 @@ export const getDropdownClasses = (
         width: 100%;
         height: 100%;
         padding: 0 10px;
+        box-sizing: border-box;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -54,9 +62,10 @@ export const getDropdownClasses = (
     `;
 
     const dropDownList = css`
+        box-sizing: border-box;
         width: 100%;
-        max-height: 140px;
         height: auto;
+        max-height: 140px;
         position: absolute;
         top: ${cssVariables['--input-field-height']};
         border: 1px solid ${cssColors['--input-border-color']};
@@ -69,18 +78,23 @@ export const getDropdownClasses = (
         background-color: ${cssColors['--primary-background-color']};
         box-shadow: 0 0 5px 0px ${cssColors['--overlay-color']};
         transition: ${cssVariables['--transition-duration']};
-
         opacity: ${showOptions ? 1 : 0};
         visibility: ${showOptions ? 'visible' : 'hidden'};
     `;
 
     const dropDownItem = css`
         width: 100%;
+        height: 100%;
+        box-sizing: border-box;
         padding: 6px 10px;
         display: flex;
         align-items: center;
         justify-content: flex-start;
         background-color: ${cssColors['--primary-background-color']};
+
+        :hover {
+            background-color: ${cssColors['--secondary-background-color']};
+        }
     `;
 
     const helperText = css`
@@ -100,5 +114,6 @@ export const getDropdownClasses = (
         dropDownSelect,
         helperText,
         label,
+        dropDownWrapper,
     };
 };

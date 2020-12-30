@@ -46,7 +46,7 @@ export const AlertMessage: React.FC<IAlertMessageProps> = (
             style={requiredProps.style?.alertMessageWrapperStyle}
         >
             {requiredProps.showIcon ? (
-                <div className={cx(classes.iconWrapper, requiredProps.className.iconWrapper)}>
+                <div className={cx(classes.iconWrapper, requiredProps.className?.iconWrapper)}>
                     {lodash.isUndefined(requiredProps.customIcon) ? (
                         requiredProps.type === 'success' ? (
                             <AiOutlineCheckCircle
