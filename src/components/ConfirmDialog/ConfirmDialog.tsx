@@ -26,7 +26,7 @@ export const ConfirmDialog = (props: IConfirmDialogProps): ReactElement => {
 
     const requiredProps = lodash.merge(defaultProps, props);
 
-    const confirmDialogWrapperClass = css`
+    const confirmDialogWrapper = css`
         position: absolute;
         top: 0;
         left: 0;
@@ -39,7 +39,7 @@ export const ConfirmDialog = (props: IConfirmDialogProps): ReactElement => {
         background: ${requiredProps.active ? cssColors['--overlay-color'] : 'transparent'};
     `;
 
-    const confirmDialogContentWrapperClass = css`
+    const confirmDialogContentWrapper = css`
         position: absolute;
         width: 100%;
         height: 100%;
@@ -50,7 +50,7 @@ export const ConfirmDialog = (props: IConfirmDialogProps): ReactElement => {
         opacity: ${requiredProps.active ? 1 : 0};
     `;
 
-    const contentClass = css`
+    const content = css`
         position: relative;
         width: 40%;
         height: 160px;
@@ -67,9 +67,9 @@ export const ConfirmDialog = (props: IConfirmDialogProps): ReactElement => {
     `;
 
     return (
-        <div className={confirmDialogWrapperClass}>
-            <div className={confirmDialogContentWrapperClass}>
-                <div className={contentClass}>
+        <div className={confirmDialogWrapper}>
+            <div className={confirmDialogContentWrapper}>
+                <div className={content}>
                     {requiredProps.title}
                     {requiredProps.content}
                     {requiredProps.footer}

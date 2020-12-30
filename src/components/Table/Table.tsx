@@ -1,13 +1,24 @@
-import { css } from '@emotion/css';
-import { cssColors, cssVariables } from 'config';
+import { cx } from '@emotion/css';
 import lodash from 'lodash';
-import React, { ReactNode } from 'react';
-import { HorizontalRule } from '../HorizontalRule/HorizontalRule';
+import React from 'react';
+import { getTableClasses } from './table.styles';
 
 export interface ITableProps {
-    headers: JSX.Element[];
-    rowData: JSX.Element[][];
-    style?: React.CSSProperties;
+    headers?: string[] | JSX.Element[];
+    rowData?: string[][] | JSX.Element[][];
+    style?: {
+        tableStyle?: React.CSSProperties;
+        headerRowStyle?: React.CSSProperties;
+        headerCellStyle?: React.CSSProperties;
+        bodyRowStyle?: React.CSSProperties;
+    };
+    className?: {
+        table?: string;
+        headerRow?: string;
+        headerCell?: string;
+        bodyRow?: string;
+        bodyCell?: string;
+    };
 }
 
 export const Table: React.FC<ITableProps> = (props: ITableProps): JSX.Element => {
@@ -32,72 +43,65 @@ export const Table: React.FC<ITableProps> = (props: ITableProps): JSX.Element =>
                 <p key={'14'}>Cell 14</p>,
             ],
         ],
-        style: {},
     };
 
     const requiredProps = lodash.merge(defaultProps, props);
-
-    const tableClass = css`
-        height: 100%;
-        width: 100%;
-        box-shadow: ${cssVariables['--shadow-style']};
-        border-radius: ${cssVariables['--border-radius']};
-        overflow-x: auto;
-        overflow-y: auto;
-        background-color: ${cssColors['--primary-background-color']};
-    `;
-
-    const headerRowClass = css`
-        display: grid;
-        grid-template-columns: ${'repeat(' + requiredProps.headers.length + ',1fr)'};
-        grid-template-rows: 1fr;
-        gap: 5px;
-        position: sticky;
-        top: 0;
-        width: 100%;
-        height: 40px;
-        z-index: parseInt(${cssVariables['--z-index-table-header']});
-        box-shadow: ${cssVariables['--shadow-style']};
-        background-color: ${cssColors['--tertiary-background-color']};
-        padding: 0 25px;
-    `;
-
-    const cellClass = css`
-        width: 100%;
-        min-width: 80px;
-        height: 50px;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        font-weight: 500;
-        white-space: nowrap;
-        overflow: hidden;
-        cursor: default;
-        text-overflow: ellipsis;
-        color: ${cssColors['--secondary-font-color']};
-        font-size: ${cssVariables['--font-size-secondary']};
-    `;
+    const classNames = getTableClasses(requiredProps);
 
     return (
-        <div className={tableClass} style={requiredProps.style}>
-            <div className={headerRowClass}>
-                {requiredProps.headers.map((heading, index) => {
+        <div
+            className={cx(classNames.table, requiredProps.className?.table)}
+            style={requiredProps.style?.tableStyle}
+        >
+            <div
+                className={cx(classNames.headerRow, requiredProps.className?.headerRow)}
+                style={requiredProps.style?.headerRowStyle}
+            >
+                {(requiredProps.headers as Array<string | JSX.Element>).map(
+                    (heading: string | JSX.Element, index: number) => {
+                        return (
+                            <div
+                                key={index}
+                                className={cx(
+                                    classNames.headerCell,
+                                    requiredProps.className?.headerCell,
+                                )}
+                                style={requiredProps.style?.headerCellStyle}
+                            >
+                                {heading}
+                            </div>
+                        );
+                    },
+                )}
+            </div>
+            {(requiredProps.rowData as Array<string[] | JSX.Element[]>).map(
+                (row: string[] | JSX.Element[], rowIndex: number) => {
                     return (
-                        <div key={index} className={cellClass}>
-                            {heading}
+                        <div
+                            key={rowIndex}
+                            className={cx(classNames.bodyRow, requiredProps.className?.bodyRow)}
+                            style={requiredProps.style?.bodyRowStyle}
+                        >
+                            {(row as Array<string | JSX.Element>).map(
+                                (cell: string | JSX.Element, cellIndex: number) => {
+                                    return (
+                                        <div
+                                            key={cellIndex}
+                                            className={cx(
+                                                classNames.headerCell,
+                                                requiredProps.className?.headerCell,
+                                            )}
+                                            style={requiredProps.style?.headerCellStyle}
+                                        >
+                                            {cell}
+                                        </div>
+                                    );
+                                },
+                            )}
                         </div>
                     );
-                })}
-            </div>
-            <div className={headerRowClass}>
-                {requiredProps.headers.map((heading, index) => {
-                    return (
-                        <div key={index} className={cellClass}>
-                            {heading}
-                        </div>
-                    );
-                })}
-            </div>
+                },
+            )}
         </div>
     );
 };

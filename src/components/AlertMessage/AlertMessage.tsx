@@ -27,7 +27,7 @@ export const AlertMessage: React.FC<IAlertMessageProps> = (
         showIcon: true,
     };
     const requiredProps = lodash.merge(defaultProps, props);
-    const alertMessageWrapperClass = css`
+    const alertMessageWrapper = css`
         width: 100%;
         min-height: 40px;
         padding: 0 10px;
@@ -61,7 +61,7 @@ export const AlertMessage: React.FC<IAlertMessageProps> = (
             : cssColors['--default-border-color']};
     `;
 
-    const iconWrapperClass = css`
+    const iconWrapper = css`
         height: 100%;
         width: 25px;
         margin-right: 10px;
@@ -71,7 +71,7 @@ export const AlertMessage: React.FC<IAlertMessageProps> = (
         justify-content: center;
     `;
 
-    const labelWrapperClass = css`
+    const labelWrapper = css`
         width: 100%;
         height: 100%;
 
@@ -89,7 +89,7 @@ export const AlertMessage: React.FC<IAlertMessageProps> = (
             : cssColors['--default-border-color']};
     `;
 
-    const actionButtonWrapperClass = css`
+    const actionButtonWrapper = css`
         width: 30%;
 
         display: flex;
@@ -98,9 +98,9 @@ export const AlertMessage: React.FC<IAlertMessageProps> = (
     `;
 
     return (
-        <div className={alertMessageWrapperClass} style={requiredProps.style}>
+        <div className={alertMessageWrapper} style={requiredProps.style}>
             {requiredProps.showIcon ? (
-                <div className={iconWrapperClass}>
+                <div className={iconWrapper}>
                     {lodash.isUndefined(requiredProps.customIcon) ? (
                         requiredProps.type === 'success' ? (
                             <AiOutlineCheckCircle
@@ -124,9 +124,9 @@ export const AlertMessage: React.FC<IAlertMessageProps> = (
                     )}
                 </div>
             ) : null}
-            <div className={labelWrapperClass}>{requiredProps.label}</div>
+            <div className={labelWrapper}>{requiredProps.label}</div>
             {lodash.isUndefined(requiredProps.actionButton) ? null : (
-                <div className={actionButtonWrapperClass}>{requiredProps.actionButton}</div>
+                <div className={actionButtonWrapper}>{requiredProps.actionButton}</div>
             )}
         </div>
     );

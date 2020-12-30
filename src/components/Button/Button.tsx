@@ -72,7 +72,7 @@ export const Button: React.FC<IButtonProps> = (props: IButtonProps): JSX.Element
 
     const requiredProps = lodash.merge(defaultProps, props);
 
-    const buttonClass = css`
+    const button = css`
         width: 100%;
         padding: 0.8em 1em;
         text-decoration: none;
@@ -105,7 +105,7 @@ export const Button: React.FC<IButtonProps> = (props: IButtonProps): JSX.Element
 
     return (
         <button
-            className={buttonClass}
+            className={button}
             onClick={requiredProps.onClick}
             type={requiredProps.type}
             disabled={

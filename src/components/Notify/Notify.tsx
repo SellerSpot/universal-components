@@ -35,7 +35,7 @@ export const Notify = (props: INotifyProps): ReactElement => {
         };
     }, [requiredProps]);
 
-    const notifyWrapperClass = css`
+    const notifyWrapper = css`
         width: 300px;
         min-height: 50px;
         max-height: 100px;
@@ -56,7 +56,7 @@ export const Notify = (props: INotifyProps): ReactElement => {
     `;
 
     return (
-        <div className={notifyWrapperClass} style={requiredProps.style}>
+        <div className={notifyWrapper} style={requiredProps.style}>
             {requiredProps.content}
         </div>
     );

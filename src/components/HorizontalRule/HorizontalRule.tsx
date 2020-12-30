@@ -30,7 +30,7 @@ export const HorizontalRule = (props: IHorizontalRuleProps): ReactElement => {
 
     const requiredProps = lodash.merge(defaultProps, props);
 
-    const horizontalRuleWrapperClass = css`
+    const horizontalRuleWrapper = css`
         width: 100%;
         height: auto;
         display: flex;
@@ -43,7 +43,7 @@ export const HorizontalRule = (props: IHorizontalRuleProps): ReactElement => {
             : requiredProps.alignment};
     `;
 
-    const horizontalRulerClass = css`
+    const horizontalRuler = css`
         background-color: ${requiredProps.ruleColor};
         width: ${requiredProps.ruleWidth};
         height: ${requiredProps.ruleSize}px;
@@ -52,8 +52,8 @@ export const HorizontalRule = (props: IHorizontalRuleProps): ReactElement => {
     `;
 
     return (
-        <div className={horizontalRuleWrapperClass} style={requiredProps.style}>
-            <div className={horizontalRulerClass} />
+        <div className={horizontalRuleWrapper} style={requiredProps.style}>
+            <div className={horizontalRuler} />
         </div>
     );
 };

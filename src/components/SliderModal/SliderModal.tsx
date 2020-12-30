@@ -19,7 +19,7 @@ export const SliderModal = (props: ISliderModalProps): JSX.Element => {
 
     const requiredProps = lodash.merge(defaultProps, props);
 
-    const sliderModalWrapperClass = css`
+    const sliderModalWrapper = css`
         position: fixed;
         top: 0;
         width: 100%;
@@ -36,7 +36,7 @@ export const SliderModal = (props: ISliderModalProps): JSX.Element => {
         background: ${requiredProps.active ? 'rgb(0, 0, 0, 0.4)' : 'transparent'};
     `;
 
-    const backdropOverlayClass = css`
+    const backdropOverlay = css`
         position: absolute;
         width: 100%;
         height: 100%;
@@ -45,7 +45,7 @@ export const SliderModal = (props: ISliderModalProps): JSX.Element => {
         left: 0;
     `;
 
-    const sliderContentWrapperClass = css`
+    const sliderContentWrapper = css`
         position: absolute;
         height: 100%;
         z-index: 1;
@@ -58,9 +58,9 @@ export const SliderModal = (props: ISliderModalProps): JSX.Element => {
     `;
 
     return (
-        <div className={sliderModalWrapperClass}>
-            <div className={backdropOverlayClass} />
-            <div className={sliderContentWrapperClass}>{requiredProps.children}</div>
+        <div className={sliderModalWrapper}>
+            <div className={backdropOverlay} />
+            <div className={sliderContentWrapper}>{requiredProps.children}</div>
         </div>
     );
 };

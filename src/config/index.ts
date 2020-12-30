@@ -47,12 +47,12 @@ export const cssVariables = {
     '--input-field-height': '40px',
     '--input-field-small-height': '20px',
     /* z-index values */
-    '--z-index-notify': '10',
-    '--z-index-confirm-dialog': '6',
-    '--z-index-slider-modal': '5',
-    '--z-index-tab-bar': '4',
-    '--z-index-dropdown': '3',
-    '--z-index-table-header': '2',
+    '--z-index-notify': 10,
+    '--z-index-confirm-dialog': 6,
+    '--z-index-slider-modal': 5,
+    '--z-index-tab-bar': 4,
+    '--z-index-dropdown': 3,
+    '--z-index-table-header': 2,
     /* div-values */
     '--shadow-style': '0px 0px 3px 0px var(--shadow-color)',
 };

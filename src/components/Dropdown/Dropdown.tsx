@@ -46,14 +46,14 @@ export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.E
         };
     }, [showOptions, handleClickOutsideHandler]);
 
-    const labelClass = css`
+    const label = css`
         display: block;
         font-size: ${cssVariables['--font-size-secondary']};
         font-weight: 600;
         margin-bottom: 5px;
     `;
 
-    const dropDownBoxClass = css`
+    const dropDownBox = css`
         display: block;
         height: ${cssVariables['--input-field-height']};
         width: 100%;
@@ -70,7 +70,7 @@ export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.E
         }
     `;
 
-    const dropDownSelectClass = css`
+    const dropDownSelect = css`
         width: 100%;
         height: 100%;
         padding: 0 10px;
@@ -79,11 +79,11 @@ export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.E
         justify-content: space-between;
     `;
 
-    const caretIconClass = css`
+    const caretIcon = css`
         color: ${cssColors['--primary-font-color']};
     `;
 
-    const dropDownListClass = css`
+    const dropDownList = css`
         width: 100%;
         max-height: 140px;
         height: auto;
@@ -104,7 +104,7 @@ export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.E
         visibility: ${showOptions ? 'visible' : 'hidden'};
     `;
 
-    const dropDownItemClass = css`
+    const dropDownItem = css`
         width: 100%;
         padding: 6px 10px;
         display: flex;
@@ -113,7 +113,7 @@ export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.E
         background-color: ${cssColors['--primary-background-color']};
     `;
 
-    const helperTextClass = css`
+    const helperText = css`
         font-size: ${cssVariables['--font-size-tertiary']};
         margin-top: 2px;
         font-weight: 400;
@@ -125,20 +125,20 @@ export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.E
     return (
         <div>
             {requiredProps.label ?? false ? (
-                <label className={labelClass} style={requiredProps.labelStyle}>
+                <label className={label} style={requiredProps.labelStyle}>
                     {requiredProps.label}
                 </label>
             ) : null}
-            <div className={dropDownBoxClass}>
+            <div className={dropDownBox}>
                 <div
-                    className={dropDownSelectClass}
+                    className={dropDownSelect}
                     tabIndex={0}
                     onClick={() => shouldShowOptions(!showOptions)}
                 >
                     <p>{requiredProps.options[selectedOption]}</p>
-                    <FaCaretDown className={caretIconClass} />
+                    <FaCaretDown className={caretIcon} />
                 </div>
-                <div className={dropDownListClass}></div>
+                <div className={dropDownList}></div>
                 <ul>
                     {requiredProps.options.map((option, index) => {
                         return (
@@ -149,7 +149,7 @@ export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.E
                                     requiredProps.onSelect(option);
                                 }}
                                 key={index}
-                                className={dropDownItemClass}
+                                className={dropDownItem}
                             >
                                 {option}
                             </li>
@@ -158,7 +158,7 @@ export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.E
                 </ul>
             </div>
             {requiredProps.helperText !== undefined || requiredProps.error !== undefined ? (
-                <label className={helperTextClass} style={requiredProps.helperStyle}>
+                <label className={helperText} style={requiredProps.helperStyle}>
                     {requiredProps.error?.showError
                         ? requiredProps.error.errorMessage
                         : requiredProps.helperText}

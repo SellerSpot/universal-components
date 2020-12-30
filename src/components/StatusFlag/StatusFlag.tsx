@@ -15,7 +15,7 @@ export const StatusFlag: React.FC<IStatusFlagProps> = (props: IStatusFlagProps):
     };
     const requiredProps = lodash.merge(defaultProps, props);
 
-    const statusFlagClass = css`
+    const statusFlag = css`
         width: 120px;
         height: 30px;
         display: flex;
@@ -26,7 +26,7 @@ export const StatusFlag: React.FC<IStatusFlagProps> = (props: IStatusFlagProps):
         font-weight: 500;
     `;
 
-    const spotClass = css`
+    const spot = css`
         height: 14px;
         width: 14px;
         border-radius: 50%;
@@ -36,8 +36,8 @@ export const StatusFlag: React.FC<IStatusFlagProps> = (props: IStatusFlagProps):
     `;
 
     return (
-        <div className={statusFlagClass} style={requiredProps.style}>
-            <div className={spotClass}></div>
+        <div className={statusFlag} style={requiredProps.style}>
+            <div className={spot}></div>
             <div>{requiredProps.label.charAt(0).toUpperCase() + requiredProps.label.slice(1)}</div>
         </div>
     );

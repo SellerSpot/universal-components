@@ -18,7 +18,7 @@ export const Spinner: React.FC<ISpinnerProps> = (props: ISpinnerProps): JSX.Elem
     };
     const requiredProps = lodash.merge(defaultProps, props);
 
-    const spinnerClass = css`
+    const spinner = css`
         border-radius: 50%;
         width: 10em;
         height: 10em;
@@ -69,5 +69,5 @@ export const Spinner: React.FC<ISpinnerProps> = (props: ISpinnerProps): JSX.Elem
         }
     `;
 
-    return <div className={spinnerClass} style={requiredProps.style} />;
+    return <div className={spinner} style={requiredProps.style} />;
 };
