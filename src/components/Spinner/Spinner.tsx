@@ -8,6 +8,7 @@ export interface ISpinnerProps {
     indicatorColor?: React.CSSProperties['color'];
     trackColor?: React.CSSProperties['color'];
     style?: React.CSSProperties;
+    className?: string;
 }
 
 export const Spinner: React.FC<ISpinnerProps> = (props: ISpinnerProps): JSX.Element => {
@@ -69,5 +70,5 @@ export const Spinner: React.FC<ISpinnerProps> = (props: ISpinnerProps): JSX.Elem
         }
     `;
 
-    return <div className={spinner} style={requiredProps.style} />;
+    return <div className={cx(spinner, requiredProps.className)} style={requiredProps.style} />;
 };
