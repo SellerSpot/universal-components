@@ -17,8 +17,13 @@
         "declaration": true,
         "declarationMap": true,
         "declarationDir": "dist",
-        "outDir": "dist",
+        "outDir": "dist"
     },
     "include": ["src/**/*"],
-    "exclude": ["**/*.stories.tsx"]
+    "exclude": ["**/*.stories.tsx"],
+    "paths": {
+        // will be used for module resolution
+        "components/*": ["components/*"],
+        "config": ["config/*"]
+    }
 }
