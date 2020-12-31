@@ -1,8 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { css, cx } from '@emotion/css';
+import { cx } from '@emotion/css';
 import lodash from 'lodash';
 import { FaCaretDown } from 'react-icons/fa';
-import { cssColors, cssVariables } from '../../config';
 import { getDropdownClasses, IGetDropdownClasses } from './dropdown.styles';
 
 export interface IDropdownProps {
