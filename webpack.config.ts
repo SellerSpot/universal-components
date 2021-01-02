@@ -15,10 +15,21 @@ const webpackConfiguration = (env: {
         resolve: {
             extensions: ['.ts', '.tsx', '.js'],
         },
+        externals: {
+            // Don't bundle react or react-dom
+            // https://itnext.io/how-to-package-your-react-component-for-distribution-via-npm-d32d4bf71b4f
+            react: {
+                commonjs: 'react',
+                commonjs2: 'react',
+                amd: 'React',
+                root: 'React',
+            },
+        },
         output: {
             path: path.join(__dirname, '/dist'),
             filename: 'index.js',
             libraryTarget: 'umd',
+            umdNamedDefine: true,
             library: 'universal-components',
         },
         module: {
