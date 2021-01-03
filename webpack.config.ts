@@ -82,7 +82,7 @@ const webpackConfiguration = (env: {
             !isProduction
                 ? new WebpackShellPluginNext({
                       onDoneWatch: {
-                          scripts: ['npm run build'],
+                          scripts: ['npm run build:dev'],
                           blocking: false,
                           parallel: true,
                       },
