@@ -19,16 +19,16 @@ Tables.args = {
     ],
     rowData: [
         [
-            <p key={'01'}>Cell 01</p>,
-            <p key={'02'}>Cell 02</p>,
-            <p key={'03'}>Cell 03</p>,
-            <p key={'04'}>Cell 04</p>,
+            <p key={'01'}>Cells 01</p>,
+            <p key={'02'}>Cells 02</p>,
+            <p key={'03'}>Cells 03</p>,
+            <p key={'04'}>Cells 04</p>,
         ],
         [
-            <p key={'11'}>Cell 11</p>,
-            <p key={'12'}>Cell 12</p>,
-            <p key={'13'}>Cell 13</p>,
-            <p key={'14'}>Cell 14</p>,
+            <p key={'11'}>Cells 11</p>,
+            <p key={'12'}>Cells 12</p>,
+            <p key={'13'}>Cells 13</p>,
+            <p key={'14'}>Cells 14</p>,
         ],
         [
             <p key={'11'}>Cell 11</p>,

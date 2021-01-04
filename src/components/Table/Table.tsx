@@ -4,8 +4,8 @@ import React from 'react';
 import { getTableClasses, ITableClasses } from './table.styles';
 
 export interface ITableProps {
-    headers?: string[] | JSX.Element[];
-    rowData?: string[][] | JSX.Element[][];
+    headers?: JSX.Element[];
+    rowData?: JSX.Element[][];
     style?: {
         tableStyle?: React.CSSProperties;
         headerRowStyle?: React.CSSProperties;
