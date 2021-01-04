@@ -44,7 +44,7 @@ export const Notify = (props: INotifyProps): ReactElement => {
         max-height: 100px;
         overflow: hidden;
         position: fixed;
-        box-shadow: 0 0 10px 0 ${cssColors['--overlay-color']};
+        box-shadow: ${cssVariables['--shadow-style']};
         border-radius: 3px;
         padding: 15px 40px 15px 15px;
         font-size: ${cssVariables['--font-size-secondary']};

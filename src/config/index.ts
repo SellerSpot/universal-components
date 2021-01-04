@@ -54,7 +54,7 @@ export const cssVariables = {
     '--z-index-dropdown': 3,
     '--z-index-table-header': 2,
     /* div-values */
-    '--shadow-style': '0px 0px 3px 0px var(--shadow-color)',
+    '--shadow-style': '1px 1px 2px rgba(0,0,0, 0.25);',
 };
 
 export type TMajorColors = 'success' | 'danger' | 'warning' | 'info';

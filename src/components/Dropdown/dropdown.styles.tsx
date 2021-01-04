@@ -76,7 +76,7 @@ export const getDropdownClasses = (
         font-weight: 400;
         overflow-y: auto;
         background-color: ${cssColors['--primary-background-color']};
-        box-shadow: 0 0 5px 0px ${cssColors['--overlay-color']};
+        box-shadow: ${cssVariables['--shadow-style']};
         transition: ${cssVariables['--transition-duration']};
         opacity: ${showOptions ? 1 : 0};
         visibility: ${showOptions ? 'visible' : 'hidden'};

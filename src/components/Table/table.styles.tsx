@@ -30,7 +30,7 @@ export const getTableClasses = (requiredProps: ITableProps): ITableClasses => {
         position: 'sticky';
         top: 0;
         z-index: ${cssVariables['--z-index-table-header']};
-        box-shadow: 0px 0px 5px 0px var(--shadow-color);
+        box-shadow: ${cssVariables['--shadow-style']};
         background-color: ${cssColors['--tertiary-background-color']};
         padding: 0 25px;
     `;
