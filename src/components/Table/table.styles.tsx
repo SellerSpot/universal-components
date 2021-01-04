@@ -3,10 +3,11 @@ import { cssColors, cssVariables } from '../../config';
 import { ITableProps } from './Table';
 
 export interface ITableClasses {
-    table: string;
-    headerRow: string;
-    headerCell: string;
-    bodyRow: string;
+    table?: string;
+    headerRow?: string;
+    headerCell?: string;
+    bodyRow?: string;
+    bodyCell?: string;
 }
 
 export const getTableClasses = (requiredProps: ITableProps): ITableClasses => {
@@ -45,7 +46,6 @@ export const getTableClasses = (requiredProps: ITableProps): ITableClasses => {
         font-weight: 600;
         white-space: nowrap;
         overflow: hidden;
-        cursor: default;
         text-overflow: ellipsis;
         color: ${cssColors['--primary-font-color']};
         font-size: ${cssVariables['--font-size-secondary']};
@@ -65,11 +65,28 @@ export const getTableClasses = (requiredProps: ITableProps): ITableClasses => {
         border-bottom: 1px solid ${cssColors['--tertiary-background-color']};
         background-color: ${cssColors['--primary-background-color']};
         padding: 0 25px;
+        transition: background-color 0.2s ease-in-out;
+    `;
+
+    const bodyCell = css`
+        width: 100%;
+        min-width: 80px;
+        height: 40px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-weight: 600;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: ${cssColors['--primary-font-color']};
+        font-size: ${cssVariables['--font-size-secondary']};
     `;
     return {
         table,
         headerRow,
         headerCell,
         bodyRow,
+        bodyCell,
     };
 };
