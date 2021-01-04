@@ -46,23 +46,36 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
     const classes = getInputFieldClasses(requiredProps);
 
     return (
-        <div className={classes.inputFieldWrapper}>
+        <div className={cx(classes.inputFieldWrapper, requiredProps.className?.inputFieldWrapper)}>
             {lodash.isUndefined(requiredProps.label) ? null : (
-                <label className={classes.label} style={requiredProps.lableStyle}>
+                <label
+                    className={cx(classes.label, requiredProps.className?.label)}
+                    style={requiredProps.lableStyle}
+                >
                     {requiredProps.label}
                     {requiredProps.required ?? false ? (
-                        <span className={classes.requiredSpan}>&nbsp;*</span>
+                        <span
+                            className={cx(
+                                classes.requiredSpan,
+                                requiredProps.className?.requiredSpan,
+                            )}
+                        >
+                            &nbsp;*
+                        </span>
                     ) : null}
                 </label>
             )}
-            <div className={classes.inputWrapperDiv}>
+            <div className={cx(classes.inputWrapperDiv, requiredProps.className?.inputWrapperDiv)}>
                 {lodash.isUndefined(requiredProps.prefix) ? null : (
-                    <div className={classes.prefixDiv} style={requiredProps.prefixStyle}>
+                    <div
+                        className={cx(classes.prefixDiv, requiredProps.className?.prefixDiv)}
+                        style={requiredProps.prefixStyle}
+                    >
                         {requiredProps.prefix}
                     </div>
                 )}
                 <input
-                    className={classes.input}
+                    className={cx(classes.input, requiredProps.className?.input)}
                     onFocus={requiredProps.selectTextOnFocus ? selectInputFieldText : null}
                     disabled={requiredProps.disabled}
                     placeholder={requiredProps.placeHolder}
@@ -73,14 +86,20 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
                     style={requiredProps.style}
                 />
                 {lodash.isUndefined(requiredProps.suffix) ? null : (
-                    <div className={classes.suffixDiv} style={requiredProps.suffixStyle}>
+                    <div
+                        className={cx(classes.suffixDiv, requiredProps.className?.suffixDiv)}
+                        style={requiredProps.suffixStyle}
+                    >
                         {requiredProps.suffix}
                     </div>
                 )}
             </div>
             {lodash.isUndefined(requiredProps.error) &&
             lodash.isUndefined(requiredProps.helperText) ? null : (
-                <label className={classes.helperLabel} style={requiredProps.hintTextStyle}>
+                <label
+                    className={cx(classes.helperLabel, requiredProps.className?.helperLabel)}
+                    style={requiredProps.hintTextStyle}
+                >
                     {lodash.isUndefined(requiredProps.error)
                         ? requiredProps.helperText
                         : requiredProps.error.errorMessage}
