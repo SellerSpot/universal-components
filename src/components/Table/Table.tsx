@@ -11,8 +11,12 @@ export interface ITableProps {
         headerRowStyle?: React.CSSProperties;
         headerCellStyle?: React.CSSProperties;
         bodyRowStyle?: React.CSSProperties;
+        bodyCellStyle?: React.CSSProperties;
     };
     className?: ITableClasses;
+    onClick?: {
+        rowClick?: (index: number) => void;
+    };
 }
 
 export const Table: React.FC<ITableProps> = (props: ITableProps): JSX.Element => {
@@ -55,6 +59,7 @@ export const Table: React.FC<ITableProps> = (props: ITableProps): JSX.Element =>
                     return (
                         <div
                             key={rowIndex}
+                            onClick={(event) => requiredProps.onClick?.rowClick(rowIndex)}
                             className={cx(classNames.bodyRow, requiredProps.className?.bodyRow)}
                             style={requiredProps.style?.bodyRowStyle}
                         >
@@ -64,10 +69,10 @@ export const Table: React.FC<ITableProps> = (props: ITableProps): JSX.Element =>
                                         <div
                                             key={cellIndex}
                                             className={cx(
-                                                classNames.headerCell,
-                                                requiredProps.className?.headerCell,
+                                                classNames.bodyCell,
+                                                requiredProps.className?.bodyCell,
                                             )}
-                                            style={requiredProps.style?.headerCellStyle}
+                                            style={requiredProps.style?.bodyCellStyle}
                                         >
                                             {cell}
                                         </div>
