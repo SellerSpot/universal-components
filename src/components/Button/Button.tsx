@@ -5,7 +5,7 @@ import lodash from 'lodash';
 import { Spinner } from '../Spinner/Spinner';
 
 export interface IButtonProps {
-    label?: string;
+    label?: string | JSX.Element;
     status?: 'default' | 'loading' | 'disabled' | 'disabledLoading';
     type?: 'button' | 'submit' | 'reset';
     style?: React.CSSProperties;
