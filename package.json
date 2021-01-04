@@ -6,6 +6,7 @@
     "scripts": {
         "dev": "webpack --mode development --env development",
         "build": "webpack --mode production --env production",
+        "build:dev": "webpack --mode development --env production",
         "lint": "eslint src",
         "lint:fix": "eslint src --fix",
         "storybook": "start-storybook -p 6006",
@@ -84,5 +85,6 @@
     "bugs": {
         "url": "https://github.com/SellerSpot/universal-components/issues"
     },
-    "homepage": "https://github.com/SellerSpot/universal-components#readme"
+    "homepage": "https://github.com/SellerSpot/universal-components#readme",
+    "dependencies": {}
 }

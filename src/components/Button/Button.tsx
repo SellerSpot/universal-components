@@ -75,7 +75,7 @@ export const Button: React.FC<IButtonProps> = (props: IButtonProps): JSX.Element
                     size={'small'}
                     indicatorColor={requiredProps.loadingSpinner?.indicatorColor}
                     trackColor={requiredProps.loadingSpinner?.trackColor}
-                    style={requiredProps.loadingSpinner.style}
+                    style={requiredProps.loadingSpinner?.style}
                 />
             ) : null}
             {requiredProps.label}
