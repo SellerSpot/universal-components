@@ -20,11 +20,13 @@ export interface IInputFieldProps {
     };
     selectTextOnFocus?: boolean;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    style?: React.CSSProperties;
-    lableStyle?: React.CSSProperties;
-    hintTextStyle?: React.CSSProperties;
-    prefixStyle?: React.CSSProperties;
-    suffixStyle?: React.CSSProperties;
+    style?: {
+        lableStyle?: React.CSSProperties;
+        hintTextStyle?: React.CSSProperties;
+        prefixStyle?: React.CSSProperties;
+        suffixStyle?: React.CSSProperties;
+        inputStyle?: React.CSSProperties;
+    };
     className?: IGetInputFieldClasses;
 }
 
@@ -50,7 +52,7 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
             {lodash.isUndefined(requiredProps.label) ? null : (
                 <label
                     className={cx(classes.label, requiredProps.className?.label)}
-                    style={requiredProps.lableStyle}
+                    style={requiredProps.style?.lableStyle}
                 >
                     {requiredProps.label}
                     {requiredProps.required ?? false ? (
@@ -69,7 +71,7 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
                 {lodash.isUndefined(requiredProps.prefix) ? null : (
                     <div
                         className={cx(classes.prefixDiv, requiredProps.className?.prefixDiv)}
-                        style={requiredProps.prefixStyle}
+                        style={requiredProps.style?.prefixStyle}
                     >
                         {requiredProps.prefix}
                     </div>
@@ -83,12 +85,12 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
                     required={requiredProps.required}
                     value={requiredProps.value}
                     onChange={requiredProps.onChange}
-                    style={requiredProps.style}
+                    style={requiredProps.style?.inputStyle}
                 />
                 {lodash.isUndefined(requiredProps.suffix) ? null : (
                     <div
                         className={cx(classes.suffixDiv, requiredProps.className?.suffixDiv)}
-                        style={requiredProps.suffixStyle}
+                        style={requiredProps.style?.suffixStyle}
                     >
                         {requiredProps.suffix}
                     </div>
@@ -98,7 +100,7 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
             lodash.isUndefined(requiredProps.helperText) ? null : (
                 <label
                     className={cx(classes.helperLabel, requiredProps.className?.helperLabel)}
-                    style={requiredProps.hintTextStyle}
+                    style={requiredProps.style?.hintTextStyle}
                 >
                     {lodash.isUndefined(requiredProps.error)
                         ? requiredProps.helperText

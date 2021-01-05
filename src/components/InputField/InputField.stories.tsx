@@ -22,6 +22,5 @@ InputFields.args = {
     prefix: <FcOk />,
     suffix: <p>pcs</p>,
     required: false,
-
     onChange: () => void 0,
 } as IInputFieldProps;
