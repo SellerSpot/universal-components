@@ -20,14 +20,23 @@ export interface IInputFieldProps {
     };
     selectTextOnFocus?: boolean;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+    onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+    onClick?: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
     style?: {
         lableStyle?: React.CSSProperties;
         hintTextStyle?: React.CSSProperties;
         prefixStyle?: React.CSSProperties;
         suffixStyle?: React.CSSProperties;
         inputStyle?: React.CSSProperties;
+        searchDropdownStyle?: React.CSSProperties;
     };
     className?: IGetInputFieldClasses;
+    searchDropdown?: {
+        show: boolean;
+        content: JSX.Element;
+        dropDownHeight: React.CSSProperties['height'];
+    };
 }
 
 export const selectInputFieldText = (event: React.FocusEvent<HTMLInputElement>): void =>
@@ -78,7 +87,12 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
                 )}
                 <input
                     className={cx(classes.input, requiredProps.className?.input)}
-                    onFocus={requiredProps.selectTextOnFocus ? selectInputFieldText : null}
+                    onFocus={(event) => {
+                        if (requiredProps.selectTextOnFocus) selectInputFieldText;
+                        requiredProps.onFocus(event);
+                    }}
+                    onClick={requiredProps.onClick}
+                    onBlur={requiredProps.onBlur}
                     disabled={requiredProps.disabled}
                     placeholder={requiredProps.placeHolder}
                     type={requiredProps.type}
@@ -95,6 +109,12 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
                         {requiredProps.suffix}
                     </div>
                 )}
+                <div
+                    className={cx(classes.searchDropdown, requiredProps.className?.searchDropdown)}
+                    style={requiredProps.style?.searchDropdownStyle}
+                >
+                    {requiredProps.searchDropdown?.content}
+                </div>
             </div>
             {lodash.isUndefined(requiredProps.error) &&
             lodash.isUndefined(requiredProps.helperText) ? null : (
