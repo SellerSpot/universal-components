@@ -20,12 +20,23 @@ export interface IInputFieldProps {
     };
     selectTextOnFocus?: boolean;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    style?: React.CSSProperties;
-    lableStyle?: React.CSSProperties;
-    hintTextStyle?: React.CSSProperties;
-    prefixStyle?: React.CSSProperties;
-    suffixStyle?: React.CSSProperties;
+    onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
+    onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+    onClick?: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
+    style?: {
+        lableStyle?: React.CSSProperties;
+        hintTextStyle?: React.CSSProperties;
+        prefixStyle?: React.CSSProperties;
+        suffixStyle?: React.CSSProperties;
+        inputStyle?: React.CSSProperties;
+        searchDropdownStyle?: React.CSSProperties;
+    };
     className?: IGetInputFieldClasses;
+    searchDropdown?: {
+        show: boolean;
+        content: JSX.Element;
+        dropDownHeight: React.CSSProperties['height'];
+    };
 }
 
 export const selectInputFieldText = (event: React.FocusEvent<HTMLInputElement>): void =>
@@ -50,7 +61,7 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
             {lodash.isUndefined(requiredProps.label) ? null : (
                 <label
                     className={cx(classes.label, requiredProps.className?.label)}
-                    style={requiredProps.lableStyle}
+                    style={requiredProps.style?.lableStyle}
                 >
                     {requiredProps.label}
                     {requiredProps.required ?? false ? (
@@ -69,36 +80,47 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
                 {lodash.isUndefined(requiredProps.prefix) ? null : (
                     <div
                         className={cx(classes.prefixDiv, requiredProps.className?.prefixDiv)}
-                        style={requiredProps.prefixStyle}
+                        style={requiredProps.style?.prefixStyle}
                     >
                         {requiredProps.prefix}
                     </div>
                 )}
                 <input
                     className={cx(classes.input, requiredProps.className?.input)}
-                    onFocus={requiredProps.selectTextOnFocus ? selectInputFieldText : null}
+                    onFocus={(event) => {
+                        if (requiredProps.selectTextOnFocus) selectInputFieldText;
+                        requiredProps.onFocus(event);
+                    }}
+                    onClick={requiredProps.onClick}
+                    onBlur={requiredProps.onBlur}
                     disabled={requiredProps.disabled}
                     placeholder={requiredProps.placeHolder}
                     type={requiredProps.type}
                     required={requiredProps.required}
                     value={requiredProps.value}
                     onChange={requiredProps.onChange}
-                    style={requiredProps.style}
+                    style={requiredProps.style?.inputStyle}
                 />
                 {lodash.isUndefined(requiredProps.suffix) ? null : (
                     <div
                         className={cx(classes.suffixDiv, requiredProps.className?.suffixDiv)}
-                        style={requiredProps.suffixStyle}
+                        style={requiredProps.style?.suffixStyle}
                     >
                         {requiredProps.suffix}
                     </div>
                 )}
+                <div
+                    className={cx(classes.searchDropdown, requiredProps.className?.searchDropdown)}
+                    style={requiredProps.style?.searchDropdownStyle}
+                >
+                    {requiredProps.searchDropdown?.content}
+                </div>
             </div>
             {lodash.isUndefined(requiredProps.error) &&
             lodash.isUndefined(requiredProps.helperText) ? null : (
                 <label
                     className={cx(classes.helperLabel, requiredProps.className?.helperLabel)}
-                    style={requiredProps.hintTextStyle}
+                    style={requiredProps.style?.hintTextStyle}
                 >
                     {lodash.isUndefined(requiredProps.error)
                         ? requiredProps.helperText
