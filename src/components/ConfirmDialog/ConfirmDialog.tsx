@@ -7,9 +7,9 @@ import { cx } from '@emotion/css';
 
 export interface IConfirmDialogProps {
     active?: boolean;
-    title?: JSX.Element;
-    content?: JSX.Element;
-    footer?: JSX.Element;
+    title: JSX.Element;
+    content: JSX.Element;
+    footer: JSX.Element;
     className?: IGetConfirmDialogClasses;
     style?: {
         confirmDialogWrapperStyle?: React.CSSProperties;
@@ -19,18 +19,7 @@ export interface IConfirmDialogProps {
 }
 
 export const ConfirmDialog = (props: IConfirmDialogProps): ReactElement => {
-    const defaultProps: IConfirmDialogProps = {
-        title: <p style={{ fontSize: cssVariables['--font-size-header'] }}>Sample Header</p>,
-        content: <div style={{ width: '100%', height: '50px' }}>This is sample content</div>,
-        footer: (
-            <div>
-                <Button label={'One Step from Success'} />
-                <Button label={'Success'} />
-            </div>
-        ),
-    };
-
-    const requiredProps = lodash.merge(defaultProps, props);
+    const requiredProps = props;
     const classNames = getConfirmDialogClasses(requiredProps);
 
     return (
