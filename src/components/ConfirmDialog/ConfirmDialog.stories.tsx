@@ -14,5 +14,7 @@ const Template: Story<IConfirmDialogProps> = (args: IConfirmDialogProps) => (
 export const ConfirmDialogs = Template.bind({});
 ConfirmDialogs.args = {
     active: true,
-    content: <div>Are you Sure?</div>,
+    title: <div style={{ backgroundColor: 'red', height: '100%' }}>Are you Sure?</div>,
+    content: <div style={{ backgroundColor: 'red', height: '100%' }}>Are you Sure?</div>,
+    footer: <div style={{ backgroundColor: 'red', height: '100%' }}>Are you Sure?</div>,
 } as IConfirmDialogProps;

@@ -43,12 +43,12 @@ export const getConfirmDialogClasses = (
         border: 1px solid ${cssColors['--primary-background-color']};
         box-shadow: ${cssVariables['--shadow-style']};
         border-radius: ${cssVariables['--border-radius']};
-        padding: 20px;
-        padding-bottom: 10px;
+        padding: 10px;
+        padding-bottom: 5px;
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 30px 1fr 30px;
-        row-gap: 10px;
+        row-gap: 5px;
     `;
 
     return {
