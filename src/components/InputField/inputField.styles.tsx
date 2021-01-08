@@ -20,6 +20,8 @@ export const getInputFieldClasses = (requiredProps: IInputFieldProps): IGetInput
         width: 100%;
         height: auto;
         box-sizing: border-box;
+        background-color: red;
+        padding-bottom: ${requiredProps.error || requiredProps.helperText ? 0 : '18px'};
     `;
 
     const label = css`

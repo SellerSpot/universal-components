@@ -12,11 +12,12 @@ const Template: Story<IInputFieldProps> = (args: IInputFieldProps) => <InputFiel
 
 export const InputFields = Template.bind({});
 InputFields.args = {
+    helperText: 'Sample Helper Text',
     placeHolder: 'Sample Text Field',
     disabled: false,
-    label: 'Sample Label',
+    // label: 'Sample Label',
     value: '55865',
-    helperText: 'Sample Helper Text',
+
     type: 'text',
     size: 'default',
     prefix: <FcOk />,

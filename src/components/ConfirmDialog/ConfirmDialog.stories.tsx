@@ -1,6 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { ConfirmDialog, IConfirmDialogProps } from './ConfirmDialog';
+import { css } from '@emotion/css';
 
 export default {
     title: 'Components',
@@ -17,4 +18,10 @@ ConfirmDialogs.args = {
     title: <div style={{ backgroundColor: 'red', height: '100%' }}>Are you Sure?</div>,
     content: <div style={{ backgroundColor: 'red', height: '100%' }}>Are you Sure?</div>,
     footer: <div style={{ backgroundColor: 'red', height: '100%' }}>Are you Sure?</div>,
+    className: {
+        content: css`
+            box-sizing: border-box;
+            padding: 30px;
+        `,
+    },
 } as IConfirmDialogProps;
