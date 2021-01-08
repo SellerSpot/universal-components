@@ -4,6 +4,7 @@ import { cx } from '@emotion/css';
 import { getInputFieldClasses, IGetInputFieldClasses } from './inputField.styles';
 
 export interface IInputFieldProps {
+    name?: string;
     placeHolder?: string;
     label?: string;
     helperText?: string;
@@ -86,6 +87,7 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
                     </div>
                 )}
                 <input
+                    name={requiredProps.name}
                     className={cx(classes.input, requiredProps.className?.input)}
                     onFocus={(event) => {
                         if (requiredProps.selectTextOnFocus) selectInputFieldText;
@@ -116,17 +118,14 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
                     {requiredProps.searchDropdown?.content}
                 </div>
             </div>
-            {lodash.isUndefined(requiredProps.error) &&
-            lodash.isUndefined(requiredProps.helperText) ? null : (
-                <label
-                    className={cx(classes.helperLabel, requiredProps.className?.helperLabel)}
-                    style={requiredProps.style?.hintTextStyle}
-                >
-                    {lodash.isUndefined(requiredProps.error)
-                        ? requiredProps.helperText
-                        : requiredProps.error.errorMessage}
-                </label>
-            )}
+            <label
+                className={cx(classes.helperLabel, requiredProps.className?.helperLabel)}
+                style={requiredProps.style?.hintTextStyle}
+            >
+                {lodash.isUndefined(requiredProps.error) || !requiredProps.error?.showError
+                    ? requiredProps.helperText ?? <br />
+                    : requiredProps.error.errorMessage}
+            </label>
         </div>
     );
 };
