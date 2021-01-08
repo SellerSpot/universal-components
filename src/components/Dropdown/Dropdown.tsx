@@ -20,7 +20,7 @@ export interface IDropdownProps {
         caretIconStyle?: React.CSSProperties;
         dropDownListStyle?: React.CSSProperties;
         dropDownItemStyle?: React.CSSProperties;
-        helperTextStyle?: React.CSSProperties;
+        helperLabelStyle?: React.CSSProperties;
         dropDownWrapperStyle?: React.CSSProperties;
     };
     className?: IGetDropdownClasses;
@@ -114,12 +114,12 @@ export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.E
             </div>
             {requiredProps.helperText !== undefined || requiredProps.error !== undefined ? (
                 <label
-                    className={cx(classNames.helperText, requiredProps.className?.helperText)}
-                    style={requiredProps.style?.helperTextStyle}
+                    className={cx(classNames.helperLabel, requiredProps.className?.helperLabel)}
+                    style={requiredProps.style?.helperLabelStyle}
                 >
-                    {requiredProps.error?.showError
-                        ? requiredProps.error.errorMessage
-                        : requiredProps.helperText}
+                    {lodash.isUndefined(requiredProps.error) || !requiredProps.error?.showError
+                        ? requiredProps.helperText ?? <br />
+                        : requiredProps.error.errorMessage}
                 </label>
             ) : null}
         </div>

@@ -12,7 +12,6 @@ const Template: Story<IDropdownProps> = (args: IDropdownProps) => <Dropdown {...
 export const Dropdowns = Template.bind({});
 Dropdowns.args = {
     options: ['hello', 'world'],
-    helperText: 'helper text',
     label: 'Label',
     onSelect: (option: number) => alert(option),
 } as IDropdownProps;

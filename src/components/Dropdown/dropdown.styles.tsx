@@ -1,4 +1,5 @@
 import { css } from '@emotion/css';
+import lodash from 'lodash';
 import { cssColors, cssVariables } from '../../config';
 import { IDropdownProps } from './Dropdown';
 
@@ -9,7 +10,7 @@ export interface IGetDropdownClasses {
     caretIcon?: string;
     dropDownList?: string;
     dropDownItem?: string;
-    helperText?: string;
+    helperLabel?: string;
     dropDownWrapper?: string;
 }
 
@@ -20,14 +21,13 @@ export const getDropdownClasses = (
     const dropDownWrapper = css`
         box-sizing: border-box;
         width: 100%;
-        height: ${cssVariables['--input-field-height']};
+        height: auto;
     `;
 
     const label = css`
         box-sizing: border-box;
         font-size: ${cssVariables['--font-size-secondary']};
         font-weight: 600;
-        margin-bottom: 5px;
     `;
 
     const dropDownBox = css`
@@ -41,6 +41,7 @@ export const getDropdownClasses = (
         font-size: ${cssVariables['--font-size-secondary']};
         font-weight: 400;
         position: relative;
+        margin-top: 5px;
 
         :hover {
             border-color: ${cssColors['--input-focus-border-color']};
@@ -97,13 +98,13 @@ export const getDropdownClasses = (
         }
     `;
 
-    const helperText = css`
+    const helperLabel = css`
         font-size: ${cssVariables['--font-size-tertiary']};
         margin-top: 2px;
         font-weight: 400;
-        color: ${requiredProps.error?.showError
-            ? cssColors['--danger-color']
-            : cssColors['--tertiary-font-color']};
+        color: ${lodash.isUndefined(requiredProps.error) || !requiredProps.error?.showError
+            ? cssColors['--tertiary-font-color']
+            : cssColors['--danger-color']};
     `;
 
     return {
@@ -112,7 +113,7 @@ export const getDropdownClasses = (
         dropDownItem,
         dropDownList,
         dropDownSelect,
-        helperText,
+        helperLabel,
         label,
         dropDownWrapper,
     };
