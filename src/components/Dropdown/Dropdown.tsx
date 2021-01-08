@@ -12,6 +12,8 @@ export interface IDropdownProps {
         showError: boolean;
         errorMessage: string;
     };
+    header?: JSX.Element;
+    footer?: JSX.Element;
     onSelect: (option: number) => void;
     style?: {
         labelStyle?: React.CSSProperties;
@@ -91,6 +93,16 @@ export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.E
                     className={cx(classNames.dropDownList, requiredProps.className?.dropDownList)}
                     style={requiredProps.style?.dropDownListStyle}
                 >
+                    {!lodash.isUndefined(requiredProps.header) ? (
+                        <div
+                            className={cx(
+                                classNames.headerWrapper,
+                                requiredProps.className?.headerWrapper,
+                            )}
+                        >
+                            {requiredProps.header}
+                        </div>
+                    ) : null}
                     {(requiredProps.options as Array<string | JSX.Element>).map((option, index) => {
                         return (
                             <li
@@ -110,6 +122,16 @@ export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.E
                             </li>
                         );
                     })}
+                    {!lodash.isUndefined(requiredProps.footer) ? (
+                        <div
+                            className={cx(
+                                classNames.footerWrapper,
+                                requiredProps.className?.footerWrapper,
+                            )}
+                        >
+                            {requiredProps.footer}
+                        </div>
+                    ) : null}
                 </div>
             </div>
             {requiredProps.helperText !== undefined || requiredProps.error !== undefined ? (
