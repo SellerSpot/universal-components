@@ -33,7 +33,7 @@ export const getInputFieldClasses = (requiredProps: IInputFieldProps): IGetInput
         font-size: ${cssVariables['--font-size-tertiary']};
         margin-top: 2px;
         font-weight: 400;
-        color: ${lodash.isUndefined(requiredProps.error)
+        color: ${lodash.isUndefined(requiredProps.error) || !requiredProps.error?.showError
             ? cssColors['--tertiary-font-color']
             : cssColors['--danger-color']};
     `;

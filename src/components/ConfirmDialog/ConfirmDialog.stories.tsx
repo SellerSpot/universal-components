@@ -1,6 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import { ConfirmDialog, IConfirmDialogProps } from './ConfirmDialog';
+import { css } from '@emotion/css';
 
 export default {
     title: 'Components',

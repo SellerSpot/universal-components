@@ -43,7 +43,7 @@ export const cssVariables = {
     '--font-size-tertiary': '12px',
     /* animation-properties */
     '--transition-duration': '0.3s',
-    /* size-properties */
+    /* inputField size-properties */
     '--input-field-height': '40px',
     '--input-field-small-height': '20px',
     /* z-index values */
