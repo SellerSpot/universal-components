@@ -13,11 +13,9 @@ export const Dropdowns = Template.bind({});
 Dropdowns.args = {
     options: ['hello', 'world', 'world', 'world', 'world', 'world', 'world', 'world', 'world'],
     label: 'Label',
-    header: (
-        <div style={{ width: '100%', height: '100%', backgroundColor: 'red' }}>
-            <button>Sample Button</button>
-        </div>
-    ),
+    headerSearch: {
+        onChange: () => void 0,
+    },
     footer: (
         <div>
             <button>Sample Button</button>

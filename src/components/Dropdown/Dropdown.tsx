@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { cx } from '@emotion/css';
 import lodash from 'lodash';
 import { FaCaretDown } from 'react-icons/fa';
@@ -12,7 +12,9 @@ export interface IDropdownProps {
         showError: boolean;
         errorMessage: string;
     };
-    header?: JSX.Element;
+    // headerSearch?: {
+    //     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    // };
     footer?: JSX.Element;
     onSelect: (option: number) => void;
     style?: {
@@ -93,16 +95,20 @@ export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.E
                     className={cx(classNames.dropDownList, requiredProps.className?.dropDownList)}
                     style={requiredProps.style?.dropDownListStyle}
                 >
-                    {!lodash.isUndefined(requiredProps.header) ? (
+                    {/* {!lodash.isUndefined(requiredProps.headerSearch) ? (
                         <div
                             className={cx(
                                 classNames.headerWrapper,
                                 requiredProps.className?.headerWrapper,
                             )}
                         >
-                            {requiredProps.header}
+                            <InputField
+                                ref={headerSearchFieldRef}
+                                placeHolder={'Search Here'}
+                                onChange={requiredProps.headerSearch.onChange}
+                            />
                         </div>
-                    ) : null}
+                    ) : null} */}
                     {(requiredProps.options as Array<string | JSX.Element>).map((option, index) => {
                         return (
                             <li
