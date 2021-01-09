@@ -5,6 +5,7 @@ import { getInputFieldClasses, IGetInputFieldClasses } from './inputField.styles
 
 export interface IInputFieldProps {
     name?: string;
+    title?: string;
     placeHolder?: string;
     label?: string;
     helperText?: string;
@@ -51,6 +52,8 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
         required: false,
         selectTextOnFocus: true,
         onChange: () => void 0,
+        onFocus: () => void 0,
+        onBlur: () => void 0,
         style: {},
     };
 
@@ -87,6 +90,7 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
                     </div>
                 )}
                 <input
+                    title={requiredProps.title}
                     name={requiredProps.name}
                     className={cx(classes.input, requiredProps.className?.input)}
                     onFocus={(event) => {

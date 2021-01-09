@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { cx } from '@emotion/css';
 import lodash from 'lodash';
 import { FaCaretDown } from 'react-icons/fa';
@@ -12,6 +12,10 @@ export interface IDropdownProps {
         showError: boolean;
         errorMessage: string;
     };
+    // headerSearch?: {
+    //     onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    // };
+    footer?: JSX.Element;
     onSelect: (option: number) => void;
     style?: {
         labelStyle?: React.CSSProperties;
@@ -20,7 +24,7 @@ export interface IDropdownProps {
         caretIconStyle?: React.CSSProperties;
         dropDownListStyle?: React.CSSProperties;
         dropDownItemStyle?: React.CSSProperties;
-        helperTextStyle?: React.CSSProperties;
+        helperLabelStyle?: React.CSSProperties;
         dropDownWrapperStyle?: React.CSSProperties;
     };
     className?: IGetDropdownClasses;
@@ -91,6 +95,20 @@ export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.E
                     className={cx(classNames.dropDownList, requiredProps.className?.dropDownList)}
                     style={requiredProps.style?.dropDownListStyle}
                 >
+                    {/* {!lodash.isUndefined(requiredProps.headerSearch) ? (
+                        <div
+                            className={cx(
+                                classNames.headerWrapper,
+                                requiredProps.className?.headerWrapper,
+                            )}
+                        >
+                            <InputField
+                                ref={headerSearchFieldRef}
+                                placeHolder={'Search Here'}
+                                onChange={requiredProps.headerSearch.onChange}
+                            />
+                        </div>
+                    ) : null} */}
                     {(requiredProps.options as Array<string | JSX.Element>).map((option, index) => {
                         return (
                             <li
@@ -110,16 +128,26 @@ export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.E
                             </li>
                         );
                     })}
+                    {!lodash.isUndefined(requiredProps.footer) ? (
+                        <div
+                            className={cx(
+                                classNames.footerWrapper,
+                                requiredProps.className?.footerWrapper,
+                            )}
+                        >
+                            {requiredProps.footer}
+                        </div>
+                    ) : null}
                 </div>
             </div>
             {requiredProps.helperText !== undefined || requiredProps.error !== undefined ? (
                 <label
-                    className={cx(classNames.helperText, requiredProps.className?.helperText)}
-                    style={requiredProps.style?.helperTextStyle}
+                    className={cx(classNames.helperLabel, requiredProps.className?.helperLabel)}
+                    style={requiredProps.style?.helperLabelStyle}
                 >
-                    {requiredProps.error?.showError
-                        ? requiredProps.error.errorMessage
-                        : requiredProps.helperText}
+                    {lodash.isUndefined(requiredProps.error) || !requiredProps.error?.showError
+                        ? requiredProps.helperText ?? <br />
+                        : requiredProps.error.errorMessage}
                 </label>
             ) : null}
         </div>
