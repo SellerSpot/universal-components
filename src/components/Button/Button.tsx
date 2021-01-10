@@ -15,7 +15,7 @@ export interface IButtonProps {
         indicatorColor: React.CSSProperties['color'];
         style?: React.CSSProperties;
     };
-    tabIndex?: 0 | -1;
+    tabIndex?: number;
     onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 

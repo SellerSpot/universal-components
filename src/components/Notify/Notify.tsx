@@ -65,7 +65,7 @@ export const Notify = (props: INotifyProps): ReactElement => {
     return (
         <div
             className={cx(notifyWrapper, requiredProps.className?.notifyWrapper)}
-            style={requiredProps.style.notifyWrapper}
+            style={requiredProps.style?.notifyWrapper}
         >
             {requiredProps.content}
         </div>

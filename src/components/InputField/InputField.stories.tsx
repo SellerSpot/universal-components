@@ -1,7 +1,8 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { InputField, IInputFieldProps } from './InputField';
+import { InputField } from './InputField';
 import { FcOk } from 'react-icons/fc';
+import { IInputFieldProps } from './inputField.types';
 
 export default {
     title: 'Components',
@@ -24,7 +25,7 @@ InputFields.args = {
         lableStyle: {
             fontSize: 18,
         },
-        inputStyle: {
+        inputWrapperDiv: {
             height: 50,
             fontSize: 18,
             padding: '0 10px',
