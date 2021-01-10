@@ -20,6 +20,22 @@ InputFields.args = {
     //     showError: false,
     //     errorMessage: 'sample Error',
     // },
+    style: {
+        lableStyle: {
+            fontSize: 18,
+        },
+        inputStyle: {
+            height: 50,
+            fontSize: 18,
+            padding: '0 10px',
+            border: 'none',
+            background: '#eeeeee',
+        },
+    },
+    error: {
+        showError: true,
+        errorMessage: 'Sample error message',
+    },
     value: '55865',
     type: 'text',
     size: 'default',

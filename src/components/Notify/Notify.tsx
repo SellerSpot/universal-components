@@ -1,38 +1,38 @@
-import { cssColors, cssVariables, TMajorColors } from '../../config';
+import { cssColors, cssVariables } from '../../config';
 import lodash from 'lodash';
-import React, { ReactElement, useCallback, useEffect } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { css, cx } from '@emotion/css';
 
 export interface INotifyProps {
-    active: boolean;
-    content: JSX.Element;
-    timeout: number;
-    clearNotificationCallback: () => void;
-    style?: React.CSSProperties;
+    notifyId?: number | string;
+    content?: JSX.Element;
+    timeout?: number;
+    style?: {
+        notifyWrapper: React.CSSProperties;
+    };
     className?: {
         notifyWrapper: string;
     };
 }
 
 export const Notify = (props: INotifyProps): ReactElement => {
+    const [showNotify, setShowNotify] = useState(false);
+
     const defaultProps: INotifyProps = {
-        active: false,
         content: <p>Sample Notify</p>,
         timeout: 3000, // 3 seconds
-        clearNotificationCallback: () => void 0,
     };
 
     const requiredProps = lodash.merge(defaultProps, props);
 
     useEffect(() => {
-        let timerReference: ReturnType<typeof setTimeout>;
-
-        if (requiredProps.active) {
-            timerReference = setTimeout(
-                requiredProps.clearNotificationCallback,
-                requiredProps.timeout,
-            );
-        }
+        // showing notification
+        setShowNotify(true);
+        // setting timer to dismiss notification
+        const timerReference: ReturnType<typeof setTimeout> = setTimeout(() => {
+            // hiding notify component
+            setShowNotify(false);
+        }, requiredProps.timeout);
         return () => {
             clearTimeout(timerReference);
         };
@@ -55,13 +55,13 @@ export const Notify = (props: INotifyProps): ReactElement => {
         color: ${cssColors['--primary-font-color']};
         background: ${cssColors['--primary-background-color']};
 
-        top: ${requiredProps.active ? '30px' : '-100%'};
+        top: ${showNotify ? '30px' : '-100%'};
     `;
 
     return (
         <div
             className={cx(notifyWrapper, requiredProps.className?.notifyWrapper)}
-            style={requiredProps.style}
+            style={requiredProps.style.notifyWrapper}
         >
             {requiredProps.content}
         </div>
