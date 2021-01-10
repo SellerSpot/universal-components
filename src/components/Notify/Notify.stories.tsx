@@ -11,7 +11,6 @@ const Template: Story<INotifyProps> = (args: INotifyProps) => <Notify {...args} 
 
 export const Notifier = Template.bind({});
 Notifier.args = {
-    active: true,
     content: <div>hola!!</div>,
     timeout: 2000,
 } as INotifyProps;
