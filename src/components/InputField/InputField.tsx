@@ -1,40 +1,8 @@
 import React from 'react';
 import lodash from 'lodash';
 import { cx } from '@emotion/css';
-import { getInputFieldClasses, IGetInputFieldClasses } from './inputField.styles';
-
-export interface IInputFieldProps {
-    name?: string;
-    title?: string;
-    placeHolder?: string;
-    label?: string;
-    helperText?: string;
-    disabled?: boolean;
-    value?: string;
-    type?: 'number' | 'text' | 'email' | 'password';
-    size?: 'compact' | 'default';
-    prefix?: JSX.Element;
-    suffix?: JSX.Element;
-    required?: boolean;
-    error?: {
-        showError: boolean;
-        errorMessage: string;
-    };
-    selectTextOnFocus?: boolean;
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    onFocus?: (event: React.FocusEvent<HTMLInputElement>) => void;
-    onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
-    onClick?: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
-    style?: {
-        lableStyle?: React.CSSProperties;
-        hintTextStyle?: React.CSSProperties;
-        prefixStyle?: React.CSSProperties;
-        suffixStyle?: React.CSSProperties;
-        inputStyle?: React.CSSProperties;
-        searchDropdownStyle?: React.CSSProperties;
-    };
-    className?: IGetInputFieldClasses;
-}
+import { getInputFieldClasses } from './inputField.styles';
+import { IInputFieldProps } from './inputField.types';
 
 export const selectInputFieldText = (event: React.FocusEvent<HTMLInputElement>): void =>
     event.target.select();
@@ -49,18 +17,23 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
         onChange: () => void 0,
         onFocus: () => void 0,
         onBlur: () => void 0,
-        style: {},
     };
 
     const requiredProps = lodash.merge(defaultProps, props);
     const classes = getInputFieldClasses(requiredProps);
 
     return (
-        <div className={cx(classes.inputFieldWrapper, requiredProps.className?.inputFieldWrapper)}>
+        <div
+            className={cx(
+                classes.inputFieldOverallWrapper,
+                requiredProps.className?.inputFieldOverallWrapper,
+            )}
+            style={requiredProps.style?.inputFieldOverallWrapper}
+        >
             {lodash.isUndefined(requiredProps.label) ? null : (
                 <label
                     className={cx(classes.label, requiredProps.className?.label)}
-                    style={requiredProps.style?.lableStyle}
+                    style={requiredProps.style?.label}
                 >
                     {requiredProps.label}
                     {requiredProps.required ?? false ? (
@@ -69,17 +42,24 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
                                 classes.requiredSpan,
                                 requiredProps.className?.requiredSpan,
                             )}
+                            style={requiredProps.style?.requiredSpan}
                         >
                             &nbsp;*
                         </span>
                     ) : null}
                 </label>
             )}
-            <div className={cx(classes.inputWrapperDiv, requiredProps.className?.inputWrapperDiv)}>
+            <div
+                className={cx(classes.inputWrapperDiv, requiredProps.className?.inputWrapperDiv)}
+                style={requiredProps.style?.inputWrapperDiv}
+            >
                 {lodash.isUndefined(requiredProps.prefix) ? null : (
                     <div
-                        className={cx(classes.prefixDiv, requiredProps.className?.prefixDiv)}
-                        style={requiredProps.style?.prefixStyle}
+                        className={cx(
+                            classes.prefixWrapper,
+                            requiredProps.className?.prefixWrapper,
+                        )}
+                        style={requiredProps.style?.prefixWrapper}
                     >
                         {requiredProps.prefix}
                     </div>
@@ -100,12 +80,15 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
                     required={requiredProps.required}
                     value={requiredProps.value}
                     onChange={requiredProps.onChange}
-                    style={requiredProps.style?.inputStyle}
+                    style={requiredProps.style?.input}
                 />
                 {lodash.isUndefined(requiredProps.suffix) ? null : (
                     <div
-                        className={cx(classes.suffixDiv, requiredProps.className?.suffixDiv)}
-                        style={requiredProps.style?.suffixStyle}
+                        className={cx(
+                            classes.suffixWrapper,
+                            requiredProps.className?.suffixWrapper,
+                        )}
+                        style={requiredProps.style?.suffixWrapper}
                     >
                         {requiredProps.suffix}
                     </div>
@@ -113,7 +96,7 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
             </div>
             <label
                 className={cx(classes.helperLabel, requiredProps.className?.helperLabel)}
-                style={requiredProps.style?.hintTextStyle}
+                style={requiredProps.style?.helperLabel}
             >
                 {lodash.isUndefined(requiredProps.error) || !requiredProps.error?.showError
                     ? requiredProps.helperText ?? <br />

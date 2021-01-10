@@ -1,21 +1,46 @@
 import { css } from '@emotion/css';
 import { cssColors, cssVariables } from '../../config';
 import lodash from 'lodash';
-import { IInputFieldProps } from './InputField';
+import { IInputFieldProps } from './inputField.types';
 
 export interface IGetInputFieldClasses {
-    inputFieldWrapper?: string;
+    /**
+     * Handles styling for the whole InputField component (label+prefix+<input>+suffix+helper)
+     */
+    inputFieldOverallWrapper?: string;
+    /**
+     * Handles styling for the label above the inputField
+     */
     label?: string;
+    /**
+     * Handles styling for the helper text below the inputField
+     */
     helperLabel?: string;
+    /**
+     * Handles styling for the REQUIRED '*' shown if the required prop is set to true
+     */
     requiredSpan?: string;
+    /**
+     * Handles styling for the inputField Wrapper (prefix+input+suffix)
+     */
     inputWrapperDiv?: string;
-    prefixDiv?: string;
-    suffixDiv?: string;
+    /**
+     * Handles styling for the inputField prefix wrapper
+     */
+    prefixWrapper?: string;
+    /**
+     * Handles styling for the inputField suffix wrapper
+     */
+    suffixWrapper?: string;
+    /**
+     * Handles styling for the inputField <input> component specifically
+     * @warning - This styling only affects the input field and the other components cannot react to any breaking changes (like changing height - which should be done using the inputWrapperDiv style prop)
+     */
     input?: string;
 }
 
 export const getInputFieldClasses = (requiredProps: IInputFieldProps): IGetInputFieldClasses => {
-    const inputFieldWrapper = css`
+    const inputFieldOverallWrapper = css`
         width: 100%;
         height: auto;
         box-sizing: border-box;
@@ -48,7 +73,7 @@ export const getInputFieldClasses = (requiredProps: IInputFieldProps): IGetInput
             : cssVariables['--input-field-height']};
     `;
 
-    const prefixDiv = css`
+    const prefixWrapper = css`
         width: ${cssVariables['--input-field-height']};
         border: 1px solid;
         border-radius: ${cssVariables['--border-radius']};
@@ -71,7 +96,7 @@ export const getInputFieldClasses = (requiredProps: IInputFieldProps): IGetInput
             : cssColors['--input-border-color']};
     `;
 
-    const suffixDiv = css`
+    const suffixWrapper = css`
         width: ${cssVariables['--input-field-height']};
         border: 1px solid;
         border-radius: ${cssVariables['--border-radius']};
@@ -134,11 +159,11 @@ export const getInputFieldClasses = (requiredProps: IInputFieldProps): IGetInput
     return {
         helperLabel,
         input,
-        inputFieldWrapper,
+        inputFieldOverallWrapper,
         inputWrapperDiv,
         label,
-        prefixDiv,
+        prefixWrapper,
         requiredSpan,
-        suffixDiv,
+        suffixWrapper,
     };
 };
