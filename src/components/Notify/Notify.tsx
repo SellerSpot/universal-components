@@ -4,7 +4,7 @@ import React, { ReactElement, useEffect, useState } from 'react';
 import { css, cx } from '@emotion/css';
 
 export interface INotifyProps {
-    notifyId?: number | string;
+    notifyId: number | string;
     content?: JSX.Element;
     timeout?: number;
     style?: {
@@ -19,6 +19,7 @@ export const Notify = (props: INotifyProps): ReactElement => {
     const [showNotify, setShowNotify] = useState(false);
 
     const defaultProps: INotifyProps = {
+        notifyId: '0000',
         content: <p>Sample Notify</p>,
         timeout: 3000, // 3 seconds
     };
@@ -26,17 +27,20 @@ export const Notify = (props: INotifyProps): ReactElement => {
     const requiredProps = lodash.merge(defaultProps, props);
 
     useEffect(() => {
+        console.log('Notify UseEffect Invoked');
         // showing notification
         setShowNotify(true);
         // setting timer to dismiss notification
         const timerReference: ReturnType<typeof setTimeout> = setTimeout(() => {
+            console.log('Closing notify');
+
             // hiding notify component
             setShowNotify(false);
         }, requiredProps.timeout);
         return () => {
             clearTimeout(timerReference);
         };
-    }, [requiredProps]);
+    }, [requiredProps.notifyId]);
 
     const notifyWrapper = css`
         width: 300px;
@@ -50,7 +54,7 @@ export const Notify = (props: INotifyProps): ReactElement => {
         font-size: ${cssVariables['--font-size-secondary']};
         z-index: ${cssVariables['--z-index-notify']};
         right: calc(50% - 150px);
-        transition: top 0.2s ease-in;
+        transition: top 1s ease-in-out;
         word-break: break-all;
         color: ${cssColors['--primary-font-color']};
         background: ${cssColors['--primary-background-color']};

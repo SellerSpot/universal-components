@@ -18,7 +18,6 @@
         }
     },
     "rules": {
-        "eslint-disable-next-line react-hooks/exhaustive-deps": "off",
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-unused-vars": "off",
         "react/jsx-filename-extension": [
@@ -29,7 +28,7 @@
         ],
         "react/prop-types": "off",
         "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn"
+        "react-hooks/exhaustive-deps": "off"
     },
     "settings": {
         "react": {
