@@ -34,11 +34,6 @@ export interface IInputFieldProps {
         searchDropdownStyle?: React.CSSProperties;
     };
     className?: IGetInputFieldClasses;
-    searchDropdown?: {
-        show: boolean;
-        content: JSX.Element;
-        dropDownHeight: React.CSSProperties['height'];
-    };
 }
 
 export const selectInputFieldText = (event: React.FocusEvent<HTMLInputElement>): void =>
@@ -115,12 +110,6 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
                         {requiredProps.suffix}
                     </div>
                 )}
-                <div
-                    className={cx(classes.searchDropdown, requiredProps.className?.searchDropdown)}
-                    style={requiredProps.style?.searchDropdownStyle}
-                >
-                    {requiredProps.searchDropdown?.content}
-                </div>
             </div>
             <label
                 className={cx(classes.helperLabel, requiredProps.className?.helperLabel)}

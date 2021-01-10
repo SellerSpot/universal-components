@@ -12,7 +12,6 @@ export interface IGetInputFieldClasses {
     prefixDiv?: string;
     suffixDiv?: string;
     input?: string;
-    searchDropdown?: string;
 }
 
 export const getInputFieldClasses = (requiredProps: IInputFieldProps): IGetInputFieldClasses => {
@@ -44,7 +43,6 @@ export const getInputFieldClasses = (requiredProps: IInputFieldProps): IGetInput
 
     const inputWrapperDiv = css`
         display: flex;
-        position: relative;
         height: ${requiredProps.size === 'compact'
             ? cssVariables['--input-field-small-height']
             : cssVariables['--input-field-height']};
@@ -133,25 +131,6 @@ export const getInputFieldClasses = (requiredProps: IInputFieldProps): IGetInput
         }
     `;
 
-    const searchDropdown = css`
-        position: absolute;
-        top: 0;
-        margin-top: 5px;
-        box-sizing: border-box;
-        width: 100%;
-        top: ${requiredProps.size === 'compact'
-            ? cssVariables['--input-field-small-height']
-            : cssVariables['--input-field-height']};
-        border-radius: ${cssVariables['--border-radius']};
-        background-color: ${cssColors['--input-background-color']};
-        transition: height 0.2s ease-out;
-
-        height: ${!lodash.isUndefined(requiredProps.searchDropdown) &&
-        requiredProps.searchDropdown?.show
-            ? requiredProps.searchDropdown?.dropDownHeight
-            : 0};
-    `;
-
     return {
         helperLabel,
         input,
@@ -161,6 +140,5 @@ export const getInputFieldClasses = (requiredProps: IInputFieldProps): IGetInput
         prefixDiv,
         requiredSpan,
         suffixDiv,
-        searchDropdown,
     };
 };
