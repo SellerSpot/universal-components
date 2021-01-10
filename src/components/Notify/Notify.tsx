@@ -5,8 +5,8 @@ import { css, cx } from '@emotion/css';
 
 export interface INotifyProps {
     notifyId: number | string;
-    content?: JSX.Element;
-    timeout?: number;
+    content: JSX.Element | string;
+    timeout: number;
     style?: {
         notifyWrapper: React.CSSProperties;
     };
@@ -19,26 +19,26 @@ export const Notify = (props: INotifyProps): ReactElement => {
     const [showNotify, setShowNotify] = useState(false);
 
     const defaultProps: INotifyProps = {
-        notifyId: '0000',
-        content: <p>Sample Notify</p>,
-        timeout: 3000, // 3 seconds
+        notifyId: null,
+        content: null,
+        timeout: 6000, // 3 seconds
     };
 
     const requiredProps = lodash.merge(defaultProps, props);
 
     useEffect(() => {
-        console.log('Notify UseEffect Invoked');
-        // showing notification
-        setShowNotify(true);
-        // setting timer to dismiss notification
-        const timerReference: ReturnType<typeof setTimeout> = setTimeout(() => {
-            console.log('Closing notify');
-
-            // hiding notify component
-            setShowNotify(false);
-        }, requiredProps.timeout);
+        let timeoutRef: ReturnType<typeof setTimeout>;
+        if (requiredProps.notifyId !== null) {
+            // showing notification
+            setShowNotify(true);
+            // setting timer to dismiss notification
+            timeoutRef = setTimeout(() => {
+                // hiding notify component
+                setShowNotify(false);
+            }, requiredProps.timeout);
+        }
         return () => {
-            clearTimeout(timerReference);
+            if (timeoutRef) clearTimeout(timeoutRef);
         };
     }, [requiredProps.notifyId]);
 
