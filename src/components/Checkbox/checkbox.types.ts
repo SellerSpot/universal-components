@@ -1,3 +1,5 @@
+import { ICheckboxClasses } from './checkbox.styles';
+
 export interface ICheckboxProps {
     /**
      * Specifies options
@@ -19,5 +21,32 @@ export interface ICheckboxProps {
     /**
      * The callback function that is triggered when the state changes
      */
-    onChange?: (checkedValue: string) => void;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    className?: ICheckboxClasses;
+    style?: {
+        /**
+         * Wraps the whole Checkbox component
+         */
+        checkboxGroupWrapper?: React.CSSProperties;
+        /**
+         * Styling for the div containing both the custom checkbox as well as the label string
+         */
+        checkBoxWrapper?: React.CSSProperties;
+        /**
+         * Styling for the custom checkbox div
+         */
+        checkBox?: React.CSSProperties;
+        /**
+         * Styling for the checkbox if it is active
+         */
+        checkBoxActive?: React.CSSProperties;
+        /**
+         * Styling for the check icon inside the Checkbox
+         */
+        checkBoxCheckIcon?: React.CSSProperties;
+        /**
+         * Styling for the icon when it is inActive
+         */
+        checkBoxCheckIconInactive?: React.CSSProperties;
+    };
 }

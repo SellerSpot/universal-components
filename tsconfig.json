@@ -24,6 +24,6 @@
     "paths": {
         // will be used for module resolution
         "components/*": ["components/*"],
-        "config": ["config/*"]
+        "config/*": ["config/*"]
     }
 }
