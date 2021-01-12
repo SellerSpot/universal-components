@@ -23,10 +23,26 @@ export const Checkbox = (props: ICheckboxProps): JSX.Element => {
             )}
             style={requiredProps.style?.checkboxGroupWrapper}
         >
+            {lodash.isUndefined(requiredProps.label) ? null : (
+                <label
+                    className={cx(
+                        classes.checkBoxGroupLabel,
+                        requiredProps.className?.checkBoxGroupLabel,
+                    )}
+                >
+                    {requiredProps.label}
+                </label>
+            )}
+
             {requiredProps.options.map((option, index) => {
                 const isSelected = requiredProps.selectedValues.includes(option);
                 return (
-                    <div style={{ display: 'flex' }} key={index}>
+                    <div
+                        style={{
+                            display: 'flex',
+                        }}
+                        key={index}
+                    >
                         <input
                             type="checkbox"
                             id={option}

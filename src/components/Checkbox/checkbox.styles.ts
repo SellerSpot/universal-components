@@ -7,6 +7,11 @@ export interface ICheckboxClasses {
      */
     checkboxGroupWrapper?: string;
     /**
+     * Styling for the lable appearing above the Checkbox group
+     * @use To help the user understand the purpose of the checkbox group
+     */
+    checkBoxGroupLabel: string;
+    /**
      * Styling for the div containing both the custom checkbox as well as the label string
      */
     checkBoxWrapper?: string;
@@ -35,17 +40,28 @@ export const getCheckboxClasses = (): ICheckboxClasses => {
             width: 100%;
             display: flex;
             flex-direction: column;
+            justify-content: flex-start;
+            box-sizing: border-box;
             gap: 8px;
         `,
+        checkBoxGroupLabel: css`
+            display: block;
+            font-size: ${cssVariables['--font-size-secondary']};
+            font-weight: 600;
+            padding-left: 5px;
+            margin-bottom: 3px;
+        `,
         checkBoxWrapper: css`
+            width: 100%;
             display: flex;
             gap: 10px;
             align-items: center;
             cursor: pointer;
         `,
         checkBox: css`
-            width: 13px;
-            height: 13px;
+            width: 16px;
+            height: 16px;
+            box-sizing: border-box;
             display: flex;
             justify-content: center;
             align-items: center;
