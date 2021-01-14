@@ -12,6 +12,7 @@ const Template: Story<ICheckboxProps> = (args: ICheckboxProps) => <Checkbox {...
 
 export const Checkboxs = Template.bind({});
 Checkboxs.args = {
-    onChange: (event) => console.log(event.target.value),
-    selectedValues: ['Option 1'],
+    groupLabel: 'Please select your option',
+    label: 'Do you want a Starship',
+    onChange: (event) => console.log(event.target.checked),
 } as ICheckboxProps;

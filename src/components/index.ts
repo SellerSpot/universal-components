@@ -10,3 +10,4 @@ export * from './Spinner/Spinner';
 export * from './StatusFlag/StatusFlag';
 export * from './Table/Table';
 export * from './ToggleButton/ToggleButton';
+export * from './Checkbox/Checkbox';

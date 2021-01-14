@@ -42,13 +42,13 @@ export const getCheckboxClasses = (): ICheckboxClasses => {
             flex-direction: column;
             justify-content: flex-start;
             box-sizing: border-box;
-            gap: 8px;
+            gap: 5px;
+            user-select: none;
         `,
         checkBoxGroupLabel: css`
             display: block;
             font-size: ${cssVariables['--font-size-secondary']};
             font-weight: 600;
-            padding-left: 5px;
             margin-bottom: 3px;
         `,
         checkBoxWrapper: css`
@@ -67,7 +67,7 @@ export const getCheckboxClasses = (): ICheckboxClasses => {
             align-items: center;
             border: 1px solid ${cssColors['--default-border-color']};
             border-radius: 0.15rem;
-            transition: all 0.2s ease-in;
+            transition: background-color, border-color 0.2s ease-in;
         `,
         checkBoxActive: css`
             background-color: ${cssColors['--success-color']};
