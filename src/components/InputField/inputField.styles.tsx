@@ -39,7 +39,10 @@ export interface IGetInputFieldClasses {
     input?: string;
 }
 
-export const getInputFieldClasses = (requiredProps: IInputFieldProps): IGetInputFieldClasses => {
+export const getInputFieldClasses = (
+    requiredProps: IInputFieldProps,
+    inputFieldFocused: boolean,
+): IGetInputFieldClasses => {
     const inputFieldOverallWrapper = css`
         width: 100%;
         height: auto;
@@ -75,13 +78,14 @@ export const getInputFieldClasses = (requiredProps: IInputFieldProps): IGetInput
 
     const prefixWrapper = css`
         width: ${cssVariables['--input-field-height']};
-        border: 1px solid;
         border-radius: ${cssVariables['--border-radius']};
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
         display: flex;
         justify-content: center;
         align-items: center;
+        border: 1px solid;
+        transition: all 0.2s ease-in;
 
         background-color: ${requiredProps.disabled
             ? cssColors['--disabled-color']
@@ -93,6 +97,8 @@ export const getInputFieldClasses = (requiredProps: IInputFieldProps): IGetInput
             ? 'transparent'
             : requiredProps.error?.showError
             ? cssColors['--danger-color']
+            : inputFieldFocused
+            ? '#000'
             : cssColors['--input-border-color']};
     `;
 
@@ -105,6 +111,7 @@ export const getInputFieldClasses = (requiredProps: IInputFieldProps): IGetInput
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: all 0.2s ease-in;
 
         background-color: ${requiredProps.disabled
             ? cssColors['--disabled-color']
@@ -116,6 +123,8 @@ export const getInputFieldClasses = (requiredProps: IInputFieldProps): IGetInput
             ? 'transparent'
             : requiredProps.error?.showError
             ? cssColors['--danger-color']
+            : inputFieldFocused
+            ? '#000'
             : cssColors['--input-border-color']};
     `;
 
@@ -128,11 +137,14 @@ export const getInputFieldClasses = (requiredProps: IInputFieldProps): IGetInput
         border: 1px solid;
         padding: 0 5px;
         padding-top: 1px;
+        transition: all 0.2s ease-in;
 
         border-color: ${requiredProps.size === 'compact'
             ? 'transparent'
             : requiredProps.error?.showError
             ? cssColors['--danger-color']
+            : inputFieldFocused
+            ? '#000'
             : cssColors['--input-border-color']};
 
         border-top-left-radius: ${lodash.isUndefined(requiredProps.prefix)

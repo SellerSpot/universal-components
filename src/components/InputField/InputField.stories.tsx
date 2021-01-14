@@ -16,27 +16,11 @@ InputFields.args = {
     // helperText: 'Sample Helper Text',
     placeHolder: 'Sample Text Field',
     disabled: false,
-    // label: 'Sample Label',
+
     // error: {
-    //     showError: false,
-    //     errorMessage: 'sample Error',
+    //     showError: true,
+    //     errorMessage: 'Sample error message',
     // },
-    style: {
-        lableStyle: {
-            fontSize: 18,
-        },
-        inputWrapperDiv: {
-            height: 50,
-            fontSize: 18,
-            padding: '0 10px',
-            border: 'none',
-            background: '#eeeeee',
-        },
-    },
-    error: {
-        showError: true,
-        errorMessage: 'Sample error message',
-    },
     value: '55865',
     type: 'text',
     size: 'default',
