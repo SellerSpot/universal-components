@@ -50,7 +50,6 @@ export const getCheckboxClasses = (requiredProps: ICheckboxProps): ICheckboxClas
             box-sizing: border-box;
             gap: 5px;
             user-select: none;
-            background-color: whitesmoke;
 
             /* padding-bottom: ${lodash.isUndefined(requiredProps.helperText) &&
             (lodash.isUndefined(requiredProps.error) || !requiredProps.error?.showError)
