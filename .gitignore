@@ -1,7 +1,7 @@
 # Vscode tasks
 tasks.json
 
-.vscode
+.vscode/
 
 # Logs
 logs
