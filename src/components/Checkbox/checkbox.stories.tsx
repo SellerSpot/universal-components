@@ -15,4 +15,8 @@ Checkboxs.args = {
     groupLabel: 'Please select your option',
     label: 'Do you want a Starship',
     onChange: (event) => console.log(event.target.checked),
+    error: {
+        showError: false,
+        errorMessage: 'Sample Error Message',
+    },
 } as ICheckboxProps;

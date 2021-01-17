@@ -1,5 +1,7 @@
 import { css } from '@emotion/css';
+import lodash from 'lodash';
 import { cssColors, cssVariables } from '../../config/index';
+import { ICheckboxProps } from './checkbox.types';
 
 export interface ICheckboxClasses {
     /**
@@ -31,12 +33,16 @@ export interface ICheckboxClasses {
      * Styling for the icon when it is inActive
      */
     checkBoxCheckIconInactive?: string;
+    /**
+     * Styling for the helper label or the error message
+     */
+    helperLabel: string;
 }
 
-export const getCheckboxClasses = (): ICheckboxClasses => {
+export const getCheckboxClasses = (requiredProps: ICheckboxProps): ICheckboxClasses => {
     return {
         checkboxGroupWrapper: css`
-            height: 100%;
+            height: auto;
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -44,6 +50,12 @@ export const getCheckboxClasses = (): ICheckboxClasses => {
             box-sizing: border-box;
             gap: 5px;
             user-select: none;
+            background-color: whitesmoke;
+
+            /* padding-bottom: ${lodash.isUndefined(requiredProps.helperText) &&
+            (lodash.isUndefined(requiredProps.error) || !requiredProps.error?.showError)
+                ? '20px'
+                : 0}; */
         `,
         checkBoxGroupLabel: css`
             display: block;
@@ -79,6 +91,14 @@ export const getCheckboxClasses = (): ICheckboxClasses => {
         `,
         checkBoxCheckIconInactive: css`
             color: transparent;
+        `,
+        helperLabel: css`
+            font-size: ${cssVariables['--font-size-tertiary']};
+            margin-top: 0px;
+            font-weight: 400;
+            color: ${lodash.isUndefined(requiredProps.error) || !requiredProps.error?.showError
+                ? cssColors['--tertiary-font-color']
+                : cssColors['--danger-color']};
         `,
     };
 };

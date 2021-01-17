@@ -22,6 +22,23 @@ export interface ICheckboxProps {
      * Disabled state of the checkbox.
      */
     disabled?: boolean;
+    /**
+     * Error message handling for the checkbox
+     */
+    error?: {
+        /**
+         * Show or hide the error message assigned in the errorMessage props
+         */
+        showError: boolean;
+        /**
+         * Holds the error message to show
+         */
+        errorMessage: string;
+    };
+    /**
+     * Helper text to show below the checkbox
+     */
+    helperText?: string;
     className?: ICheckboxClasses;
     style?: {
         /**
@@ -48,5 +65,14 @@ export interface ICheckboxProps {
          * Styling for the icon when it is inActive
          */
         checkBoxCheckIconInactive?: React.CSSProperties;
+        /**
+         * Styling for the helper label or the error message
+         */
+        helperLabel: React.CSSProperties;
+        /**
+         * Styling for the lable appearing above the Checkbox group
+         * @use To help the user understand the purpose of the checkbox group
+         */
+        checkBoxGroupLabel: React.CSSProperties;
     };
 }

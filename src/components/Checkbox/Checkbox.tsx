@@ -6,7 +6,6 @@ import lodash from 'lodash';
 import { MdCheck } from 'react-icons/md';
 
 export const Checkbox = (props: ICheckboxProps): JSX.Element => {
-    const classes = getCheckboxClasses();
     const defaultProps: ICheckboxProps = {
         checked: false,
         disabled: false,
@@ -14,6 +13,7 @@ export const Checkbox = (props: ICheckboxProps): JSX.Element => {
         onChange: () => void 0,
     };
     const requiredProps = lodash.merge(defaultProps, props);
+    const classes = getCheckboxClasses(requiredProps);
     return (
         <div
             className={cx(classes.checkboxGroupWrapper, props.className?.checkboxGroupWrapper)}
@@ -25,6 +25,7 @@ export const Checkbox = (props: ICheckboxProps): JSX.Element => {
                         classes.checkBoxGroupLabel,
                         requiredProps.className?.checkBoxGroupLabel,
                     )}
+                    style={requiredProps.style?.checkBoxGroupLabel}
                 >
                     {requiredProps.groupLabel}
                 </label>
@@ -87,6 +88,17 @@ export const Checkbox = (props: ICheckboxProps): JSX.Element => {
                     {requiredProps.label}
                 </label>
             </div>
+            {lodash.isUndefined(requiredProps.helperText) &&
+            (lodash.isUndefined(requiredProps.error) || !requiredProps.error?.showError) ? null : (
+                <label
+                    className={cx(classes.helperLabel, requiredProps.className?.helperLabel)}
+                    style={requiredProps.style?.helperLabel}
+                >
+                    {lodash.isUndefined(requiredProps.error) || !requiredProps.error?.showError
+                        ? requiredProps.helperText
+                        : requiredProps.error?.errorMessage}
+                </label>
+            )}
         </div>
     );
 };
