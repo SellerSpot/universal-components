@@ -2,30 +2,47 @@ import { ICheckboxClasses } from './checkbox.styles';
 
 export interface ICheckboxProps {
     /**
-     * Specifies options
+     * Label to display above the checkbox.
+     * @use - Used to provide a consistent header to a group of checkboxes
      */
-    options?: string[];
+    groupLabel?: string;
     /**
-     * Label message to show above the group of checkboxes
+     * Label to display next to the checkbox.
      */
     label?: string;
     /**
-     * The name property of all input[type="checkbox"] children
+     * Use this to control the checked state at a higher level and plan to pass in the correct value based on handling onChange events and re-rendering.
      */
-    name?: string;
+    checked?: boolean;
     /**
-     * Used for setting the currently selected values
-     * All values in the array will be marked selected
-     */
-    selectedValues?: string[];
-    /**
-     * The callback function that is triggered when the state changes
+     * Callback that is called when the checked value has changed.
      */
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    /**
+     * Disabled state of the checkbox.
+     */
+    disabled?: boolean;
+    /**
+     * Error message handling for the checkbox
+     */
+    error?: {
+        /**
+         * Show or hide the error message assigned in the errorMessage props
+         */
+        showError: boolean;
+        /**
+         * Holds the error message to show
+         */
+        errorMessage: string;
+    };
+    /**
+     * Helper text to show below the checkbox
+     */
+    helperText?: string;
     className?: ICheckboxClasses;
     style?: {
         /**
-         * Wraps the whole Checkbox component
+         * Styling for the whole checkbox component
          */
         checkboxGroupWrapper?: React.CSSProperties;
         /**
@@ -48,5 +65,14 @@ export interface ICheckboxProps {
          * Styling for the icon when it is inActive
          */
         checkBoxCheckIconInactive?: React.CSSProperties;
+        /**
+         * Styling for the helper label or the error message
+         */
+        helperLabel: React.CSSProperties;
+        /**
+         * Styling for the lable appearing above the Checkbox group
+         * @use To help the user understand the purpose of the checkbox group
+         */
+        checkBoxGroupLabel: React.CSSProperties;
     };
 }

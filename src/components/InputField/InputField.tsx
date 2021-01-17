@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import lodash from 'lodash';
 import { cx } from '@emotion/css';
 import { getInputFieldClasses } from './inputField.styles';
@@ -8,6 +8,9 @@ export const selectInputFieldText = (event: React.FocusEvent<HTMLInputElement>):
     event.target.select();
 
 export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps): JSX.Element => {
+    // state to store if the inputField is focused
+    const [inputFieldFocused, setInputFieldFocused] = useState(false);
+
     const defaultProps: IInputFieldProps = {
         disabled: false,
         type: 'text',
@@ -20,7 +23,7 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
     };
 
     const requiredProps = lodash.merge(defaultProps, props);
-    const classes = getInputFieldClasses(requiredProps);
+    const classes = getInputFieldClasses(requiredProps, inputFieldFocused);
 
     return (
         <div
@@ -29,6 +32,8 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
                 requiredProps.className?.inputFieldOverallWrapper,
             )}
             style={requiredProps.style?.inputFieldOverallWrapper}
+            onFocus={() => setInputFieldFocused(true)}
+            onBlur={() => setInputFieldFocused(false)}
         >
             {lodash.isUndefined(requiredProps.label) ? null : (
                 <label
@@ -59,6 +64,8 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
                             classes.prefixWrapper,
                             requiredProps.className?.prefixWrapper,
                         )}
+                        onFocus={() => console.log('Focused Prefix')}
+                        onBlur={() => console.log('Unfocused Prefix')}
                         style={requiredProps.style?.prefixWrapper}
                     >
                         {requiredProps.prefix}
