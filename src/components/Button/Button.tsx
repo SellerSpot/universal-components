@@ -15,8 +15,14 @@ export interface IButtonProps {
         indicatorColor: React.CSSProperties['color'];
         style?: React.CSSProperties;
     };
-    tabIndex?: number;
     onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+
+    /**
+     * It gives the direction of user input flow, starts from tabindex 0
+     * @default
+     * undefined
+     */
+    tabIndex?: number;
 }
 
 export const Button: React.FC<IButtonProps> = (props: IButtonProps): JSX.Element => {
@@ -24,7 +30,6 @@ export const Button: React.FC<IButtonProps> = (props: IButtonProps): JSX.Element
         label: 'button',
         status: 'default',
         type: 'button',
-        tabIndex: 0,
     };
 
     const requiredProps = lodash.merge(defaultProps, props);
@@ -69,6 +74,7 @@ export const Button: React.FC<IButtonProps> = (props: IButtonProps): JSX.Element
                 requiredProps.status === 'disabled' || requiredProps.status === 'disabledLoading'
             }
             style={requiredProps.style}
+            tabIndex={requiredProps.tabIndex}
         >
             {requiredProps.status === 'loading' || requiredProps.status === 'disabledLoading' ? (
                 <Spinner

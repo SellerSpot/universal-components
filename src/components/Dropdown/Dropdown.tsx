@@ -28,6 +28,12 @@ export interface IDropdownProps {
         dropDownWrapperStyle?: React.CSSProperties;
     };
     className?: IGetDropdownClasses;
+    /**
+     * It gives the direction of user input flow, starts from tabindex 0
+     * @default
+     * undefined
+     */
+    tabIndex?: number;
 }
 
 export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.Element => {
@@ -82,7 +88,7 @@ export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.E
                         requiredProps.className?.dropDownSelect,
                     )}
                     style={requiredProps.style?.dropDownSelectStyle}
-                    tabIndex={0}
+                    tabIndex={requiredProps.tabIndex}
                     onClick={() => shouldShowOptions(!showOptions)}
                 >
                     {requiredProps.options[selectedOption]}

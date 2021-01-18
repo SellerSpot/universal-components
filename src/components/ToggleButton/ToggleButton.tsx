@@ -13,6 +13,12 @@ export interface IToggleButtonProps {
         sliderHandleStyle: React.CSSProperties;
     };
     className?: IGetToggleButtonClasses;
+    /**
+     * It gives the direction of user input flow, starts from tabindex 0
+     * @default
+     * undefined
+     */
+    tabIndex?: number;
 }
 
 export const ToggleButton = (props: IToggleButtonProps): JSX.Element => {
@@ -32,6 +38,7 @@ export const ToggleButton = (props: IToggleButtonProps): JSX.Element => {
                 className={cx(classNames.toggleButtonInput, props.className?.toggleButtonInput)}
                 style={props.style?.toggleButtonInputStyle}
                 checked={props.active}
+                tabIndex={props.tabIndex}
             />
             <div
                 className={cx(classNames.actionBlockHolder, props.className?.actionBlockHolder)}

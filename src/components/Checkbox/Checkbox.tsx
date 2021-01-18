@@ -43,6 +43,7 @@ export const Checkbox = (props: ICheckboxProps): JSX.Element => {
                     name={requiredProps.label}
                     onChange={(event) => requiredProps.onChange(event)}
                     style={{ opacity: 0, width: '0', height: '0' }}
+                    tabIndex={requiredProps.tabIndex}
                 />
                 <label
                     className={cx(

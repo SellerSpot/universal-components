@@ -88,6 +88,7 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
                     value={requiredProps.value}
                     onChange={requiredProps.onChange}
                     style={requiredProps.style?.input}
+                    tabIndex={requiredProps.tabIndex}
                 />
                 {lodash.isUndefined(requiredProps.suffix) ? null : (
                     <div

@@ -75,4 +75,10 @@ export interface ICheckboxProps {
          */
         checkBoxGroupLabel: React.CSSProperties;
     };
+    /**
+     * It gives the direction of user input flow, starts from tabindex 0
+     * @default
+     * undefined
+     */
+    tabIndex?: number;
 }
