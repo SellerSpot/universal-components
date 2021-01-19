@@ -87,5 +87,7 @@
         "url": "https://github.com/SellerSpot/universal-components/issues"
     },
     "homepage": "https://github.com/SellerSpot/universal-components#readme",
-    "dependencies": {}
+    "dependencies": {
+        "react-hotkeys-hook": "^3.0.3"
+    }
 }

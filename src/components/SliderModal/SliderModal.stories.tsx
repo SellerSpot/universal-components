@@ -1,6 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { SliderModal, ISliderModalProps } from './SliderModal';
+import { SliderModal } from './SliderModal';
+import { ISliderModalProps } from './sliderModal.types';
 
 export default {
     title: 'Components',
@@ -12,6 +13,12 @@ const Template: Story<ISliderModalProps> = (args: ISliderModalProps) => <SliderM
 export const SliderModals = Template.bind({});
 SliderModals.args = {
     active: true,
+    onClickEsc: (event) => {
+        console.log('Esc Clicked');
+    },
+    onClickBackdrop: (event) => {
+        console.log('Backdrop Clicked');
+    },
     children: (
         <div
             style={{
