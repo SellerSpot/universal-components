@@ -1,23 +1,10 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import lodash from 'lodash';
-import { css, cx } from '@emotion/css';
-
-export interface ISliderModalProps {
-    active: boolean;
-    children: ReactNode;
-    sliderSize?: '10%' | '20%' | '30%' | '40%' | '50%' | '60%' | '70%' | '80%' | '90%' | '100%'; // on small screeen by default slider width will span to entire width
-    onClickBackdrop?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-    style?: {
-        sliderModalWrapperStyle?: React.CSSProperties;
-        backdropOverlayStyle?: React.CSSProperties;
-        sliderContentWrapperStyle?: React.CSSProperties;
-    };
-    className?: {
-        sliderModalWrapper?: string;
-        backdropOverlay?: string;
-        sliderContentWrapper?: string;
-    };
-}
+import { cx } from '@emotion/css';
+import { getSliderModalStyles } from './sliderModal.styles';
+import { ISliderModalProps } from './sliderModal.types';
+import { MdClose } from 'react-icons/md';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 export const SliderModal = (props: ISliderModalProps): JSX.Element => {
     const defaultProps: ISliderModalProps = {
@@ -25,58 +12,49 @@ export const SliderModal = (props: ISliderModalProps): JSX.Element => {
         children: null,
         sliderSize: '40%',
         onClickBackdrop: () => void 0,
+        onClickEsc: () => void 0,
     };
 
     const requiredProps = lodash.merge(defaultProps, props);
-
-    const sliderModalWrapper = css`
-        position: fixed;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 6;
-        overflow: hidden;
-        transition: ${requiredProps.active
-            ? 'background-color 0.2s ease-in-out-out;'
-            : 'right 0.3s ease-in-out'};
-        right: ${requiredProps.active ? 0 : '-100%'};
-        background: ${requiredProps.active ? 'rgb(0, 0, 0, 0.4)' : 'transparent'};
-    `;
-
-    const backdropOverlay = css`
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-        top: 0;
-        left: 0;
-    `;
-
-    const sliderContentWrapper = css`
-        position: absolute;
-        height: 100%;
-        z-index: 1;
-        top: 0;
-        overflow-y: auto;
-        transition: right 0.2s ease-in-out;
-        width: ${requiredProps.sliderSize};
-        right: ${requiredProps.active ? 0 : '-100%'};
-    `;
+    const styles = getSliderModalStyles(requiredProps);
+    useHotkeys('esc', requiredProps.onClickEsc);
 
     return (
         <div
-            className={cx(sliderModalWrapper, requiredProps.className?.sliderModalWrapper)}
-            style={requiredProps.style?.sliderModalWrapperStyle}
+            className={cx(styles.sliderModalWrapper, requiredProps.className?.sliderModalWrapper)}
+            style={requiredProps.style?.sliderModalWrapper}
         >
             <div
-                className={cx(backdropOverlay, requiredProps.className?.backdropOverlay)}
-                style={requiredProps.style?.backdropOverlayStyle}
+                className={cx(styles.backdropOverlay, requiredProps.className?.backdropOverlay)}
+                style={requiredProps.style?.backdropOverlay}
+                onClick={requiredProps.onClickBackdrop}
             />
+
             <div
-                className={cx(sliderContentWrapper, requiredProps.className?.sliderContentWrapper)}
-                style={requiredProps.style?.sliderContentWrapperStyle}
+                className={cx(
+                    styles.sliderContentWrapper,
+                    requiredProps.className?.sliderContentWrapper,
+                )}
+                style={requiredProps.style?.sliderContentWrapper}
             >
-                {requiredProps.children}
+                {requiredProps.sliderSize !== '100%' ? (
+                    <div
+                        className={cx(
+                            styles.sliderCloseButtonWrapper,
+                            requiredProps.className?.sliderCloseButtonWrapper,
+                        )}
+                        style={requiredProps.style?.sliderCloseButtonWrapper}
+                        onClick={requiredProps.onClickBackdrop}
+                    >
+                        <MdClose fontSize={'20px'} />
+                    </div>
+                ) : null}
+                <div
+                    className={cx(styles.sliderContent, requiredProps.className?.sliderContent)}
+                    style={requiredProps.style?.sliderContent}
+                >
+                    {requiredProps.children}
+                </div>
             </div>
         </div>
     );
