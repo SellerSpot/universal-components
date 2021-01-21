@@ -29,6 +29,7 @@ export const SliderModal = (props: ISliderModalProps): JSX.Element => {
                 style={requiredProps.style?.backdropOverlay}
                 onClick={requiredProps.onClickBackdrop}
             />
+
             <div
                 className={cx(
                     styles.sliderContentWrapper,
