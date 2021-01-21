@@ -29,7 +29,6 @@ export const SliderModal = (props: ISliderModalProps): JSX.Element => {
                 style={requiredProps.style?.backdropOverlay}
                 onClick={requiredProps.onClickBackdrop}
             />
-
             <div
                 className={cx(
                     styles.sliderContentWrapper,
@@ -49,12 +48,7 @@ export const SliderModal = (props: ISliderModalProps): JSX.Element => {
                         <MdClose fontSize={'20px'} />
                     </div>
                 ) : null}
-                <div
-                    className={cx(styles.sliderContent, requiredProps.className?.sliderContent)}
-                    style={requiredProps.style?.sliderContent}
-                >
-                    {requiredProps.children}
-                </div>
+                {requiredProps.children}
             </div>
         </div>
     );
