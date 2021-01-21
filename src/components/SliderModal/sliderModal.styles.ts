@@ -5,64 +5,68 @@ import { IGetSliderModalStyles, ISliderModalProps } from './sliderModal.types';
 export const getSliderModalStyles = (requiredProps: ISliderModalProps): IGetSliderModalStyles => {
     return {
         sliderModalWrapper: css`
-            box-sizing: border-box;
             position: fixed;
-            top: 0;
+            z-index: ${cssVariables['--z-index-slider-modal']};
+            right: ${requiredProps.active ? 0 : '-100%'};
+
+            overflow: hidden;
+
             width: 100%;
             height: 100%;
-            z-index: ${cssVariables['--z-index-slider-modal']};
-            overflow: hidden;
-            right: ${requiredProps.active ? 0 : '-100%'};
-            background-color: transparent;
+            margin: 0;
+            padding: 0;
 
-            transition: right 0.1s ease-in-out;
+            transition: right 0s ease-in-out;
+            transition-delay: ${requiredProps.active ? 0 : '.4s'};
+
+            background-color: transparent;
         `,
         backdropOverlay: css`
-            box-sizing: border-box;
-            position: fixed;
             width: 100%;
             height: 100%;
-            z-index: ${cssVariables['--z-index-slider-modal']};
-            top: 0;
-            left: 0;
-            background-color: ${requiredProps.active ? 'rgb(0, 0, 0, 0.4)' : 'transparent'};
+            margin: 0;
+            padding: 0;
 
             transition: background-color 0.2s ease-in-out;
+
+            background-color: ${requiredProps.active ? 'rgb(0, 0, 0, .5)' : 'transparent'};
         `,
         sliderContentWrapper: css`
-            display: flex;
-            justify-content: flex-end;
+            position: absolute;
+            top: 0;
+            right: ${requiredProps.active ? 0 : '-100%'};
+
+            width: ${requiredProps.sliderSize};
             height: 100%;
-            width: 100%;
-            gap: 5px;
-            right: ${requiredProps.active ? '0' : '-100%'};
+            margin: 0;
+            padding: 0;
 
-            transition: right 0.1s ease-in-out;
-            transition-delay: 2s;
+            transition: right 0.4s ease-in-out;
+
+            background: ${cssColors['--primary-background-color']};
         `,
-
         sliderCloseButtonWrapper: css`
-            box-sizing: border-box;
+            font-size: 12px;
+            font-weight: bold;
+
+            position: absolute;
+            top: 5px;
+            left: -40px;
+
+            display: flex;
+
             width: 35px;
             height: 35px;
-            background-color: ${cssColors['--primary-background-color']};
-            margin-top: 5px;
-            cursor: pointer;
-            border-radius: ${cssVariables['--border-radius']};
-            z-index: ${cssVariables['--z-index-slider-modal']};
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            right: ${requiredProps.active ? '0' : '-100%'};
-        `,
+            margin: 0;
+            padding: 0;
 
-        sliderContent: css`
-            box-sizing: border-box;
-            height: 100%;
-            z-index: ${cssVariables['--z-index-slider-modal']};
-            top: 0;
-            overflow-y: auto;
-            width: ${requiredProps.sliderSize};
+            cursor: pointer;
+
+            border-radius: ${cssVariables['--border-radius']};
+            background: ${cssColors['--primary-background-color']};
+
+            align-items: center;
+            justify-content: center;
         `,
     };
 };
