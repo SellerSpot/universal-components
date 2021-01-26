@@ -41,7 +41,7 @@ export const Dropdown: React.FC<IDropdownProps> = (props: IDropdownProps): JSX.E
     const [selectedOption, setSelectedOption] = useState<number>(0);
 
     const defaultProps: IDropdownProps = {
-        options: ['Sample Option 1', 'Sample Option 2'],
+        options: ['Sample Option'],
         error: {
             errorMessage: 'Default error message',
             showError: false,
