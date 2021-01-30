@@ -1,0 +1,39 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "npm_link_REACT_point_of_sale",
+            "type": "shell",
+            "command": "[ -d '../point-of-sale-app/node_modules/react' ] && [ -d './node_modules/react' ] && npm link ../point-of-sale-app/node_modules/react",
+            "group": "none",
+            "presentation": {
+                "group": "npm_link",
+                "focus": true,
+                "reveal": "always",
+                "panel": "new",
+                "showReuseMessage": false
+            },
+            "runOptions": {
+                "runOn": "default"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "npm_link_REACT_core_app",
+            "type": "shell",
+            "command": "[ -d '../core-app/node_modules/react' ] && [ -d './node_modules/react' ] && npm link ../core-app/node_modules/react",
+            "group": "none",
+            "presentation": {
+                "group": "npm_link",
+                "focus": true,
+                "reveal": "always",
+                "panel": "new",
+                "showReuseMessage": false
+            },
+            "runOptions": {
+                "runOn": "default"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
