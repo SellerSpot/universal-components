@@ -1,6 +1,6 @@
+import lodash from 'lodash';
 import { css } from '@emotion/css';
 import { cssColors, cssVariables } from '../../config';
-import lodash from 'lodash';
 import { IInputFieldProps } from './inputField.types';
 
 export interface IGetInputFieldClasses {
@@ -129,7 +129,7 @@ export const getInputFieldClasses = (
             font-size: ${cssVariables['--font-size-secondary']};
             border-radius: ${cssVariables['--border-radius']};
             border: 1px solid;
-            padding: 0 5px;
+            padding: 0 10px;
             padding-top: 1px;
             transition: all 0.2s ease-in;
 

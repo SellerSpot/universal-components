@@ -1,23 +1,13 @@
 {
     "version": "2.0.0",
-<<<<<<< HEAD
     "tasks": [
         {
-            "label": "npm_link_REACT_point_of_sale",
-            "type": "shell",
-            "command": "[ -d '../point-of-sale-app/node_modules/react' ] && [ -d './node_modules/react' ] && npm link ../point-of-sale-app/node_modules/react",
-            "group": "none",
-            "presentation": {
-                "group": "npm_link",
-=======
-    "tasks": [{
             "label": "npm-link-REACT-point-of-sale",
             "type": "shell",
-            "command": "npm link ../point-of-sale-app/node-modules/react",
+            "command": "npm link ../point-of-sale-app/node_modules/react",
             "group": "none",
             "presentation": {
                 "group": "npm-link",
->>>>>>> e4d7c4c1b173d760569b818fab34b4c32ed1aff7
                 "focus": true,
                 "reveal": "always",
                 "panel": "new",
@@ -29,21 +19,12 @@
             "problemMatcher": []
         },
         {
-<<<<<<< HEAD
-            "label": "npm_link_REACT_core_app",
-            "type": "shell",
-            "command": "[ -d '../core-app/node_modules/react' ] && [ -d './node_modules/react' ] && npm link ../core-app/node_modules/react",
-            "group": "none",
-            "presentation": {
-                "group": "npm_link",
-=======
             "label": "npm-link-REACT-core-app",
             "type": "shell",
-            "command": "npm link ../core-app/node-modules/react",
+            "command": "npm link ../core-app/node_modules/react",
             "group": "none",
             "presentation": {
                 "group": "npm-link",
->>>>>>> e4d7c4c1b173d760569b818fab34b4c32ed1aff7
                 "focus": true,
                 "reveal": "always",
                 "panel": "new",
@@ -53,11 +34,6 @@
                 "runOn": "default"
             },
             "problemMatcher": []
-<<<<<<< HEAD
-        }
-    ]
-}
-=======
         },
         {
             "label": "open-terminal",
@@ -79,4 +55,3 @@
         }
     ]
 }
->>>>>>> e4d7c4c1b173d760569b818fab34b4c32ed1aff7

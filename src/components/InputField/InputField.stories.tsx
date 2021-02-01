@@ -1,7 +1,7 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
-import { InputField } from './InputField';
 import { FcOk } from 'react-icons/fc';
+import { Meta, Story } from '@storybook/react/types-6-0';
+import { InputField } from './InputField';
 import { IInputFieldProps } from './inputField.types';
 
 export default {
@@ -24,7 +24,7 @@ InputFields.args = {
     value: '55865',
     type: 'text',
     size: 'default',
-    prefix: <FcOk />,
+    // prefix: <FcOk />,
     suffix: <p>pcs</p>,
     required: false,
     onChange: () => void 0,
