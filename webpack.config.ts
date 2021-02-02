@@ -1,9 +1,9 @@
 import path from 'path';
-import { Configuration } from 'webpack';
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import WebpackShellPluginNext from 'webpack-shell-plugin-next';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import { Configuration } from 'webpack';
 import webpack from 'webpack';
+import WebpackShellPluginNext from 'webpack-shell-plugin-next';
 
 const webpackConfiguration = (env: {
     production?: boolean;
@@ -82,9 +82,9 @@ const webpackConfiguration = (env: {
             !isProduction
                 ? new WebpackShellPluginNext({
                       onDoneWatch: {
-                          scripts: ['npm run build:dev'],
+                          scripts: ['npm run build:dev', 'npm run yalc'],
                           blocking: false,
-                          parallel: true,
+                          parallel: false,
                       },
                       safe: true,
                   })
