@@ -12,7 +12,7 @@ const Template: Story<INotifyProps> = (args: INotifyProps) => <Notify {...args} 
 export const Notifier = Template.bind({});
 Notifier.args = {
     content: <div>hola!!</div>,
-    timeout: 2000,
+    timeout: 4000,
     notifyId: 'asdf',
     style: {
         notifyWrapper: {

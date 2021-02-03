@@ -1,7 +1,7 @@
-import { cssColors, cssVariables } from '../../config';
 import lodash from 'lodash';
 import React, { ReactElement, useEffect, useState } from 'react';
 import { css, cx } from '@emotion/css';
+import { cssColors, cssVariables } from '../../config';
 
 export interface INotifyProps {
     notifyId: number | string;
@@ -54,12 +54,17 @@ export const Notify = (props: INotifyProps): ReactElement => {
         font-size: ${cssVariables['--font-size-secondary']};
         z-index: ${cssVariables['--z-index-notify']};
         right: calc(50% - 150px);
-        transition: top 1s ease-in-out;
+        transition: left 0.6s ease-in-out;
         word-break: break-all;
         color: ${cssColors['--primary-font-color']};
         background: ${cssColors['--primary-background-color']};
 
-        top: ${showNotify ? '30px' : '-100%'};
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        bottom: 30px;
+        left: ${showNotify ? '30px' : '-100%'};
     `;
 
     return (
