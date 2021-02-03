@@ -2,40 +2,6 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "npm-link-REACT-point-of-sale",
-            "type": "shell",
-            "command": "npm link ../point-of-sale-app/node_modules/react",
-            "group": "none",
-            "presentation": {
-                "group": "npm-link",
-                "focus": true,
-                "reveal": "always",
-                "panel": "new",
-                "showReuseMessage": false
-            },
-            "runOptions": {
-                "runOn": "default"
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "npm-link-REACT-core-app",
-            "type": "shell",
-            "command": "npm link ../core-app/node_modules/react",
-            "group": "none",
-            "presentation": {
-                "group": "npm-link",
-                "focus": true,
-                "reveal": "always",
-                "panel": "new",
-                "showReuseMessage": false
-            },
-            "runOptions": {
-                "runOn": "default"
-            },
-            "problemMatcher": []
-        },
-        {
             "label": "open-terminal",
             "type": "shell",
             "command": "start ./terminal.bat",
