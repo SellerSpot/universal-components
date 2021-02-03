@@ -2,6 +2,10 @@ import { IGetInputFieldClasses } from './inputField.styles';
 
 export interface IInputFieldProps {
     /**
+     * Used to trigger focus request by the inputField
+     */
+    focus?: boolean;
+    /**
      * Used by formik to auto-detect the field name when used for validation
      */
     name?: string;

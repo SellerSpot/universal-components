@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import lodash from 'lodash';
+import React, { useEffect, useRef, useState } from 'react';
 import { cx } from '@emotion/css';
 import { getInputFieldClasses } from './inputField.styles';
 import { IInputFieldProps } from './inputField.types';
@@ -10,8 +10,11 @@ export const selectInputFieldText = (event: React.FocusEvent<HTMLInputElement>):
 export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps): JSX.Element => {
     // state to store if the inputField is focused
     const [inputFieldFocused, setInputFieldFocused] = useState(false);
+    // reference to handle input element focus
+    const inputElementRef = useRef<HTMLInputElement>(null);
 
     const defaultProps: IInputFieldProps = {
+        focus: false,
         disabled: false,
         type: 'text',
         size: 'default',
@@ -24,6 +27,13 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
 
     const requiredProps = lodash.merge(defaultProps, props);
     const classes = getInputFieldClasses(requiredProps, inputFieldFocused);
+
+    useEffect(() => {
+        if (requiredProps.focus) {
+            inputElementRef.current.focus();
+            requiredProps.focus = false;
+        }
+    }, [requiredProps.focus]);
 
     return (
         <div
@@ -72,6 +82,7 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
                     </div>
                 )}
                 <input
+                    ref={inputElementRef}
                     title={requiredProps.title}
                     name={requiredProps.name}
                     className={cx(classes.input, requiredProps.className?.input)}
