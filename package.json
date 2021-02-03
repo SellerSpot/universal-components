@@ -6,8 +6,7 @@
     "scripts": {
         "dev": "webpack --mode development --env development",
         "build": "webpack --mode production --env production",
-        "build:dev": "webpack --mode development --env production",
-        "yalc": "yalc push",
+        "build:dev": "webpack --mode development --env production && yalc push",
         "lint": "eslint src",
         "lint:fix": "eslint src --fix",
         "storybook": "start-storybook -p 6006",
@@ -69,6 +68,7 @@
         "prettier": "^2.2.1",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
+        "react-hotkeys-hook": "^3.0.3",
         "react-icons": "^3.11.0",
         "style-loader": "^2.0.0",
         "ts-loader": "^8.0.12",
@@ -83,13 +83,12 @@
         "@emotion/css": "^11.1.3",
         "lodash": "^4.17.20",
         "react": "^17.0.1",
-        "react-icons": "^3.11.0"
+        "react-icons": "^3.11.0",
+        "react-hotkeys-hook": "^3.0.3"
     },
     "bugs": {
         "url": "https://github.com/SellerSpot/universal-components/issues"
     },
     "homepage": "https://github.com/SellerSpot/universal-components#readme",
-    "dependencies": {
-        "react-hotkeys-hook": "^3.0.3"
-    }
+    "dependencies": {}
 }
