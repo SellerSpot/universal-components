@@ -1,9 +1,10 @@
 {
     "version": "2.0.0",
-    "tasks": [{
+    "tasks": [
+        {
             "label": "npm-link-REACT-point-of-sale",
             "type": "shell",
-            "command": "npm link ../point-of-sale-app/node-modules/react",
+            "command": "npm link ../point-of-sale-app/node_modules/react",
             "group": "none",
             "presentation": {
                 "group": "npm-link",
@@ -20,7 +21,7 @@
         {
             "label": "npm-link-REACT-core-app",
             "type": "shell",
-            "command": "npm link ../core-app/node-modules/react",
+            "command": "npm link ../core-app/node_modules/react",
             "group": "none",
             "presentation": {
                 "group": "npm-link",
