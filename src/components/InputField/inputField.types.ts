@@ -2,9 +2,13 @@ import { IGetInputFieldClasses } from './inputField.styles';
 
 export interface IInputFieldProps {
     /**
-     * Used to trigger focus request by the inputField
+     * Should the inputField be focused
      */
     focus?: boolean;
+    /**
+     * useState set callback to update parent component state once focus has been fetched
+     */
+    setFocus?: React.Dispatch<React.SetStateAction<boolean>>;
     /**
      * Used by formik to auto-detect the field name when used for validation
      */

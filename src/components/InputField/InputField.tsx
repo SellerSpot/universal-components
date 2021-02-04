@@ -1,4 +1,4 @@
-import lodash from 'lodash';
+import lodash, { isUndefined } from 'lodash';
 import React, { useEffect, useRef, useState } from 'react';
 import { cx } from '@emotion/css';
 import { getInputFieldClasses } from './inputField.styles';
@@ -8,10 +8,10 @@ export const selectInputFieldText = (event: React.FocusEvent<HTMLInputElement>):
     event.target.select();
 
 export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps): JSX.Element => {
-    // state to store if the inputField is focused
-    const [inputFieldFocused, setInputFieldFocused] = useState(false);
     // reference to handle input element focus
     const inputElementRef = useRef<HTMLInputElement>(null);
+    // state to hold if the input element is focused or not
+    const [inputElementFocused, setInputElementFocused] = useState(false);
 
     const defaultProps: IInputFieldProps = {
         focus: false,
@@ -26,12 +26,14 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
     };
 
     const requiredProps = lodash.merge(defaultProps, props);
-    const classes = getInputFieldClasses(requiredProps, inputFieldFocused);
+    const classes = getInputFieldClasses(requiredProps, inputElementFocused);
 
     useEffect(() => {
         if (requiredProps.focus) {
             inputElementRef.current.focus();
-            requiredProps.focus = false;
+            setInputElementFocused(true);
+            // resetting parent state so that sending 'true' again invokes this useEffect
+            !isUndefined(requiredProps.setFocus) ? requiredProps.setFocus(false) : null;
         }
     }, [requiredProps.focus]);
 
@@ -42,8 +44,6 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
                 requiredProps.className?.inputFieldOverallWrapper,
             )}
             style={requiredProps.style?.inputFieldOverallWrapper}
-            onFocus={() => setInputFieldFocused(true)}
-            onBlur={() => setInputFieldFocused(false)}
         >
             {lodash.isUndefined(requiredProps.label) ? null : (
                 <label
