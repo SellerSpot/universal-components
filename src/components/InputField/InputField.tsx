@@ -12,6 +12,8 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
     const inputElementRef = useRef<HTMLInputElement>(null);
     // state to hold if the input element is focused or not
     const [inputElementFocused, setInputElementFocused] = useState(false);
+    // internal state for style components to know if the component is focused or not
+    const [internalFocusedState, setInternalFocusedState] = useState(false);
 
     const defaultProps: IInputFieldProps = {
         focus: false,
@@ -26,7 +28,7 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
     };
 
     const requiredProps = lodash.merge(defaultProps, props);
-    const classes = getInputFieldClasses(requiredProps, inputElementFocused);
+    const classes = getInputFieldClasses(requiredProps, internalFocusedState);
 
     useEffect(() => {
         if (requiredProps.focus) {
@@ -87,11 +89,15 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
                     name={requiredProps.name}
                     className={cx(classes.input, requiredProps.className?.input)}
                     onFocus={(event) => {
+                        setInternalFocusedState(true);
                         if (requiredProps.selectTextOnFocus) selectInputFieldText;
                         requiredProps.onFocus(event);
                     }}
                     onClick={requiredProps.onClick}
-                    onBlur={requiredProps.onBlur}
+                    onBlur={(event: React.FocusEvent<HTMLInputElement>) => {
+                        setInternalFocusedState(false);
+                        requiredProps.onBlur(event);
+                    }}
                     disabled={requiredProps.disabled}
                     placeholder={requiredProps.placeHolder}
                     type={requiredProps.type}
