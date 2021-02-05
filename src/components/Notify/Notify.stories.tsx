@@ -1,6 +1,6 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react/types-6-0';
-import { Notify, INotifyProps } from './Notify';
+import { Meta, Story } from '@storybook/react/types-6-0';
+import { INotifyProps, Notify } from './Notify';
 
 export default {
     title: 'Components',
@@ -12,5 +12,11 @@ const Template: Story<INotifyProps> = (args: INotifyProps) => <Notify {...args} 
 export const Notifier = Template.bind({});
 Notifier.args = {
     content: <div>hola!!</div>,
-    timeout: 2000,
+    timeout: 4000,
+    notifyId: 'asdf',
+    style: {
+        notifyWrapper: {
+            backgroundColor: 'red',
+        },
+    },
 } as INotifyProps;

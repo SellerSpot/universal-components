@@ -94,8 +94,13 @@ export const getInputFieldClasses = (
                 : requiredProps.error?.showError
                 ? cssColors['--danger-color']
                 : inputFieldFocused
-                ? '#000'
+                ? 'grey'
                 : cssColors['--input-border-color']};
+            box-shadow: ${requiredProps.error?.showError
+                ? '0 0 0.12rem red'
+                : inputFieldFocused
+                ? '0 0 0.12rem grey'
+                : 0};
         `,
         suffixWrapper: css`
             width: ${cssVariables['--input-field-height']};
@@ -119,8 +124,14 @@ export const getInputFieldClasses = (
                 : requiredProps.error?.showError
                 ? cssColors['--danger-color']
                 : inputFieldFocused
-                ? '#000'
+                ? 'grey'
                 : cssColors['--input-border-color']};
+
+            box-shadow: ${requiredProps.error?.showError
+                ? '0 0 0.12rem red'
+                : inputFieldFocused
+                ? '0 0 0.12rem grey'
+                : 0};
         `,
         input: css`
             box-sizing: border-box;
@@ -131,15 +142,21 @@ export const getInputFieldClasses = (
             border: 1px solid;
             padding: 0 10px;
             padding-top: 1px;
-            transition: all 0.2s ease-in;
+            transition: all 0.2s ease-in-out;
 
             border-color: ${requiredProps.size === 'compact'
                 ? 'transparent'
                 : requiredProps.error?.showError
                 ? cssColors['--danger-color']
                 : inputFieldFocused
-                ? '#000'
+                ? 'grey'
                 : cssColors['--input-border-color']};
+
+            box-shadow: ${requiredProps.error?.showError
+                ? '0 0 0.12rem red'
+                : inputFieldFocused
+                ? '0 0 0.12rem grey'
+                : 0};
 
             border-top-left-radius: ${lodash.isUndefined(requiredProps.prefix)
                 ? cssVariables['--border-radius']

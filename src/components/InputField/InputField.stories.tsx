@@ -16,7 +16,7 @@ InputFields.args = {
     // helperText: 'Sample Helper Text',
     placeHolder: 'Sample Text Field',
     disabled: false,
-
+    focus: false,
     // error: {
     //     showError: true,
     //     errorMessage: 'Sample error message',
