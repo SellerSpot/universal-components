@@ -89,8 +89,11 @@ export const InputField: React.FC<IInputFieldProps> = (props: IInputFieldProps):
                     name={requiredProps.name}
                     className={cx(classes.input, requiredProps.className?.input)}
                     onFocus={(event) => {
+                        // this is done to notify component styling
                         setInternalFocusedState(true);
-                        if (requiredProps.selectTextOnFocus) selectInputFieldText;
+                        // selecting text if required
+                        if (requiredProps.selectTextOnFocus) selectInputFieldText(event);
+                        // calling onfocus callback
                         requiredProps.onFocus(event);
                     }}
                     onClick={requiredProps.onClick}

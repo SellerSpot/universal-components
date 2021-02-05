@@ -96,7 +96,11 @@ export const getInputFieldClasses = (
                 : inputFieldFocused
                 ? 'grey'
                 : cssColors['--input-border-color']};
-            box-shadow: ${inputFieldFocused ? '0 0 0.15rem grey' : 0};
+            box-shadow: ${requiredProps.error?.showError
+                ? '0 0 0.12rem red'
+                : inputFieldFocused
+                ? '0 0 0.12rem grey'
+                : 0};
         `,
         suffixWrapper: css`
             width: ${cssVariables['--input-field-height']};
@@ -123,7 +127,11 @@ export const getInputFieldClasses = (
                 ? 'grey'
                 : cssColors['--input-border-color']};
 
-            box-shadow: ${inputFieldFocused ? '0 0 0.15rem grey' : 0};
+            box-shadow: ${requiredProps.error?.showError
+                ? '0 0 0.12rem red'
+                : inputFieldFocused
+                ? '0 0 0.12rem grey'
+                : 0};
         `,
         input: css`
             box-sizing: border-box;
@@ -144,7 +152,11 @@ export const getInputFieldClasses = (
                 ? 'grey'
                 : cssColors['--input-border-color']};
 
-            box-shadow: ${inputFieldFocused ? '0 0 0.15rem grey' : 0};
+            box-shadow: ${requiredProps.error?.showError
+                ? '0 0 0.12rem red'
+                : inputFieldFocused
+                ? '0 0 0.12rem grey'
+                : 0};
 
             border-top-left-radius: ${lodash.isUndefined(requiredProps.prefix)
                 ? cssVariables['--border-radius']
