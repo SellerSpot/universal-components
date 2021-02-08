@@ -25,6 +25,7 @@ export interface ISliderModalProps {
     active: boolean;
     children: JSX.Element;
     sliderSize?: '10%' | '20%' | '30%' | '40%' | '50%' | '60%' | '70%' | '80%' | '90%' | '100%'; // on small screeen by default slider width will span to entire width
+    zIndex?: number;
     onClickBackdrop?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
     onClickEsc?: (event: KeyboardEvent) => void;
     style?: {

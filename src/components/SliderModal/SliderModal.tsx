@@ -10,6 +10,7 @@ export const SliderModal = (props: ISliderModalProps): JSX.Element => {
         active: false,
         children: null,
         sliderSize: '40%',
+        zIndex: 0,
         onClickBackdrop: () => void 0,
         onClickEsc: () => void 0,
     };
@@ -38,7 +39,10 @@ export const SliderModal = (props: ISliderModalProps): JSX.Element => {
     return (
         <div
             className={cx(styles.sliderModalWrapper, requiredProps.className?.sliderModalWrapper)}
-            style={requiredProps.style?.sliderModalWrapper}
+            style={{
+                zIndex: requiredProps.zIndex,
+                ...requiredProps.style?.sliderModalWrapper,
+            }}
         >
             <div
                 className={cx(styles.backdropOverlay, requiredProps.className?.backdropOverlay)}
