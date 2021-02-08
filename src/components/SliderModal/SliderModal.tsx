@@ -9,13 +9,14 @@ export const SliderModal = (props: ISliderModalProps): JSX.Element => {
     const defaultProps: ISliderModalProps = {
         active: false,
         children: null,
+        type: 'fixed',
         sliderSize: '40%',
         zIndex: 0,
         onClickBackdrop: () => void 0,
         onClickEsc: () => void 0,
     };
 
-    const requiredProps = lodash.merge(defaultProps, props);
+    const requiredProps = lodash.merge(props, defaultProps);
     const styles = getSliderModalStyles(requiredProps);
 
     // handler for the keydown listener
@@ -41,6 +42,7 @@ export const SliderModal = (props: ISliderModalProps): JSX.Element => {
             className={cx(styles.sliderModalWrapper, requiredProps.className?.sliderModalWrapper)}
             style={{
                 zIndex: requiredProps.zIndex,
+                position: requiredProps.type,
                 ...requiredProps.style?.sliderModalWrapper,
             }}
         >
