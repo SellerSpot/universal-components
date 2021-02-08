@@ -6,7 +6,7 @@ export const getSliderModalStyles = (requiredProps: ISliderModalProps): IGetSlid
     return {
         sliderModalWrapper: css`
             position: fixed;
-            z-index: ${cssVariables['--z-index-slider-modal']};
+            z-index: 0;
             right: ${requiredProps.active ? 0 : '-100%'};
             overflow: hidden;
             width: 100%;
