@@ -42,10 +42,7 @@ export const SliderModal = (props: ISliderModalProps): JSX.Element => {
             className={cx(styles.sliderModalWrapper, requiredProps.className?.sliderModalWrapper)}
             style={{
                 zIndex: requiredProps.zIndex,
-<<<<<<< HEAD
                 position: requiredProps.type,
-=======
->>>>>>> 63dc32c0825b7beb0797a749f8e5249a079dffac
                 ...requiredProps.style?.sliderModalWrapper,
             }}
         >
