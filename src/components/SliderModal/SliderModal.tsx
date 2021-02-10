@@ -16,7 +16,7 @@ export const SliderModal = (props: ISliderModalProps): JSX.Element => {
         onClickEsc: () => void 0,
     };
 
-    const requiredProps = lodash.merge(props, defaultProps);
+    const requiredProps = lodash.merge(defaultProps, props);
     const styles = getSliderModalStyles(requiredProps);
 
     // handler for the keydown listener
