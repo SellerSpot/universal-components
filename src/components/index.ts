@@ -1,13 +1,1 @@
-export * from './AlertMessage/AlertMessage';
-export * from './Button/Button';
-export * from './ConfirmDialog/ConfirmDialog';
-export * from './Dropdown/Dropdown';
-export * from './HorizontalRule/HorizontalRule';
-export * from './InputField/InputField';
-export * from './Notify/Notify';
-export * from './SliderModal/SliderModal';
-export * from './Spinner/Spinner';
-export * from './StatusFlag/StatusFlag';
-export * from './Table/Table';
-export * from './ToggleButton/ToggleButton';
-export * from './Checkbox/Checkbox';
+export const dummy = 'dummy';
