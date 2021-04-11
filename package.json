@@ -11,7 +11,7 @@
         "lint": "eslint src --max-warnings 0",
         "lint:fix": "eslint src --fix --max-warnings 0",
         "storybook": "start-storybook -p 9007",
-        "build-storybook": "build-storybook",
+        "build:storybook": "build-storybook",
         "prettier": "prettier --write src",
         "lint-staged": "lint-staged",
         "postinstall": "npm run husky:install",
