@@ -38,7 +38,7 @@ const webpackConfiguration = (env: {
                     test: /\.(ts|tsx)$/i,
                     loader: 'ts-loader',
                     options: {
-                        transpileOnly: !isProduction, // this generates .d.ts when it is false
+                        transpileOnly: true, // this generates .d.ts when it is false
                     },
                 },
                 {
@@ -62,13 +62,38 @@ const webpackConfiguration = (env: {
                                 },
                             },
                         },
+                        {
+                            loader: 'sass-loader',
+                        },
+                        {
+                            loader: 'sass-resources-loader',
+                            options: {
+                                resources: require(path.join(
+                                    process.cwd(),
+                                    'src/styles/__library.ts',
+                                )),
+                            },
+                        },
                     ],
-                    include: /\.module\.css$/,
+                    include: /\.module\.(css|scss)$/,
                 },
                 {
                     test: /\.(css|scss)$/,
-                    use: ['style-loader', 'css-loader'],
-                    exclude: /\.module\.css$/,
+                    use: [
+                        'style-loader',
+                        'css-loader',
+                        'sass-loader',
+                        {
+                            loader: 'sass-resources-loader',
+                            options: {
+                                resources: require(path.join(
+                                    process.cwd(),
+                                    'src/styles/__library.ts',
+                                )),
+                            },
+                        },
+                    ],
+                    exclude: /\.module\.(css|scss)$/,
                 },
             ],
         },

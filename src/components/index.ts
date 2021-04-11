@@ -1,1 +1,2 @@
-export const dummy = 'dummy';
+export * from './Alert/Alert';
+export * from './ThemeProvider/ThemeProvider';

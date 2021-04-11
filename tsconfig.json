@@ -13,7 +13,11 @@
         "resolveJsonModule": true,
         "moduleResolution": "node",
         "downlevelIteration": true,
-        "baseUrl": "src"
+        "baseUrl": "src",
+        "declaration": true,
+        "declarationMap": true,
+        "declarationDir": "./dist",
+        "outDir": "./dist"
     },
-    "include": ["src"]
+    "include": ["src", "webpack.config.ts"]
 }
