@@ -1,0 +1,114 @@
+{
+    "name": "@sellerspot/universal-components",
+    "version": "1.14.2",
+    "description": "Universal Components for sellerspot eco-system.",
+    "main": "dist/index.js",
+    "scripts": {
+        "dev": "webpack --mode development --env development",
+        "build:dev": "webpack --mode development  --env production && yalc push",
+        "build": "webpack --mode production --env NODE_ENV=production --env production",
+        "build:analyze": "webpack --mode production --env NODE_ENV=production --env production --env analyze",
+        "lint": "eslint src --max-warnings 0",
+        "lint:fix": "eslint src --fix --max-warnings 0",
+        "storybook": "start-storybook -p 9007",
+        "build-storybook": "build-storybook",
+        "prettier": "prettier --write src",
+        "lint-staged": "lint-staged",
+        "postinstall": "npm run husky:install",
+        "husky:install": "husky install",
+        "husky:pre-commit": "npm run lint-staged"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/SellerSpot/universal-components.git"
+    },
+    "keywords": [
+        "sellerspot",
+        "react-universal-components"
+    ],
+    "author": "ThayalanGR",
+    "contributors": [
+        {
+            "name": "Rohit Raj",
+            "email": "rij7u7d@gmail.com",
+            "url": "https://github.com/RohitRajP"
+        },
+        {
+            "name": "ThayalanGR",
+            "email": "grthayalan18@gmail.com",
+            "url": "https://github.com/ThayalanGR"
+        }
+    ],
+    "license": "ISC",
+    "lint-staged": {
+        "*.{ts,tsx,less}": [
+            "prettier --write",
+            "git add"
+        ],
+        "*.{ts,tsx}": "eslint --fix --max-warnings 0"
+    },
+    "devDependencies": {
+        "@storybook/addon-actions": "^6.2.3",
+        "@storybook/addon-essentials": "^6.2.3",
+        "@storybook/addon-links": "^6.2.3",
+        "@storybook/node-logger": "^6.2.3",
+        "@storybook/preset-create-react-app": "^3.1.7",
+        "@storybook/react": "^6.2.3",
+        "@types/classnames": "^2.2.11",
+        "@types/lodash": "^4.14.166",
+        "@types/node": "^14.14.14",
+        "@types/react": "^17.0.0",
+        "@types/react-dom": "^17.0.0",
+        "@types/react-redux": "^7.1.12",
+        "@types/react-router-dom": "^5.1.6",
+        "@types/webpack": "^4.41.25",
+        "@types/webpack-bundle-analyzer": "^3.9.0",
+        "@types/webpack-dev-server": "^3.11.1",
+        "@typescript-eslint/eslint-plugin": "^4.10.0",
+        "@typescript-eslint/parser": "^4.10.0",
+        "clean-webpack-plugin": "^3.0.0",
+        "css-loader": "^5.0.1",
+        "eslint": "^7.24.0",
+        "eslint-config-prettier": "^7.0.0",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-prettier": "^3.3.0",
+        "eslint-plugin-react": "^7.21.5",
+        "eslint-plugin-react-hooks": "^4.2.0",
+        "file-loader": "^6.2.0",
+        "fork-ts-checker-webpack-plugin": "^6.0.7",
+        "html-webpack-plugin": "^5.3.1",
+        "husky": "^6.0.0",
+        "lint-staged": "^10.5.4",
+        "path-browserify": "^1.0.1",
+        "prettier": "^2.2.1",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "sass": "^1.32.5",
+        "sass-loader": "^10.1.1",
+        "sass-resources-loader": "^2.1.1",
+        "style-loader": "^2.0.0",
+        "stylelint": "^13.12.0",
+        "stylelint-config-idiomatic-order": "^8.1.0",
+        "ts-loader": "^8.0.12",
+        "ts-node": "^9.1.1",
+        "tsconfig-paths-webpack-plugin": "^3.3.0",
+        "typescript": "^4.1.3",
+        "webpack": "^4.46.0",
+        "webpack-bundle-analyzer": "^4.4.0",
+        "webpack-cli": "^4.2.0",
+        "webpack-dev-server": "^3.11.0",
+        "webpack-shell-plugin-next": "^2.1.1",
+        "yalc": "*"
+    },
+    "dependencies": {
+        "@material-ui/core": "^4.11.3",
+        "@material-ui/lab": "^4.0.0-alpha.57",
+        "classnames": "^2.2.6",
+        "lodash": "^4.17.21",
+        "react-icons": "^4.2.0"
+    },
+    "bugs": {
+        "url": "https://github.com/SellerSpot/universal-components/issues"
+    },
+    "homepage": "https://github.com/SellerSpot/universal-components#readme"
+}

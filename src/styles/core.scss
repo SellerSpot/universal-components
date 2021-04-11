@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter', Helvetica, sans-serif;
+    scroll-behavior: smooth;
+    vertical-align: baseline;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    background-color: #f2f2f2;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #a0a0a0;
+    border-radius: 0.2rem;
+}
+
+body {
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+h1 {
+    color: $foregroundPrimary-color;
+    font-size: $h1-fontsize;
+    font-weight: bold;
+}
+
+h2 {
+    color: $foregroundPrimary-color;
+    font-size: $h2-fontsize;
+    font-weight: bold;
+}
+
+h3 {
+    color: $foregroundPrimary-color;
+    font-size: $h3-fontsize;
+    font-weight: bold;
+}
+
+h4 {
+    color: $foregroundPrimary-color;
+    font-size: $h4-fontsize;
+    font-weight: 600;
+}
+
+h5 {
+    color: $foregroundPrimary-color;
+    font-size: $h5-fontsize;
+    font-weight: 600;
+}
+
+h6 {
+    color: $foregroundPrimary-color;
+    font-size: $h6-fontsize;
+    font-weight: 600;
+}
+
+p {
+    color: $foregroundPrimary-color;
+    font-size: $p-fontsize;
+    font-weight: 400;
+}
