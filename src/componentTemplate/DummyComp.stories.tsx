@@ -9,7 +9,7 @@ const Template: Story<IDummyCompProps> = (args: IDummyCompProps) => (
 export const DummyComp = Template.bind({});
 DummyComp.args = {} as IDummyCompProps;
 
-export default {
-    title: 'Components/Atoms',
-    component: DummyCompComponent,
-} as Meta;
+// export default {
+//     title: 'Components/Atoms',
+//     component: DummyCompComponent,
+// } as Meta;
