@@ -12,4 +12,5 @@ export * from './InputField/InputField';
 export * from './Select/Select';
 export * from './Table/Table';
 export * from './ToolTip/ToolTip';
+export * from './Notify/Notify';
 export * from './ThemeProvider/ThemeProvider';
