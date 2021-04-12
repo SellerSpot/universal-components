@@ -4,4 +4,6 @@ export * from './Avatar/Avatar';
 export * from './BreadCrumbs/BreadCrumbs';
 export * from './Button/Button';
 export * from './Card/Card';
+export * from './Chip/Chip';
+export * from './ExpandableCard/ExpandableCard';
 export * from './ThemeProvider/ThemeProvider';
