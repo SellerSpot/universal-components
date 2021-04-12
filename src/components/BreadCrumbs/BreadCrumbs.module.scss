@@ -24,8 +24,12 @@
     @include flex(center, center);
 }
 
-.currentBreadCrumbsNode {
-    font-weight: 600;
+.currentBreadCrumbsNodeText {
+    font-weight: 600 !important;
+}
+
+.breadCrumbsNodeText {
+    font-weight: 400;
 }
 
 .breadCrumbWithLink {
