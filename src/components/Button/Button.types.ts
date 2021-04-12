@@ -1,0 +1,29 @@
+import { ReactElement } from 'react';
+import { TMuiThemes } from 'theme';
+import { IColors, IFontSizes } from '../../theme/theme.types';
+
+export interface IButtonProps {
+    /**
+     * Content to display inside the button
+     */
+    label?: string | ReactElement;
+    type?: 'submit' | 'button' | 'reset';
+    fullWidth?: boolean;
+    /**
+     * Different styles of buttons
+     */
+    variant?: 'contained' | 'text' | 'outlined';
+    size?: 'small' | 'medium' | 'large';
+    /**
+     * Different states such as success or danger or warning
+     */
+    state?: keyof TMuiThemes;
+    disabled?: boolean;
+    /** Icons before the label */
+    startIcon?: ReactElement;
+    /** Icons after the label */
+    endIcon?: ReactElement;
+    onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    fontSizes: IFontSizes;
+    colors: IColors;
+}
