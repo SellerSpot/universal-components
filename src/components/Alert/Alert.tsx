@@ -9,11 +9,11 @@ export interface IAlertProps {
 }
 
 export const Alert = (props: IAlertProps): ReactElement => {
+    const { type, title, children } = props;
     return (
-        <MUIAlert severity={props.type}>
-            {!isUndefined(props.title) ? <AlertTitle>{props.title}</AlertTitle> : null}
-            <h5>Sample Text</h5>
-            {props.children}
+        <MUIAlert severity={type}>
+            {isUndefined(title) ? null : <AlertTitle>{title}</AlertTitle>}
+            {children}
         </MUIAlert>
     );
 };
