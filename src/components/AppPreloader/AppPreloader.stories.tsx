@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import AppPreloader from './AppPreloader';
+import { AppPreloader as AppPreloaderComponent } from './AppPreloader';
 
 const Template: Story = () => (
     <div
@@ -11,12 +11,12 @@ const Template: Story = () => (
             height: '100vh',
         }}
     >
-        <AppPreloader />
+        <AppPreloaderComponent />
     </div>
 );
 
-export const AppPreloaderComponent = Template.bind({});
-AppPreloaderComponent.args = {};
+export const AppPreloader = Template.bind({});
+AppPreloader.args = {};
 
 export default {
     title: 'Components/Atoms',

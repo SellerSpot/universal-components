@@ -31,7 +31,7 @@ export function ThemeProvider(props: IThemeProviderProps): ReactElement {
     const getThemeProps: IGetThemeProps = {
         colors: colors,
         fontSizes: fontSizes,
-        theme: 'auto',
+        theme: 'primary',
     };
 
     return <MUIThemeProvider theme={getTheme(getThemeProps)}>{children}</MUIThemeProvider>;
