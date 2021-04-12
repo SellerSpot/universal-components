@@ -10,7 +10,7 @@ export const Chip = Template.bind({});
 Chip.args = {
     label: 'Installed',
     state: 'success',
-    leadingIcon: <ICONS.SUCCESS_CHECK_CIRCLE />,
+    leadingIcon: <ICONS.MdCheckCircle />,
     colors: defaultColors,
     fontSizes: defaultFontSizes,
 } as IChipProps;

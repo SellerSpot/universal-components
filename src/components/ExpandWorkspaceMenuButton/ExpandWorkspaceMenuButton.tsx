@@ -11,7 +11,7 @@ export const ExpandWorkspaceMenuButton = (props: IExpandWorkspaceMenuButtonProps
     const { onClick } = props;
     return (
         <div className={styles.wrapper} onClick={onClick}>
-            <ICONS.EXPAND_MENU />
+            <ICONS.MdKeyboardArrowRight />
         </div>
     );
 };

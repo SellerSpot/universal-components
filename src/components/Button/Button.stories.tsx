@@ -13,7 +13,7 @@ Button.args = {
     size: 'small',
     state: 'success',
     disabled: false,
-    startIcon: <ICONS.NOTIFICATION />,
+    startIcon: <ICONS.MdNotifications />,
     colors: defaultColors,
     fontSizes: defaultFontSizes,
 } as IButtonProps;
