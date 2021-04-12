@@ -3,7 +3,7 @@ import React, { ReactElement } from 'react';
 import { IExpandableCardProps } from './ExpandableCard.types';
 export { IExpandableCardProps } from './ExpandableCard.types';
 
-export default function ExpandableCard(props: IExpandableCardProps): ReactElement {
+export const ExpandableCard = (props: IExpandableCardProps): ReactElement => {
     const { content, expanded, className } = props;
     return (
         <Accordion className={className?.card} expanded={expanded}>
@@ -15,4 +15,4 @@ export default function ExpandableCard(props: IExpandableCardProps): ReactElemen
             </AccordionDetails>
         </Accordion>
     );
-}
+};
