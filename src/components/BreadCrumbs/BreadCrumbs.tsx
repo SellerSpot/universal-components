@@ -22,7 +22,7 @@ export const BreadCrumbs = (props: IBreadCrumbsProps): ReactElement => {
                         <div className={cn(styles.breadCrumbNode)} key={key}>
                             {key !== 0 && (
                                 <div className={styles.breadCrumbSeparator}>
-                                    <ICONS.OTHER.FORWARD_SLASH />
+                                    <ICONS.FORWARD_SLASH />
                                 </div>
                             )}
                             <div

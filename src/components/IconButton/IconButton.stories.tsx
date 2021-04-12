@@ -11,7 +11,7 @@ const Template: Story<IIconButtonProps> = (args: IIconButtonProps) => (
 export const IconButton = Template.bind({});
 IconButton.args = {
     state: 'warning',
-    icon: <ICONS.WORKSPACES.HOME />,
+    icon: <ICONS.WORKSPACE_HOME />,
     colors: defaultColors,
     fontSizes: defaultFontSizes,
 } as IIconButtonProps;

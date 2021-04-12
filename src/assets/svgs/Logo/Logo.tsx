@@ -4,7 +4,7 @@ export interface ILogoProps {
     className: string;
 }
 
-export default function Logo(props: ILogoProps): ReactElement {
+export const Logo = (props: ILogoProps): ReactElement => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -29,4 +29,4 @@ export default function Logo(props: ILogoProps): ReactElement {
             />
         </svg>
     );
-}
+};

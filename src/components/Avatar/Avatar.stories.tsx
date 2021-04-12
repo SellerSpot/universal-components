@@ -7,7 +7,7 @@ const Template: Story<IAvatarProps> = (args: IAvatarProps) => <AvatarComponent {
 
 export const Avatar = Template.bind({});
 Avatar.args = {
-    content: <ICONS.WORKSPACES.HOME />,
+    content: <ICONS.WORKSPACE_HOME />,
     imgSrc: '',
     size: 'small',
     theme: 'selected',
