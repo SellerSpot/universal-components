@@ -1,3 +1,4 @@
+import { AlertProps } from '@material-ui/lab';
 import { ReactElement } from 'react';
 
 export interface INotifyProps {
@@ -14,9 +15,13 @@ export interface INotifyProps {
     /**
      * The actions for the notify component
      */
-    action?: ReactElement;
+    actions?: ReactElement;
     /**
      * Notify message
      */
     message: string;
+    /**
+     * Visual state of the notify component
+     */
+    state: 'default' | AlertProps['severity'];
 }

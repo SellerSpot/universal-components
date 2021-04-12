@@ -1,11 +1,13 @@
 import { Snackbar, SnackbarProps } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
+import { isUndefined } from 'lodash';
 import React, { ReactElement } from 'react';
 import style from './Notify.module.scss';
 import { INotifyProps } from './Notify.types';
 export { INotifyProps } from './Notify.types';
 
 export const Notify = (props: INotifyProps): ReactElement => {
-    const { action, message, onClose, placement, show, autoHideDuration } = props;
+    const { actions, message, onClose, placement, show, autoHideDuration, state } = props;
     let notifyPlacement: SnackbarProps['anchorOrigin'];
     // determining the placement
     switch (placement) {
@@ -48,12 +50,16 @@ export const Notify = (props: INotifyProps): ReactElement => {
     }
     return (
         <Snackbar
-            action={action}
+            action={actions}
             message={message}
             onClose={onClose}
             open={show}
             anchorOrigin={notifyPlacement}
             autoHideDuration={autoHideDuration}
-        />
+        >
+            {state !== 'default' && !isUndefined(state) ? (
+                <Alert severity={state}>{message}</Alert>
+            ) : null}
+        </Snackbar>
     );
 };

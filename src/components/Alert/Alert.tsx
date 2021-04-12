@@ -1,9 +1,9 @@
-import { Alert as MUIAlert, AlertTitle } from '@material-ui/lab';
+import { Alert as MUIAlert, AlertProps, AlertTitle } from '@material-ui/lab';
 import { isUndefined } from 'lodash';
 import React, { ReactElement } from 'react';
 
 export interface IAlertProps {
-    type: 'warning' | 'error' | 'success' | 'info';
+    type: AlertProps['severity'];
     title?: string;
     children: ReactElement | string;
 }
