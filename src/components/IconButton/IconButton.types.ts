@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
-import { IColors, IFontSizes } from 'theme';
+import { TMuiThemes } from 'theme';
+import { IColors, IFontSizes } from '../../theme/theme.types';
 
 export interface IIconButtonProps {
     className?: string;
@@ -12,7 +13,7 @@ export interface IIconButtonProps {
     /**
      * Different states such as success or danger or warning
      */
-    state?: 'success' | 'danger' | 'warning' | 'primary' | 'accent' | 'auto';
+    state?: keyof TMuiThemes;
     disabled?: boolean;
     onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
     colors: IColors;

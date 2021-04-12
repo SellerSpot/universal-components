@@ -8,4 +8,5 @@ export * from './Chip/Chip';
 export * from './ExpandableCard/ExpandableCard';
 export * from './ExpandWorkspaceMenuButton/ExpandWorkspaceMenuButton';
 export * from './IconButton/IconButton';
+export * from './InputField/InputField';
 export * from './ThemeProvider/ThemeProvider';

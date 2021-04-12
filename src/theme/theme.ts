@@ -2,7 +2,7 @@ import { createMuiTheme, Theme } from '@material-ui/core';
 import { IColors, IFontSizes } from './theme.types';
 
 // Interface for the different Material UI themes used in the app
-type TMuiThemes = {
+export type TMuiThemes = {
     primary: Theme;
     accent: Theme;
     success: Theme;

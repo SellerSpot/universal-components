@@ -1,12 +1,13 @@
 import { ReactElement } from 'react';
-import { IColors, IFontSizes } from 'theme';
+import { TMuiThemes } from 'theme';
+import { IColors, IFontSizes } from '../../theme/theme.types';
 
 export interface IChipProps {
     label?: string;
     /**
      * Different states such as success or danger or warning
      */
-    state?: 'success' | 'danger' | 'warning' | 'primary' | 'accent' | 'auto';
+    state?: keyof TMuiThemes;
     /**
      * Leading icon for the chip
      */
