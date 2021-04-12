@@ -1,6 +1,10 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
+import ThemeProvider from 'components/ThemeProvider/ThemeProvider';
 import React from 'react';
-import { Alert as AlertComponent, IAlertProps } from './Alert';
+import { Provider } from 'react-redux';
+import { store } from 'store/store';
+import AlertComponent from './Alert';
+import { IAlertProps } from './Alert.types';
 
 export default {
     title: 'Components/Atoms',
