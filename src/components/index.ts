@@ -9,4 +9,5 @@ export * from './ExpandableCard/ExpandableCard';
 export * from './ExpandWorkspaceMenuButton/ExpandWorkspaceMenuButton';
 export * from './IconButton/IconButton';
 export * from './InputField/InputField';
+export * from './Select/Select';
 export * from './ThemeProvider/ThemeProvider';
