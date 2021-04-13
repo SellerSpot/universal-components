@@ -9,6 +9,8 @@ Table.args = {
     headers: [
         {
             content: 'Sno',
+            align: 'right',
+            width: '5%',
         },
         {
             content: 'Name',
@@ -22,6 +24,7 @@ Table.args = {
             [
                 {
                     content: '1',
+                    align: 'right',
                 },
                 {
                     content: 'Rohit',
@@ -32,16 +35,18 @@ Table.args = {
             ],
             [
                 {
-                    content: '1',
+                    content: '2',
+                    align: 'right',
                 },
                 {
-                    content: 'Rohit',
+                    content: 'Immi',
                 },
                 {
                     content: 'passwordstring',
                 },
             ],
         ],
+        collapsedContent: <h6>This is Collapsed Content</h6>,
     },
 } as ITableProps;
 

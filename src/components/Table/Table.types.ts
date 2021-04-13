@@ -1,16 +1,16 @@
 import { TableCellProps, TableProps } from '@material-ui/core';
+import { ReactNode } from 'react';
 
 export interface ITableCell {
     width?: TableCellProps['width'];
     padding?: TableCellProps['padding'];
     align?: TableCellProps['align'];
-    content?: TableCellProps['children'];
+    content?: ReactNode;
 }
 
 export interface ITableBody {
     rowData: ITableCell[][];
-    collapsedContent?: TableCellProps['children'];
-    collapseContent?: boolean;
+    collapsedContent?: ReactNode;
 }
 
 export interface ITableProps {
