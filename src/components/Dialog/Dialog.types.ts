@@ -1,18 +1,22 @@
 import { DialogProps } from '@material-ui/core';
 import { ReactElement } from 'react';
 
-export interface IDialogProps {
-    /**
-     * Toggle visibility of the dialog box
-     */
+export type TDialogStore = {
     show: boolean;
+    dialogState: IDialogProps;
+    showDialog: (props: IDialogProps) => void;
+    hideDialog: () => void;
+};
+
+export interface IDialogProps {
     onClose?: () => void;
     className?: {
         dialogWrapper?: string;
         titleWrapper?: string;
         contentWrapper?: string;
-        actiosnWrapper?: string;
+        actionsWrapper?: string;
     };
+    disableBackdropClick?: boolean;
     fullScreen?: boolean;
     fullWidth?: boolean;
     maxWidth?: DialogProps['maxWidth'];

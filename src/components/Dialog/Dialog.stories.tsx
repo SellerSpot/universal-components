@@ -1,33 +1,42 @@
+import Button from '@material-ui/core/Button';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { merge } from 'lodash';
 import React, { useState } from 'react';
-import { Dialog as DialogComponent, IDialogProps } from './Dialog';
+import { Dialog as DialogComponent, dialogStore, IDialogProps } from './Dialog';
 
-const Template: Story<IDialogProps> = (args: IDialogProps) => {
-    const [dialogShow, setDialogShow] = useState(false);
-    const argsCombined = merge(args, { show: dialogShow, onClose: () => setDialogShow(false) });
+const Template: Story<IDialogProps> = () => {
+    const showDialog = dialogStore((state) => state.showDialog);
+    const hideDialog = dialogStore((state) => state.hideDialog);
     return (
         <div>
-            <h6
-                onClick={() => setDialogShow(true)}
-                style={{
-                    userSelect: 'none',
-                    cursor: 'pointer',
-                }}
+            <Button
+                variant={'contained'}
+                color={'primary'}
+                onClick={() =>
+                    showDialog({
+                        title: <h5>Dialog Title</h5>,
+                        content: <h6>Sample Dialog Content</h6>,
+                        actions: (
+                            <Button
+                                variant={'contained'}
+                                color={'secondary'}
+                                onClick={() => hideDialog()}
+                            >
+                                Close Dialog
+                            </Button>
+                        ),
+                        fullWidth: true,
+                    })
+                }
             >
-                Click here to open or close the dialog
-            </h6>
-            <DialogComponent {...argsCombined} />
+                Show Dialog
+            </Button>
+            <DialogComponent />
         </div>
     );
 };
 
 export const Dialog = Template.bind({});
-Dialog.args = {
-    title: <h5>Dialog Title</h5>,
-    content: <h6>Sample Dialog Content</h6>,
-    fullWidth: true,
-} as IDialogProps;
 
 export default {
     title: 'Components/Atoms',
