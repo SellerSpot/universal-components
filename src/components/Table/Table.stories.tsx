@@ -17,19 +17,32 @@ Table.args = {
             content: 'Password',
         },
     ],
-    rowData: [
-        [
-            {
-                content: '1',
-            },
-            {
-                content: 'Rohit',
-            },
-            {
-                content: 'passwordstring',
-            },
+    body: {
+        rowData: [
+            [
+                {
+                    content: '1',
+                },
+                {
+                    content: 'Rohit',
+                },
+                {
+                    content: 'passwordstring',
+                },
+            ],
+            [
+                {
+                    content: '1',
+                },
+                {
+                    content: 'Rohit',
+                },
+                {
+                    content: 'passwordstring',
+                },
+            ],
         ],
-    ],
+    },
 } as ITableProps;
 
 export default {

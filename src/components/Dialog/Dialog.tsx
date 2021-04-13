@@ -32,6 +32,7 @@ export const Dialog = (): ReactElement => {
         title,
         disableBackdropClick,
     } = dialogStore((state) => state.dialogState) || {};
+    const { actionsWrapper, contentWrapper, dialogWrapper, titleWrapper } = className ?? {};
 
     const showDialog = dialogStore((state) => state.show);
 
@@ -42,12 +43,12 @@ export const Dialog = (): ReactElement => {
             maxWidth={maxWidth}
             open={showDialog}
             disableBackdropClick={disableBackdropClick}
-            className={className?.dialogWrapper}
+            className={dialogWrapper}
             onClose={onClose}
         >
-            <DialogTitle className={className?.titleWrapper}>{title}</DialogTitle>
-            <DialogContent className={className?.contentWrapper}>{content}</DialogContent>
-            <DialogActions className={className?.actionsWrapper}>{actions}</DialogActions>
+            <DialogTitle className={titleWrapper}>{title}</DialogTitle>
+            <DialogContent className={contentWrapper}>{content}</DialogContent>
+            <DialogActions className={actionsWrapper}>{actions}</DialogActions>
         </MUIDialog>
     );
 };
