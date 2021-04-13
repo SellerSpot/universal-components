@@ -1,16 +1,20 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Button } from 'components/Button/Button';
-import { merge } from 'lodash';
-import React, { useState } from 'react';
-import { Notify as NotifyComponent, INotifyProps } from './Notify';
+import React from 'react';
+import { Notify as NotifyComponent, INotifyState, notifyStore } from './Notify';
 
-const Template: Story<INotifyProps> = (args: INotifyProps) => {
-    const [notifyShow, setNotifyShow] = useState(false);
-    const argsCombined = merge(args, { show: notifyShow, onClose: () => setNotifyShow(false) });
+const Template: Story<INotifyState> = () => {
+    const showNotify = notifyStore((state) => state.showNotify);
     return (
         <div>
             <h6
-                onClick={() => setNotifyShow(true)}
+                onClick={() =>
+                    showNotify({
+                        message: 'Sample Notification Message',
+                        placement: 'bottomLeft',
+                        state: 'default',
+                        autoHideDuration: 3000,
+                    })
+                }
                 style={{
                     userSelect: 'none',
                     cursor: 'pointer',
@@ -18,16 +22,12 @@ const Template: Story<INotifyProps> = (args: INotifyProps) => {
             >
                 Click Here to show Notify Component
             </h6>
-            <NotifyComponent {...argsCombined} />
+            <NotifyComponent />
         </div>
     );
 };
 
 export const Notify = Template.bind({});
-Notify.args = {
-    message: 'Sample Notify Message',
-    placement: 'bottomLeft',
-} as INotifyProps;
 
 export default {
     title: 'Components/Atoms',

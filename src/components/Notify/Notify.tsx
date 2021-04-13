@@ -3,13 +3,33 @@ import { Alert } from '@material-ui/lab';
 import { isUndefined } from 'lodash';
 import React, { ReactElement } from 'react';
 import style from './Notify.module.scss';
-import { INotifyProps } from './Notify.types';
-export { INotifyProps } from './Notify.types';
+import { TNotifyStore } from './Notify.types';
+export { INotifyState } from './Notify.types';
+import create from 'zustand';
 
-export const Notify = (props: INotifyProps): ReactElement => {
-    const { actions, message, onClose, placement, show, autoHideDuration, state } = props;
-    let notifyPlacement: SnackbarProps['anchorOrigin'];
+/**
+ * Used to call the notify component from anywhere in the application
+ */
+export const notifyStore = create<TNotifyStore>((set) => ({
+    show: false,
+    notifyState: null,
+    onMUICloseNotify: () => {
+        set({ show: false });
+    },
+    showNotify: (props) => {
+        set({ show: true, notifyState: props });
+    },
+}));
+
+export const Notify = (): ReactElement => {
+    const { message, onClose, placement, state, actions, autoHideDuration } =
+        notifyStore((state) => state.notifyState) || {};
+
+    const showNotify = notifyStore((state) => state.show);
+    const onMUICloseNotify = notifyStore((state) => state.onMUICloseNotify);
+
     // determining the placement
+    let notifyPlacement: SnackbarProps['anchorOrigin'];
     switch (placement) {
         case 'bottomLeft':
             notifyPlacement = {
@@ -48,18 +68,29 @@ export const Notify = (props: INotifyProps): ReactElement => {
             };
             break;
     }
+
+    // decides if state based content is required
+    const stateBasedContent =
+        state !== 'default' && !isUndefined(state) ? (
+            <Alert severity={state}>{message}</Alert>
+        ) : null;
+
+    // handles the onClose callback
+    const handleOnClose = () => {
+        onMUICloseNotify();
+        onClose();
+    };
+
     return (
         <Snackbar
             action={actions}
             message={message}
-            onClose={onClose}
-            open={show}
-            anchorOrigin={notifyPlacement}
+            onClose={handleOnClose}
+            open={showNotify}
             autoHideDuration={autoHideDuration}
+            anchorOrigin={notifyPlacement}
         >
-            {state !== 'default' && !isUndefined(state) ? (
-                <Alert severity={state}>{message}</Alert>
-            ) : null}
+            {stateBasedContent}
         </Snackbar>
     );
 };
