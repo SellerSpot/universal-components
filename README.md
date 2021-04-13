@@ -24,3 +24,7 @@
 ## Note - while setting dev env:
 
 `husky needs to be installed manually as the postinstall script of husky affects on global npm pacakge , when consumer installs`
+
+## Storybook Link
+
+The latest storybook release for Universal-Components can be accessed from https://master--607324608a96df00213a5a33.chromatic.com/
