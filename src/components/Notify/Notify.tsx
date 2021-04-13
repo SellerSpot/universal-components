@@ -19,6 +19,9 @@ export const notifyStore = create<TNotifyStore>((set) => ({
     showNotify: (props) => {
         set({ show: true, notifyState: props });
     },
+    hideNotify: () => {
+        set({ show: false });
+    },
 }));
 
 export const Notify = (): ReactElement => {

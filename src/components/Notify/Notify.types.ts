@@ -7,6 +7,10 @@ export type TNotifyStore = {
     // used to manage the smooth closing of notify as per MUI method
     onMUICloseNotify: () => void;
     showNotify: (props: INotifyState) => void;
+    /**
+     * Used to hide the notify on demand (from custom action or buttons)
+     */
+    hideNotify: () => void;
 };
 
 export interface INotifyState {
