@@ -6,7 +6,13 @@ export type TNotifyStore = {
     notifyState: INotifyState;
     // used to manage the smooth closing of notify as per MUI method
     onMUICloseNotify: () => void;
-    showNotify: (props: INotifyState) => void;
+    showNotify: (message: INotifyState['message'], options?: Omit<INotifyState, 'message'>) => void;
+    /**
+     * Configure notify beforehand
+     */
+    configureNotify: (
+        props: Pick<INotifyState, 'placement' | 'state' | 'autoHideDuration'>,
+    ) => void;
     /**
      * Used to hide the notify on demand (from custom action or buttons)
      */
@@ -14,7 +20,17 @@ export type TNotifyStore = {
 };
 
 export interface INotifyState {
-    placement: 'topLeft' | 'topRight' | 'topCenter' | 'bottomLeft' | 'bottomRight' | 'bottomCenter';
+    /**
+     * Notify message
+     */
+    message?: string;
+    placement?:
+        | 'topLeft'
+        | 'topRight'
+        | 'topCenter'
+        | 'bottomLeft'
+        | 'bottomRight'
+        | 'bottomCenter';
     /**
      * Automatic notify hide time in milliseconds
      */
@@ -25,11 +41,7 @@ export interface INotifyState {
      */
     actions?: ReactElement;
     /**
-     * Notify message
-     */
-    message: string;
-    /**
      * Visual state of the notify component
      */
-    state: 'default' | AlertProps['severity'];
+    state?: 'default' | AlertProps['severity'];
 }

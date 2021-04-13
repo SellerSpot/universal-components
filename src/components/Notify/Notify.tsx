@@ -3,26 +3,48 @@ import { Alert } from '@material-ui/lab';
 import { isUndefined } from 'lodash';
 import React, { ReactElement } from 'react';
 import style from './Notify.module.scss';
-import { TNotifyStore } from './Notify.types';
+import { INotifyState, TNotifyStore } from './Notify.types';
 export { INotifyState } from './Notify.types';
 import create from 'zustand';
 
 /**
  * Used to call the notify component from anywhere in the application
  */
-export const notifyStore = create<TNotifyStore>((set) => ({
+const notifyStore = create<TNotifyStore>((set, get) => ({
     show: false,
     notifyState: null,
     onMUICloseNotify: () => {
         set({ show: false });
     },
-    showNotify: (props) => {
-        set({ show: true, notifyState: props });
+    showNotify: (message, options) => {
+        const currentNotifyState = get().notifyState;
+        set({
+            show: true,
+            notifyState: {
+                message: message,
+                ...currentNotifyState,
+                ...options,
+            },
+        });
+    },
+    configureNotify: (props) => {
+        const { autoHideDuration, placement, state } = props;
+        const currentNotifyState = get().notifyState;
+        set({
+            notifyState: {
+                ...currentNotifyState,
+                autoHideDuration,
+                placement,
+                state,
+            },
+        });
     },
     hideNotify: () => {
         set({ show: false });
     },
 }));
+
+export const { showNotify, hideNotify, configureNotify } = notifyStore.getState();
 
 export const Notify = (): ReactElement => {
     const { message, onClose, placement, state, actions, autoHideDuration } =

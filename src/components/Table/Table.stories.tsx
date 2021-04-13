@@ -45,6 +45,30 @@ Table.args = {
                     content: 'passwordstring',
                 },
             ],
+            [
+                {
+                    content: '3',
+                    align: 'right',
+                },
+                {
+                    content: 'Thaya',
+                },
+                {
+                    content: 'passwordstring',
+                },
+            ],
+            [
+                {
+                    content: '4',
+                    align: 'right',
+                },
+                {
+                    content: 'Immi',
+                },
+                {
+                    content: 'passwordstring',
+                },
+            ],
         ],
         collapsedContent: <h6>This is Collapsed Content</h6>,
     },

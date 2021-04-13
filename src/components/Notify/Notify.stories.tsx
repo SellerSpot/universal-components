@@ -1,12 +1,14 @@
 import { Button } from '@material-ui/core';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import { Notify as NotifyComponent, INotifyState, notifyStore } from './Notify';
+import { Notify as NotifyComponent, INotifyState, showNotify, configureNotify } from './Notify';
 
 const Template: Story<INotifyState> = () => {
-    const showNotify = notifyStore((state) => state.showNotify);
-    const notifyVisible = notifyStore((state) => state.show);
-    const hideNotify = notifyStore((state) => state.hideNotify);
+    configureNotify({
+        autoHideDuration: 5000,
+        placement: 'bottomLeft',
+        state: 'success',
+    });
     return (
         <div
             style={{
@@ -18,21 +20,13 @@ const Template: Story<INotifyState> = () => {
                 color={'primary'}
                 variant={'contained'}
                 onClick={() =>
-                    showNotify({
-                        message: 'Sample Notification Message',
-                        placement: 'bottomLeft',
-                        state: 'default',
-                        autoHideDuration: 3000,
+                    showNotify('This is Sample Notification', {
+                        state: 'error',
                     })
                 }
             >
                 Show Notify
             </Button>
-            {notifyVisible ? (
-                <Button color={'secondary'} variant={'outlined'} onClick={() => hideNotify()}>
-                    Hide Notify
-                </Button>
-            ) : null}
             <NotifyComponent />
         </div>
     );

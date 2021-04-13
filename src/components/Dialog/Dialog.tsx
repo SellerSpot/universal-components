@@ -9,7 +9,7 @@ import create from 'zustand';
 /**
  * Used to call the notify component from anywhere in the application
  */
-export const dialogStore = create<TDialogStore>((set) => ({
+const dialogStore = create<TDialogStore>((set) => ({
     show: false,
     dialogState: null,
     showDialog: (props) => {
@@ -19,6 +19,8 @@ export const dialogStore = create<TDialogStore>((set) => ({
         set({ show: false });
     },
 }));
+
+export const { hideDialog, showDialog } = dialogStore.getState();
 
 export const Dialog = (): ReactElement => {
     const {
