@@ -1,20 +1,22 @@
-import { TableCellProps } from '@material-ui/core';
+import { TableCellProps, TableProps } from '@material-ui/core';
+import { ReactNode } from 'react';
 
-interface ITableCell {
+export interface ITableCell {
     width?: TableCellProps['width'];
     padding?: TableCellProps['padding'];
     align?: TableCellProps['align'];
-    content?: TableCellProps['children'];
+    content?: ReactNode;
 }
 
-interface ITableBody {
+export interface ITableBody {
     rowData: ITableCell[][];
-    collapsedContent?: TableCellProps['children'];
-    collapseContent?: boolean;
+    collapsedContent?: ReactNode;
 }
 
 export interface ITableProps {
     stickyHeader?: boolean;
+    size?: TableProps['size'];
+    multiExpandableRows?: boolean;
     headers?: ITableCell[];
     body?: ITableBody;
 }

@@ -1,5 +1,11 @@
 import { CgFormatSlash } from 'react-icons/cg';
-import { MdCheckCircle, MdHome, MdKeyboardArrowRight, MdNotifications } from 'react-icons/md';
+import {
+    MdCheckCircle,
+    MdHome,
+    MdKeyboardArrowDown,
+    MdKeyboardArrowRight,
+    MdNotifications,
+} from 'react-icons/md';
 
 export const ICONS = {
     MdHome: MdHome,
@@ -7,4 +13,5 @@ export const ICONS = {
     MdNotifications: MdNotifications,
     MdCheckCircle: MdCheckCircle,
     MdKeyboardArrowRight: MdKeyboardArrowRight,
+    MdKeyboardArrowDown: MdKeyboardArrowDown,
 };

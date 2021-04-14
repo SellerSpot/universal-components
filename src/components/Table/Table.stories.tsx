@@ -9,6 +9,8 @@ Table.args = {
     headers: [
         {
             content: 'Sno',
+            align: 'right',
+            width: '5%',
         },
         {
             content: 'Name',
@@ -17,19 +19,59 @@ Table.args = {
             content: 'Password',
         },
     ],
-    rowData: [
-        [
-            {
-                content: '1',
-            },
-            {
-                content: 'Rohit',
-            },
-            {
-                content: 'passwordstring',
-            },
+    body: {
+        rowData: [
+            [
+                {
+                    content: '1',
+                    align: 'right',
+                },
+                {
+                    content: 'Rohit',
+                },
+                {
+                    content: 'passwordstring',
+                },
+            ],
+            [
+                {
+                    content: '2',
+                    align: 'right',
+                },
+                {
+                    content: 'Immi',
+                },
+                {
+                    content: 'passwordstring',
+                },
+            ],
+            [
+                {
+                    content: '3',
+                    align: 'right',
+                },
+                {
+                    content: 'Thaya',
+                },
+                {
+                    content: 'passwordstring',
+                },
+            ],
+            [
+                {
+                    content: '4',
+                    align: 'right',
+                },
+                {
+                    content: 'Immi',
+                },
+                {
+                    content: 'passwordstring',
+                },
+            ],
         ],
-    ],
+        collapsedContent: <h6>This is Collapsed Content</h6>,
+    },
 } as ITableProps;
 
 export default {

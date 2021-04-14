@@ -9,7 +9,7 @@ import create from 'zustand';
 /**
  * Used to call the notify component from anywhere in the application
  */
-export const dialogStore = create<TDialogStore>((set) => ({
+const dialogStore = create<TDialogStore>((set) => ({
     show: false,
     dialogState: null,
     showDialog: (props) => {
@@ -19,6 +19,8 @@ export const dialogStore = create<TDialogStore>((set) => ({
         set({ show: false });
     },
 }));
+
+export const { hideDialog, showDialog } = dialogStore.getState();
 
 export const Dialog = (): ReactElement => {
     const {
@@ -32,6 +34,7 @@ export const Dialog = (): ReactElement => {
         title,
         disableBackdropClick,
     } = dialogStore((state) => state.dialogState) || {};
+    const { actionsWrapper, contentWrapper, dialogWrapper, titleWrapper } = className ?? {};
 
     const showDialog = dialogStore((state) => state.show);
 
@@ -42,12 +45,12 @@ export const Dialog = (): ReactElement => {
             maxWidth={maxWidth}
             open={showDialog}
             disableBackdropClick={disableBackdropClick}
-            className={className?.dialogWrapper}
+            className={dialogWrapper}
             onClose={onClose}
         >
-            <DialogTitle className={className?.titleWrapper}>{title}</DialogTitle>
-            <DialogContent className={className?.contentWrapper}>{content}</DialogContent>
-            <DialogActions className={className?.actionsWrapper}>{actions}</DialogActions>
+            <DialogTitle className={titleWrapper}>{title}</DialogTitle>
+            <DialogContent className={contentWrapper}>{content}</DialogContent>
+            <DialogActions className={actionsWrapper}>{actions}</DialogActions>
         </MUIDialog>
     );
 };
