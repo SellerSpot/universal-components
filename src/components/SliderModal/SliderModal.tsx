@@ -44,7 +44,7 @@ export const SliderModal = (props: ISliderModalProps): ReactElement => {
                             colors={defaultColors}
                             fontSizes={defaultFontSizes}
                             icon={<ICONS.MdClose />}
-                            state="danger"
+                            theme="danger"
                             size="small"
                             onClick={onClose}
                         />

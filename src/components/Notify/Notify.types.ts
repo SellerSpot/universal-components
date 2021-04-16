@@ -11,7 +11,7 @@ export type TNotifyStore = {
      * Configure notify beforehand
      */
     configureNotify: (
-        props: Pick<INotifyState, 'placement' | 'state' | 'autoHideDuration'>,
+        props: Pick<INotifyState, 'placement' | 'theme' | 'autoHideDuration'>,
     ) => void;
     /**
      * Used to hide the notify on demand (from custom action or buttons)
@@ -41,7 +41,7 @@ export interface INotifyState {
      */
     actions?: ReactElement;
     /**
-     * Visual state of the notify component
+     * Visual theme of the notify component
      */
-    state?: 'default' | AlertProps['severity'];
+    theme?: 'default' | AlertProps['severity'];
 }

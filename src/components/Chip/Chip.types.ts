@@ -7,7 +7,7 @@ export interface IChipProps {
     /**
      * Different states such as success or danger or warning
      */
-    state?: keyof TMuiThemes;
+    theme?: keyof TMuiThemes;
     /**
      * Leading icon for the chip
      */

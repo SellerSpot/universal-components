@@ -6,12 +6,12 @@ import { IChipProps } from './Chip.types';
 export { IChipProps } from './Chip.types';
 
 export const Chip = (props: IChipProps): ReactElement => {
-    const { colors, fontSizes, label, leadingIcon, state } = props;
+    const { colors, fontSizes, label, leadingIcon, theme } = props;
     // holds the theme for the the component
     const chipTheme: Theme = getTheme({
         colors,
         fontSizes,
-        theme: state,
+        theme: theme,
     });
 
     return (

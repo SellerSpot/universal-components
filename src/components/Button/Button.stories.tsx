@@ -11,7 +11,7 @@ Button.args = {
     label: 'Notifications',
     variant: 'contained',
     size: 'small',
-    state: 'success',
+    theme: 'success',
     disabled: false,
     startIcon: <ICONS.MdNotifications />,
     colors: defaultColors,

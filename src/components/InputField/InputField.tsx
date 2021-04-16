@@ -31,7 +31,7 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
         required,
         selectTextOnClick,
         size,
-        state,
+        theme,
         suffix,
         type,
         value,
@@ -58,7 +58,7 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
     const textFieldTheme = getTheme({
         colors,
         fontSizes,
-        theme: state,
+        theme,
     });
 
     // holds the helperComponent for the textField
@@ -127,8 +127,8 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                     disabled={disabled}
                     FormHelperTextProps={{
                         className: cn({
-                            [styles.helperTextSuccess]: state === 'success',
-                            [styles.helperTextDanger]: state === 'danger',
+                            [styles.helperTextSuccess]: theme === 'success',
+                            [styles.helperTextDanger]: theme === 'danger',
                         }),
                     }}
                     inputProps={{
@@ -146,7 +146,7 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                         ),
                         endAdornment: <InputAdornment position={'end'}>{suffix}</InputAdornment>,
                     }}
-                    error={state === 'danger'}
+                    error={theme === 'danger'}
                     helperText={helperComponent}
                 />
             </ThemeProvider>

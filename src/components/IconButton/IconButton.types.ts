@@ -13,7 +13,7 @@ export interface IIconButtonProps {
     /**
      * Different states such as success or danger or warning
      */
-    state?: keyof TMuiThemes;
+    theme?: keyof TMuiThemes;
     disabled?: boolean;
     onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
     colors: IColors;

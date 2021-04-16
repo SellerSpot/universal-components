@@ -17,7 +17,7 @@ export interface IButtonProps {
     /**
      * Different states such as success or danger or warning
      */
-    state?: keyof TMuiThemes;
+    theme?: keyof TMuiThemes;
     disabled?: boolean;
     /** Icons before the label */
     startIcon?: ReactElement;

@@ -9,7 +9,7 @@ const Template: Story<IChipProps> = (args: IChipProps) => <ChipComponent {...arg
 export const Chip = Template.bind({});
 Chip.args = {
     label: 'Installed',
-    state: 'success',
+    theme: 'success',
     leadingIcon: <ICONS.MdCheckCircle />,
     colors: defaultColors,
     fontSizes: defaultFontSizes,

@@ -16,7 +16,7 @@ const Template: Story<ISliderModalProps> = () => {
             <Button
                 colors={defaultColors}
                 fontSizes={defaultFontSizes}
-                state={'primary'}
+                theme={'primary'}
                 variant={'contained'}
                 label={'Open Slider'}
                 onClick={() => setshowSlider(true)}
@@ -41,14 +41,14 @@ const Template: Story<ISliderModalProps> = () => {
                             colors={defaultColors}
                             fontSizes={defaultFontSizes}
                             variant={'outlined'}
-                            state={'danger'}
+                            theme={'danger'}
                         />
                         <Button
                             label={'Add Product'}
                             colors={defaultColors}
                             fontSizes={defaultFontSizes}
                             variant={'contained'}
-                            state={'primary'}
+                            theme={'primary'}
                         />
                     </div>
                 }

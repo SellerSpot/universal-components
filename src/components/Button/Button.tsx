@@ -15,7 +15,7 @@ export const Button = (props: IButtonProps): ReactElement => {
         onClick,
         size,
         startIcon,
-        state,
+        theme,
         type,
         variant,
     } = props;
@@ -23,7 +23,7 @@ export const Button = (props: IButtonProps): ReactElement => {
     const buttonTheme: Theme = getTheme({
         colors,
         fontSizes,
-        theme: state ?? 'auto',
+        theme: theme ?? 'auto',
     });
 
     return (

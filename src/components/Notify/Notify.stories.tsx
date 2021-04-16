@@ -7,7 +7,7 @@ const Template: Story<INotifyState> = () => {
     configureNotify({
         autoHideDuration: 5000,
         placement: 'bottomLeft',
-        state: 'success',
+        theme: 'success',
     });
     return (
         <div
@@ -21,7 +21,7 @@ const Template: Story<INotifyState> = () => {
                 variant={'contained'}
                 onClick={() =>
                     showNotify('This is Sample Notification', {
-                        state: 'error',
+                        theme: 'error',
                     })
                 }
             >
