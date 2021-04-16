@@ -10,7 +10,7 @@ export const IconButton = (props: IIconButtonProps): ReactElement => {
     const buttonTheme: Theme = getTheme({
         colors,
         fontSizes,
-        theme: state,
+        theme: state ?? 'auto',
     });
     return (
         <ThemeProvider theme={buttonTheme}>

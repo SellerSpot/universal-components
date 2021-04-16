@@ -23,7 +23,7 @@ export const Button = (props: IButtonProps): ReactElement => {
     const buttonTheme: Theme = getTheme({
         colors,
         fontSizes,
-        theme: state,
+        theme: state ?? 'auto',
     });
 
     return (

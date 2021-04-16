@@ -43,31 +43,29 @@
 // keyframes
 @keyframes fade-out {
     0% {
-        opacity: 1;
-        visibility: visible;
+        display: inherit;
+        opacity: inherit;
     }
     90% {
         opacity: 0;
-        visibility: visible;
     }
     100% {
+        display: none;
         opacity: 0;
-        visibility: hidden;
     }
 }
 
 @keyframes fade-in {
     0% {
+        display: none;
         opacity: 0;
-        visibility: visible;
     }
     10% {
         opacity: 0;
-        visibility: visible;
     }
     100% {
+        display: block;
         opacity: 1;
-        visibility: visible;
     }
 }
 

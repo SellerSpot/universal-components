@@ -1,6 +1,7 @@
 import { CgFormatSlash } from 'react-icons/cg';
 import {
     MdCheckCircle,
+    MdClose,
     MdHome,
     MdKeyboardArrowDown,
     MdKeyboardArrowRight,
@@ -14,4 +15,5 @@ export const ICONS = {
     MdCheckCircle: MdCheckCircle,
     MdKeyboardArrowRight: MdKeyboardArrowRight,
     MdKeyboardArrowDown: MdKeyboardArrowDown,
+    MdClose: MdClose,
 };

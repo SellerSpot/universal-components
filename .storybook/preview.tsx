@@ -12,7 +12,7 @@ export const decorators = [
     (Story: () => ReactElement) => (
         <BrowserRouter>
             <ThemeProvider colors={defaultColors} fontSizes={defaultFontSizes}>
-                <Story />
+                {Story()}
             </ThemeProvider>
         </BrowserRouter>
     ),
