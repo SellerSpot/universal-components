@@ -1,0 +1,27 @@
+.backdrop {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0;
+    transition: visibility 0s, opacity 5s ease;
+    visibility: hidden;
+
+    .sliderModal {
+        position: absolute;
+        right: 100%;
+        width: 50%;
+        height: 100%;
+        background-color: green;
+        transition: right 0.8s ease;
+    }
+
+    .sliderModalShow {
+        right: 0;
+    }
+}
+
+.backdropShow {
+    opacity: 0.4;
+    visibility: visible;
+}

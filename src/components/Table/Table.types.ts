@@ -6,6 +6,8 @@ export interface ITableCell {
     padding?: TableCellProps['padding'];
     align?: TableCellProps['align'];
     content?: ReactNode;
+    colSpan?: number;
+    rowSpan?: number;
 }
 
 export interface ITableBody {
