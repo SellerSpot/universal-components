@@ -76,10 +76,10 @@ export const Table = (props: ITableProps): ReactElement => {
 
     const CollapsableContentRow = (row: ITableCell[], rowIndex: number) => {
         // spanning the entire row (1 is for the cell with the expand icon)
-        const cellWidth = row.length + 1;
+        const totalTableWidth = row.length + 1;
         return (
             <MUITableRow>
-                <MUITableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={cellWidth}>
+                <MUITableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={totalTableWidth}>
                     <Collapse in={expandedRows.has(rowIndex)} unmountOnExit>
                         {collapsedContent}
                     </Collapse>
@@ -94,13 +94,15 @@ export const Table = (props: ITableProps): ReactElement => {
             <>
                 {isTableCollapsable ? CollapsableTableIcon(rowIndex) : null}
                 {row.map((cell, cellIndex) => {
-                    const { align, content, padding, width } = cell;
+                    const { align, content, padding, width, colSpan, rowSpan } = cell;
                     return (
                         <MUITableCell
                             key={'tableCell' + cellIndex}
                             align={align}
                             padding={padding}
                             width={width}
+                            colSpan={colSpan}
+                            rowSpan={rowSpan}
                         >
                             {content}
                         </MUITableCell>
