@@ -14,7 +14,7 @@
         "build:storybook": "build-storybook",
         "prettier": "prettier --write src",
         "lint-staged": "lint-staged",
-        "postinstall": "npm run husky:install",
+        "prepare": "npm run husky:install",
         "husky:install": "husky install",
         "husky:pre-commit": "npm run lint-staged"
     },
@@ -98,7 +98,7 @@
         "webpack-bundle-analyzer": "^4.4.0",
         "webpack-cli": "^4.2.0",
         "webpack-dev-server": "^3.11.0",
-        "webpack-shell-plugin-next": "^2.1.1",
+        "webpack-shell-plugin-next": "^1.2.0",
         "yalc": "*"
     },
     "dependencies": {

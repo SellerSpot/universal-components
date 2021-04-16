@@ -38,7 +38,7 @@ const webpackConfiguration = (env: {
                     test: /\.(ts|tsx)$/i,
                     loader: 'ts-loader',
                     options: {
-                        transpileOnly: true, // this generates .d.ts when it is false
+                        transpileOnly: false, // this generates .d.ts when it is false
                     },
                 },
                 {
@@ -115,7 +115,7 @@ const webpackConfiguration = (env: {
                   })
                 : new webpack.DefinePlugin({}),
         ],
-        devtool: 'source-map',
+        devtool: isProduction ? false : 'eval',
         watch: !isProduction,
     };
 };

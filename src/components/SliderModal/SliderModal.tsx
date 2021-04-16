@@ -9,7 +9,7 @@ export const SliderModal = (props: ISliderModalProps): ReactElement => {
 
     return (
         <div className={cn(styles.backdrop, { [styles.backdropShow]: show })}>
-            <div className={cn(styles.sliderModal, { [styles.sliderModalShow]: show })}></div>
+            {/* <div className={cn(styles.sliderModal, { [styles.sliderModalShow]: show })}></div> */}
         </div>
     );
 };
