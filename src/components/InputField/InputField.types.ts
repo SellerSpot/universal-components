@@ -45,6 +45,6 @@ export interface IInputFieldProps {
         content?: string;
         type?: 'loading' | 'success' | 'error' | 'warning' | 'none';
     };
-    colors: IColors;
-    fontSizes: IFontSizes;
+    colors?: IColors;
+    fontSizes?: IFontSizes;
 }

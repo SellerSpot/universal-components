@@ -16,6 +16,6 @@ export interface IIconButtonProps {
     theme?: keyof TMuiThemes;
     disabled?: boolean;
     onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-    colors: IColors;
-    fontSizes: IFontSizes;
+    colors?: IColors;
+    fontSizes?: IFontSizes;
 }

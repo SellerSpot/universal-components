@@ -19,9 +19,9 @@ Table.args = {
             content: 'Password',
         },
     ],
-    body: {
-        rowData: [
-            [
+    body: [
+        {
+            cells: [
                 {
                     content: '1',
                     align: 'right',
@@ -33,7 +33,20 @@ Table.args = {
                     content: 'passwordstring',
                 },
             ],
-            [
+            collapsedContent: (
+                <div
+                    style={{
+                        width: '100%',
+                        height: '100%',
+                        backgroundColor: 'red',
+                    }}
+                >
+                    This is Collapsed Content
+                </div>
+            ),
+        },
+        {
+            cells: [
                 {
                     content: '2',
                     align: 'right',
@@ -45,7 +58,10 @@ Table.args = {
                     content: 'passwordstring',
                 },
             ],
-            [
+            collapsedContent: <h6>This is Collapsed Content</h6>,
+        },
+        {
+            cells: [
                 {
                     content: '3',
                     align: 'right',
@@ -57,7 +73,10 @@ Table.args = {
                     content: 'passwordstring',
                 },
             ],
-            [
+            collapsedContent: <h6>This is Collapsed Content</h6>,
+        },
+        {
+            cells: [
                 {
                     content: '4',
                     align: 'right',
@@ -69,9 +88,9 @@ Table.args = {
                     content: 'passwordstring',
                 },
             ],
-        ],
-        collapsedContent: <h6>This is Collapsed Content</h6>,
-    },
+            collapsedContent: <h6>This is Collapsed Content</h6>,
+        },
+    ],
 } as ITableProps;
 
 export default {
