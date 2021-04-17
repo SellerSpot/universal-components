@@ -115,7 +115,7 @@ const webpackConfiguration = (env: {
                   })
                 : new webpack.DefinePlugin({}),
         ],
-        devtool: isProduction ? false : 'eval',
+        devtool: false,
         watch: !isProduction,
     };
 };

@@ -8,7 +8,7 @@ export interface IInputFieldProps {
     /**
      * Preset themes
      */
-    state?: keyof TMuiThemes;
+    theme?: keyof TMuiThemes;
     /**
      * Maximum value incase of numeric input
      */

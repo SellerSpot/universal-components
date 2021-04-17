@@ -14,4 +14,5 @@ export * from './Table/Table';
 export * from './ToolTip/ToolTip';
 export * from './Notify/Notify';
 export * from './SliderModal/SliderModal';
+export * from './Switch/Switch';
 export * from './ThemeProvider/ThemeProvider';

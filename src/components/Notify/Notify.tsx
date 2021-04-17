@@ -28,14 +28,14 @@ const notifyStore = create<TNotifyStore>((set, get) => ({
         });
     },
     configureNotify: (props) => {
-        const { autoHideDuration, placement, state } = props;
+        const { autoHideDuration, placement, theme } = props;
         const currentNotifyState = get().notifyState;
         set({
             notifyState: {
                 ...currentNotifyState,
                 autoHideDuration,
                 placement,
-                state,
+                theme,
             },
         });
     },
@@ -47,11 +47,11 @@ const notifyStore = create<TNotifyStore>((set, get) => ({
 export const { showNotify, hideNotify, configureNotify } = notifyStore.getState();
 
 export const Notify = (): ReactElement => {
-    const { message, onClose, placement, state, actions, autoHideDuration } =
-        notifyStore((state) => state.notifyState) || {};
+    const { message, onClose, placement, theme, actions, autoHideDuration } =
+        notifyStore((theme) => theme.notifyState) || {};
 
-    const showNotify = notifyStore((state) => state.show);
-    const onMUICloseNotify = notifyStore((state) => state.onMUICloseNotify);
+    const showNotify = notifyStore((theme) => theme.show);
+    const onMUICloseNotify = notifyStore((theme) => theme.onMUICloseNotify);
 
     // determining the placement
     let notifyPlacement: SnackbarProps['anchorOrigin'];
@@ -94,10 +94,10 @@ export const Notify = (): ReactElement => {
             break;
     }
 
-    // decides if state based content is required
-    const stateBasedContent =
-        state !== 'default' && !isUndefined(state) ? (
-            <Alert severity={state}>{message}</Alert>
+    // decides if theme based content is required
+    const themeBasedContent =
+        theme !== 'default' && !isUndefined(theme) ? (
+            <Alert severity={theme}>{message}</Alert>
         ) : null;
 
     // handles the onClose callback
@@ -115,7 +115,7 @@ export const Notify = (): ReactElement => {
             autoHideDuration={autoHideDuration}
             anchorOrigin={notifyPlacement}
         >
-            {stateBasedContent}
+            {themeBasedContent}
         </Snackbar>
     );
 };

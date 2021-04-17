@@ -5,12 +5,12 @@ import { IIconButtonProps } from './IconButton.types';
 export { IIconButtonProps } from './IconButton.types';
 
 export const IconButton = (props: IIconButtonProps): ReactElement => {
-    const { colors, fontSizes, className, disabled, icon, onClick, size, state, type } = props;
+    const { colors, fontSizes, className, disabled, icon, onClick, size, theme, type } = props;
     // holds the theme for the the component
     const buttonTheme: Theme = getTheme({
         colors,
         fontSizes,
-        theme: state,
+        theme: theme ?? 'auto',
     });
     return (
         <ThemeProvider theme={buttonTheme}>

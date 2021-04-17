@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "sourceMap": true,
+        "sourceMap": false,
         "noImplicitAny": true,
         "module": "CommonJS",
         "target": "ES5",
@@ -19,5 +19,5 @@
         "declarationDir": "./dist",
         "outDir": "./dist"
     },
-    "include": ["src", "webpack.config.ts", "componentTemplate"]
+    "include": ["src/**/*", "webpack.config.ts"]
 }
