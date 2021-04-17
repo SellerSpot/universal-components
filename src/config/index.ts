@@ -1,1 +1,1 @@
-export const sample = 'sample';
+export { initializeThemeConfig } from './initializeThemeConfig';

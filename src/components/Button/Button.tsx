@@ -2,9 +2,12 @@ import { Button as MUIButton, Theme, ThemeProvider } from '@material-ui/core';
 import { getTheme } from '../../theme/theme';
 import React, { ReactElement } from 'react';
 import { IButtonProps } from './Button.types';
+import { themeConfigState } from '../../config/initializeThemeConfig';
 export { IButtonProps } from './Button.types';
 
 export const Button = (props: IButtonProps): ReactElement => {
+    // getting default global theme data
+    const defaultConfigData = themeConfigState((state) => state.configData);
     const {
         colors,
         fontSizes,
@@ -21,8 +24,8 @@ export const Button = (props: IButtonProps): ReactElement => {
     } = props;
     // holds the theme for the the component
     const buttonTheme: Theme = getTheme({
-        colors,
-        fontSizes,
+        colors: colors ?? defaultConfigData.colors,
+        fontSizes: fontSizes ?? defaultConfigData.fontSizes,
         theme: theme ?? 'auto',
     });
 

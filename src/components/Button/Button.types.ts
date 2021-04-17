@@ -24,6 +24,6 @@ export interface IButtonProps {
     /** Icons after the label */
     endIcon?: ReactElement;
     onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-    fontSizes: IFontSizes;
-    colors: IColors;
+    fontSizes?: IFontSizes;
+    colors?: IColors;
 }

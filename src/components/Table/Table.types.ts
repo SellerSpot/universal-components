@@ -10,8 +10,8 @@ export interface ITableCell {
     rowSpan?: number;
 }
 
-export interface ITableBody {
-    rowData: ITableCell[][];
+export interface ITableRow {
+    cells: ITableCell[];
     collapsedContent?: ReactNode;
 }
 
@@ -20,5 +20,5 @@ export interface ITableProps {
     size?: TableProps['size'];
     multiExpandableRows?: boolean;
     headers?: ITableCell[];
-    body?: ITableBody;
+    body: ITableRow[];
 }

@@ -2,6 +2,7 @@ import React, { ReactElement, useEffect } from 'react';
 import { ThemeProvider as MUIThemeProvider } from '@material-ui/core';
 import { IColors, IFontSizes } from '../../theme/theme.types';
 import { getTheme, IGetThemeProps } from '../../theme/theme';
+import '../../styles/core.scss';
 
 export interface IThemeProviderProps {
     children: ReactElement | ReactElement[] | string | number;
