@@ -20,5 +20,5 @@ export interface ITableProps {
     size?: TableProps['size'];
     multiExpandableRows?: boolean;
     headers?: ITableCell[];
-    body?: ITableRow[];
+    body: ITableRow[];
 }

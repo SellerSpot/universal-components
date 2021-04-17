@@ -15,7 +15,8 @@ import {
 import { isUndefined } from 'lodash';
 import { ICONS } from '../../utilities/icons';
 import cn from 'classnames';
-export { ITableProps } from './Table.types';
+import { IconButton } from '../IconButton/IconButton';
+export { ITableProps, ITableCell, ITableRow } from './Table.types';
 
 // styling for the body row of table
 const customRowStyles = makeStyles({
@@ -32,7 +33,7 @@ export const Table = (props: ITableProps): ReactElement => {
     // state set to hold the expanded rows (if the rows can expand)
     const [expandedRows, setExpandedRows] = useState(new Set<number>());
     // determining if the table has collapsable content
-    const isTableCollapsable = body?.map((row) => {
+    const isTableCollapsable = body.map((row) => {
         if (!isUndefined(row.collapsedContent)) return true;
     });
     // getting custom classes from rowStyles
@@ -62,14 +63,18 @@ export const Table = (props: ITableProps): ReactElement => {
     // holds the rotating icon for the expandable table
     const CollapsableTableIcon = (rowIndex: number) => {
         return (
-            <MUITableCell key={'tableCollapsableIcon' + rowIndex} padding={'none'}>
+            <MUITableCell key={'tableCollapsableIcon' + rowIndex} padding={'checkbox'}>
                 <div
                     className={cn(styles.expandRowIcon, {
                         [styles.expandRowIconRotated]: expandedRows.has(rowIndex),
                     })}
-                    onClick={() => handleRowExpansionOrCollapsion(rowIndex)}
                 >
-                    <ICONS.MdKeyboardArrowDown size={'24px'} />
+                    <IconButton
+                        icon={<ICONS.MdKeyboardArrowDown />}
+                        theme={'auto'}
+                        size={'small'}
+                        onClick={() => handleRowExpansionOrCollapsion(rowIndex)}
+                    />
                 </div>
             </MUITableCell>
         );
@@ -140,7 +145,7 @@ export const Table = (props: ITableProps): ReactElement => {
     // contructs the header for the main table
     const tableHeader = (
         <MUITableRow>
-            {isTableCollapsable ? <MUITableCell padding={'checkbox'} /> : null}
+            {isTableCollapsable ? <MUITableCell /> : null}
             {headers.map((header, index) => {
                 return (
                     <MUITableCell
