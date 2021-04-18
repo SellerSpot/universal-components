@@ -43,14 +43,14 @@ export const BreadCrumbs = (props: IBreadCrumbsProps): ReactElement => {
                                                 key === crumbs.length - 1,
                                         })}
                                     >
-                                        <h6
+                                        <p
                                             className={cn(styles.breadCrumbsNodeText, {
                                                 [styles.currentBreadCrumbsNodeText]:
                                                     key === crumbs.length - 1,
                                             })}
                                         >
                                             {breadCrumb.title}
-                                        </h6>
+                                        </p>
                                     </div>
                                 )}
                             </div>

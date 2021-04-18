@@ -43,7 +43,7 @@ export const defaultFontSizes: IFontSizes = {
     h2: '24px',
     h3: '20px',
     h4: '18px',
-    h5: '16px',
+    h5: '15px',
     h6: '14px',
     p: '12px',
 };

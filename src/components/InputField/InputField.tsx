@@ -61,7 +61,7 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
     const textFieldTheme = getTheme({
         colors: colors ?? defaultConfigData.colors,
         fontSizes: fontSizes ?? defaultConfigData.fontSizes,
-        theme,
+        theme: theme ?? 'auto',
     });
 
     // holds the helperComponent for the textField

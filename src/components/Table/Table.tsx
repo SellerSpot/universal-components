@@ -33,8 +33,12 @@ export const Table = (props: ITableProps): ReactElement => {
     // state set to hold the expanded rows (if the rows can expand)
     const [expandedRows, setExpandedRows] = useState(new Set<number>());
     // determining if the table has collapsable content
-    const isTableCollapsable = body.map((row) => {
-        if (!isUndefined(row.collapsedContent)) return true;
+    let isTableCollapsable = false;
+    body.map((row) => {
+        if (!isUndefined(row.collapsedContent)) {
+            isTableCollapsable = true;
+            return;
+        }
     });
     // getting custom classes from rowStyles
     const classes = customRowStyles();
@@ -58,6 +62,20 @@ export const Table = (props: ITableProps): ReactElement => {
             }
         }
         setExpandedRows(expandedRowsLocal);
+    };
+
+    // handles click on table rows
+    const handleRowClick = (
+        event: React.MouseEvent<HTMLTableRowElement, MouseEvent>,
+        rowIndex: number,
+        onClick: ITableRow['onClick'],
+    ) => {
+        if (isTableCollapsable) {
+            handleRowExpansionOrCollapsion(rowIndex);
+        }
+        if (!isUndefined(onClick)) {
+            onClick(event);
+        }
     };
 
     // holds the rotating icon for the expandable table
@@ -86,21 +104,19 @@ export const Table = (props: ITableProps): ReactElement => {
         rowIndex: number,
     ) => {
         return (
-            <MUITableRow>
+            <MUITableRow key={'tableCollapsableRow' + rowIndex}>
                 <MUITableCell
                     style={{ paddingBottom: 0, paddingTop: 0 }}
                     colSpan={totalTableOfCells}
                 >
-                    <Collapse in={expandedRows.has(rowIndex)} unmountOnExit>
-                        {collapsedContent}
-                    </Collapse>
+                    <Collapse in={expandedRows.has(rowIndex)}>{collapsedContent}</Collapse>
                 </MUITableCell>
             </MUITableRow>
         );
     };
 
     // contructs the cells for the main table
-    const tableCell = (cell: ITableCell, cellIndex: number) => {
+    const TableCell = (cell: ITableCell, cellIndex: number) => {
         const { align, colSpan, content, padding, rowSpan, width } = cell;
         return (
             <MUITableCell
@@ -117,35 +133,36 @@ export const Table = (props: ITableProps): ReactElement => {
     };
 
     // contructs each row for the table
-    const tableRow = (row: ITableRow, rowIndex: number) => {
-        const { cells, collapsedContent } = row;
+    const TableRow = (row: ITableRow, rowIndex: number) => {
+        const { cells, collapsedContent, onClick } = row;
         return (
-            <>
+            <React.Fragment key={'rowFragment' + rowIndex}>
                 <MUITableRow
                     key={'tableRow' + rowIndex}
                     className={isTableCollapsable ? classes.root : null}
+                    onClick={(event) => handleRowClick(event, rowIndex, onClick)}
                 >
                     {isTableCollapsable ? CollapsableTableIcon(rowIndex) : null}
                     {cells.map((cell, cellIndex) => {
-                        return tableCell(cell, cellIndex);
+                        return TableCell(cell, cellIndex);
                     })}
                 </MUITableRow>
                 {isTableCollapsable
                     ? CollapsableContentRow(collapsedContent, cells.length + 1, rowIndex)
                     : null}
-            </>
+            </React.Fragment>
         );
     };
 
     // constructs the body for the table
     const tableBody = body.map((row, rowIndex) => {
-        return tableRow(row, rowIndex);
+        return TableRow(row, rowIndex);
     });
 
     // contructs the header for the main table
     const tableHeader = (
         <MUITableRow>
-            {isTableCollapsable ? <MUITableCell /> : null}
+            {isTableCollapsable ? <MUITableCell key={'specialTableHeader'} width={'10%'} /> : null}
             {headers.map((header, index) => {
                 return (
                     <MUITableCell

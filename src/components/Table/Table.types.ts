@@ -12,6 +12,7 @@ export interface ITableCell {
 
 export interface ITableRow {
     cells: ITableCell[];
+    onClick?: (event: React.MouseEvent<HTMLTableRowElement, MouseEvent>) => void;
     collapsedContent?: ReactNode;
 }
 

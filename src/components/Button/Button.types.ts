@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { TMuiThemes } from 'theme';
+import { TMuiThemes } from '../../theme/theme';
 import { IColors, IFontSizes } from '../../theme/theme.types';
 
 export interface IButtonProps {
