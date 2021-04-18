@@ -19,6 +19,5 @@
         "declarationDir": "./dist",
         "outDir": "./dist"
     },
-    "include": ["src/**/*"],
-    "exclude": ["webpack.config.ts"]
+    "include": ["src/**/*"]
 }
