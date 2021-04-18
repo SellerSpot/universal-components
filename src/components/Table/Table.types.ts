@@ -12,6 +12,7 @@ export interface ITableCell {
 
 export interface ITableRow {
     cells: ITableCell[];
+    onClick?: (event: React.MouseEvent<HTMLTableRowElement, MouseEvent>) => void;
     collapsedContent?: ReactNode;
 }
 
@@ -19,6 +20,7 @@ export interface ITableProps {
     stickyHeader?: boolean;
     size?: TableProps['size'];
     multiExpandableRows?: boolean;
+    hasExpandableRows?: boolean;
     headers?: ITableCell[];
     body: ITableRow[];
 }

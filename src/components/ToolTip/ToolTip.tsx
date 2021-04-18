@@ -32,8 +32,9 @@ export const ToolTip = (props: IToolTipProps): ReactElement => {
                     tooltip: {
                         padding: '10px',
                         fontSize: '12px',
-                        color: colors.foregroundLight,
-                        backgroundColor: colors.backgroundDark,
+                        color: colors?.foregroundLight ?? defaultConfigData.colors.foregroundLight,
+                        backgroundColor:
+                            colors?.backgroundDark ?? defaultConfigData.colors.backgroundDark,
                         fontWeight: 500,
                     },
                 },
