@@ -20,6 +20,7 @@ export interface ITableProps {
     stickyHeader?: boolean;
     size?: TableProps['size'];
     multiExpandableRows?: boolean;
+    hasExpandableRows?: boolean;
     headers?: ITableCell[];
     body: ITableRow[];
 }

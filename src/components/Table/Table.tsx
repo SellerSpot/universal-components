@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactNode, useState } from 'react';
+import React, { ReactElement, ReactNode, useState, Fragment } from 'react';
 import styles from './Table.module.scss';
 import { ITableCell, ITableProps, ITableRow } from './Table.types';
 import {
@@ -29,17 +29,9 @@ const customRowStyles = makeStyles({
 });
 
 export const Table = (props: ITableProps): ReactElement => {
-    const { body, headers, stickyHeader, size, multiExpandableRows } = props;
+    const { body, headers, stickyHeader, size, multiExpandableRows, hasExpandableRows } = props;
     // state set to hold the expanded rows (if the rows can expand)
     const [expandedRows, setExpandedRows] = useState(new Set<number>());
-    // determining if the table has collapsable content
-    let isTableCollapsable = false;
-    body.map((row) => {
-        if (!isUndefined(row.collapsedContent)) {
-            isTableCollapsable = true;
-            return;
-        }
-    });
     // getting custom classes from rowStyles
     const classes = customRowStyles();
 
@@ -70,7 +62,7 @@ export const Table = (props: ITableProps): ReactElement => {
         rowIndex: number,
         onClick: ITableRow['onClick'],
     ) => {
-        if (isTableCollapsable) {
+        if (hasExpandableRows) {
             handleRowExpansionOrCollapsion(rowIndex);
         }
         if (!isUndefined(onClick)) {
@@ -79,9 +71,10 @@ export const Table = (props: ITableProps): ReactElement => {
     };
 
     // holds the rotating icon for the expandable table
-    const CollapsableTableIcon = (rowIndex: number) => {
+    const CollapsableTableIcon = (props: { rowIndex: number }) => {
+        const { rowIndex } = props;
         return (
-            <MUITableCell key={'tableCollapsableIcon' + rowIndex} padding={'checkbox'}>
+            <MUITableCell padding={'checkbox'}>
                 <div
                     className={cn(styles.expandRowIcon, {
                         [styles.expandRowIconRotated]: expandedRows.has(rowIndex),
@@ -98,17 +91,15 @@ export const Table = (props: ITableProps): ReactElement => {
         );
     };
 
-    const CollapsableContentRow = (
-        collapsedContent: ReactNode,
-        totalTableOfCells: number,
-        rowIndex: number,
-    ) => {
+    const CollapsableContentRow = (props: {
+        collapsedContent: ReactNode;
+        totalTableWidth: number;
+        rowIndex: number;
+    }) => {
+        const { collapsedContent, rowIndex, totalTableWidth } = props;
         return (
-            <MUITableRow key={'tableCollapsableRow' + rowIndex}>
-                <MUITableCell
-                    style={{ paddingBottom: 0, paddingTop: 0 }}
-                    colSpan={totalTableOfCells}
-                >
+            <MUITableRow>
+                <MUITableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={totalTableWidth}>
                     <Collapse in={expandedRows.has(rowIndex)}>{collapsedContent}</Collapse>
                 </MUITableCell>
             </MUITableRow>
@@ -116,11 +107,11 @@ export const Table = (props: ITableProps): ReactElement => {
     };
 
     // contructs the cells for the main table
-    const TableCell = (cell: ITableCell, cellIndex: number) => {
+    const TableCell = (props: { cell: ITableCell }) => {
+        const { cell } = props;
         const { align, colSpan, content, padding, rowSpan, width } = cell;
         return (
             <MUITableCell
-                key={'tableCell' + cellIndex}
                 align={align}
                 padding={padding}
                 width={width}
@@ -133,56 +124,78 @@ export const Table = (props: ITableProps): ReactElement => {
     };
 
     // contructs each row for the table
-    const TableRow = (row: ITableRow, rowIndex: number) => {
+    const TableRow = (props: { row: ITableRow; rowIndex: number }) => {
+        const { row, rowIndex } = props;
         const { cells, collapsedContent, onClick } = row;
+        // extra cell count to compensate for the expand row icon cell
+        const compensationExtraCell = hasExpandableRows ? 1 : 0;
+        const totalTableWidth = cells.length + compensationExtraCell;
+        const tableRowOnClickHandler: ITableRow['onClick'] = (event) =>
+            handleRowClick(event, rowIndex, onClick);
+        const defaultRowClassName = hasExpandableRows ? classes.root : '';
         return (
-            <React.Fragment key={'rowFragment' + rowIndex}>
-                <MUITableRow
-                    key={'tableRow' + rowIndex}
-                    className={isTableCollapsable ? classes.root : null}
-                    onClick={(event) => handleRowClick(event, rowIndex, onClick)}
-                >
-                    {isTableCollapsable ? CollapsableTableIcon(rowIndex) : null}
+            <>
+                <MUITableRow className={defaultRowClassName} onClick={tableRowOnClickHandler}>
+                    {hasExpandableRows && <CollapsableTableIcon rowIndex={rowIndex} />}
                     {cells.map((cell, cellIndex) => {
-                        return TableCell(cell, cellIndex);
+                        return <TableCell key={cellIndex} cell={cell} />;
                     })}
                 </MUITableRow>
-                {isTableCollapsable
-                    ? CollapsableContentRow(collapsedContent, cells.length + 1, rowIndex)
-                    : null}
-            </React.Fragment>
+                {CollapsableContentRow({
+                    collapsedContent: collapsedContent,
+                    totalTableWidth: totalTableWidth,
+                    rowIndex: rowIndex,
+                })}
+            </>
         );
     };
 
     // constructs the body for the table
-    const tableBody = body.map((row, rowIndex) => {
-        return TableRow(row, rowIndex);
-    });
+    const TableBody = (): ReactElement => {
+        return (
+            <>
+                {body.map((row, rowIndex) => {
+                    return (
+                        <Fragment key={rowIndex}>
+                            {TableRow({
+                                row: row,
+                                rowIndex: rowIndex,
+                            })}
+                        </Fragment>
+                    );
+                })}
+            </>
+        );
+    };
 
     // contructs the header for the main table
-    const tableHeader = (
-        <MUITableRow>
-            {isTableCollapsable ? <MUITableCell key={'specialTableHeader'} width={'10%'} /> : null}
-            {headers.map((header, index) => {
-                return (
-                    <MUITableCell
-                        key={'tableHeader' + index}
-                        padding={header.padding}
-                        align={header.align}
-                        width={header.width}
-                    >
-                        {header.content}
-                    </MUITableCell>
-                );
-            })}
-        </MUITableRow>
-    );
+    const TableHeader = () => {
+        return (
+            <MUITableRow>
+                {hasExpandableRows && <MUITableCell width={'10%'} />}
+                {headers.map((header, index) => {
+                    return (
+                        <MUITableCell
+                            key={'tableHeader' + index}
+                            padding={header.padding}
+                            align={header.align}
+                            width={header.width}
+                        >
+                            {header.content}
+                        </MUITableCell>
+                    );
+                })}
+            </MUITableRow>
+        );
+    };
 
     return (
         <TableContainer component={Paper}>
             <MUITable stickyHeader={stickyHeader} size={size}>
-                <MUITableHead>{tableHeader}</MUITableHead>
-                <MUITableBody>{tableBody}</MUITableBody>
+                <MUITableHead>
+                    <TableHeader />
+                </MUITableHead>
+                <MUITableBody>{TableBody()}</MUITableBody>
             </MUITable>
         </TableContainer>
     );

@@ -6,6 +6,7 @@ const Template: Story<ITableProps> = (args: ITableProps) => <TableComponent {...
 
 export const Table = Template.bind({});
 Table.args = {
+    hasExpandableRows: true,
     headers: [
         {
             content: 'Sno',
