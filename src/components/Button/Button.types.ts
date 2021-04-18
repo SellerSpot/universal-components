@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { TMuiThemes } from '../../theme/theme';
 import { IColors, IFontSizes } from '../../theme/theme.types';
 
@@ -26,4 +26,11 @@ export interface IButtonProps {
     onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
     fontSizes?: IFontSizes;
     colors?: IColors;
+    /**style and classes */
+    style?: Partial<{
+        wrapper: React.CSSProperties;
+    }>;
+    className?: Partial<{
+        wrapper: string;
+    }>;
 }

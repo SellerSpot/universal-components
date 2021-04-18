@@ -21,6 +21,8 @@ export const Button = (props: IButtonProps): ReactElement => {
         theme,
         type,
         variant,
+        className,
+        style,
     } = props;
     // holds the theme for the the component
     const buttonTheme: Theme = getTheme({
@@ -30,20 +32,22 @@ export const Button = (props: IButtonProps): ReactElement => {
     });
 
     return (
-        <ThemeProvider theme={buttonTheme}>
-            <MUIButton
-                variant={variant}
-                color="primary"
-                size={size}
-                fullWidth={fullWidth}
-                type={type}
-                disabled={disabled}
-                onClick={onClick}
-                startIcon={startIcon}
-                endIcon={endIcon}
-            >
-                {label}
-            </MUIButton>
-        </ThemeProvider>
+        <div className={className?.wrapper} style={style?.wrapper}>
+            <ThemeProvider theme={buttonTheme}>
+                <MUIButton
+                    variant={variant}
+                    color="primary"
+                    size={size}
+                    fullWidth={fullWidth}
+                    type={type}
+                    disabled={disabled}
+                    onClick={onClick}
+                    startIcon={startIcon}
+                    endIcon={endIcon}
+                >
+                    {label}
+                </MUIButton>
+            </ThemeProvider>
+        </div>
     );
 };

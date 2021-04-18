@@ -149,5 +149,10 @@ export const getTheme = (props: IGetThemeProps): Theme => {
                 secondary: customThemeProperties.text.secondary,
             },
         },
+        typography: {
+            button: {
+                textTransform: 'none',
+            },
+        },
     });
 };

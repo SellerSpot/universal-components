@@ -21,8 +21,8 @@ export interface IInputFieldProps {
      * Maximum length for text
      */
     maxLength?: number;
-    suffix?: ReactElement;
-    prefix?: ReactElement;
+    suffix?: ReactElement | string | number;
+    prefix?: ReactElement | string | number;
     size?: 'medium' | 'small';
     fullWidth?: boolean;
     /**
