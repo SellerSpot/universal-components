@@ -1,6 +1,6 @@
 {
     "name": "@sellerspot/universal-components",
-    "version": "1.16.5",
+    "version": "1.16.6",
     "description": "Universal Components for sellerspot eco-system.",
     "main": "dist/index.js",
     "scripts": {
