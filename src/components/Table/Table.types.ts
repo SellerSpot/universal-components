@@ -1,5 +1,5 @@
 import { TableCellProps, TableProps } from '@material-ui/core';
-import { ReactNode } from 'react';
+import { ReactElement, ReactNode } from 'react';
 
 export interface ITableCell {
     width?: TableCellProps['width'];
@@ -13,7 +13,7 @@ export interface ITableCell {
 export interface ITableRow {
     cells: ITableCell[];
     onClick?: (event: React.MouseEvent<HTMLTableRowElement, MouseEvent>) => void;
-    collapsedContent?: ReactNode;
+    collapsedContent?: (handleRowExpansion: (rowIndex: number) => void) => ReactElement;
 }
 
 export interface ITableProps {

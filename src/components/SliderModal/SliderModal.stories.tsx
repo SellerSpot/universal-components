@@ -18,7 +18,7 @@ const Template: Story<ISliderModalProps> = () => {
                 fontSizes={defaultFontSizes}
                 theme={'primary'}
                 variant={'contained'}
-                label={'Open Slider'}
+                label={'OPEN SLIDER'}
                 onClick={() => setshowSlider(true)}
             />
             <SliderModalComponent

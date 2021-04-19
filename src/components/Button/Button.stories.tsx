@@ -8,7 +8,7 @@ const Template: Story<IButtonProps> = (args: IButtonProps) => <ButtonComponent {
 
 export const Button = Template.bind({});
 Button.args = {
-    label: 'Notifications',
+    label: 'NOTIFICATIONS',
     variant: 'contained',
     size: 'small',
     theme: 'success',

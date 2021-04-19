@@ -3,15 +3,41 @@ import { ThemeProvider as MUIThemeProvider } from '@material-ui/core';
 import { IColors, IFontSizes } from '../../theme/theme.types';
 import { getTheme, IGetThemeProps } from '../../theme/theme';
 import '../../styles/core.scss';
+import { defaultColors, defaultFontSizes } from '../../theme/storybookTheme';
+import create from 'zustand';
 
 export interface IThemeProviderProps {
-    children: ReactElement | ReactElement[] | string | number;
+    children?: ReactElement | ReactElement[] | string | number;
     colors: IColors;
     fontSizes: IFontSizes;
 }
 
+interface IGlobalThemeConfig {
+    colors: IColors;
+    fontSizes: IFontSizes;
+}
+
+type TThemeConfigState = {
+    configData: IGlobalThemeConfig;
+    initializeThemeConfig: (data: IGlobalThemeConfig) => void;
+};
+// holds the global shared themeConfig used instead of passing colors
+// and font sizes when each and every component is used in host app
+export const useThemeConfigState = create<TThemeConfigState>((set) => ({
+    configData: {
+        colors: defaultColors,
+        fontSizes: defaultFontSizes,
+    },
+    initializeThemeConfig: (data) => {
+        set(() => ({
+            configData: data,
+        }));
+    },
+}));
+
 export function ThemeProvider(props: IThemeProviderProps): ReactElement {
     const { children, colors, fontSizes } = props;
+    const initializeThemeConfig = useThemeConfigState((state) => state.initializeThemeConfig);
     // applying the theme from store to dom
     useEffect(() => {
         Object.keys(colors).forEach((key) => {
@@ -27,6 +53,12 @@ export function ThemeProvider(props: IThemeProviderProps): ReactElement {
             );
         });
     }, [colors, fontSizes]);
+
+    // pushing the passed theme data into the local store
+    initializeThemeConfig({
+        colors,
+        fontSizes,
+    });
 
     // constructing props early so that the jsx is clean
     const getThemeProps: IGetThemeProps = {

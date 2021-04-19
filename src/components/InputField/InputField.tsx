@@ -7,15 +7,15 @@ import {
 import cn from 'classnames';
 import { isNull, isUndefined } from 'lodash';
 import React, { forwardRef, ReactElement, RefObject, useEffect, useRef } from 'react';
-import { themeConfigState } from '../../config/initializeThemeConfig';
 import { getTheme } from '../../theme/theme';
+import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
 import styles from './InputField.module.scss';
 import { IInputFieldProps } from './InputField.types';
 export { IInputFieldProps } from './InputField.types';
 
 const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): ReactElement => {
     // getting default global theme data
-    const defaultConfigData = themeConfigState((state) => state.configData);
+    const defaultConfigData = useThemeConfigState((state) => state.configData);
     const {
         autoFocus,
         direction,

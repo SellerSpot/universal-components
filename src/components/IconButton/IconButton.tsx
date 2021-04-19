@@ -1,14 +1,14 @@
 import { IconButton as MUIIconButton, Theme, ThemeProvider } from '@material-ui/core';
 import React, { ReactElement } from 'react';
-import { themeConfigState } from '../../config/initializeThemeConfig';
 import { getTheme } from '../../theme/theme';
+import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
 import { IIconButtonProps } from './IconButton.types';
 export { IIconButtonProps } from './IconButton.types';
 
 export const IconButton = (props: IIconButtonProps): ReactElement => {
     const { colors, fontSizes, className, disabled, icon, onClick, size, theme, type } = props;
     // getting default global theme data
-    const defaultConfigData = themeConfigState((state) => state.configData);
+    const defaultConfigData = useThemeConfigState((state) => state.configData);
     // holds the theme for the the component
     const buttonTheme: Theme = getTheme({
         colors: colors ?? defaultConfigData.colors,
