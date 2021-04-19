@@ -3,6 +3,7 @@ import { ThemeProvider as MUIThemeProvider } from '@material-ui/core';
 import { IColors, IFontSizes } from '../../theme/theme.types';
 import { getTheme, IGetThemeProps } from '../../theme/theme';
 import '../../styles/core.scss';
+import { initializeThemeConfig } from '../../config/initializeThemeConfig';
 
 export interface IThemeProviderProps {
     children: ReactElement | ReactElement[] | string | number;
@@ -27,6 +28,12 @@ export function ThemeProvider(props: IThemeProviderProps): ReactElement {
             );
         });
     }, [colors, fontSizes]);
+
+    // pushing the passed theme data into the local store
+    initializeThemeConfig({
+        colors,
+        fontSizes,
+    });
 
     // constructing props early so that the jsx is clean
     const getThemeProps: IGetThemeProps = {
