@@ -5,7 +5,7 @@ import React, { ReactElement } from 'react';
 export interface IAlertProps {
     type: AlertProps['severity'];
     title?: string;
-    children: ReactElement | string;
+    children?: ReactElement | string;
 }
 
 export const Alert = (props: IAlertProps): ReactElement => {

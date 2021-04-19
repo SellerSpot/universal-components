@@ -7,7 +7,7 @@ import { defaultColors, defaultFontSizes } from '../../theme/storybookTheme';
 import create from 'zustand';
 
 export interface IThemeProviderProps {
-    children: ReactElement | ReactElement[] | string | number;
+    children?: ReactElement | ReactElement[] | string | number;
     colors: IColors;
     fontSizes: IFontSizes;
 }
@@ -37,7 +37,7 @@ export const useThemeConfigState = create<TThemeConfigState>((set) => ({
 
 export function ThemeProvider(props: IThemeProviderProps): ReactElement {
     const { children, colors, fontSizes } = props;
-    const { initializeThemeConfig } = useThemeConfigState();
+    const initializeThemeConfig = useThemeConfigState((state) => state.initializeThemeConfig);
     // applying the theme from store to dom
     useEffect(() => {
         Object.keys(colors).forEach((key) => {

@@ -18,4 +18,5 @@ export * from './Notify/Notify';
 export * from './SliderModal/SliderModal';
 export * from './Switch/Switch';
 export * from './Trademark/Trademark';
+export * from './Skeleton/Skeleton';
 export { ThemeProvider, IThemeProviderProps } from './ThemeProvider/ThemeProvider';

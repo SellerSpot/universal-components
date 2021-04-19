@@ -4,7 +4,7 @@ import { getTheme, IColors, IFontSizes } from '../../theme';
 import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
 
 export interface IToolTipProps {
-    children: TooltipProps['children'];
+    children?: TooltipProps['children'];
     placement?: TooltipProps['placement'];
     colors?: IColors;
     fontSizes?: IFontSizes;
