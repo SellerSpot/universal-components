@@ -6,8 +6,10 @@ import {
 } from '@material-ui/core';
 import cn from 'classnames';
 import { isNull, isUndefined } from 'lodash';
-import React, { forwardRef, ReactElement, RefObject, useEffect, useRef } from 'react';
+import React, { forwardRef, ReactElement, RefObject, useEffect, useRef, useState } from 'react';
 import { getTheme } from '../../theme/theme';
+import { ICONS } from '../../utilities/icons';
+import { IconButton } from '../IconButton/IconButton';
 import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
 import styles from './InputField.module.scss';
 import { IInputFieldProps } from './InputField.types';
@@ -42,6 +44,8 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
         fontSizes,
     } = props;
 
+    // internal type state to use incase the field type is password and the suffix is not defined
+    const [internalTypeState, setinternalTypeState] = useState<'text' | 'password'>('password');
     // internal ref object to manage autoFocus prop enforcing in case
     // and external ref is not provided
     const internalRef = useRef<HTMLInputElement>(null);
@@ -103,6 +107,52 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
         }
     }
 
+    // handle inputField onFocus
+    const onFocusHandler = (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        if (selectTextOnClick) {
+            event.target.select();
+        }
+        if (!isUndefined(onFocus)) {
+            onFocus(event);
+        }
+    };
+
+    // constructs the suffix component for the inputField
+    const suffixComponent = (): ReactElement | string | number => {
+        const handleSpecialSuffixOnClick = () => {
+            if (internalTypeState === 'password') {
+                setinternalTypeState('text');
+            } else {
+                setinternalTypeState('password');
+            }
+        };
+
+        if (type === 'password' && !suffix) {
+            return (
+                <IconButton
+                    icon={
+                        internalTypeState === 'password' ? (
+                            <ICONS.MdVisibilityOff />
+                        ) : (
+                            <ICONS.MdVisibility />
+                        )
+                    }
+                    onClick={handleSpecialSuffixOnClick}
+                    size={'small'}
+                />
+            );
+        }
+        return suffix;
+    };
+
+    // returns the type of the inputField
+    const inputFieldType = (): IInputFieldProps['type'] => {
+        if (type === 'password' && !suffix) {
+            return internalTypeState;
+        }
+        return type;
+    };
+
     return (
         <div className={cn({ [styles.inputFieldBottomSpace]: !helperMessage?.enabled })}>
             <ThemeProvider theme={textFieldTheme}>
@@ -111,17 +161,10 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                     variant={'outlined'}
                     onChange={onChange}
                     onBlur={onBlur}
-                    onFocus={(event) => {
-                        if (selectTextOnClick) {
-                            event.target.select();
-                        }
-                        if (!isUndefined(onFocus)) {
-                            onFocus(event);
-                        }
-                    }}
+                    onFocus={onFocusHandler}
                     value={value}
                     label={label}
-                    type={type}
+                    type={inputFieldType()}
                     size={size}
                     fullWidth={fullWidth}
                     placeholder={placeHolder}
@@ -147,7 +190,9 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                         startAdornment: (
                             <InputAdornment position={'start'}>{prefix}</InputAdornment>
                         ),
-                        endAdornment: <InputAdornment position={'end'}>{suffix}</InputAdornment>,
+                        endAdornment: (
+                            <InputAdornment position={'end'}>{suffixComponent()}</InputAdornment>
+                        ),
                     }}
                     error={theme === 'danger'}
                     helperText={helperComponent}

@@ -23,7 +23,7 @@ InputField.args = {
     type: 'text',
     direction: 'ltr',
     // prefix: <h6>₹</h6>,
-    suffix: <h6>.sellerspot.in</h6>,
+    // suffix: <h6>.sellerspot.in</h6>,
     placeHolder: 'Placeholder text',
     theme: 'primary',
     required: false,
