@@ -1,10 +1,16 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
+import { Button } from '../Button/Button';
 import { Table as TableComponent, ITableProps } from './Table';
 
 const Template: Story<ITableProps> = (args: ITableProps) => <TableComponent {...args} />;
 
 export const Table = Template.bind({});
+
+const CollapsedComponent = (handleRowExpansion: (rowIndex: number) => void) => {
+    return <Button onClick={() => handleRowExpansion(3)} label={'Click To Close'} />;
+};
+
 Table.args = {
     hasExpandableRows: true,
     headers: [
@@ -89,7 +95,9 @@ Table.args = {
                     content: 'passwordstring',
                 },
             ],
-            collapsedContent: <h6>This is Collapsed Content</h6>,
+            collapsedContent: (handleRowExpansion) => {
+                return CollapsedComponent(handleRowExpansion);
+            },
         },
     ],
 } as ITableProps;
