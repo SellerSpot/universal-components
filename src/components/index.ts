@@ -18,4 +18,4 @@ export * from './Notify/Notify';
 export * from './SliderModal/SliderModal';
 export * from './Switch/Switch';
 export * from './Trademark/Trademark';
-export * from './ThemeProvider/ThemeProvider';
+export { ThemeProvider, IThemeProviderProps } from './ThemeProvider/ThemeProvider';
