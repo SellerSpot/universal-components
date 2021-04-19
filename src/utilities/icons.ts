@@ -6,6 +6,8 @@ import {
     MdKeyboardArrowDown,
     MdKeyboardArrowRight,
     MdNotifications,
+    MdVisibility,
+    MdVisibilityOff,
 } from 'react-icons/md';
 
 export const ICONS = {
@@ -16,4 +18,6 @@ export const ICONS = {
     MdKeyboardArrowRight: MdKeyboardArrowRight,
     MdKeyboardArrowDown: MdKeyboardArrowDown,
     MdClose: MdClose,
+    MdVisibility: MdVisibility,
+    MdVisibilityOff: MdVisibilityOff,
 };
