@@ -2,22 +2,17 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "open-terminal",
+            "label": "Release New Version",
             "type": "shell",
-            "command": "start ./terminal.bat",
-            "group": "none",
+            "command": "git pull upstream master && npm run build:storybook && npm run build && git push origin master",
             "presentation": {
+                "echo": true,
+                "reveal": "always",
                 "focus": false,
-                "reveal": "never",
-                "panel": "new",
-                "clear": true,
-                "showReuseMessage": false,
-                "revealProblems": "never"
-            },
-            "runOptions": {
-                "runOn": "default"
-            },
-            "problemMatcher": []
+                "panel": "dedicated",
+                "showReuseMessage": true,
+                "clear": true
+            }
         }
     ]
 }

@@ -19,6 +19,8 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
     // getting default global theme data
     const defaultConfigData = useThemeConfigState((state) => state.configData);
     const {
+        id,
+        name,
         autoFocus,
         direction,
         disabled,
@@ -132,9 +134,9 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                 <IconButton
                     icon={
                         internalTypeState === 'password' ? (
-                            <ICONS.MdVisibilityOff />
-                        ) : (
                             <ICONS.MdVisibility />
+                        ) : (
+                            <ICONS.MdVisibilityOff />
                         )
                     }
                     onClick={handleSpecialSuffixOnClick}
@@ -157,6 +159,8 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
         <div className={cn({ [styles.inputFieldBottomSpace]: !helperMessage?.enabled })}>
             <ThemeProvider theme={textFieldTheme}>
                 <MUITextField
+                    id={id}
+                    name={name}
                     inputRef={ref ?? internalRef}
                     variant={'outlined'}
                     onChange={onChange}
