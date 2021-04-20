@@ -191,10 +191,10 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                         maxLength: maxLength,
                     }}
                     InputProps={{
-                        startAdornment: (
+                        startAdornment: prefix && (
                             <InputAdornment position={'start'}>{prefix}</InputAdornment>
                         ),
-                        endAdornment: (
+                        endAdornment: suffixComponent() && (
                             <InputAdornment position={'end'}>{suffixComponent()}</InputAdornment>
                         ),
                     }}

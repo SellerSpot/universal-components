@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { Fragment, ReactElement } from 'react';
 import {
     TableBody as MUITableBody,
     TableRow as MUITableRow,
@@ -51,7 +51,7 @@ export const TableBody = (props: ITableBodyProps): ReactElement => {
                 const totalTableWidth = cells.length + compensationExtraCell;
                 const shouldShowExpandableDiv = collapsedContent && hasExpandableRows;
                 return (
-                    <>
+                    <Fragment key={rowIndex}>
                         <MUITableRow className={mainRowClassName} onClick={onClick}>
                             {hasExpandableRows &&
                                 CollapsableTableIcon({
@@ -70,7 +70,7 @@ export const TableBody = (props: ITableBodyProps): ReactElement => {
                                 rowIndex,
                                 expandedRowsSet,
                             })}
-                    </>
+                    </Fragment>
                 );
             })}
         </MUITableBody>
