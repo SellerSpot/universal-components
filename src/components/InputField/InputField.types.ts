@@ -32,7 +32,7 @@ export interface IInputFieldProps {
      */
     direction?: 'ltr' | 'rtl';
     placeHolder?: string;
-    onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+    onChange?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     onBlur?: (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     onFocus?: (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
     /**

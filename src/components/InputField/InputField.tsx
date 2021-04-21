@@ -119,6 +119,27 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
         }
     };
 
+    // handles inputField onChange
+    const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        // checking for conditions requiiring controlled input
+        if ((type === 'number' && minNumericValue) || maxNumericValue) {
+            let value = +event.target.value;
+            console.log(value);
+
+            // checking minimum condition
+            if (!isUndefined(minNumericValue) && value < minNumericValue) {
+                value = minNumericValue;
+            }
+            // checking maximum condition
+            if (!isUndefined(maxNumericValue) && value > maxNumericValue) {
+                value = maxNumericValue;
+            }
+            // pushing controlled value into the event
+            event.target.value = value + '';
+        }
+        if (onchange) onChange(event);
+    };
+
     // constructs the suffix component for the inputField
     const suffixComponent = (): ReactElement | string | number => {
         const handleSpecialSuffixOnClick = () => {
@@ -163,7 +184,7 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                     name={name}
                     inputRef={ref ?? internalRef}
                     variant={'outlined'}
-                    onChange={onChange}
+                    onChange={onChangeHandler}
                     onBlur={onBlur}
                     onFocus={onFocusHandler}
                     value={value}
@@ -186,8 +207,6 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                             textAlign: direction === 'rtl' ? 'right' : 'left',
                             fontWeight: 500,
                         },
-                        max: maxNumericValue,
-                        min: minNumericValue,
                         maxLength: maxLength,
                     }}
                     InputProps={{
