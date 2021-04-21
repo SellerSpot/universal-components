@@ -20,14 +20,16 @@ InputField.args = {
     label: 'Input Field',
     autoFocus: false,
     disabled: false,
-    type: 'text',
+    type: 'number',
+    minNumericValue: 0,
+    maxNumericValue: 100,
     direction: 'ltr',
     // prefix: <h6>₹</h6>,
     // suffix: <h6>.sellerspot.in</h6>,
     placeHolder: 'Placeholder text',
     theme: 'primary',
     required: false,
-    value: 'Prefilled Value',
+
     selectTextOnClick: true,
     helperMessage: {
         enabled: true,
