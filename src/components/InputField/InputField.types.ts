@@ -2,6 +2,8 @@ import { ReactElement, ChangeEvent } from 'react';
 import { IColors, IFontSizes, TMuiThemes } from '../../theme';
 
 export interface IInputFieldProps {
+    id?: string;
+    name?: string;
     value?: string;
     label?: string;
     type?: 'text' | 'password' | 'number' | 'email';

@@ -11,13 +11,13 @@ import {
 } from 'react-icons/md';
 
 export const ICONS = {
-    MdHome: MdHome,
-    CgFormatSlash: CgFormatSlash,
-    MdNotifications: MdNotifications,
-    MdCheckCircle: MdCheckCircle,
-    MdKeyboardArrowRight: MdKeyboardArrowRight,
-    MdKeyboardArrowDown: MdKeyboardArrowDown,
-    MdClose: MdClose,
-    MdVisibility: MdVisibility,
-    MdVisibilityOff: MdVisibilityOff,
+    MdHome,
+    CgFormatSlash,
+    MdNotifications,
+    MdCheckCircle,
+    MdKeyboardArrowRight,
+    MdKeyboardArrowDown,
+    MdClose,
+    MdVisibility,
+    MdVisibilityOff,
 };
