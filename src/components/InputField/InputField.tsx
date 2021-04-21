@@ -137,7 +137,7 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
             // pushing controlled value into the event
             event.target.value = value + '';
         }
-        if (onchange) onChange(event);
+        if (onChange) onChange(event);
     };
 
     // constructs the suffix component for the inputField
