@@ -1,7 +1,6 @@
 import { DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
 import React, { ReactElement } from 'react';
-import style from './Dialog.module.scss';
-import { IDialogProps, TDialogStore } from './Dialog.types';
+import { TDialogStore } from './Dialog.types';
 export { IDialogProps } from './Dialog.types';
 import { Dialog as MUIDialog } from '@material-ui/core';
 import create from 'zustand';

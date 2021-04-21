@@ -1,9 +1,4 @@
-import {
-    CircularProgress,
-    InputAdornment,
-    TextField as MUITextField,
-    ThemeProvider,
-} from '@material-ui/core';
+import { InputAdornment, TextField as MUITextField, ThemeProvider } from '@material-ui/core';
 import cn from 'classnames';
 import { isNull, isUndefined } from 'lodash';
 import React, { forwardRef, ReactElement, RefObject, useEffect, useRef, useState } from 'react';

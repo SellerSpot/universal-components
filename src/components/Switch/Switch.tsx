@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react';
-import styles from './Switch.module.scss';
 import { ISwitchProps } from './Switch.types';
 export { ISwitchProps } from './Switch.types';
 import { Switch as MUISwitch, Theme, ThemeProvider } from '@material-ui/core';
