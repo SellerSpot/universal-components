@@ -78,17 +78,16 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
         switch (helperMessage?.type) {
             case 'loading':
                 helperComponent = (
-                    <div className={styles.loadingHelperTextWrapper}>
-                        <CircularProgress color={'primary'} size={'10px'} />
-                        <p className={cn(styles.helperText, styles.loadingHelperContentText)}>
+                    <span className={styles.loadingHelperTextWrapper}>
+                        <span className={cn(styles.helperText, styles.loadingHelperContentText)}>
                             {helperMessage?.content}
-                        </p>
-                    </div>
+                        </span>
+                    </span>
                 );
                 break;
             default:
                 helperComponent = (
-                    <p
+                    <span
                         className={cn(
                             styles.helperText,
                             {
@@ -103,7 +102,7 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                         )}
                     >
                         {helperMessage?.content}
-                    </p>
+                    </span>
                 );
                 break;
         }
@@ -122,20 +121,22 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
     // handles inputField onChange
     const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         // checking for conditions requiiring controlled input
-        if ((type === 'number' && minNumericValue) || maxNumericValue) {
-            let value = +event.target.value;
-            console.log(value);
+        if (type === 'number') {
+            if (!isUndefined(maxNumericValue) || !isUndefined(minNumericValue)) {
+                let value = +event.target.value;
+                console.log(value);
 
-            // checking minimum condition
-            if (!isUndefined(minNumericValue) && value < minNumericValue) {
-                value = minNumericValue;
+                // checking minimum condition
+                if (!isUndefined(minNumericValue) && value <= minNumericValue) {
+                    value = minNumericValue;
+                }
+                // checking maximum condition
+                if (!isUndefined(maxNumericValue) && value >= maxNumericValue) {
+                    value = maxNumericValue;
+                }
+                // pushing controlled value into the event
+                event.target.value = value + '';
             }
-            // checking maximum condition
-            if (!isUndefined(maxNumericValue) && value > maxNumericValue) {
-                value = maxNumericValue;
-            }
-            // pushing controlled value into the event
-            event.target.value = value + '';
         }
         if (onChange) onChange(event);
     };
