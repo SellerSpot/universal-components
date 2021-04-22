@@ -13,7 +13,15 @@ export interface ITableCell {
 export interface ITableRow {
     cells: ITableCell[];
     onClick?: (event: React.MouseEvent<HTMLTableRowElement, MouseEvent>) => void;
-    collapsedContent?: (handleRowExpansion: (rowIndex: number) => void) => ReactElement;
+    collapsedContent?: ReactElement;
+}
+
+export interface ITableBodyProps {
+    bodyData: ITableRow[];
+    mainRowClassName: string;
+    hasExpandableRows: boolean;
+    expandedRowsSet: Set<number>;
+    handleRowExpansionCallback: (rowIndex: number) => void;
 }
 
 export interface ITableProps {
@@ -22,5 +30,5 @@ export interface ITableProps {
     multiExpandableRows?: boolean;
     hasExpandableRows?: boolean;
     headers?: ITableCell[];
-    body: ITableRow[];
+    body: (props: { toggleRowExpansion: (rowIndex: number) => void }) => ITableRow[];
 }
