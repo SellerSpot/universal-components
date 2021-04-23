@@ -8,6 +8,7 @@ import {
     MdNotifications,
     MdVisibility,
     MdVisibilityOff,
+    MdCheck,
 } from 'react-icons/md';
 
 export const ICONS = {
@@ -20,4 +21,5 @@ export const ICONS = {
     MdClose,
     MdVisibility,
     MdVisibilityOff,
+    MdCheck,
 };

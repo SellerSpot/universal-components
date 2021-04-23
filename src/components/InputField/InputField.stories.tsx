@@ -29,8 +29,8 @@ InputField.args = {
     placeHolder: 'Placeholder text',
     theme: 'primary',
     required: false,
-
     selectTextOnClick: true,
+    fullWidth: true,
     helperMessage: {
         enabled: true,
         content: 'Loading data...',
