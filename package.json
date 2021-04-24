@@ -16,7 +16,8 @@
         "lint-staged": "lint-staged",
         "prepare": "npm run husky:install",
         "husky:install": "husky install",
-        "husky:pre-commit": "npm run lint-staged"
+        "stylelint:fix": "npx stylelint \"**/*.scss\" --fix",
+        "husky:pre-commit": "npm run lint-staged && npm run stylelint:fix"
     },
     "repository": {
         "type": "git",
@@ -75,7 +76,6 @@
         "eslint-plugin-prettier": "^3.3.0",
         "eslint-plugin-react": "^7.21.5",
         "eslint-plugin-react-hooks": "^4.2.0",
-        "eslint-plugin-unused-imports": "^1.1.1",
         "file-loader": "^6.2.0",
         "fork-ts-checker-webpack-plugin": "^6.0.7",
         "html-webpack-plugin": "^5.3.1",
