@@ -17,7 +17,7 @@
         "prepare": "npm run husky:install",
         "husky:install": "husky install",
         "stylelint:fix": "npx stylelint \"**/*.scss\" --fix",
-        "husky:pre-commit": "npm run lint-staged && npm run stylelint:fix"
+        "husky:pre-commit": "npm run lint-staged"
     },
     "repository": {
         "type": "git",
@@ -42,8 +42,9 @@
     ],
     "license": "ISC",
     "lint-staged": {
-        "*.{ts,tsx,less}": [
+        "*.{ts,tsx,scss}": [
             "prettier --write",
+            "stylelint --fix",
             "git add"
         ],
         "*.{ts,tsx}": "eslint --fix --max-warnings 0"
