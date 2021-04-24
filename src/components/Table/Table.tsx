@@ -1,10 +1,9 @@
-import { Table as MUITable, Paper, TableContainer } from '@material-ui/core';
 import React, { ReactElement, useState } from 'react';
-
-import { TableBody } from './components/TableBody';
+import { Table as MUITable, Paper, TableContainer } from '@material-ui/core';
 import { TableHeader } from './components/TableHeader';
-import { TableService } from './Table.service';
+import { TableBody } from './components/TableBody';
 import { ITableProps } from './Table.types';
+import { TableService } from './Table.service';
 
 export { ITableCell, ITableProps, ITableRow } from './Table.types';
 
@@ -16,6 +15,7 @@ export const Table = (props: ITableProps): ReactElement => {
         size,
         multiExpandableRows,
         hasExpandableRows,
+        unmountOnCollapse,
     } = props;
     // state set to hold the expanded rows (if the rows can expand)
     const [expandedRowsSet, setExpandedRowsSet] = useState(new Set<number>());
@@ -37,6 +37,7 @@ export const Table = (props: ITableProps): ReactElement => {
             <MUITable stickyHeader={stickyHeader} size={size}>
                 <TableHeader hasExpandableRows={hasExpandableRows} headerCells={headers} />
                 <TableBody
+                    unmountOnCollapse={unmountOnCollapse}
                     bodyData={bodyData({ toggleRowExpansion: handleRowExpansionCallback })}
                     expandedRowsSet={expandedRowsSet}
                     handleRowExpansionCallback={handleRowExpansionCallback}

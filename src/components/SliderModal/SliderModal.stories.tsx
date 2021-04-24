@@ -1,7 +1,7 @@
-import { Button } from '../Button/Button';
-import { Meta, Story } from '@storybook/react/types-6-0';
 import React, { useState } from 'react';
+import { Meta, Story } from '@storybook/react/types-6-0';
 import { SliderModal as SliderModalComponent, ISliderModalProps } from './SliderModal';
+import { Button } from '../Button/Button';
 import { defaultColors, defaultFontSizes } from '../../theme/storybookTheme';
 
 const Template: Story<ISliderModalProps> = () => {

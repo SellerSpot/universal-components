@@ -1,6 +1,6 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
-import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import React from 'react';
+import { Meta, Story } from '@storybook/react/types-6-0';
 import { BreadCrumbs as BreadCrumbsComponent, IBreadCrumbsProps } from './BreadCrumbs';
 
 const Template: Story = (args: IBreadCrumbsProps) => (

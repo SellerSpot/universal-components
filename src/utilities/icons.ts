@@ -1,4 +1,3 @@
-import { CgFormatSlash } from 'react-icons/cg';
 import {
     MdCheckCircle,
     MdClose,
@@ -10,6 +9,7 @@ import {
     MdVisibilityOff,
     MdCheck,
 } from 'react-icons/md';
+import { CgFormatSlash } from 'react-icons/cg';
 
 export const ICONS = {
     MdHome,

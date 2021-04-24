@@ -1,7 +1,7 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import { Avatar } from '../Avatar/Avatar';
+import { Meta, Story } from '@storybook/react/types-6-0';
 import { Skeleton as SkeletonComponent, ISkeletonProps } from './Skeleton';
+import { Avatar } from '../Avatar/Avatar';
 
 const Template: Story<ISkeletonProps> = (args: ISkeletonProps) => (
     <>

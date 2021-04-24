@@ -1,8 +1,9 @@
-import { Chip as MUIChip, Theme, ThemeProvider } from '@material-ui/core';
 import React, { ReactElement } from 'react';
-import { getTheme } from '../../theme/theme';
-import styles from './Chip.module.scss';
+import { Chip as MUIChip, Theme, ThemeProvider } from '@material-ui/core';
 import { IChipProps } from './Chip.types';
+import styles from './Chip.module.scss';
+import { getTheme } from '../../theme/theme';
+
 export { IChipProps } from './Chip.types';
 
 export const Chip = (props: IChipProps): ReactElement => {

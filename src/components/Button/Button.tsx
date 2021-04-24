@@ -1,8 +1,11 @@
-import { Button as MUIButton, Theme, ThemeProvider } from '@material-ui/core';
-import { getTheme } from '../../theme/theme';
 import React, { ReactElement } from 'react';
+import cn from 'classnames';
+import { Button as MUIButton, Theme, ThemeProvider } from '@material-ui/core';
 import { IButtonProps } from './Button.types';
+import styles from './Button.module.scss';
 import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
+import { getTheme } from '../../theme/theme';
+
 export { IButtonProps } from './Button.types';
 
 export const Button = (props: IButtonProps): ReactElement => {
@@ -32,7 +35,10 @@ export const Button = (props: IButtonProps): ReactElement => {
     });
 
     return (
-        <div className={className?.wrapper} style={style?.wrapper}>
+        <div
+            className={cn(className?.wrapper, { [styles.fullWidthButton]: fullWidth })}
+            style={style?.wrapper}
+        >
             <ThemeProvider theme={buttonTheme}>
                 <MUIButton
                     variant={variant}

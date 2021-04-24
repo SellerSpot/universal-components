@@ -16,6 +16,7 @@
         "lint-staged": "lint-staged",
         "prepare": "npm run husky:install",
         "husky:install": "husky install",
+        "stylelint:fix": "npx stylelint \"**/*.scss\" --fix",
         "husky:pre-commit": "npm run lint-staged"
     },
     "repository": {
@@ -41,8 +42,9 @@
     ],
     "license": "ISC",
     "lint-staged": {
-        "*.{ts,tsx,less}": [
+        "*.{ts,tsx,scss}": [
             "prettier --write",
+            "stylelint --fix",
             "git add"
         ],
         "*.{ts,tsx}": "eslint --fix --max-warnings 0"
@@ -75,7 +77,6 @@
         "eslint-plugin-prettier": "^3.3.0",
         "eslint-plugin-react": "^7.21.5",
         "eslint-plugin-react-hooks": "^4.2.0",
-        "eslint-plugin-unused-imports": "^1.1.1",
         "file-loader": "^6.2.0",
         "fork-ts-checker-webpack-plugin": "^6.0.7",
         "html-webpack-plugin": "^5.3.1",

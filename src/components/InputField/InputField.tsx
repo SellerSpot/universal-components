@@ -1,18 +1,19 @@
+import React, { forwardRef, ReactElement, RefObject, useEffect, useRef, useState } from 'react';
+import { isNull, isUndefined } from 'lodash';
+import cn from 'classnames';
 import {
     InputAdornment,
     TextField as MUITextField,
     ThemeProvider,
     CircularProgress,
 } from '@material-ui/core';
-import cn from 'classnames';
-import { isNull, isUndefined } from 'lodash';
-import React, { forwardRef, ReactElement, RefObject, useEffect, useRef, useState } from 'react';
-import { getTheme } from '../../theme/theme';
-import { ICONS } from '../../utilities/icons';
-import { IconButton } from '../IconButton/IconButton';
-import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
-import styles from './InputField.module.scss';
 import { IInputFieldProps } from './InputField.types';
+import styles from './InputField.module.scss';
+import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
+import { IconButton } from '../IconButton/IconButton';
+import { ICONS } from '../../utilities/icons';
+import { getTheme } from '../../theme/theme';
+
 export { IInputFieldProps } from './InputField.types';
 
 const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): ReactElement => {
@@ -44,6 +45,7 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
         value,
         colors,
         fontSizes,
+        disableAutoComplete,
     } = props;
 
     // internal type state to use incase the field type is password and the suffix is not defined
@@ -189,6 +191,8 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
         return type;
     };
 
+    const autoComplete = disableAutoComplete ? 'none' : 'on';
+
     return (
         <div className={cn({ [styles.inputFieldBottomSpace]: !helperMessage?.enabled })}>
             <ThemeProvider theme={textFieldTheme}>
@@ -199,6 +203,7 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                     variant={'outlined'}
                     onChange={onChangeHandler}
                     onBlur={onBlur}
+                    autoComplete={autoComplete}
                     onFocus={onFocusHandler}
                     value={value}
                     label={label}
@@ -220,9 +225,11 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                             textAlign: direction === 'rtl' ? 'right' : 'left',
                             fontWeight: 500,
                         },
+                        autocomplete: autoComplete,
                         maxLength: maxLength,
                     }}
                     InputProps={{
+                        autoComplete: autoComplete,
                         startAdornment: prefix && (
                             <InputAdornment position={'start'}>{prefix}</InputAdornment>
                         ),

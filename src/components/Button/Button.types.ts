@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
-import { TMuiThemes } from '../../theme/theme';
 import { IColors, IFontSizes } from '../../theme/theme.types';
+import { TMuiThemes } from '../../theme/theme';
 
 export interface IButtonProps {
     /**

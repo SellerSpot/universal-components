@@ -1,7 +1,7 @@
-import React, { ReactElement } from 'react';
 import { IComponentEvents } from 'typings/common.types';
-import { ICONS } from '../../utilities/icons';
+import React, { ReactElement } from 'react';
 import styles from './ExpandWorkspaceMenuButton.module.scss';
+import { ICONS } from '../../utilities/icons';
 
 export interface IExpandWorkspaceMenuButtonProps {
     onClick?: IComponentEvents['onClick'];

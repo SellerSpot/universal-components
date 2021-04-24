@@ -1,5 +1,5 @@
-import { DialogProps } from '@material-ui/core';
 import { ReactElement } from 'react';
+import { DialogProps } from '@material-ui/core';
 
 export type TDialogStore = {
     show: boolean;

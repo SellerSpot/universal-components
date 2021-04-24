@@ -1,5 +1,5 @@
-import { AlertProps } from '@material-ui/lab';
 import { ReactElement } from 'react';
+import { AlertProps } from '@material-ui/lab';
 
 export type TNotifyStore = {
     show: boolean;

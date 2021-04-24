@@ -1,11 +1,12 @@
 import React, { ReactElement } from 'react';
-import styles from './SliderModal.module.scss';
-import { ISliderModalProps } from './SliderModal.types';
-export { ISliderModalProps } from './SliderModal.types';
 import cn from 'classnames';
+import { ISliderModalProps } from './SliderModal.types';
+import styles from './SliderModal.module.scss';
+import { IconButton } from '../IconButton/IconButton';
 import { ICONS } from '../../utilities/icons';
 import { defaultColors, defaultFontSizes } from '../../theme/storybookTheme';
-import { IconButton } from '../IconButton/IconButton';
+
+export { ISliderModalProps } from './SliderModal.types';
 
 export const SliderModal = (props: ISliderModalProps): ReactElement => {
     const {

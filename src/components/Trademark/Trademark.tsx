@@ -1,6 +1,6 @@
-import { Logo, LogoText } from '../../assets/svgs/svgs';
 import React, { ReactElement } from 'react';
 import styles from './Trademark.module.scss';
+import { Logo, LogoText } from '../../assets/svgs/svgs';
 
 export interface ITradeMarkProps {
     url?: string;

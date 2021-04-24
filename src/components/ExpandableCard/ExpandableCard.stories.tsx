@@ -1,5 +1,5 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
+import { Meta, Story } from '@storybook/react/types-6-0';
 import { ExpandableCard as ExpandableCardComponent, IExpandableCardProps } from './ExpandableCard';
 
 const Template: Story<IExpandableCardProps> = (args: IExpandableCardProps) => (

@@ -1,13 +1,12 @@
+import React, { Fragment, ReactElement } from 'react';
 import {
     TableBody as MUITableBody,
     TableCell as MUITableCell,
     TableRow as MUITableRow,
 } from '@material-ui/core';
-import React, { Fragment, ReactElement } from 'react';
-
-import { ITableBodyProps, ITableCell } from '../Table.types';
-import { CollapsableContentRow } from './CollapsableContentRow';
 import { CollapsableTableIcon } from './CollapsableTableIcon';
+import { CollapsableContentRow } from './CollapsableContentRow';
+import { ITableBodyProps, ITableCell } from '../Table.types';
 
 // contructs the cells for the main table
 const TableCell = (props: { cell: ITableCell }) => {
@@ -32,6 +31,7 @@ export const TableBody = (props: ITableBodyProps): ReactElement => {
         mainRowClassName,
         hasExpandableRows,
         expandedRowsSet,
+        unmountOnCollapse,
         handleRowExpansionCallback,
     } = props;
     // compensation cell to make up for the collapse table icon
@@ -63,6 +63,7 @@ export const TableBody = (props: ITableBodyProps): ReactElement => {
                         </MUITableRow>
                         {shouldShowExpandableDiv && (
                             <CollapsableContentRow
+                                unmountOnCollapse={unmountOnCollapse}
                                 collapsedContent={collapsedContent}
                                 expandedRowsSet={expandedRowsSet}
                                 rowIndex={rowIndex}

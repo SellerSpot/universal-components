@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
+import cn from 'classnames';
 import { TableCell as MUITableCell } from '@material-ui/core';
 import styles from '../Table.module.scss';
-import cn from 'classnames';
 import { IconButton } from '../../IconButton/IconButton';
 import { ICONS } from '../../../utilities/icons';
 
