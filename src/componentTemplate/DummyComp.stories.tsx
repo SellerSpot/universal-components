@@ -1,13 +1,13 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
-import React from 'react';
-import { DummyComp as DummyCompComponent, IDummyCompProps } from './DummyComp';
+// import { Story } from '@storybook/react/types-6-0';
+// import React from 'react';
+// import { DummyComp as DummyCompComponent, IDummyCompProps } from './DummyComp';
 
-const Template: Story<IDummyCompProps> = (args: IDummyCompProps) => (
-    <DummyCompComponent {...args} />
-);
+// const Template: Story<IDummyCompProps> = (args: IDummyCompProps) => (
+//     <DummyCompComponent {...args} />
+// );
 
-export const DummyComp = Template.bind({});
-DummyComp.args = {} as IDummyCompProps;
+// export const DummyComp = Template.bind({});
+// DummyComp.args = {} as IDummyCompProps;
 
 // export default {
 //     title: 'Components/Atoms',

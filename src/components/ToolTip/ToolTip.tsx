@@ -30,7 +30,7 @@ export const ToolTip = (props: IToolTipProps): ReactElement => {
             overrides: {
                 MuiTooltip: {
                     tooltip: {
-                        padding: '10px',
+                        padding: '5px',
                         fontSize: '12px',
                         color: colors?.foregroundLight ?? defaultConfigData.colors.foregroundLight,
                         backgroundColor:

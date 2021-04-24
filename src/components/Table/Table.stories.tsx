@@ -26,7 +26,7 @@ Table.args = {
             content: 'Password',
         },
     ],
-    body: [
+    body: ({ toggleRowExpansion }) => [
         {
             cells: [
                 {
@@ -95,9 +95,8 @@ Table.args = {
                     content: 'passwordstring',
                 },
             ],
-            collapsedContent: (handleRowExpansion) => {
-                return CollapsedComponent(handleRowExpansion);
-            },
+            // onClick={(event)=>toggleRowExpansion(3)}
+            collapsedContent: CollapsedComponent(toggleRowExpansion),
         },
     ],
 } as ITableProps;

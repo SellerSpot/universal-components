@@ -8,11 +8,11 @@ import { ICONS } from '../../../utilities/icons';
 export interface ICollapsableTableIconProps {
     expandedRowsSet: Set<number>;
     rowIndex: number;
-    toggleRowExpansion: (rowIndex: number) => void;
+    handleRowExpansionCallback: (rowIndex: number) => void;
 }
 
 export const CollapsableTableIcon = (props: ICollapsableTableIconProps): ReactElement => {
-    const { expandedRowsSet, rowIndex, toggleRowExpansion } = props;
+    const { expandedRowsSet, rowIndex, handleRowExpansionCallback } = props;
     return (
         <MUITableCell padding={'checkbox'}>
             <div
@@ -24,7 +24,7 @@ export const CollapsableTableIcon = (props: ICollapsableTableIconProps): ReactEl
                     icon={<ICONS.MdKeyboardArrowDown />}
                     theme={'auto'}
                     size={'small'}
-                    onClick={() => toggleRowExpansion(rowIndex)}
+                    onClick={() => handleRowExpansionCallback(rowIndex)}
                 />
             </div>
         </MUITableCell>

@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react';
-import styles from './Skeleton.module.scss';
 import { ISkeletonProps } from './Skeleton.types';
 export { ISkeletonProps } from './Skeleton.types';
 import { Skeleton as MUISkeleton } from '@material-ui/lab';

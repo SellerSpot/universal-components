@@ -33,7 +33,7 @@ export interface IGetThemeProps {
 }
 
 export const getTheme = (props: IGetThemeProps): Theme => {
-    const { colors, fontSizes, theme } = props;
+    const { colors, theme } = props;
 
     // common MUI theme object (containes common properties)
     const commonMUITheme = <Theme>{

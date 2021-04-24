@@ -1,8 +1,8 @@
 import {
-    CircularProgress,
     InputAdornment,
     TextField as MUITextField,
     ThemeProvider,
+    CircularProgress,
 } from '@material-ui/core';
 import cn from 'classnames';
 import { isNull, isUndefined } from 'lodash';
@@ -70,43 +70,55 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
         theme: theme ?? 'auto',
     });
 
-    // holds the helperComponent for the textField
-    let helperComponent: ReactElement = null;
+    const HelperComponent = () => {
+        const HelperIcon = (): ReactElement => {
+            if (helperMessage.type === 'loading') {
+                return (
+                    <CircularProgress
+                        className={styles.loadingIndicator}
+                        size={'10px'}
+                        style={{
+                            color: defaultConfigData.colors.primary,
+                        }}
+                    />
+                );
+            } else if (helperMessage.type === 'success') {
+                return <ICONS.MdCheck className={styles.successIcon} size={'16px'} />;
+            }
+            return null;
+        };
 
-    // compiling helperMessageComponent
-    if (helperMessage?.enabled) {
-        switch (helperMessage?.type) {
-            case 'loading':
-                helperComponent = (
-                    <span className={styles.loadingHelperTextWrapper}>
-                        <span className={cn(styles.helperText, styles.loadingHelperContentText)}>
-                            {helperMessage?.content}
-                        </span>
-                    </span>
-                );
-                break;
-            default:
-                helperComponent = (
-                    <span
-                        className={cn(
-                            styles.helperText,
-                            {
-                                [styles.helperTextDanger]: helperMessage?.type === 'error',
-                            },
-                            {
-                                [styles.helperTextSuccess]: helperMessage?.type === 'success',
-                            },
-                            {
-                                [styles.helperTextWarning]: helperMessage?.type === 'warning',
-                            },
-                        )}
-                    >
-                        {helperMessage?.content}
-                    </span>
-                );
-                break;
-        }
-    }
+        const HelperTextContent = (): ReactElement => {
+            return (
+                <div
+                    className={cn(
+                        styles.helperText,
+                        {
+                            [styles.helperTextDanger]: helperMessage?.type === 'error',
+                        },
+                        {
+                            [styles.helperTextSuccess]: helperMessage?.type === 'success',
+                        },
+                        {
+                            [styles.helperTextWarning]: helperMessage?.type === 'warning',
+                        },
+                        {
+                            [styles.helperTextLoading]: helperMessage?.type === 'loading',
+                        },
+                    )}
+                >
+                    {helperMessage?.content}
+                </div>
+            );
+        };
+
+        return (
+            <div className={styles.helperComponent}>
+                <HelperIcon />
+                <HelperTextContent />
+            </div>
+        );
+    };
 
     // handle inputField onFocus
     const onFocusHandler = (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -219,8 +231,9 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                         ),
                     }}
                     error={theme === 'danger'}
-                    helperText={helperComponent}
+                    // helperText={helperComponent}
                 />
+                {helperMessage?.enabled ? <HelperComponent /> : null}
             </ThemeProvider>
         </div>
     );

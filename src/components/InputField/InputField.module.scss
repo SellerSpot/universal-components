@@ -2,30 +2,44 @@
     margin-bottom: 22px;
 }
 
+.helperComponent {
+    height: 22px;
+    min-height: 22px;
+    max-height: 22px;
+    margin: 0 5px;
+    @include flex(center, flex-start, $gap: 5px);
+}
+
+.loadingIndicator {
+    color: $primaryDark-color;
+}
+
+.successIcon {
+    color: $success-color;
+}
+
 .helperText {
     display: -webkit-box;
     overflow: hidden;
     max-width: 100%;
     -webkit-box-orient: vertical;
     color: $foregroundPrimary-color;
+    font-size: $p-fontsize;
     -webkit-line-clamp: 1;
     text-overflow: ellipsis;
 }
 .helperTextSuccess {
-    color: $success-color !important;
+    color: $success-color;
 }
 
 .helperTextDanger {
-    color: $danger-color !important;
+    color: $danger-color;
 }
 
 .helperTextWarning {
-    color: $warning-color !important;
+    color: $warning-color;
 }
 
-.loadingHelperTextWrapper {
-    @include flex(center, flex-start, $gap: 8px);
-    .loadingHelperContentText {
-        color: $primary-color;
-    }
+.helperTextLoading {
+    color: $primary-color;
 }

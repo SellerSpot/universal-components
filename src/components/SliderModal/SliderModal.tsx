@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement } from 'react';
 import styles from './SliderModal.module.scss';
 import { ISliderModalProps } from './SliderModal.types';
 export { ISliderModalProps } from './SliderModal.types';

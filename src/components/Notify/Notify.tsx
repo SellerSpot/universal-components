@@ -2,8 +2,7 @@ import { Snackbar, SnackbarProps } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import { isUndefined } from 'lodash';
 import React, { ReactElement } from 'react';
-import style from './Notify.module.scss';
-import { INotifyState, TNotifyStore } from './Notify.types';
+import { TNotifyStore } from './Notify.types';
 export { INotifyState } from './Notify.types';
 import create from 'zustand';
 
