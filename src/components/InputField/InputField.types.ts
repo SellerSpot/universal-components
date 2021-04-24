@@ -26,6 +26,7 @@ export interface IInputFieldProps {
     suffix?: ReactElement | string | number;
     prefix?: ReactElement | string | number;
     size?: 'medium' | 'small';
+    disableAutoComplete?: boolean;
     fullWidth?: boolean;
     /**
      * Direction of text input

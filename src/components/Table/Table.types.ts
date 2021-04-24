@@ -21,6 +21,7 @@ export interface ITableBodyProps {
     mainRowClassName: string;
     hasExpandableRows: boolean;
     expandedRowsSet: Set<number>;
+    unmountOnCollapse: boolean;
     handleRowExpansionCallback: (rowIndex: number) => void;
 }
 
@@ -30,5 +31,9 @@ export interface ITableProps {
     multiExpandableRows?: boolean;
     hasExpandableRows?: boolean;
     headers?: ITableCell[];
+    /**
+     * Unmount the expandable content on collapse (incase expandable rows are enabled)
+     */
+    unmountOnCollapse?: boolean;
     body: (props: { toggleRowExpansion: (rowIndex: number) => void }) => ITableRow[];
 }

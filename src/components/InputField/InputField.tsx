@@ -45,6 +45,7 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
         value,
         colors,
         fontSizes,
+        disableAutoComplete,
     } = props;
 
     // internal type state to use incase the field type is password and the suffix is not defined
@@ -190,6 +191,8 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
         return type;
     };
 
+    const autoComplete = disableAutoComplete ? 'none' : 'on';
+
     return (
         <div className={cn({ [styles.inputFieldBottomSpace]: !helperMessage?.enabled })}>
             <ThemeProvider theme={textFieldTheme}>
@@ -200,6 +203,7 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                     variant={'outlined'}
                     onChange={onChangeHandler}
                     onBlur={onBlur}
+                    autoComplete={autoComplete}
                     onFocus={onFocusHandler}
                     value={value}
                     label={label}
@@ -221,9 +225,11 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                             textAlign: direction === 'rtl' ? 'right' : 'left',
                             fontWeight: 500,
                         },
+                        autocomplete: autoComplete,
                         maxLength: maxLength,
                     }}
                     InputProps={{
+                        autoComplete: autoComplete,
                         startAdornment: prefix && (
                             <InputAdornment position={'start'}>{prefix}</InputAdornment>
                         ),

@@ -31,6 +31,7 @@ export const TableBody = (props: ITableBodyProps): ReactElement => {
         mainRowClassName,
         hasExpandableRows,
         expandedRowsSet,
+        unmountOnCollapse,
         handleRowExpansionCallback,
     } = props;
     // compensation cell to make up for the collapse table icon
@@ -62,6 +63,7 @@ export const TableBody = (props: ITableBodyProps): ReactElement => {
                         </MUITableRow>
                         {shouldShowExpandableDiv && (
                             <CollapsableContentRow
+                                unmountOnCollapse={unmountOnCollapse}
                                 collapsedContent={collapsedContent}
                                 expandedRowsSet={expandedRowsSet}
                                 rowIndex={rowIndex}
