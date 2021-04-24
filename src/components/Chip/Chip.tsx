@@ -4,6 +4,8 @@ import { IChipProps } from './Chip.types';
 import styles from './Chip.module.scss';
 import { getTheme } from '../../theme/theme';
 
+export { IChipProps } from './Chip.types';
+
 export const Chip = (props: IChipProps): ReactElement => {
     const { colors, fontSizes, label, leadingIcon, theme } = props;
     // holds the theme for the the component
@@ -26,5 +28,3 @@ export const Chip = (props: IChipProps): ReactElement => {
         </ThemeProvider>
     );
 };
-
-export { IChipProps } from './Chip.types';

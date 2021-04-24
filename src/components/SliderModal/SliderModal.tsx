@@ -2,10 +2,11 @@ import React, { ReactElement } from 'react';
 import cn from 'classnames';
 import { ISliderModalProps } from './SliderModal.types';
 import styles from './SliderModal.module.scss';
-export { ISliderModalProps } from './SliderModal.types';
 import { IconButton } from '../IconButton/IconButton';
 import { ICONS } from '../../utilities/icons';
 import { defaultColors, defaultFontSizes } from '../../theme/storybookTheme';
+
+export { ISliderModalProps } from './SliderModal.types';
 
 export const SliderModal = (props: ISliderModalProps): ReactElement => {
     const {

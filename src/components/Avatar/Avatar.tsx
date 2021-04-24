@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react';
 import cn from 'classnames';
 import { IAvatarProps } from './Avatar.types';
 import styles from './Avatar.module.scss';
+
 export { IAvatarProps } from './Avatar.types';
 
 export const Avatar = (props: IAvatarProps): ReactElement => {

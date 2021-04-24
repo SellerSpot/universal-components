@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import { Card as MUICard, CardActions, CardContent, CardMedia } from '@material-ui/core';
 import { ICardProps } from './Card.types';
+
 export { ICardProps } from './Card.types';
 
 export const Card = (props: ICardProps): ReactElement => {

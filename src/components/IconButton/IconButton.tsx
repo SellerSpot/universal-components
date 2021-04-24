@@ -3,6 +3,7 @@ import { IconButton as MUIIconButton, Theme, ThemeProvider } from '@material-ui/
 import { IIconButtonProps } from './IconButton.types';
 import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
 import { getTheme } from '../../theme/theme';
+
 export { IIconButtonProps } from './IconButton.types';
 
 export const IconButton = (props: IIconButtonProps): ReactElement => {

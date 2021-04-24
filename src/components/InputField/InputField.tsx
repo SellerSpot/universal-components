@@ -13,6 +13,7 @@ import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
 import { IconButton } from '../IconButton/IconButton';
 import { ICONS } from '../../utilities/icons';
 import { getTheme } from '../../theme/theme';
+
 export { IInputFieldProps } from './InputField.types';
 
 const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): ReactElement => {

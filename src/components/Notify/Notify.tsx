@@ -4,6 +4,7 @@ import { isUndefined } from 'lodash';
 import { Alert } from '@material-ui/lab';
 import { Snackbar, SnackbarProps } from '@material-ui/core';
 import { TNotifyStore } from './Notify.types';
+
 export { INotifyState } from './Notify.types';
 
 /**
