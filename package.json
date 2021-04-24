@@ -56,6 +56,7 @@
         "@storybook/node-logger": "^6.2.3",
         "@storybook/preset-create-react-app": "^3.1.7",
         "@storybook/react": "^6.2.3",
+        "@trivago/prettier-plugin-sort-imports": "^2.0.2",
         "@types/classnames": "^2.2.11",
         "@types/lodash": "^4.14.166",
         "@types/node": "^14.14.14",

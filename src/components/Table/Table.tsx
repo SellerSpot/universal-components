@@ -1,48 +1,52 @@
 import React, { ReactElement, useState } from 'react';
-import { Table as MUITable, Paper, TableContainer } from '@material-ui/core';
-import { TableHeader } from './components/TableHeader';
-import { TableBody } from './components/TableBody';
-import { ITableProps } from './Table.types';
+import { Table as MUITable } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
+import TableContainer from '@material-ui/core/TableContainer';
+import { TableBody } from './Components/TableBody';
+import { TableHeader } from './Components/TableHeader';
 import { TableService } from './Table.service';
+import { ITableProps } from './Table.types';
 
-export { ITableCell, ITableProps, ITableRow } from './Table.types';
+export { ITableProps, ITableRow } from './Table.types';
 
 export const Table = (props: ITableProps): ReactElement => {
     const {
-        body: bodyData,
+        hasExpandableRows,
+        multiExpandableRows,
+        body,
         headers,
         stickyHeader,
+        variant,
         size,
-        multiExpandableRows,
-        hasExpandableRows,
         unmountOnCollapse,
     } = props;
-    // state set to hold the expanded rows (if the rows can expand)
-    const [expandedRowsSet, setExpandedRowsSet] = useState(new Set<number>());
-    // getting custom classes row style depending on if the table is expandable
-    const mainRowClassName = hasExpandableRows ? TableService.customRowStyles().root : '';
+
+    // state "Set" to hold the expanded rows (if the rows can expand)
+    const [expandedRows, setExpandedRows] = useState(new Set<number>());
 
     // handles the callback to toggleRowExpansion from user
-    const handleRowExpansionCallback = (rowIndex: number) => {
+    const toggleRowExpansion = (rowIndex: number) => {
         TableService.toggleRowExpansion({
-            expandedRowsSet,
-            setExpandedRowsSet,
+            expandedRows,
+            setExpandedRows,
             multiExpandableRows,
             rowIndex,
         });
     };
+    // getting table body content
+    const tableBody = body({ toggleRowExpansion });
+    const tableContainerComponent = variant === 'simple' ? 'div' : Paper;
 
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={tableContainerComponent}>
             <MUITable stickyHeader={stickyHeader} size={size}>
-                <TableHeader hasExpandableRows={hasExpandableRows} headerCells={headers} />
+                <TableHeader hasExpandableRows={hasExpandableRows} headers={headers} />
                 <TableBody
-                    unmountOnCollapse={unmountOnCollapse}
-                    bodyData={bodyData({ toggleRowExpansion: handleRowExpansionCallback })}
-                    expandedRowsSet={expandedRowsSet}
-                    handleRowExpansionCallback={handleRowExpansionCallback}
+                    expandedRows={expandedRows}
                     hasExpandableRows={hasExpandableRows}
-                    mainRowClassName={mainRowClassName}
+                    tableBody={tableBody}
+                    toggleRowExpansion={toggleRowExpansion}
+                    unmountOnCollapse={unmountOnCollapse}
                 />
             </MUITable>
         </TableContainer>

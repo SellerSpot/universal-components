@@ -1,76 +1,114 @@
-import React, { Fragment, ReactElement } from 'react';
-import {
-    TableBody as MUITableBody,
-    TableCell as MUITableCell,
-    TableRow as MUITableRow,
-} from '@material-ui/core';
-import { CollapsableTableIcon } from './CollapsableTableIcon';
-import { CollapsableContentRow } from './CollapsableContentRow';
-import { ITableBodyProps, ITableCell } from '../Table.types';
+import React, { ReactElement } from 'react';
+import { Collapse, TableBody as MUITableBody, TableCell, TableRow } from '@material-ui/core';
+import { TableService } from '../Table.service';
+import { ITableRow } from '../Table.types';
+import { CollapseTableIcon } from './CollapseTableIcon';
 
-// contructs the cells for the main table
-const TableCell = (props: { cell: ITableCell }) => {
-    const { cell } = props;
-    const { align, colSpan, content, padding, rowSpan, width } = cell;
+const MainTableRow = (props: {
+    rowIndex: number;
+    hasExpandableRows: boolean;
+    isRowExpanded: boolean;
+    cells: ITableRow['cells'];
+    toggleRowExpansion: (rowIndex: number) => void;
+    onClick: ITableRow['onClick'];
+}) => {
+    const {
+        cells,
+        hasExpandableRows,
+        isRowExpanded,
+        rowIndex,
+        toggleRowExpansion,
+        onClick,
+    } = props;
+    // getting custom classes row style depending on if the table is expandable
+    const mainRowClassName = hasExpandableRows ? TableService.customRowStyles().root : '';
     return (
-        <MUITableCell
-            align={align}
-            padding={padding}
-            width={width}
-            colSpan={colSpan}
-            rowSpan={rowSpan}
-        >
-            {content}
-        </MUITableCell>
+        <TableRow key={rowIndex} onClick={onClick} className={mainRowClassName}>
+            {hasExpandableRows ? (
+                <TableCell>
+                    <CollapseTableIcon
+                        isRowExpanded={isRowExpanded}
+                        toggleRowExpansion={toggleRowExpansion}
+                        rowIndex={rowIndex}
+                    />
+                </TableCell>
+            ) : null}
+            {cells.map((cell, cellIndex) => {
+                const { content, align, colSpan, padding, rowSpan, width } = cell;
+                return (
+                    <TableCell
+                        key={cellIndex}
+                        align={align}
+                        colSpan={colSpan}
+                        padding={padding}
+                        rowSpan={rowSpan}
+                        width={width}
+                    >
+                        {content}
+                    </TableCell>
+                );
+            })}
+        </TableRow>
     );
 };
 
-export const TableBody = (props: ITableBodyProps): ReactElement => {
+const getCollapsedRow = (props: {
+    cells: ITableRow['cells'];
+    isRowExpanded: boolean;
+    unmountOnCollapse: boolean;
+    collapsedContent: ReactElement;
+}) => {
+    const { cells, isRowExpanded, unmountOnCollapse, collapsedContent } = props;
+    return (
+        <TableRow>
+            <TableCell colSpan={cells.length + 1} style={{ paddingBottom: 0, paddingTop: 0 }}>
+                <Collapse in={isRowExpanded} timeout="auto" unmountOnExit={unmountOnCollapse}>
+                    {collapsedContent}
+                </Collapse>
+            </TableCell>
+        </TableRow>
+    );
+};
+
+export const TableBody = (props: {
+    tableBody: ITableRow[];
+    expandedRows: Set<number>;
+    hasExpandableRows: boolean;
+    toggleRowExpansion: (rowIndex: number) => void;
+    unmountOnCollapse: boolean;
+}): ReactElement => {
     const {
-        bodyData,
-        mainRowClassName,
+        tableBody,
+        expandedRows,
         hasExpandableRows,
-        expandedRowsSet,
+        toggleRowExpansion,
         unmountOnCollapse,
-        handleRowExpansionCallback,
     } = props;
-    // compensation cell to make up for the collapse table icon
-    const compensationExtraCell = hasExpandableRows ? 1 : 0;
+
     return (
         <MUITableBody>
-            {bodyData.map((row, rowIndex) => {
+            {tableBody.map((row, rowIndex) => {
                 const { cells, collapsedContent, onClick } = row;
-                // total table width to span the collapsable content cell
-                const totalTableWidth = cells.length + compensationExtraCell;
-                const shouldShowExpandableDiv = collapsedContent && hasExpandableRows;
+                const isRowExpanded = expandedRows.has(rowIndex);
                 return (
-                    <Fragment key={rowIndex}>
-                        <MUITableRow
-                            id={`${rowIndex}`}
-                            className={mainRowClassName}
+                    <>
+                        <MainTableRow
+                            cells={cells}
+                            hasExpandableRows={hasExpandableRows}
+                            isRowExpanded={isRowExpanded}
                             onClick={onClick}
-                        >
-                            {hasExpandableRows && (
-                                <CollapsableTableIcon
-                                    expandedRowsSet={expandedRowsSet}
-                                    handleRowExpansionCallback={handleRowExpansionCallback}
-                                    rowIndex={rowIndex}
-                                />
-                            )}
-                            {cells.map((cell, cellIndex) => {
-                                return <TableCell key={cellIndex} cell={cell} />;
-                            })}
-                        </MUITableRow>
-                        {shouldShowExpandableDiv && (
-                            <CollapsableContentRow
-                                unmountOnCollapse={unmountOnCollapse}
-                                collapsedContent={collapsedContent}
-                                expandedRowsSet={expandedRowsSet}
-                                rowIndex={rowIndex}
-                                totalTableWidth={totalTableWidth}
-                            />
-                        )}
-                    </Fragment>
+                            rowIndex={rowIndex}
+                            toggleRowExpansion={toggleRowExpansion}
+                        />
+                        {hasExpandableRows
+                            ? getCollapsedRow({
+                                  cells,
+                                  collapsedContent,
+                                  isRowExpanded,
+                                  unmountOnCollapse,
+                              })
+                            : null}
+                    </>
                 );
             })}
         </MUITableBody>

@@ -9,18 +9,24 @@ export class TableService {
             },
             cursor: 'pointer',
         },
+        scrollHide: {
+            overflow: 'auto',
+        },
+        container: {
+            maxHeight: 200,
+        },
     });
 
     // handles expanding or collapsing a table row
     static toggleRowExpansion = (props: {
         rowIndex: number;
-        expandedRowsSet: Set<number>;
-        setExpandedRowsSet: React.Dispatch<React.SetStateAction<Set<number>>>;
+        expandedRows: Set<number>;
+        setExpandedRows: React.Dispatch<React.SetStateAction<Set<number>>>;
         multiExpandableRows: boolean;
     }): void => {
-        const { rowIndex, multiExpandableRows, expandedRowsSet, setExpandedRowsSet } = props;
+        const { rowIndex, multiExpandableRows, expandedRows, setExpandedRows } = props;
         // creating a new instance of the state to manipulate
-        const expandedRowsSetLocal = new Set(expandedRowsSet);
+        const expandedRowsSetLocal = new Set(expandedRows);
         if (multiExpandableRows) {
             if (expandedRowsSetLocal.has(rowIndex)) {
                 expandedRowsSetLocal.delete(rowIndex);
@@ -35,6 +41,6 @@ export class TableService {
                 expandedRowsSetLocal.add(rowIndex);
             }
         }
-        setExpandedRowsSet(expandedRowsSetLocal);
+        setExpandedRows(expandedRowsSetLocal);
     };
 }
