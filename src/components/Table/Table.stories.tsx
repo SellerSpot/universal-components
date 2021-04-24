@@ -1,7 +1,7 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import { Button } from '../Button/Button';
+import { Meta, Story } from '@storybook/react/types-6-0';
 import { Table as TableComponent, ITableProps } from './Table';
+import { Button } from '../Button/Button';
 
 const Template: Story<ITableProps> = (args: ITableProps) => <TableComponent {...args} />;
 

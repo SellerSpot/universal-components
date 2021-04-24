@@ -1,9 +1,9 @@
-import { DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
-import React, { ReactElement } from 'react';
-import { TDialogStore } from './Dialog.types';
-export { IDialogProps } from './Dialog.types';
-import { Dialog as MUIDialog } from '@material-ui/core';
 import create from 'zustand';
+import React, { ReactElement } from 'react';
+export { TDialogStore, IDialogProps } from './Dialog.types';
+import { Dialog as MUIDialog } from '@material-ui/core';
+import { DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
+import { TDialogStore } from './Dialog.types';
 
 /**
  * Used to call the notify component from anywhere in the application

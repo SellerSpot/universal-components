@@ -1,8 +1,9 @@
-import { Button as MUIButton, Theme, ThemeProvider } from '@material-ui/core';
-import { getTheme } from '../../theme/theme';
 import React, { ReactElement } from 'react';
+import { Button as MUIButton, Theme, ThemeProvider } from '@material-ui/core';
 import { IButtonProps } from './Button.types';
 import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
+import { getTheme } from '../../theme/theme';
+
 export { IButtonProps } from './Button.types';
 
 export const Button = (props: IButtonProps): ReactElement => {

@@ -1,8 +1,8 @@
-import cn from 'classnames';
-import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
-import { ICONS } from '../../utilities/icons';
+import React, { ReactElement } from 'react';
+import cn from 'classnames';
 import styles from './BreadCrumbs.module.scss';
+import { ICONS } from '../../utilities/icons';
 
 export interface IBreadCrumbsProps {
     crumbs: {

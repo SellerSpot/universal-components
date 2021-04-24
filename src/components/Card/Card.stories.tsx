@@ -1,5 +1,5 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
+import { Meta, Story } from '@storybook/react/types-6-0';
 import { Card as CardComponent, ICardProps } from './Card';
 
 const Template: Story<ICardProps> = (args: ICardProps) => <CardComponent {...args} />;

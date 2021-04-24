@@ -1,10 +1,10 @@
-import { Snackbar, SnackbarProps } from '@material-ui/core';
-import { Alert } from '@material-ui/lab';
-import { isUndefined } from 'lodash';
+import create from 'zustand';
 import React, { ReactElement } from 'react';
+import { isUndefined } from 'lodash';
+import { Alert } from '@material-ui/lab';
+import { Snackbar, SnackbarProps } from '@material-ui/core';
 import { TNotifyStore } from './Notify.types';
 export { INotifyState } from './Notify.types';
-import create from 'zustand';
 
 /**
  * Used to call the notify component from anywhere in the application

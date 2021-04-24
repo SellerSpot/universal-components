@@ -1,13 +1,12 @@
+import React, { Fragment, ReactElement } from 'react';
 import {
     TableBody as MUITableBody,
     TableCell as MUITableCell,
     TableRow as MUITableRow,
 } from '@material-ui/core';
-import React, { Fragment, ReactElement } from 'react';
-
-import { ITableBodyProps, ITableCell } from '../Table.types';
-import { CollapsableContentRow } from './CollapsableContentRow';
 import { CollapsableTableIcon } from './CollapsableTableIcon';
+import { CollapsableContentRow } from './CollapsableContentRow';
+import { ITableBodyProps, ITableCell } from '../Table.types';
 
 // contructs the cells for the main table
 const TableCell = (props: { cell: ITableCell }) => {

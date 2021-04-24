@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react';
-import { ISkeletonProps } from './Skeleton.types';
-export { ISkeletonProps } from './Skeleton.types';
 import { Skeleton as MUISkeleton } from '@material-ui/lab';
+import { ISkeletonProps } from './Skeleton.types';
 
 export const Skeleton = (props: ISkeletonProps): ReactElement => {
     const { animation, children, height, variant, width } = props;
@@ -17,3 +16,5 @@ export const Skeleton = (props: ISkeletonProps): ReactElement => {
         </MUISkeleton>
     );
 };
+
+export { ISkeletonProps } from './Skeleton.types';

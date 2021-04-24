@@ -1,18 +1,18 @@
+import React, { forwardRef, ReactElement, RefObject, useEffect, useRef, useState } from 'react';
+import { isNull, isUndefined } from 'lodash';
+import cn from 'classnames';
 import {
     InputAdornment,
     TextField as MUITextField,
     ThemeProvider,
     CircularProgress,
 } from '@material-ui/core';
-import cn from 'classnames';
-import { isNull, isUndefined } from 'lodash';
-import React, { forwardRef, ReactElement, RefObject, useEffect, useRef, useState } from 'react';
-import { getTheme } from '../../theme/theme';
-import { ICONS } from '../../utilities/icons';
-import { IconButton } from '../IconButton/IconButton';
-import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
-import styles from './InputField.module.scss';
 import { IInputFieldProps } from './InputField.types';
+import styles from './InputField.module.scss';
+import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
+import { IconButton } from '../IconButton/IconButton';
+import { ICONS } from '../../utilities/icons';
+import { getTheme } from '../../theme/theme';
 export { IInputFieldProps } from './InputField.types';
 
 const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): ReactElement => {

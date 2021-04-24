@@ -1,5 +1,5 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
+import { Meta, Story } from '@storybook/react/types-6-0';
 import { Select as SelectComponent, ISelectProps } from './Select';
 
 const Template: Story<ISelectProps> = (args: ISelectProps) => <SelectComponent {...args} />;

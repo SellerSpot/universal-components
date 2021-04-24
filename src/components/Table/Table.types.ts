@@ -1,5 +1,5 @@
-import { TableCellProps, TableProps } from '@material-ui/core';
 import { ReactElement, ReactNode } from 'react';
+import { TableCellProps, TableProps } from '@material-ui/core';
 
 export interface ITableCell {
     width?: TableCellProps['width'];

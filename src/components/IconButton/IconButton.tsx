@@ -1,8 +1,8 @@
-import { IconButton as MUIIconButton, Theme, ThemeProvider } from '@material-ui/core';
 import React, { ReactElement } from 'react';
-import { getTheme } from '../../theme/theme';
-import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
+import { IconButton as MUIIconButton, Theme, ThemeProvider } from '@material-ui/core';
 import { IIconButtonProps } from './IconButton.types';
+import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
+import { getTheme } from '../../theme/theme';
 export { IIconButtonProps } from './IconButton.types';
 
 export const IconButton = (props: IIconButtonProps): ReactElement => {

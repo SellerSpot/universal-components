@@ -1,8 +1,8 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import { defaultColors, defaultFontSizes } from '../../theme/storybookTheme';
-import { ICONS } from '../../utilities/icons';
+import { Meta, Story } from '@storybook/react/types-6-0';
 import { Chip as ChipComponent, IChipProps } from './Chip';
+import { ICONS } from '../../utilities/icons';
+import { defaultColors, defaultFontSizes } from '../../theme/storybookTheme';
 
 const Template: Story<IChipProps> = (args: IChipProps) => <ChipComponent {...args} />;
 

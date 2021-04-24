@@ -1,10 +1,9 @@
-import { Table as MUITable, Paper, TableContainer } from '@material-ui/core';
 import React, { ReactElement, useState } from 'react';
-
-import { TableBody } from './components/TableBody';
+import { Table as MUITable, Paper, TableContainer } from '@material-ui/core';
 import { TableHeader } from './components/TableHeader';
-import { TableService } from './Table.service';
+import { TableBody } from './components/TableBody';
 import { ITableProps } from './Table.types';
+import { TableService } from './Table.service';
 
 export { ITableCell, ITableProps, ITableRow } from './Table.types';
 

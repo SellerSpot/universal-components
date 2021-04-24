@@ -1,7 +1,6 @@
-import { Accordion, AccordionDetails, AccordionSummary } from '@material-ui/core';
 import React, { ReactElement } from 'react';
+import { Accordion, AccordionDetails, AccordionSummary } from '@material-ui/core';
 import { IExpandableCardProps } from './ExpandableCard.types';
-export { IExpandableCardProps } from './ExpandableCard.types';
 
 export const ExpandableCard = (props: IExpandableCardProps): ReactElement => {
     const { content, expanded, className } = props;
@@ -16,3 +15,5 @@ export const ExpandableCard = (props: IExpandableCardProps): ReactElement => {
         </Accordion>
     );
 };
+
+export { IExpandableCardProps } from './ExpandableCard.types';

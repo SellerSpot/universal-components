@@ -1,8 +1,8 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import { defaultColors, defaultFontSizes } from '../../theme/storybookTheme';
-import { ICONS } from '../../utilities/icons';
+import { Meta, Story } from '@storybook/react/types-6-0';
 import { IconButton as IconButtonComponent, IIconButtonProps } from './IconButton';
+import { ICONS } from '../../utilities/icons';
+import { defaultColors, defaultFontSizes } from '../../theme/storybookTheme';
 
 const Template: Story<IIconButtonProps> = (args: IIconButtonProps) => (
     <IconButtonComponent {...args} />
