@@ -12,8 +12,5 @@
     "proseWrap": "preserve",
     "quoteProps": "as-needed",
     "useTabs": false,
-    "htmlWhitespaceSensitivity": "css",
-    "importOrder": ["^@.*/(.*)$", "^[./]"],
-    "importOrderSeparation": false,
-    "experimentalBabelParserPluginsList": ["typescript"]
+    "htmlWhitespaceSensitivity": "css"
 }
