@@ -2,15 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Table as TableComponent, ITableProps } from './Table';
 
-const Template: Story<ITableProps> = (args: ITableProps) => (
-    <div
-        style={{
-            padding: '8px',
-        }}
-    >
-        <TableComponent {...args} />
-    </div>
-);
+const Template: Story<ITableProps> = (args: ITableProps) => <TableComponent {...args} />;
 
 export const Table = Template.bind({});
 
@@ -104,15 +96,54 @@ Table.args = {
             ],
             // onClick={(event)=>toggleRowExpansion(3)}
             collapsedContent: (
-                <div
-                    style={{
-                        width: '100%',
-                        height: '25px',
-                        backgroundColor: 'red',
-                    }}
-                >
-                    This is Collapsed Content
-                </div>
+                <TableComponent
+                    variant="simple"
+                    size={'small'}
+                    unmountOnCollapse
+                    headers={[
+                        {
+                            content: 'Sno',
+                            align: 'right',
+                            width: '5%',
+                        },
+                        {
+                            content: 'Name',
+                            width: '50%',
+                        },
+                        {
+                            content: 'Password',
+                            width: '45%',
+                        },
+                    ]}
+                    body={({ toggleRowExpansion }) => [
+                        {
+                            cells: [
+                                {
+                                    content: '1',
+                                    align: 'right',
+                                },
+                                {
+                                    content: 'Rohit',
+                                },
+                                {
+                                    content: 'passwordstring',
+                                },
+                            ],
+                            onClick: () => toggleRowExpansion(0),
+                            collapsedContent: (
+                                <div
+                                    style={{
+                                        width: '100%',
+                                        height: '250px',
+                                        backgroundColor: 'red',
+                                    }}
+                                >
+                                    This is Collapsed Content
+                                </div>
+                            ),
+                        },
+                    ]}
+                />
             ),
         },
     ],

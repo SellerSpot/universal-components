@@ -7,7 +7,7 @@ import { TableHeader } from './Components/TableHeader';
 import { TableService } from './Table.service';
 import { ITableProps } from './Table.types';
 
-export { ITableProps, ITableRow } from './Table.types';
+export { ITableProps, ITableRow, ITableCell } from './Table.types';
 
 export const Table = (props: ITableProps): ReactElement => {
     const {
@@ -40,14 +40,16 @@ export const Table = (props: ITableProps): ReactElement => {
     return (
         <TableContainer component={tableContainerComponent}>
             <MUITable stickyHeader={stickyHeader} size={size}>
-                <TableHeader hasExpandableRows={hasExpandableRows} headers={headers} />
-                <TableBody
-                    expandedRows={expandedRows}
-                    hasExpandableRows={hasExpandableRows}
-                    tableBody={tableBody}
-                    toggleRowExpansion={toggleRowExpansion}
-                    unmountOnCollapse={unmountOnCollapse}
-                />
+                {headers && <TableHeader hasExpandableRows={hasExpandableRows} headers={headers} />}
+                {body && (
+                    <TableBody
+                        expandedRows={expandedRows}
+                        hasExpandableRows={hasExpandableRows}
+                        tableBody={tableBody}
+                        toggleRowExpansion={toggleRowExpansion}
+                        unmountOnCollapse={unmountOnCollapse}
+                    />
+                )}
             </MUITable>
         </TableContainer>
     );

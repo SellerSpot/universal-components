@@ -8,13 +8,14 @@ export const CollapseTableIcon = (props: {
     rowIndex: number;
 }): ReactElement => {
     const { isRowExpanded, toggleRowExpansion, rowIndex } = props;
+    const iconSize = '24px';
     return (
         <IconButton
             icon={
                 isRowExpanded ? (
-                    <ICONS.MdKeyboardArrowUp size={'24px'} />
+                    <ICONS.MdKeyboardArrowUp size={iconSize} />
                 ) : (
-                    <ICONS.MdKeyboardArrowDown size={'24px'} />
+                    <ICONS.MdKeyboardArrowDown size={iconSize} />
                 )
             }
             size="small"

@@ -36,5 +36,5 @@ export interface ITableProps {
      * Unmount the expandable content on collapse (incase expandable rows are enabled)
      */
     unmountOnCollapse?: boolean;
-    body: (props: { toggleRowExpansion: (rowIndex: number) => void }) => ITableRow[];
+    body?: (props: { toggleRowExpansion: (rowIndex: number) => void }) => ITableRow[];
 }
