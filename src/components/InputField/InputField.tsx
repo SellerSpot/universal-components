@@ -225,7 +225,7 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                             textAlign: direction === 'rtl' ? 'right' : 'left',
                             fontWeight: 500,
                         },
-                        autocomplete: autoComplete,
+                        autoComplete: autoComplete,
                         maxLength: maxLength,
                     }}
                     InputProps={{
