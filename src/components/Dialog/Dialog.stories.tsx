@@ -1,6 +1,6 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react/types-6-0';
 import Button from '@material-ui/core/Button';
+import { Meta, Story } from '@storybook/react/types-6-0';
 import { Dialog as DialogComponent, IDialogProps, hideDialog, showDialog } from './Dialog';
 
 const Template: Story<IDialogProps> = () => {

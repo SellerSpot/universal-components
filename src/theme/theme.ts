@@ -36,14 +36,14 @@ export const getTheme = (props: IGetThemeProps): Theme => {
     const { colors, theme } = props;
 
     // common MUI theme object (containes common properties)
-    const commonMUITheme = <Theme>{
+    const commonMUITheme = {
         typography: {
             fontFamily: 'Inter',
         },
-    };
+    } as Theme;
     // holds the custom properties to apply to the custom theme object
     let customThemeProperties: ICustomThemeProperties;
-    // assigning properties
+    // assigning proAperties
     switch (theme) {
         case 'primary':
             customThemeProperties = {
@@ -137,7 +137,7 @@ export const getTheme = (props: IGetThemeProps): Theme => {
             break;
     }
 
-    return createMuiTheme(commonMUITheme, <Theme>{
+    return createMuiTheme(commonMUITheme, {
         palette: {
             primary: {
                 light: customThemeProperties.palette.primary.light,
@@ -154,5 +154,5 @@ export const getTheme = (props: IGetThemeProps): Theme => {
                 textTransform: 'none',
             },
         },
-    });
+    } as Theme);
 };

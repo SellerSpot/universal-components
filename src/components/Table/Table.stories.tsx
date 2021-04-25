@@ -1,18 +1,22 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Table as TableComponent, ITableProps } from './Table';
-import { Button } from '../Button/Button';
 
-const Template: Story<ITableProps> = (args: ITableProps) => <TableComponent {...args} />;
+const Template: Story<ITableProps> = (args: ITableProps) => (
+    <div
+        style={{
+            padding: '8px',
+        }}
+    >
+        <TableComponent {...args} />
+    </div>
+);
 
 export const Table = Template.bind({});
 
-const CollapsedComponent = (handleRowExpansion: (rowIndex: number) => void) => {
-    return <Button onClick={() => handleRowExpansion(3)} label={'Click To Close'} />;
-};
-
 Table.args = {
     hasExpandableRows: true,
+    stickyHeader: true,
     headers: [
         {
             content: 'Sno',
@@ -21,9 +25,11 @@ Table.args = {
         },
         {
             content: 'Name',
+            width: '50%',
         },
         {
             content: 'Password',
+            width: '45%',
         },
     ],
     body: ({ toggleRowExpansion }) => [
@@ -40,17 +46,18 @@ Table.args = {
                     content: 'passwordstring',
                 },
             ],
-            // collapsedContent: (
-            //     <div
-            //         style={{
-            //             width: '100%',
-            //             height: '100%',
-            //             backgroundColor: 'red',
-            //         }}
-            //     >
-            //         This is Collapsed Content
-            //     </div>
-            // ),
+            onClick: () => toggleRowExpansion(0),
+            collapsedContent: (
+                <div
+                    style={{
+                        width: '100%',
+                        height: '250px',
+                        backgroundColor: 'red',
+                    }}
+                >
+                    This is Collapsed Content
+                </div>
+            ),
         },
         {
             cells: [
@@ -65,7 +72,7 @@ Table.args = {
                     content: 'passwordstring',
                 },
             ],
-            // collapsedContent: <h6>This is Collapsed Content</h6>,
+            collapsedContent: <h6>This is Collapsed Content</h6>,
         },
         {
             cells: [
@@ -80,7 +87,7 @@ Table.args = {
                     content: 'passwordstring',
                 },
             ],
-            // collapsedContent: <h6>This is Collapsed Content</h6>,
+            collapsedContent: <h6>This is Collapsed Content</h6>,
         },
         {
             cells: [
@@ -96,12 +103,25 @@ Table.args = {
                 },
             ],
             // onClick={(event)=>toggleRowExpansion(3)}
-            collapsedContent: CollapsedComponent(toggleRowExpansion),
+            collapsedContent: (
+                <div
+                    style={{
+                        width: '100%',
+                        height: '25px',
+                        backgroundColor: 'red',
+                    }}
+                >
+                    This is Collapsed Content
+                </div>
+            ),
         },
     ],
 } as ITableProps;
 
 export default {
-    title: 'Components/Atoms',
+    title: 'Components/Atoms/Fullscreen',
     component: TableComponent,
+    parameters: {
+        layout: 'fullscreen',
+    },
 } as Meta;

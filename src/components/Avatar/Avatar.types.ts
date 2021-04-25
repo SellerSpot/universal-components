@@ -1,5 +1,5 @@
-import { IComponentEvents } from 'typings/common.types';
 import { ReactElement } from 'react';
+import { IComponentEvents } from 'typings/common.types';
 
 export interface IAvatarProps {
     content: ReactElement | string;

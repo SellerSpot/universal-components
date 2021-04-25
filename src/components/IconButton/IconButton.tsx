@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
 import { IconButton as MUIIconButton, Theme, ThemeProvider } from '@material-ui/core';
-import { IIconButtonProps } from './IconButton.types';
-import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
 import { getTheme } from '../../theme/theme';
+import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
+import { IIconButtonProps } from './IconButton.types';
 
 export { IIconButtonProps } from './IconButton.types';
 

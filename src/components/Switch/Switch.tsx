@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { Switch as MUISwitch, Theme, ThemeProvider } from '@material-ui/core';
-import { ISwitchProps } from './Switch.types';
 import { getTheme } from '../../theme';
+import { ISwitchProps } from './Switch.types';
 
 export { ISwitchProps } from './Switch.types';
 

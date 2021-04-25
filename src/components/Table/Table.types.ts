@@ -27,6 +27,7 @@ export interface ITableBodyProps {
 
 export interface ITableProps {
     stickyHeader?: boolean;
+    variant?: 'card' | 'simple';
     size?: TableProps['size'];
     multiExpandableRows?: boolean;
     hasExpandableRows?: boolean;

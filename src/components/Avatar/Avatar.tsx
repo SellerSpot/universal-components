@@ -1,7 +1,7 @@
-import React, { ReactElement } from 'react';
 import cn from 'classnames';
-import { IAvatarProps } from './Avatar.types';
+import React, { ReactElement } from 'react';
 import styles from './Avatar.module.scss';
+import { IAvatarProps } from './Avatar.types';
 
 export { IAvatarProps } from './Avatar.types';
 

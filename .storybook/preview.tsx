@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
-import { ThemeProvider } from '../src/components/ThemeProvider/ThemeProvider';
-import { defaultColors, defaultFontSizes } from '../src/theme/storybookTheme';
 import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider } from '../src/components/ThemeProvider/ThemeProvider';
 import '../src/styles/core.scss';
+import { defaultColors, defaultFontSizes } from '../src/theme/storybookTheme';
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },

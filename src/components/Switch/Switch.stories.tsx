@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Switch as SwitchComponent, ISwitchProps } from './Switch';
 import { defaultColors, defaultFontSizes } from '../../theme/storybookTheme';
+import { Switch as SwitchComponent, ISwitchProps } from './Switch';
 
 const Template: Story<ISwitchProps> = (args: ISwitchProps) => <SwitchComponent {...args} />;
 

@@ -1,5 +1,5 @@
-import React, { ReactElement } from 'react';
 import { isUndefined } from 'lodash';
+import React, { ReactElement } from 'react';
 import { Alert as MUIAlert, AlertProps, AlertTitle } from '@material-ui/lab';
 
 export interface IAlertProps {

@@ -1,10 +1,10 @@
-import React, { ReactElement } from 'react';
 import cn from 'classnames';
+import React, { ReactElement } from 'react';
 import { Button as MUIButton, Theme, ThemeProvider } from '@material-ui/core';
-import { IButtonProps } from './Button.types';
-import styles from './Button.module.scss';
-import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
 import { getTheme } from '../../theme/theme';
+import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
+import styles from './Button.module.scss';
+import { IButtonProps } from './Button.types';
 
 export { IButtonProps } from './Button.types';
 

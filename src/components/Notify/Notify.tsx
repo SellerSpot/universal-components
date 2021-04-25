@@ -1,8 +1,8 @@
-import create from 'zustand';
-import React, { ReactElement } from 'react';
 import { isUndefined } from 'lodash';
-import { Alert } from '@material-ui/lab';
+import React, { ReactElement } from 'react';
+import create from 'zustand';
 import { Snackbar, SnackbarProps } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 import { TNotifyStore } from './Notify.types';
 
 export { INotifyState } from './Notify.types';

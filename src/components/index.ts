@@ -1,3 +1,5 @@
+import InputFieldComponent from './InputField/InputField';
+
 export * from './Alert/Alert';
 export * from './AppPreloader/AppPreloader';
 export * from './Avatar/Avatar';
@@ -9,7 +11,7 @@ export * from './ExpandableCard/ExpandableCard';
 export * from './ExpandWorkspaceMenuButton/ExpandWorkspaceMenuButton';
 export * from './IconButton/IconButton';
 export { IInputFieldProps } from './InputField/InputField';
-import InputFieldComponent from './InputField/InputField';
+
 export const InputField = InputFieldComponent;
 export * from './Select/Select';
 export * from './Table/Table';
