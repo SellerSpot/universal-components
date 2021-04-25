@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { createMuiTheme, ThemeProvider, Tooltip, TooltipProps } from '@material-ui/core';
-import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
 import { getTheme, IColors, IFontSizes } from '../../theme';
+import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
 
 export interface IToolTipProps {
     children?: TooltipProps['children'];

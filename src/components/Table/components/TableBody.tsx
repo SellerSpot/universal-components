@@ -1,5 +1,5 @@
-import React, { ReactElement } from 'react';
 import { Collapse, TableBody as MUITableBody, TableCell, TableRow } from '@material-ui/core';
+import React, { ReactElement } from 'react';
 import { TableService } from '../Table.service';
 import { ITableRow } from '../Table.types';
 import { CollapseTableIcon } from './CollapseTableIcon';

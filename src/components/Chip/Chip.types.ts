@@ -1,5 +1,5 @@
-import { TMuiThemes } from 'theme';
 import { ReactElement } from 'react';
+import { TMuiThemes } from 'theme';
 import { IColors, IFontSizes } from '../../theme/theme.types';
 
 export interface IChipProps {

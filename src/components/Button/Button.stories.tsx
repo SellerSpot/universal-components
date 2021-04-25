@@ -1,8 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Button as ButtonComponent, IButtonProps } from './Button';
-import { ICONS } from '../../utilities/icons';
 import { defaultColors, defaultFontSizes } from '../../theme/storybookTheme';
+import { ICONS } from '../../utilities/icons';
+import { Button as ButtonComponent, IButtonProps } from './Button';
 
 const Template: Story<IButtonProps> = (args: IButtonProps) => <ButtonComponent {...args} />;
 

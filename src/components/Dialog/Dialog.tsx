@@ -1,5 +1,5 @@
-import create from 'zustand';
 import React, { ReactElement } from 'react';
+import create from 'zustand';
 import { Dialog as MUIDialog } from '@material-ui/core';
 import { DialogActions, DialogContent, DialogTitle } from '@material-ui/core';
 import { TDialogStore } from './Dialog.types';

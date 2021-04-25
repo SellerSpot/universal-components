@@ -1,6 +1,6 @@
 import React from 'react';
-import { Meta, Story } from '@storybook/react/types-6-0';
 import { Button } from '@material-ui/core';
+import { Meta, Story } from '@storybook/react/types-6-0';
 import { Notify as NotifyComponent, INotifyState, showNotify, configureNotify } from './Notify';
 
 const Template: Story<INotifyState> = () => {

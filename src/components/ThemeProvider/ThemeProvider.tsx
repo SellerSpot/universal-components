@@ -1,10 +1,10 @@
-import create from 'zustand';
 import React, { ReactElement, useEffect } from 'react';
+import create from 'zustand';
 import { ThemeProvider as MUIThemeProvider } from '@material-ui/core';
-import { IColors, IFontSizes } from '../../theme/theme.types';
-import { getTheme, IGetThemeProps } from '../../theme/theme';
 import '../../styles/core.scss';
 import { defaultColors, defaultFontSizes } from '../../theme/storybookTheme';
+import { getTheme, IGetThemeProps } from '../../theme/theme';
+import { IColors, IFontSizes } from '../../theme/theme.types';
 
 export interface IThemeProviderProps {
     children?: ReactElement | ReactElement[] | string | number;

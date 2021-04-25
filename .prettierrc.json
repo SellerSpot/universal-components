@@ -14,5 +14,6 @@
     "useTabs": false,
     "htmlWhitespaceSensitivity": "css",
     "importOrder": ["^@.*/(.*)$", "^[./]"],
-    "importOrderSeparation": false
+    "importOrderSeparation": false,
+    "experimentalBabelParserPluginsList": ["typescript"]
 }
