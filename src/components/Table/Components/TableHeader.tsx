@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { TableCell, TableHead, TableRow } from '@material-ui/core';
-import { ITableProps } from '../../Table/Table.types';
+import { ITableProps } from '../Table.types';
 
 export const TableHeader = (props: {
     hasExpandableRows: ITableProps['hasExpandableRows'];
