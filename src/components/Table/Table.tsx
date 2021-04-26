@@ -4,10 +4,10 @@ import Paper from '@material-ui/core/Paper';
 import TableContainer from '@material-ui/core/TableContainer';
 import { TableBody } from './Components/TableBody';
 import { TableHeader } from './Components/TableHeader';
-import { TableService } from './Table.service';
+import TableService from './Table.service';
 import { ITableProps } from './Table.types';
 
-export { ITableProps, ITableRow } from './Table.types';
+export { ITableProps, ITableRow, ITableCell } from './Table.types';
 
 export const Table = (props: ITableProps): ReactElement => {
     const {
@@ -19,6 +19,8 @@ export const Table = (props: ITableProps): ReactElement => {
         variant,
         size,
         unmountOnCollapse,
+        maxHeight,
+        height,
     } = props;
 
     // state "Set" to hold the expanded rows (if the rows can expand)
@@ -36,18 +38,29 @@ export const Table = (props: ITableProps): ReactElement => {
     // getting table body content
     const tableBody = body({ toggleRowExpansion });
     const tableContainerComponent = variant === 'simple' ? 'div' : Paper;
+    const tableStyles: React.CSSProperties = {
+        height:
+            height ??
+            TableService.computeTableContainerHeight({
+                maxHeight,
+                numberOfRows: tableBody.length,
+                size,
+            }),
+    };
 
     return (
-        <TableContainer component={tableContainerComponent}>
+        <TableContainer component={tableContainerComponent} style={tableStyles}>
             <MUITable stickyHeader={stickyHeader} size={size}>
-                <TableHeader hasExpandableRows={hasExpandableRows} headers={headers} />
-                <TableBody
-                    expandedRows={expandedRows}
-                    hasExpandableRows={hasExpandableRows}
-                    tableBody={tableBody}
-                    toggleRowExpansion={toggleRowExpansion}
-                    unmountOnCollapse={unmountOnCollapse}
-                />
+                {headers && <TableHeader hasExpandableRows={hasExpandableRows} headers={headers} />}
+                {body && (
+                    <TableBody
+                        expandedRows={expandedRows}
+                        hasExpandableRows={hasExpandableRows}
+                        tableBody={tableBody}
+                        toggleRowExpansion={toggleRowExpansion}
+                        unmountOnCollapse={unmountOnCollapse}
+                    />
+                )}
             </MUITable>
         </TableContainer>
     );

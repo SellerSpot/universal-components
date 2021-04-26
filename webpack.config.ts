@@ -121,3 +121,21 @@ const webpackConfiguration = (env: {
 };
 
 export default webpackConfiguration;
+
+// export default webpackConfiguration;
+// class HelloWorldPlugin {
+//     apply(compiler: Compiler) {
+//         compiler.hooks.afterEmit.tap('Hello World Plugin', (stats) => {
+//             const hasException = stats.getStats().hasErrors() || stats.getStats().hasWarnings();
+//             if (!hasException) {
+//                 const child = childProcess.spawn('npm run build:dev');
+//                 child.stdout.on('data', function (data) {
+//                     process.stdout.write(data);
+//                 });
+//                 child.stderr.on('data', function (data) {
+//                     process.stderr.write(data);
+//                 });
+//             }
+//         });
+//     }
+// }

@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 import { TableCellProps, TableProps } from '@material-ui/core';
 
 export interface ITableCell {
@@ -29,6 +29,8 @@ export interface ITableProps {
     stickyHeader?: boolean;
     variant?: 'card' | 'simple';
     size?: TableProps['size'];
+    height?: number;
+    maxHeight?: number;
     multiExpandableRows?: boolean;
     hasExpandableRows?: boolean;
     headers?: ITableCell[];
@@ -36,5 +38,5 @@ export interface ITableProps {
      * Unmount the expandable content on collapse (incase expandable rows are enabled)
      */
     unmountOnCollapse?: boolean;
-    body: (props: { toggleRowExpansion: (rowIndex: number) => void }) => ITableRow[];
+    body?: (props: { toggleRowExpansion: (rowIndex: number) => void }) => ITableRow[];
 }
