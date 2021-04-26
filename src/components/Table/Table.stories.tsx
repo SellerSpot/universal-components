@@ -9,6 +9,7 @@ export const Table = Template.bind({});
 Table.args = {
     hasExpandableRows: true,
     stickyHeader: true,
+    maxHeight: 700,
     headers: [
         {
             content: 'Sno',
@@ -150,9 +151,6 @@ Table.args = {
 } as ITableProps;
 
 export default {
-    title: 'Components/Atoms/Fullscreen',
+    title: 'Components/Atoms',
     component: TableComponent,
-    parameters: {
-        layout: 'fullscreen',
-    },
 } as Meta;

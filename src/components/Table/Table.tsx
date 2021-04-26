@@ -38,20 +38,18 @@ export const Table = (props: ITableProps): ReactElement => {
     // getting table body content
     const tableBody = body({ toggleRowExpansion });
     const tableContainerComponent = variant === 'simple' ? 'div' : Paper;
+    const tableStyles: React.CSSProperties = {
+        height:
+            height ??
+            TableService.computeTableContainerHeight({
+                maxHeight,
+                numberOfRows: tableBody.length,
+                size,
+            }),
+    };
 
     return (
-        <TableContainer
-            component={tableContainerComponent}
-            style={{
-                height:
-                    height ??
-                    TableService.computeTableContainerHeight({
-                        maxHeight,
-                        numberOfRows: tableBody.length,
-                        size,
-                    }),
-            }}
-        >
+        <TableContainer component={tableContainerComponent} style={tableStyles}>
             <MUITable stickyHeader={stickyHeader} size={size}>
                 {headers && <TableHeader hasExpandableRows={hasExpandableRows} headers={headers} />}
                 {body && (
