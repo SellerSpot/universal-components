@@ -1,6 +1,8 @@
 import { makeStyles } from '@material-ui/core';
+import { TABLE_CONSTANTS } from './Table.constants';
+import { ITableProps } from './Table.types';
 
-export class TableService {
+export default class TableService {
     // the custom row styling for expandable rows
     static customRowStyles = makeStyles({
         root: {
@@ -16,6 +18,26 @@ export class TableService {
             maxHeight: 200,
         },
     });
+
+    static computeTableContainerHeight = (props: {
+        maxHeight: number;
+        numberOfRows: number;
+        size: ITableProps['size'];
+    }): number => {
+        const { maxHeight, numberOfRows, size } = props;
+        if (!maxHeight) return undefined;
+        const rowHeight =
+            size === 'small'
+                ? TABLE_CONSTANTS.SMALL_TABLE_ROW_HEIGHT
+                : TABLE_CONSTANTS.LARGE_TABLE_ROW_HEIGHT;
+        const headerHeight =
+            size === 'small'
+                ? TABLE_CONSTANTS.SMALL_TABLE_HEADER_HEIGHT
+                : TABLE_CONSTANTS.LARGE_TABLE_HEADER_HEIGHT;
+        const totalRowHeight = rowHeight * numberOfRows;
+        const totalHeight = totalRowHeight + headerHeight;
+        return totalHeight <= maxHeight ? totalHeight : maxHeight;
+    };
 
     // handles expanding or collapsing a table row
     static toggleRowExpansion = (props: {

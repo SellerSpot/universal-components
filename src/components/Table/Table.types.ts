@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 import { TableCellProps, TableProps } from '@material-ui/core';
 
 export interface ITableCell {
@@ -29,6 +29,8 @@ export interface ITableProps {
     stickyHeader?: boolean;
     variant?: 'card' | 'simple';
     size?: TableProps['size'];
+    height?: number;
+    maxHeight?: number;
     multiExpandableRows?: boolean;
     hasExpandableRows?: boolean;
     headers?: ITableCell[];

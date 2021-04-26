@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import TableContainer from '@material-ui/core/TableContainer';
 import { TableBody } from './Components/TableBody';
 import { TableHeader } from './Components/TableHeader';
-import { TableService } from './Table.service';
+import TableService from './Table.service';
 import { ITableProps } from './Table.types';
 
 export { ITableProps, ITableRow, ITableCell } from './Table.types';
@@ -19,6 +19,8 @@ export const Table = (props: ITableProps): ReactElement => {
         variant,
         size,
         unmountOnCollapse,
+        maxHeight,
+        height,
     } = props;
 
     // state "Set" to hold the expanded rows (if the rows can expand)
@@ -38,7 +40,18 @@ export const Table = (props: ITableProps): ReactElement => {
     const tableContainerComponent = variant === 'simple' ? 'div' : Paper;
 
     return (
-        <TableContainer component={tableContainerComponent}>
+        <TableContainer
+            component={tableContainerComponent}
+            style={{
+                height:
+                    height ??
+                    TableService.computeTableContainerHeight({
+                        maxHeight,
+                        numberOfRows: tableBody.length,
+                        size,
+                    }),
+            }}
+        >
             <MUITable stickyHeader={stickyHeader} size={size}>
                 {headers && <TableHeader hasExpandableRows={hasExpandableRows} headers={headers} />}
                 {body && (
