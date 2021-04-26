@@ -14,6 +14,6 @@ export interface ISwitchProps {
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     theme?: keyof TMuiThemes;
     size?: 'small' | 'medium';
-    fontSizes: IFontSizes;
-    colors: IColors;
+    fontSizes?: IFontSizes;
+    colors?: IColors;
 }
