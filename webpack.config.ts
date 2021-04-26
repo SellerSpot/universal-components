@@ -1,9 +1,8 @@
 import path from 'path';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import { Configuration } from 'webpack';
-import webpack from 'webpack';
-import WebpackShellPluginNext from 'webpack-shell-plugin-next';
+import { Configuration, DefinePlugin } from 'webpack';
+import { WebpackCustomRunScriptsPlugin } from '@sellerspot/webpack-run-scripts-custom-plugin';
 
 const webpackConfiguration = (env: {
     production?: boolean;
@@ -105,15 +104,8 @@ const webpackConfiguration = (env: {
                 },
             }),
             !isProduction
-                ? new WebpackShellPluginNext({
-                      onDoneWatch: {
-                          scripts: ['npm run build:dev'],
-                          blocking: false,
-                          parallel: true,
-                      },
-                      safe: true,
-                  })
-                : new webpack.DefinePlugin({}),
+                ? new WebpackCustomRunScriptsPlugin({ command: 'npm run build:dev' })
+                : new DefinePlugin({}),
         ],
         devtool: false,
         watch: !isProduction,
@@ -121,21 +113,3 @@ const webpackConfiguration = (env: {
 };
 
 export default webpackConfiguration;
-
-// export default webpackConfiguration;
-// class HelloWorldPlugin {
-//     apply(compiler: Compiler) {
-//         compiler.hooks.afterEmit.tap('Hello World Plugin', (stats) => {
-//             const hasException = stats.getStats().hasErrors() || stats.getStats().hasWarnings();
-//             if (!hasException) {
-//                 const child = childProcess.spawn('npm run build:dev');
-//                 child.stdout.on('data', function (data) {
-//                     process.stdout.write(data);
-//                 });
-//                 child.stderr.on('data', function (data) {
-//                     process.stderr.write(data);
-//                 });
-//             }
-//         });
-//     }
-// }

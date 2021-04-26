@@ -47,9 +47,10 @@
             "stylelint --fix",
             "git add"
         ],
-        "*.{ts,tsx}": "eslint --fix --max-warnings 0"
+        "!(*webpack.config).{ts,tsx}": "eslint --fix --max-warnings 0"
     },
     "devDependencies": {
+        "@sellerspot/webpack-run-scripts-custom-plugin": "^1.17.3",
         "@storybook/addon-actions": "^6.2.3",
         "@storybook/addon-essentials": "^6.2.3",
         "@storybook/addon-links": "^6.2.3",
