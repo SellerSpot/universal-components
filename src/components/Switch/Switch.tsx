@@ -14,7 +14,7 @@ export const Switch = (props: ISwitchProps): ReactElement => {
     const switchTheme: Theme = getTheme({
         colors: colors ?? defaultConfigData.colors,
         fontSizes: fontSizes ?? defaultConfigData.fontSizes,
-        theme: theme ?? 'auto',
+        theme: theme ?? 'primary',
     });
     return (
         <ThemeProvider theme={switchTheme}>
