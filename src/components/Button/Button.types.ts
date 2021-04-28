@@ -15,6 +15,10 @@ export interface IButtonProps {
     variant?: 'contained' | 'text' | 'outlined';
     size?: 'small' | 'medium' | 'large';
     /**
+     * If the button should inherit colors from its parent
+     */
+    inheritColorsFromParent?: boolean;
+    /**
      * Different states such as success or danger or warning
      */
     theme?: keyof TMuiThemes;

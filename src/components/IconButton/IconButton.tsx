@@ -7,7 +7,18 @@ import { IIconButtonProps } from './IconButton.types';
 export { IIconButtonProps } from './IconButton.types';
 
 export const IconButton = (props: IIconButtonProps): ReactElement => {
-    const { colors, fontSizes, className, disabled, icon, onClick, size, theme, type } = props;
+    const {
+        colors,
+        fontSizes,
+        className,
+        disabled,
+        icon,
+        onClick,
+        size,
+        theme,
+        type,
+        inheritColorsFromParent,
+    } = props;
     // getting default global theme data
     const defaultConfigData = useThemeConfigState((state) => state.configData);
     // holds the theme for the the component
@@ -16,11 +27,13 @@ export const IconButton = (props: IIconButtonProps): ReactElement => {
         fontSizes: fontSizes ?? defaultConfigData.fontSizes,
         theme: theme ?? 'auto',
     });
+    // if the button should inherit the parents colors or not
+    const buttonColor = inheritColorsFromParent ? 'inherit' : 'primary';
     return (
         <ThemeProvider theme={buttonTheme}>
             <MUIIconButton
                 className={className}
-                color="primary"
+                color={buttonColor}
                 size={size}
                 type={type}
                 disabled={disabled}
