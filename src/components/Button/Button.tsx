@@ -26,6 +26,7 @@ export const Button = (props: IButtonProps): ReactElement => {
         variant,
         className,
         style,
+        inheritColorsFromParent,
     } = props;
     // holds the theme for the the component
     const buttonTheme: Theme = getTheme({
@@ -33,6 +34,9 @@ export const Button = (props: IButtonProps): ReactElement => {
         fontSizes: fontSizes ?? defaultConfigData.fontSizes,
         theme: theme ?? 'auto',
     });
+
+    // if the button should inherit the parents colors or not
+    const buttonColor = inheritColorsFromParent ? 'inherit' : 'primary';
 
     return (
         <div
@@ -42,7 +46,7 @@ export const Button = (props: IButtonProps): ReactElement => {
             <ThemeProvider theme={buttonTheme}>
                 <MUIButton
                     variant={variant}
-                    color="primary"
+                    color={buttonColor}
                     size={size}
                     fullWidth={fullWidth}
                     type={type}

@@ -9,7 +9,7 @@ export const Table = Template.bind({});
 Table.args = {
     hasExpandableRows: true,
     stickyHeader: true,
-    maxHeight: 700,
+    height: 700,
     headers: [
         {
             content: 'Sno',
@@ -100,6 +100,7 @@ Table.args = {
                 <TableComponent
                     variant="simple"
                     size={'small'}
+                    maxHeight={200}
                     unmountOnCollapse
                     headers={[
                         {
@@ -116,7 +117,7 @@ Table.args = {
                             width: '45%',
                         },
                     ]}
-                    body={({ toggleRowExpansion }) => [
+                    body={({}) => [
                         {
                             cells: [
                                 {
@@ -130,18 +131,20 @@ Table.args = {
                                     content: 'passwordstring',
                                 },
                             ],
-                            onClick: () => toggleRowExpansion(0),
-                            collapsedContent: (
-                                <div
-                                    style={{
-                                        width: '100%',
-                                        height: '250px',
-                                        backgroundColor: 'red',
-                                    }}
-                                >
-                                    This is Collapsed Content
-                                </div>
-                            ),
+                        },
+                        {
+                            cells: [
+                                {
+                                    content: '1',
+                                    align: 'right',
+                                },
+                                {
+                                    content: 'Rohit',
+                                },
+                                {
+                                    content: 'passwordstring',
+                                },
+                            ],
                         },
                     ]}
                 />

@@ -1,14 +1,26 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { Notify as NotifyComponent, INotifyState, showNotify, configureNotify } from './Notify';
+import { Button } from '..';
 
 const Template: Story<INotifyState> = () => {
     configureNotify({
         autoHideDuration: 5000,
         placement: 'bottomLeft',
-        theme: 'success',
+
+        closeOnClickAway: false,
     });
+
+    const customNotifyAction: INotifyState['customNotifyAction'] = ({ hideNotify }) => {
+        return (
+            <Button
+                label={'Custom button'}
+                inheritColorsFromParent
+                variant="text"
+                onClick={() => hideNotify()}
+            />
+        );
+    };
     return (
         <div
             style={{
@@ -17,16 +29,17 @@ const Template: Story<INotifyState> = () => {
             }}
         >
             <Button
-                color={'primary'}
+                theme={'primary'}
                 variant={'contained'}
                 onClick={() =>
                     showNotify('This is Sample Notification', {
-                        theme: 'error',
+                        showNotifyAction: true,
+                        customNotifyAction,
+                        theme: 'success',
                     })
                 }
-            >
-                Show Notify
-            </Button>
+                label={'Show Notify'}
+            />
             <NotifyComponent />
         </div>
     );

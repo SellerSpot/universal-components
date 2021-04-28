@@ -10,6 +10,10 @@ export interface IIconButtonProps {
     type?: 'submit' | 'button' | 'reset';
     size?: 'medium' | 'small';
     /**
+     * If the button should inherit colors from its parent
+     */
+    inheritColorsFromParent?: boolean;
+    /**
      * Different states such as success or danger or warning
      */
     theme?: keyof TMuiThemes;
