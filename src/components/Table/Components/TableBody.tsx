@@ -6,6 +6,7 @@ import { CollapseTableIcon } from './CollapseTableIcon';
 
 const MainTableRow = (props: {
     rowIndex: number;
+    numberOfRows: number;
     hasExpandableRows: boolean;
     isRowExpanded: boolean;
     cells: ITableRow['cells'];
@@ -17,11 +18,16 @@ const MainTableRow = (props: {
         hasExpandableRows,
         isRowExpanded,
         rowIndex,
+        numberOfRows,
         toggleRowExpansion,
         onClick,
     } = props;
     // getting custom classes row style depending on if the table is expandable
-    const mainRowClassName = hasExpandableRows ? TableService.customRowStyles().root : '';
+    const mainRowClassName = TableService.getMainRowClassName({
+        hasExpandableRows,
+        numberOfRows,
+        rowIndex,
+    });
     return (
         <TableRow key={rowIndex} onClick={onClick} className={mainRowClassName}>
             {hasExpandableRows ? (
@@ -94,6 +100,7 @@ export const TableBody = (props: {
                     <>
                         <MainTableRow
                             cells={cells}
+                            numberOfRows={tableBody.length}
                             hasExpandableRows={hasExpandableRows}
                             isRowExpanded={isRowExpanded}
                             onClick={onClick}

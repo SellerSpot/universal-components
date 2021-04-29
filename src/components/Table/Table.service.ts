@@ -5,6 +5,9 @@ import { ITableProps } from './Table.types';
 export default class TableService {
     // the custom row styling for expandable rows
     static customRowStyles = makeStyles({
+        borderlessRow: {
+            borderBottom: 'unset',
+        },
         root: {
             '& > *': {
                 borderBottom: 'unset',
@@ -70,5 +73,18 @@ export default class TableService {
             }
         }
         setExpandedRows(expandedRowsSetLocal);
+    };
+
+    static getMainRowClassName = (props: {
+        rowIndex: number;
+        hasExpandableRows: boolean;
+        numberOfRows: number;
+    }): string => {
+        const { hasExpandableRows, numberOfRows, rowIndex } = props;
+        const isLastRow = rowIndex === numberOfRows - 1;
+        if (hasExpandableRows || isLastRow) {
+            return TableService.customRowStyles().root;
+        }
+        return '';
     };
 }
