@@ -55,6 +55,7 @@ export const Table = (props: ITableProps): ReactElement => {
                 {body && (
                     <TableBody
                         expandedRows={expandedRows}
+                        variant={variant}
                         hasExpandableRows={hasExpandableRows}
                         tableBody={tableBody}
                         toggleRowExpansion={toggleRowExpansion}

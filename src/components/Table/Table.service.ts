@@ -79,10 +79,11 @@ export default class TableService {
         rowIndex: number;
         hasExpandableRows: boolean;
         numberOfRows: number;
+        variant: ITableProps['variant'];
     }): string => {
-        const { hasExpandableRows, numberOfRows, rowIndex } = props;
+        const { hasExpandableRows, numberOfRows, rowIndex, variant } = props;
         const isLastRow = rowIndex === numberOfRows - 1;
-        if (hasExpandableRows || isLastRow) {
+        if (hasExpandableRows || (isLastRow && variant === 'simple')) {
             return TableService.customRowStyles().root;
         }
         return '';
