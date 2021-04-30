@@ -11,7 +11,6 @@ export * from './ExpandableCard/ExpandableCard';
 export * from './ExpandWorkspaceMenuButton/ExpandWorkspaceMenuButton';
 export * from './IconButton/IconButton';
 export { IInputFieldProps } from './InputField/InputField';
-
 export const InputField = InputFieldComponent;
 export * from './Select/Select';
 export * from './Table/Table';
@@ -21,4 +20,5 @@ export * from './SliderModal/SliderModal';
 export * from './Switch/Switch';
 export * from './Trademark/Trademark';
 export * from './Skeleton/Skeleton';
+export * from './Menu/Menu';
 export { ThemeProvider, IThemeProviderProps } from './ThemeProvider/ThemeProvider';
