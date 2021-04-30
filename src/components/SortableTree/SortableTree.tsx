@@ -1,25 +1,46 @@
-// import React from 'react';
-// import { ReactElement } from 'react';
-// import styles from './SortableTree.module.scss';
-// import { ISortableTreeProps } from './SortableTree.types';
-// import ReactSortableTree, { TreeItem } from 'react-sortable-tree';
+// import React, { ReactElement, useState } from 'react';
+// import ReactSortableTree from 'react-sortable-tree';
 // import 'react-sortable-tree/style.css';
+// import { ISortableTreeProps } from './SortableTree.types';
 
 // export { ISortableTreeProps } from './SortableTree.types';
 
 // export const SortableTree = (props: ISortableTreeProps): ReactElement => {
-//     const treeData: TreeItem[] = [
-//         { title: 'Chicken', subtitle: 'Sample Subtitle', children: [{ title: 'Egg' }] },
-//         { title: 'Fish', children: [{ title: 'fingerline' }] },
-//     ];
+//     const { treeData, onChangeTreeData } = props;
+//     const [selectedNodeId, setSelectedNodeId] = useState('');
+
+//     // const nodeClicked = (event: any, node: TreeNode) => {
+//     //     if (
+//     //         event.target.className.includes('collapseButton') ||
+//     //         event.target.className.includes('expandButton')
+//     //     ) {
+//     //         console.log('Clicked');
+//     //     } else {
+//     //         console.log(node, 'node data');
+//     //         setSelectedNodeId(node.);
+//     //     }
+//     // };
+
 //     return (
-//         <div style={{ height: 400 }}>
-//             <ReactSortableTree
-//                 treeData={treeData}
-//                 onChange={(treeData) => {
-//                     console.log(treeData);
-//                 }}
-//             />
-//         </div>
+//         <ReactSortableTree
+//             treeData={treeData}
+//             onChange={onChangeTreeData}
+//             // generateNodeProps={(data) => {
+//             //     const { node } = data;
+//             //     const nodeProps = {
+//             //         onClick: (event: unknown) => {
+//             //             console.log(typeof event);
+//             //             nodeClicked(event, node);
+//             //         },
+//             //         className: '',
+//             //     };
+//             //     if (selectedNodeId === node.id) {
+//             //         console.log(nodeProps);
+//             //         nodeProps.className = 'selected-tree-node';
+//             //         console.log(nodeProps.className);
+//             //     }
+//             //     return nodeProps;
+//             // }}
+//         />
 //     );
 // };

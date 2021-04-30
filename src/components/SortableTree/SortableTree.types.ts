@@ -1,3 +1,6 @@
+// import { TreeItem } from 'react-sortable-tree';
+
 // export interface ISortableTreeProps {
-//     sample: string;
+//     treeData: TreeItem[];
+//     onChangeTreeData?: (treeData: TreeItem[]) => void;
 // }
