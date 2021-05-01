@@ -115,7 +115,6 @@
         "react-alice-carousel": "^2.5.1",
         "react-icons": "^4.2.0",
         "react-router-dom": "^5.2.0",
-        "react-sortable-tree": "^2.8.0",
         "zustand": "^3.4.1"
     },
     "bugs": {
