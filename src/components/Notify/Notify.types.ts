@@ -11,7 +11,10 @@ export type TNotifyStore = {
      * Configure notify beforehand
      */
     configureNotify: (
-        props: Pick<INotifyState, 'placement' | 'theme' | 'autoHideDuration' | 'closeOnClickAway'>,
+        props: Pick<
+            INotifyState,
+            'placement' | 'theme' | 'autoHideDuration' | 'closeOnClickAway' | 'showNotifyAction'
+        >,
     ) => void;
     /**
      * Used to hide the notify on demand (from custom action or buttons)

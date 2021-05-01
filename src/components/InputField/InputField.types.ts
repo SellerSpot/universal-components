@@ -4,6 +4,7 @@ import { IColors, IFontSizes, TMuiThemes } from '../../theme';
 export interface IInputFieldProps {
     id?: string;
     name?: string;
+    className?: string;
     value?: string;
     label?: string;
     type?: 'text' | 'password' | 'number' | 'email';

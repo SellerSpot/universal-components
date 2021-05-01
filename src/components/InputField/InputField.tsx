@@ -42,6 +42,7 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
         theme,
         suffix,
         type,
+        className,
         value,
         colors,
         fontSizes,
@@ -196,10 +197,13 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
 
     return (
         <div
-            className={cn({
-                [styles.inputFieldBottomSpace]:
-                    !helperMessage?.enabled && !disableHelperTextPlaceholderPadding,
-            })}
+            className={cn(
+                {
+                    [styles.inputFieldBottomSpace]:
+                        !helperMessage?.enabled && !disableHelperTextPlaceholderPadding,
+                },
+                { className },
+            )}
         >
             <ThemeProvider theme={textFieldTheme}>
                 <MUITextField

@@ -31,7 +31,7 @@ const notifyStore = create<TNotifyStore>((set, get) => ({
         });
     },
     configureNotify: (props) => {
-        const { autoHideDuration, placement, theme, closeOnClickAway } = props;
+        const { autoHideDuration, placement, theme, closeOnClickAway, showNotifyAction } = props;
         const currentNotifyState = get().notifyState;
         set({
             notifyState: {
@@ -40,6 +40,7 @@ const notifyStore = create<TNotifyStore>((set, get) => ({
                 closeOnClickAway,
                 placement,
                 theme,
+                showNotifyAction,
             },
         });
     },
@@ -101,7 +102,7 @@ export const Notify = (): ReactElement => {
     const handleOnClose = ({}, reason: SnackbarCloseReason) => {
         if (reason === 'clickaway' && !closeOnClickAway) return;
         onMUICloseNotify();
-        onClose();
+        onClose?.();
     };
 
     return (
