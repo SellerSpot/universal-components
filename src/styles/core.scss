@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import 'react-alice-carousel/lib/scss/alice-carousel.scss';
 
 * {
     box-sizing: border-box;
@@ -66,4 +67,14 @@ p {
     color: $foregroundPrimary-color;
     font-size: $p-fontsize;
     font-weight: 400;
+}
+
+.alice-carousel ul li img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.alice-carousel__dots-item.__active {
+    background-color: $primary-color !important;
 }

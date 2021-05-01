@@ -114,6 +114,7 @@
         "classnames": "^2.2.6",
         "lodash": "^4.17.21",
         "nanoid": "^3.1.22",
+        "react-alice-carousel": "^2.5.1",
         "react-icons": "^4.2.0",
         "react-router-dom": "^5.2.0",
         "react-sortable-tree": "^2.8.0",
