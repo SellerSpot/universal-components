@@ -1,12 +1,14 @@
 import { Collapse, TableBody as MUITableBody, TableCell, TableRow } from '@material-ui/core';
 import React, { ReactElement } from 'react';
 import TableService from '../Table.service';
-import { ITableRow } from '../Table.types';
+import { ITableProps, ITableRow } from '../Table.types';
 import { CollapseTableIcon } from './CollapseTableIcon';
 
 const MainTableRow = (props: {
     rowIndex: number;
+    numberOfRows: number;
     hasExpandableRows: boolean;
+    variant: ITableProps['variant'];
     isRowExpanded: boolean;
     cells: ITableRow['cells'];
     toggleRowExpansion: (rowIndex: number) => void;
@@ -17,11 +19,18 @@ const MainTableRow = (props: {
         hasExpandableRows,
         isRowExpanded,
         rowIndex,
+        numberOfRows,
         toggleRowExpansion,
+        variant,
         onClick,
     } = props;
     // getting custom classes row style depending on if the table is expandable
-    const mainRowClassName = hasExpandableRows ? TableService.customRowStyles().root : '';
+    const mainRowClassName = TableService.getMainRowClassName({
+        hasExpandableRows,
+        numberOfRows,
+        rowIndex,
+        variant,
+    });
     return (
         <TableRow key={rowIndex} onClick={onClick} className={mainRowClassName}>
             {hasExpandableRows ? (
@@ -73,6 +82,7 @@ const getCollapsedRow = (props: {
 export const TableBody = (props: {
     tableBody: ITableRow[];
     expandedRows: Set<number>;
+    variant: ITableProps['variant'];
     hasExpandableRows: boolean;
     toggleRowExpansion: (rowIndex: number) => void;
     unmountOnCollapse: boolean;
@@ -82,6 +92,7 @@ export const TableBody = (props: {
         expandedRows,
         hasExpandableRows,
         toggleRowExpansion,
+        variant,
         unmountOnCollapse,
     } = props;
 
@@ -94,6 +105,8 @@ export const TableBody = (props: {
                     <>
                         <MainTableRow
                             cells={cells}
+                            variant={variant}
+                            numberOfRows={tableBody.length}
                             hasExpandableRows={hasExpandableRows}
                             isRowExpanded={isRowExpanded}
                             onClick={onClick}

@@ -11,7 +11,7 @@ export type TNotifyStore = {
      * Configure notify beforehand
      */
     configureNotify: (
-        props: Pick<INotifyState, 'placement' | 'theme' | 'autoHideDuration'>,
+        props: Pick<INotifyState, 'placement' | 'theme' | 'autoHideDuration' | 'closeOnClickAway'>,
     ) => void;
     /**
      * Used to hide the notify on demand (from custom action or buttons)
@@ -35,6 +35,15 @@ export interface INotifyState {
      * Automatic notify hide time in milliseconds
      */
     autoHideDuration?: number;
+    /**
+     * If the Notify should close when clicked outside the notify
+     */
+    closeOnClickAway?: boolean;
+    /**
+     * Shows the icon an functionality to close the Notify on click
+     */
+    showNotifyAction?: boolean;
+    customNotifyAction?: (props: { hideNotify: () => void }) => ReactElement;
     onClose?: () => void;
     /**
      * The actions for the notify component

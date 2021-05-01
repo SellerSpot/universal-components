@@ -1,8 +1,11 @@
+import { Snackbar, SnackbarCloseReason, SnackbarContent } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 import { isUndefined } from 'lodash';
 import React, { ReactElement } from 'react';
 import create from 'zustand';
-import { Snackbar, SnackbarProps } from '@material-ui/core';
-import { Alert } from '@material-ui/lab';
+import { ICONS } from '../../utilities/icons';
+import { IconButton } from '../IconButton/IconButton';
+import { NotifyService } from './Notify.service';
 import { TNotifyStore } from './Notify.types';
 
 export { INotifyState } from './Notify.types';
@@ -28,12 +31,13 @@ const notifyStore = create<TNotifyStore>((set, get) => ({
         });
     },
     configureNotify: (props) => {
-        const { autoHideDuration, placement, theme } = props;
+        const { autoHideDuration, placement, theme, closeOnClickAway } = props;
         const currentNotifyState = get().notifyState;
         set({
             notifyState: {
                 ...currentNotifyState,
                 autoHideDuration,
+                closeOnClickAway,
                 placement,
                 theme,
             },
@@ -47,61 +51,55 @@ const notifyStore = create<TNotifyStore>((set, get) => ({
 export const { showNotify, hideNotify, configureNotify } = notifyStore.getState();
 
 export const Notify = (): ReactElement => {
-    const { message, onClose, placement, theme, actions, autoHideDuration } =
-        notifyStore((theme) => theme.notifyState) || {};
+    const {
+        message,
+        onClose,
+        placement,
+        theme,
+        actions,
+        autoHideDuration,
+        closeOnClickAway,
+        customNotifyAction,
+        showNotifyAction,
+    } = notifyStore((theme) => theme.notifyState) || {};
 
     const showNotify = notifyStore((theme) => theme.show);
     const onMUICloseNotify = notifyStore((theme) => theme.onMUICloseNotify);
 
     // determining the placement
-    let notifyPlacement: SnackbarProps['anchorOrigin'];
-    switch (placement) {
-        case 'bottomLeft':
-            notifyPlacement = {
-                horizontal: 'left',
-                vertical: 'bottom',
-            };
-            break;
-        case 'bottomCenter':
-            notifyPlacement = {
-                horizontal: 'center',
-                vertical: 'bottom',
-            };
-            break;
-        case 'bottomRight':
-            notifyPlacement = {
-                horizontal: 'right',
-                vertical: 'bottom',
-            };
-            break;
-        case 'topLeft':
-            notifyPlacement = {
-                horizontal: 'left',
-                vertical: 'top',
-            };
-            break;
-        case 'topCenter':
-            notifyPlacement = {
-                horizontal: 'center',
-                vertical: 'top',
-            };
-            break;
-        case 'topRight':
-            notifyPlacement = {
-                horizontal: 'right',
-                vertical: 'top',
-            };
-            break;
-    }
+    const notifyPlacement = NotifyService.getNotifyPlacement(placement);
+
+    const defaultCloseNotifyAction = (
+        <IconButton
+            icon={<ICONS.MdClose />}
+            theme="danger"
+            size="small"
+            inheritColorsFromParent
+            onClick={() => hideNotify()}
+        />
+    );
+
+    const notifyAction = () => {
+        if (showNotifyAction) {
+            if (!isUndefined(customNotifyAction)) {
+                return customNotifyAction({ hideNotify });
+            }
+            return defaultCloseNotifyAction;
+        }
+        return null;
+    };
 
     // decides if theme based content is required
     const themeBasedContent =
         theme !== 'default' && !isUndefined(theme) ? (
-            <Alert severity={theme}>{message}</Alert>
+            <Alert severity={theme} action={notifyAction()}>
+                {message}
+            </Alert>
         ) : null;
 
     // handles the onClose callback
-    const handleOnClose = () => {
+    const handleOnClose = ({}, reason: SnackbarCloseReason) => {
+        if (reason === 'clickaway' && !closeOnClickAway) return;
         onMUICloseNotify();
         onClose();
     };
@@ -109,13 +107,12 @@ export const Notify = (): ReactElement => {
     return (
         <Snackbar
             action={actions}
-            message={message}
             onClose={handleOnClose}
             open={showNotify}
             autoHideDuration={autoHideDuration}
             anchorOrigin={notifyPlacement}
         >
-            {themeBasedContent}
+            {themeBasedContent ?? <SnackbarContent message={message} action={notifyAction()} />}
         </Snackbar>
     );
 };
