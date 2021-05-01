@@ -105,12 +105,14 @@ export const Notify = (): ReactElement => {
         onClose?.();
     };
 
+    const autoHideDurationCalculated = autoHideDuration < 0 ? undefined : autoHideDuration ?? 5000;
+
     return (
         <Snackbar
             action={actions}
             onClose={handleOnClose}
             open={showNotify}
-            autoHideDuration={autoHideDuration}
+            autoHideDuration={autoHideDurationCalculated}
             anchorOrigin={notifyPlacement}
         >
             {themeBasedContent ?? <SnackbarContent message={message} action={notifyAction()} />}
