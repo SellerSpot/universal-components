@@ -46,6 +46,7 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
         colors,
         fontSizes,
         disableAutoComplete,
+        disableHelperTextPlaceholderPadding,
     } = props;
 
     // internal type state to use incase the field type is password and the suffix is not defined
@@ -194,7 +195,12 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
     const autoComplete = disableAutoComplete ? 'none' : 'on';
 
     return (
-        <div className={cn({ [styles.inputFieldBottomSpace]: !helperMessage?.enabled })}>
+        <div
+            className={cn({
+                [styles.inputFieldBottomSpace]:
+                    !helperMessage?.enabled && !disableHelperTextPlaceholderPadding,
+            })}
+        >
             <ThemeProvider theme={textFieldTheme}>
                 <MUITextField
                     id={id}
