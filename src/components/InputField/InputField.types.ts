@@ -23,6 +23,10 @@ export interface IInputFieldProps {
      * Maximum length for text
      */
     maxLength?: number;
+    /**
+     * If the default padding to serve as placeholder for helper text should be disabled
+     */
+    disableHelperTextPlaceholderPadding?: boolean;
     suffix?: ReactElement | string | number;
     prefix?: ReactElement | string | number;
     size?: 'medium' | 'small';
