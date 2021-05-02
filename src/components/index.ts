@@ -22,4 +22,5 @@ export * from './Trademark/Trademark';
 export * from './Dialog/Dialog';
 export * from './Skeleton/Skeleton';
 export * from './Menu/Menu';
+export * from './Popper/Popper';
 export { ThemeProvider, IThemeProviderProps } from './ThemeProvider/ThemeProvider';

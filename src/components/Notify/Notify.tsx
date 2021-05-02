@@ -3,6 +3,7 @@ import { Alert } from '@material-ui/lab';
 import { isUndefined } from 'lodash';
 import React, { ReactElement } from 'react';
 import create from 'zustand';
+import { introduceDelay } from '../../utilities/general';
 import { ICONS } from '../../utilities/icons';
 import { IconButton } from '../IconButton/IconButton';
 import { NotifyService } from './Notify.service';
@@ -19,14 +20,22 @@ const notifyStore = create<TNotifyStore>((set, get) => ({
     onMUICloseNotify: () => {
         set({ show: false });
     },
-    showNotify: (message, options) => {
+    showNotify: async (message, options) => {
         const currentNotifyState = get().notifyState;
+        const currentShowState = get().show;
+        if (currentShowState) {
+            set({
+                show: false,
+            });
+            // waiting for the previous notify to close
+            await introduceDelay(100);
+        }
         set({
             show: true,
             notifyState: {
-                message: message,
                 ...currentNotifyState,
                 ...options,
+                message: message,
             },
         });
     },
