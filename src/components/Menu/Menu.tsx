@@ -40,7 +40,7 @@ export const Menu = (props: IMenuProps): ReactElement => {
     };
 
     const handleMenuClose = () => {
-        if (!!onClose) onClose();
+        onClose?.();
         setAnchorEl(null);
     };
 

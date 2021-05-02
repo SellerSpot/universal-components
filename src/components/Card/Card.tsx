@@ -8,9 +8,13 @@ export const Card = (props: ICardProps): ReactElement => {
     const { actions, className, content, media, onClick } = props;
     return (
         <MUICard onClick={onClick} className={className?.cardWrapper}>
-            <CardMedia className={className?.mediaWrapper}>{media}</CardMedia>
-            <CardContent className={className?.contentWrapper}>{content}</CardContent>
-            <CardActions className={className?.actionsWrapper}>{actions}</CardActions>
+            {!!media ? <CardMedia className={className?.mediaWrapper}>{media}</CardMedia> : null}
+            {!!content ? (
+                <CardContent className={className?.contentWrapper}>{content}</CardContent>
+            ) : null}
+            {!!actions ? (
+                <CardActions className={className?.actionsWrapper}>{actions}</CardActions>
+            ) : null}
         </MUICard>
     );
 };
