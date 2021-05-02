@@ -37,12 +37,13 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
         placeHolder,
         prefix,
         required,
-        selectTextOnClick,
+        selectTextOnFocus,
         size,
         theme,
         suffix,
         type,
         className,
+        onKeyDown,
         value,
         colors,
         fontSizes,
@@ -126,7 +127,7 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
 
     // handle inputField onFocus
     const onFocusHandler = (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        if (selectTextOnClick) {
+        if (selectTextOnFocus) {
             event.target.select();
         }
         if (!isUndefined(onFocus)) {
@@ -202,7 +203,7 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                     [styles.inputFieldBottomSpace]:
                         !helperMessage?.enabled && !disableHelperTextPlaceholderPadding,
                 },
-                { className },
+                className,
             )}
         >
             <ThemeProvider theme={textFieldTheme}>
@@ -221,8 +222,10 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                     size={size}
                     fullWidth={fullWidth}
                     placeholder={placeHolder}
+                    onKeyDown={onKeyDown}
                     autoFocus={autoFocus}
                     required={required}
+                    margin="dense"
                     disabled={disabled}
                     FormHelperTextProps={{
                         className: cn({

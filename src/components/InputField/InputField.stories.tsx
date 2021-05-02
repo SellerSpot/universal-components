@@ -8,6 +8,7 @@ const Template: Story<IInputFieldProps> = (args: IInputFieldProps) => {
         <div
             style={{
                 maxWidth: '300px',
+                marginLeft: '40px',
             }}
         >
             <InputFieldComponent {...args} />
@@ -24,12 +25,13 @@ InputField.args = {
     minNumericValue: 0,
     maxNumericValue: 100,
     direction: 'ltr',
+    size: 'small',
     // prefix: <h6>₹</h6>,
     // suffix: <h6>.sellerspot.in</h6>,
     placeHolder: 'Placeholder text',
     theme: 'primary',
     required: false,
-    selectTextOnClick: true,
+    selectTextOnFocus: true,
     fullWidth: true,
     helperMessage: {
         enabled: true,

@@ -32,6 +32,7 @@ export interface IInputFieldProps {
     prefix?: ReactElement | string | number;
     size?: 'medium' | 'small';
     disableAutoComplete?: boolean;
+    onKeyDown?: (key: React.KeyboardEvent<HTMLDivElement>) => void;
     fullWidth?: boolean;
     /**
      * Direction of text input
@@ -44,7 +45,7 @@ export interface IInputFieldProps {
     /**
      * Toggle to control if the inputField content should be selected on click
      */
-    selectTextOnClick?: boolean;
+    selectTextOnFocus?: boolean;
     required?: boolean;
     autoFocus?: boolean;
     disabled?: boolean;
