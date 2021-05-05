@@ -6,7 +6,7 @@
     height: 22px;
     min-height: 22px;
     max-height: 22px;
-    margin: 0 5px;
+    margin: 0 4px;
     @include flex(center, flex-start, $gap: 5px);
 }
 

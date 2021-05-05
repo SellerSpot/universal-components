@@ -1,12 +1,12 @@
-import cn from 'classnames';
-import { isNull, isUndefined } from 'lodash';
-import React, { forwardRef, ReactElement, RefObject, useEffect, useRef, useState } from 'react';
 import {
+    CircularProgress,
     InputAdornment,
     TextField as MUITextField,
     ThemeProvider,
-    CircularProgress,
 } from '@material-ui/core';
+import cn from 'classnames';
+import { isNull, isUndefined } from 'lodash';
+import React, { forwardRef, ReactElement, RefObject, useEffect, useRef, useState } from 'react';
 import { getTheme } from '../../theme/theme';
 import { ICONS } from '../../utilities/icons';
 import { IconButton } from '../IconButton/IconButton';
@@ -225,7 +225,6 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                     onKeyDown={onKeyDown}
                     autoFocus={autoFocus}
                     required={required}
-                    margin="dense"
                     disabled={disabled}
                     FormHelperTextProps={{
                         className: cn({
