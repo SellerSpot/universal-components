@@ -251,7 +251,6 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                         ),
                     }}
                     error={theme === 'danger'}
-                    // helperText={helperComponent}
                 />
                 {helperMessage?.enabled ? <HelperComponent /> : null}
             </ThemeProvider>
