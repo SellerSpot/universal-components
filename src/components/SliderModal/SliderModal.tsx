@@ -30,13 +30,14 @@ export const SliderModal = (props: ISliderModalProps): ReactElement => {
             <div
                 className={cn(styles.backdrop, {
                     [styles.backdropShow]: show,
-                    [styles.backdropHide]: !show,
                 })}
                 onClick={disableBackdropClick ? null : onClose}
             />
             <div
-                className={cn(styles.slider, { [styles.sliderShow]: show })}
-                style={show ? { width: width } : null}
+                className={cn(styles.slider, {
+                    [styles.sliderShow]: show,
+                })}
+                style={{ width: width }}
             >
                 <div className={styles.sliderHeader}>
                     <h3>{sliderTitle}</h3>

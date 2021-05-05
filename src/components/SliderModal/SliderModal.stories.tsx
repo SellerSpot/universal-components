@@ -24,6 +24,7 @@ const Template: Story<ISliderModalProps> = () => {
             <SliderModalComponent
                 show={showSlider}
                 showCloseButton={true}
+                width={'90%'}
                 sliderTitle={'Add Product'}
                 sliderFooter={
                     <div
