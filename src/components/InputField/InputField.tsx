@@ -56,6 +56,7 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
     // internal ref object to manage autoFocus prop enforcing in case
     // and external ref is not provided
     const internalRef = useRef<HTMLInputElement>(null);
+    const autoComplete = disableAutoComplete ? 'none' : 'on';
     // runs when autoFocus value changes to force focus to field
     useEffect(() => {
         // also only runs when an external ref has not been provided
@@ -193,8 +194,6 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
         }
         return type;
     };
-
-    const autoComplete = disableAutoComplete ? 'none' : 'on';
 
     return (
         <div
