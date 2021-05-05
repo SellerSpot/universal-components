@@ -11,13 +11,14 @@ export { ISliderModalProps } from './SliderModal.types';
 export const SliderModal = (props: ISliderModalProps): ReactElement => {
     const {
         show,
-        sliderTitle,
+        sliderHeader,
         children,
         sliderFooter,
         onClose,
         disableBackdropClick,
         width,
         showCloseButton,
+        showBackButton,
     } = props;
 
     return (
@@ -30,16 +31,27 @@ export const SliderModal = (props: ISliderModalProps): ReactElement => {
             <div
                 className={cn(styles.backdrop, {
                     [styles.backdropShow]: show,
-                    [styles.backdropHide]: !show,
                 })}
                 onClick={disableBackdropClick ? null : onClose}
             />
             <div
-                className={cn(styles.slider, { [styles.sliderShow]: show })}
-                style={show ? { width: width } : null}
+                className={cn(styles.slider, {
+                    [styles.sliderShow]: show,
+                })}
+                style={{ width: width }}
             >
                 <div className={styles.sliderHeader}>
-                    <h3>{sliderTitle}</h3>
+                    <div className={styles.titleWrapper}>
+                        {showBackButton ? (
+                            <IconButton
+                                icon={<ICONS.MdKeyboardArrowLeft size={25} />}
+                                theme="auto"
+                                size="small"
+                                onClick={onClose}
+                            />
+                        ) : null}
+                        {sliderHeader}
+                    </div>
                     {showCloseButton ? (
                         <IconButton
                             colors={defaultColors}

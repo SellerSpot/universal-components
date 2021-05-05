@@ -38,6 +38,15 @@ export const useThemeConfigState = create<TThemeConfigState>((set) => ({
 export function ThemeProvider(props: IThemeProviderProps): ReactElement {
     const { children, colors, fontSizes } = props;
     const initializeThemeConfig = useThemeConfigState((state) => state.initializeThemeConfig);
+
+    useEffect(() => {
+        // pushing the passed theme data into the local store
+        initializeThemeConfig({
+            colors,
+            fontSizes,
+        });
+    }, []);
+
     // applying the theme from store to dom
     useEffect(() => {
         Object.keys(colors).forEach((key) => {
@@ -53,12 +62,6 @@ export function ThemeProvider(props: IThemeProviderProps): ReactElement {
             );
         });
     }, [colors, fontSizes]);
-
-    // pushing the passed theme data into the local store
-    initializeThemeConfig({
-        colors,
-        fontSizes,
-    });
 
     // constructing props early so that the jsx is clean
     const getThemeProps: IGetThemeProps = {

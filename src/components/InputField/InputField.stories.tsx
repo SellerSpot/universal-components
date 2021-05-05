@@ -25,7 +25,7 @@ InputField.args = {
     minNumericValue: 0,
     maxNumericValue: 100,
     direction: 'ltr',
-    size: 'small',
+    size: 'medium',
     // prefix: <h6>₹</h6>,
     // suffix: <h6>.sellerspot.in</h6>,
     placeHolder: 'Placeholder text',

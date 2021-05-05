@@ -1,12 +1,12 @@
-import cn from 'classnames';
-import { isNull, isUndefined } from 'lodash';
-import React, { forwardRef, ReactElement, RefObject, useEffect, useRef, useState } from 'react';
 import {
+    CircularProgress,
     InputAdornment,
     TextField as MUITextField,
     ThemeProvider,
-    CircularProgress,
 } from '@material-ui/core';
+import cn from 'classnames';
+import { isNull, isUndefined } from 'lodash';
+import React, { forwardRef, ReactElement, RefObject, useEffect, useRef, useState } from 'react';
 import { getTheme } from '../../theme/theme';
 import { ICONS } from '../../utilities/icons';
 import { IconButton } from '../IconButton/IconButton';
@@ -56,6 +56,7 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
     // internal ref object to manage autoFocus prop enforcing in case
     // and external ref is not provided
     const internalRef = useRef<HTMLInputElement>(null);
+    const autoComplete = disableAutoComplete ? 'none' : 'on';
     // runs when autoFocus value changes to force focus to field
     useEffect(() => {
         // also only runs when an external ref has not been provided
@@ -194,8 +195,6 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
         return type;
     };
 
-    const autoComplete = disableAutoComplete ? 'none' : 'on';
-
     return (
         <div
             className={cn(
@@ -225,7 +224,6 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                     onKeyDown={onKeyDown}
                     autoFocus={autoFocus}
                     required={required}
-                    margin="dense"
                     disabled={disabled}
                     FormHelperTextProps={{
                         className: cn({
@@ -251,7 +249,6 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                         ),
                     }}
                     error={theme === 'danger'}
-                    // helperText={helperComponent}
                 />
                 {helperMessage?.enabled ? <HelperComponent /> : null}
             </ThemeProvider>
