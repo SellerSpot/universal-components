@@ -31,6 +31,15 @@ export interface IInputFieldProps {
     suffix?: ReactElement | string | number;
     prefix?: ReactElement | string | number;
     size?: 'medium' | 'small';
+    multiline?: boolean;
+    /**
+     * Number of rows if the multiline option is set to true.
+     */
+    rows?: number;
+    /**
+     * Maximum number of rows to display when multiline option is set to true.
+     */
+    maxRows?: number;
     disableAutoComplete?: boolean;
     onKeyDown?: (key: React.KeyboardEvent<HTMLDivElement>) => void;
     fullWidth?: boolean;

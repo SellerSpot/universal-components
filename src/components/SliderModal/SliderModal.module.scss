@@ -1,89 +1,90 @@
-.wrapper {
+.sliderModalWrapper {
     position: fixed;
     z-index: 10;
     top: 0;
     right: -100%;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    // wait for other animations to finish before exit
+    transition: right 0s 0.35s ease;
+
+    &.sliderModalWrapperShow {
+        right: 0;
+        // enter immidiately
+        transition: right 0s ease;
+    }
 
     .backdrop {
-        position: absolute;
         right: -100%;
         width: 100%;
         height: 100%;
-        background-color: black;
-        opacity: 0;
-        transition: opacity 0.35s ease, right 0s 0.35s ease;
-    }
+        background-color: transparent;
+        transition: right 0s 0.35s ease, background-color 0.35s ease;
 
-    .backdropShow {
-        right: 0;
-        opacity: 0.35;
-        transition: opacity 0.35s ease, right 0s ease;
-    }
+        &.backdropShow {
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.4);
+            transition: right 0s ease, background-color 0.35s ease;
+        }
 
-    .slider {
-        position: absolute;
-        z-index: 1;
-        right: -100%;
-        display: grid;
-        height: 100%;
-        background-color: $backgroundPrimary-color;
-        grid-template-columns: 1fr;
-        grid-template-rows: 50px 1fr 50px;
-        transition: right 0.35s ease;
-
-        .sliderHeader {
+        .modal {
+            position: absolute;
+            right: -100%;
+            display: grid;
             width: 100%;
             height: 100%;
-            padding-right: 15px;
-            padding-left: 5px;
+            background-color: $backgroundPrimary-color;
+            grid-template-rows: 45px 1fr;
+            transition: right 0.35s ease;
 
-            @include flex(center, space-between);
+            &.modalShow {
+                right: 0;
+            }
 
-            .titleWrapper {
+            .modalContentHeader {
                 width: 100%;
                 height: 100%;
+                padding: 0 10px;
+                @include flex(center, flex-end, $gap: 10px);
 
-                @include flex(center, flex-start, $gap: 5px);
-            }
+                .modalContentHeaderActionButtonWrapper {
+                    width: 40px;
+                    height: 40px;
+                    flex-grow: 0;
+                    background-color: transparent;
 
-            .closeButton {
-                color: $danger-color;
-                cursor: pointer;
+                    @include flex(center, flex-start);
 
-                &:hover {
-                    color: $dangerDark-color;
+                    .modalContentHeaderActionButton {
+                        width: 25px;
+                        height: 25px;
+                        padding: 2px;
+                        border-radius: 3px;
+                        color: $foregroundPrimary-color;
+                        cursor: pointer;
+                        transition: all 0.6s ease;
+                        &:hover {
+                            background-color: $foregroundPrimary-color;
+                            color: $foregroundLight-color;
+                        }
+                        &:active {
+                            background-color: $backgroundDark-color;
+                        }
+                    }
+                }
+
+                .modalContentHeaderContent {
+                    width: 100%;
+                    height: 100%;
+                    flex-grow: 1;
                 }
             }
-        }
 
-        .sliderBody {
-            overflow: auto;
-            width: 100%;
-            height: 100%;
-            padding: 0 15px;
-        }
-
-        .sliderFooter {
-            width: 100%;
-            height: 100%;
-            padding: 0 15px;
+            .modalContentBody {
+                width: 100%;
+                height: 100%;
+                padding: 5px 10px;
+            }
         }
     }
-
-    .sliderShow {
-        right: 0;
-    }
-}
-
-.wrapperShow {
-    right: 0;
-    // load quickly so that other components can load in
-    transition: right 0s ease;
-}
-
-.wrapperHide {
-    // delay waiting for the other components to animate out
-    transition: right 0s 0.35s ease;
 }

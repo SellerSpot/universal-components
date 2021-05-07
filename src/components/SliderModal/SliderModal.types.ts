@@ -1,13 +1,18 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 
 export interface ISliderModalProps {
     show?: boolean;
-    sliderHeader?: ReactElement;
-    children?: ReactElement;
-    sliderFooter?: ReactElement;
-    disableBackdropClick?: boolean;
-    onClose?: (event: React.MouseEvent) => void;
+    children?: ReactNode;
+    onBackdropClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
     width?: React.CSSProperties['width'];
-    showCloseButton?: boolean;
-    showBackButton?: boolean;
+}
+
+export interface ISliderModalHeaderProps {
+    children?: ReactElement;
+    showActionButton?: 'closeButton' | 'backButton';
+    onActionButtonClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+}
+
+export interface ISliderModalBodyProps {
+    children?: ReactNode;
 }

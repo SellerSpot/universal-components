@@ -38,9 +38,12 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
         prefix,
         required,
         selectTextOnFocus,
+        maxRows,
         size,
         theme,
         suffix,
+        multiline,
+        rows,
         type,
         className,
         onKeyDown,
@@ -195,16 +198,17 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
         return type;
     };
 
+    const addPseudoBottomPadding = !helperMessage?.enabled && !disableHelperTextPlaceholderPadding;
+    const fieldWrapperClassName = cn(
+        {
+            [styles.inputFieldBottomSpace]: addPseudoBottomPadding,
+        },
+        { [styles.fullWidthField]: fullWidth },
+        className,
+    );
+
     return (
-        <div
-            className={cn(
-                {
-                    [styles.inputFieldBottomSpace]:
-                        !helperMessage?.enabled && !disableHelperTextPlaceholderPadding,
-                },
-                className,
-            )}
-        >
+        <div className={fieldWrapperClassName}>
             <ThemeProvider theme={textFieldTheme}>
                 <MUITextField
                     id={id}
@@ -217,6 +221,9 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
                     onFocus={onFocusHandler}
                     value={value}
                     label={label}
+                    multiline={multiline}
+                    rows={rows}
+                    rowsMax={maxRows}
                     type={inputFieldType()}
                     size={size}
                     fullWidth={fullWidth}
