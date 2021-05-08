@@ -11,6 +11,7 @@ import {
     MdVisibilityOff,
     MdCheck,
     MdKeyboardArrowLeft,
+    MdArrowBack,
 } from 'react-icons/md';
 
 export const ICONS = {
@@ -26,4 +27,5 @@ export const ICONS = {
     MdVisibilityOff,
     MdCheck,
     MdKeyboardArrowLeft,
+    MdArrowBack,
 };
