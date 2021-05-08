@@ -1,34 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Dialog as DialogComponent, IDialogProps, hideDialog, showDialog } from './Dialog';
+import {
+    Dialog as DialogComponent,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    DialogContentText,
+} from './Dialog';
 
-const Template: Story<IDialogProps> = () => {
+const Template: Story = () => {
+    const [showDialog, setShowDialog] = useState(false);
     return (
         <div>
-            <Button
-                variant={'contained'}
-                color={'primary'}
-                onClick={() =>
-                    showDialog({
-                        title: <h5>Dialog Title</h5>,
-                        content: <h6>Sample Dialog Content</h6>,
-                        actions: (
-                            <Button
-                                variant={'contained'}
-                                color={'secondary'}
-                                onClick={() => hideDialog()}
-                            >
-                                Close Dialog
-                            </Button>
-                        ),
-                        fullWidth: true,
-                    })
-                }
-            >
+            <Button variant={'contained'} color={'primary'} onClick={() => setShowDialog(true)}>
                 Show Dialog
             </Button>
-            <DialogComponent />
+            <DialogComponent open={showDialog}>
+                <DialogTitle>{'This is sample title'}</DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        Let Google help apps determine location. This means sending anonymous
+                        location data to Google, even when no apps are running.
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button
+                        variant={'contained'}
+                        color={'secondary'}
+                        onClick={() => setShowDialog(false)}
+                    >
+                        Close Dialog
+                    </Button>
+                </DialogActions>
+            </DialogComponent>
         </div>
     );
 };
