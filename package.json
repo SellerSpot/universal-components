@@ -18,7 +18,7 @@
         "husky:install": "husky install",
         "stylelint:fix": "npx stylelint \"**/*.scss\" --fix",
         "husky:pre-commit": "npm run lint-staged",
-        "update:packges": "npm i -D @sellerspot/webpack-run-scripts-custom-plugin"
+        "update:packages": "npm i -D @sellerspot/webpack-run-scripts-custom-plugin"
     },
     "repository": {
         "type": "git",
