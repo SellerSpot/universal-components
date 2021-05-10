@@ -43,7 +43,7 @@
     ],
     "license": "ISC",
     "devDependencies": {
-        "@sellerspot/webpack-run-scripts-custom-plugin": "^1.17.3",
+        "@sellerspot/webpack-run-scripts-custom-plugin": "^1.18.2",
         "@storybook/addon-actions": "^6.2.3",
         "@storybook/addon-essentials": "^6.2.3",
         "@storybook/addon-links": "^6.2.3",
