@@ -1,5 +1,5 @@
 import { Collapse, TableBody as MUITableBody, TableCell, TableRow } from '@material-ui/core';
-import React, { ReactElement } from 'react';
+import React, { ReactElement, Fragment } from 'react';
 import TableService from '../Table.service';
 import { ITableProps, ITableRow } from '../Table.types';
 import { CollapseTableIcon } from './CollapseTableIcon';
@@ -102,7 +102,7 @@ export const TableBody = (props: {
                 const { cells, collapsedContent, onClick } = row;
                 const isRowExpanded = expandedRows.has(rowIndex);
                 return (
-                    <>
+                    <Fragment key={rowIndex}>
                         <MainTableRow
                             cells={cells}
                             variant={variant}
@@ -121,7 +121,7 @@ export const TableBody = (props: {
                                   unmountOnCollapse,
                               })
                             : null}
-                    </>
+                    </Fragment>
                 );
             })}
         </MUITableBody>
