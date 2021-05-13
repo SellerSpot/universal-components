@@ -1,0 +1,24 @@
+.saleSummary {
+    width: 100%;
+    padding-bottom: 2px;
+    @include flex(center, flex-start, column, 5px);
+
+    .summaryRow {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 65% 35%;
+
+        .summaryRowTitle {
+            color: black;
+            font-weight: 500;
+            @include flex(center, flex-end);
+        }
+
+        .summaryRowValue {
+            color: black;
+            font-size: 13px;
+            font-weight: 600;
+            @include flex(center, flex-end);
+        }
+    }
+}

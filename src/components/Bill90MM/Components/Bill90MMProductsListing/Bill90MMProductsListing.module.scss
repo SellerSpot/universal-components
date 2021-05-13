@@ -1,0 +1,61 @@
+.mainDivider {
+    border-top: 2px solid black;
+    border-radius: 10px;
+}
+
+.productsListingWrapper {
+    width: 100%;
+    padding-top: 10px;
+    //background-color: blue;
+
+    .productsListingTableHeader {
+        width: 100%;
+        height: 20px;
+        //background-color: green;
+        @include flex(center, space-between);
+
+        p {
+            color: black;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    }
+
+    .productsListingTableBodyWrapper {
+        width: 100%;
+        padding-top: 10px;
+
+        .productsListingTableBodyRow {
+            width: 100%;
+            margin-bottom: 5px;
+
+            .multiQuantityDetail {
+                width: 100%;
+                color: black;
+            }
+
+            .discountDetail {
+                width: 100%;
+                @include flex(center, space-between);
+                p {
+                    color: black;
+                }
+            }
+
+            .primaryDetails {
+                @include flex(center, space-between);
+
+                p {
+                    color: black;
+                    font-size: 13px;
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .rowDivider {
+            border-top: 2px dotted black;
+            margin-bottom: 5px;
+        }
+    }
+}
