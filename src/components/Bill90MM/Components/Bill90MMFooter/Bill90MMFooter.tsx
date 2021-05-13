@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import { IBill90MMProps } from '../../Bill90MM.types';
 import styles from './Bill90MMFooter.module.scss';
+import mainStyles from '../../Bill90MM.module.scss';
 
 export const Bill90MMFooter = (props: { billData: IBill90MMProps['billData'] }): ReactElement => {
     const { billData } = props;
@@ -19,7 +20,7 @@ export const Bill90MMFooter = (props: { billData: IBill90MMProps['billData'] }):
             <div className={styles.footerMessageWrapper}>
                 <p>{footerMessage}</p>
             </div>
-            <hr className={styles.mainDivider} />
+            <hr className={mainStyles.mainDivider} />
             <div className={styles.billFooterWrapper}>
                 <p>{`Date: ${month} ${date}, ${year} at ${time}`}</p>
                 <p>{`Receipt: #${23423}`}</p>

@@ -1,34 +1,48 @@
 .storeNameWrapper {
     width: 100%;
-    height: 75px;
+    height: auto;
     padding-bottom: 5px;
+    margin-top: 20px;
     @include flex(flex-end, center);
 
     p {
+        display: -webkit-box;
+        overflow: hidden;
+        max-width: 100%;
+        -webkit-box-orient: vertical;
         color: black;
         font-size: 24px;
         font-weight: 600;
+        -webkit-line-clamp: 2;
+        text-align: center;
+        text-overflow: clip;
     }
 }
 
 .headerMessageWrapper {
     width: 100%;
-    height: 30px;
+    height: auto;
+    margin-bottom: 10px;
     //background-color: red;
     @include flex(flex-start, center);
 
     p {
+        display: -webkit-box;
+        overflow: hidden;
+        max-width: 100%;
+        -webkit-box-orient: vertical;
         color: black;
         font-size: 12px;
         font-weight: 400;
+        -webkit-line-clamp: 2;
+        text-align: center;
+        text-overflow: clip;
     }
 }
 
 .totalHeaderWrapper {
-    width: auto;
-    height: 65px;
+    padding: 5px 0;
     border: 2px solid black;
-    //background-color: green;
     border-radius: 5px;
     @include flex(center, center, column, 2px);
 
@@ -39,8 +53,15 @@
     }
 
     .totalHeaderValue {
+        display: -webkit-box;
+        overflow: hidden;
+        max-width: 200px;
+        -webkit-box-orient: vertical;
         color: black;
         font-size: 22px;
         font-weight: 600;
+        -webkit-line-clamp: 1;
+        text-align: center;
+        text-overflow: ellipsis;
     }
 }

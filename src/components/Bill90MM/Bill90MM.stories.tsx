@@ -10,8 +10,8 @@ Bill90MM.args = {
     billData: {
         products: [
             {
-                name: 'Sample Product',
-                subTotal: numberFormatINRCurrency(24),
+                name: 'Sample Product asldkfj',
+                subTotal: numberFormatINRCurrency(24000),
                 quantity: 1,
                 stockUnit: 'kgs',
                 unitPrice: numberFormatINRCurrency(12),
@@ -36,8 +36,8 @@ Bill90MM.args = {
         saleSubTotal: numberFormatINRCurrency(200),
         saleTotalTax: numberFormatINRCurrency(25),
         saleTotalTaxPercentage: 13,
-        storeName: 'Sreenithi Store',
-        saleTotal: numberFormatINRCurrency(250),
+        storeName: 'Sreenithi Margin Free',
+        saleTotal: numberFormatINRCurrency(250000),
         footerMessage: 'Sample Footer Message',
         headerMessage: 'Sample Header Message',
     },

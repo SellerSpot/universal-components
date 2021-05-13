@@ -4,11 +4,12 @@
     @include flex(center, flex-start, column, 5px);
 
     .summaryRow {
-        display: grid;
         width: 100%;
-        grid-template-columns: 65% 35%;
+        @include flex(center, space-between, $gap: 5px);
 
         .summaryRowTitle {
+            width: 100%;
+            width: 60%;
             color: black;
             font-weight: 500;
             @include flex(center, flex-end);

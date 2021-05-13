@@ -1,6 +1,7 @@
 import React, { Fragment, ReactElement } from 'react';
 import { IBill90MMProps } from '../../Bill90MM.types';
 import styles from './Bill90MMProductsListing.module.scss';
+import mainStyles from '../../Bill90MM.module.scss';
 
 const ListingRow = (props: { product: IBill90MMProps['billData']['products'][0] }) => {
     const { product } = props;
@@ -9,8 +10,8 @@ const ListingRow = (props: { product: IBill90MMProps['billData']['products'][0] 
         <>
             <div className={styles.productsListingTableBodyRow}>
                 <div className={styles.primaryDetails}>
-                    <p>{name}</p>
-                    <p>{subTotal}</p>
+                    <p className={styles.productName}>{name}</p>
+                    <p className={styles.productPrice}>{subTotal}</p>
                 </div>
                 {quantity > 1 ? (
                     <p
@@ -40,7 +41,7 @@ export const Bill90MMProductsListing = (props: {
                 <p>Item</p>
                 <p>Price</p>
             </div>
-            <hr className={styles.mainDivider} />
+            <hr className={mainStyles.mainDivider} />
             <div className={styles.productsListingTableBodyWrapper}>
                 {products.map((product, productIndex) => (
                     <Fragment key={productIndex}>
