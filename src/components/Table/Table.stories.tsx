@@ -154,6 +154,6 @@ Table.args = {
 } as ITableProps;
 
 export default {
-    title: 'Components/Atoms',
+    title: 'Design System/Atoms/Table',
     component: TableComponent,
 } as Meta;

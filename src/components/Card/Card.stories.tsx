@@ -10,6 +10,6 @@ Card.args = {
 } as ICardProps;
 
 export default {
-    title: 'Components/Atoms',
+    title: 'Design System/Atoms/Card',
     component: CardComponent,
 } as Meta;

@@ -11,6 +11,6 @@ export const ExpandWorkspaceMenuButton = Template.bind({});
 ExpandWorkspaceMenuButton.args = {} as IExpandWorkspaceMenuButtonProps;
 
 export default {
-    title: 'Components/Atoms',
+    title: 'Design System/Atoms/Expand Workspace Menu Button',
     component: ExpandWorkspaceMenuButtonComponent,
 } as Meta;

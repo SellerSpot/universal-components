@@ -24,6 +24,6 @@ Slider.args = {
 } as ISliderProps;
 
 export default {
-    title: 'Components/Atoms',
+    title: 'Design System/Atoms/Slider',
     component: SliderComponent,
 } as Meta;

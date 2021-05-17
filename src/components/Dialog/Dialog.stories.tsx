@@ -41,6 +41,6 @@ const Template: Story = () => {
 export const Dialog = Template.bind({});
 
 export default {
-    title: 'Components/Atoms',
+    title: 'Design System/Atoms/Dialog',
     component: DialogComponent,
 } as Meta;

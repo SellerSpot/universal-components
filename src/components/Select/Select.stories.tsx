@@ -26,6 +26,6 @@ Select.args = {
 } as ISelectProps;
 
 export default {
-    title: 'Components/Atoms',
+    title: 'Design System/Atoms/Select',
     component: SelectComponent,
 } as Meta;

@@ -32,6 +32,6 @@ const Template: Story<IToolTipProps> = () => {
 
 export const ToolTip = Template.bind({});
 export default {
-    title: 'Components/Atoms',
+    title: 'Design System/Atoms/Tool Tip',
     component: ToolTipComponent,
 } as Meta;

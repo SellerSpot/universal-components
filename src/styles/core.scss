@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import 'react-alice-carousel/lib/scss/alice-carousel.scss';
+@import './aliceCarouselStyles.scss';
+@import './scrollbarStyles.scss';
 
 * {
     box-sizing: border-box;
@@ -8,17 +10,6 @@
     font-family: 'Inter', Helvetica, sans-serif;
     scroll-behavior: smooth;
     vertical-align: baseline;
-}
-
-::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-    background-color: #f2f2f2;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: #a0a0a0;
-    border-radius: 0.2rem;
 }
 
 body {
@@ -67,14 +58,4 @@ p {
     color: $foregroundPrimary-color;
     font-size: $p-fontsize;
     font-weight: 400;
-}
-
-.alice-carousel ul li img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.alice-carousel__dots-item.__active {
-    background-color: $primary-color !important;
 }

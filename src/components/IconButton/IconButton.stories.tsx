@@ -17,6 +17,6 @@ IconButton.args = {
 } as IIconButtonProps;
 
 export default {
-    title: 'Components/Atoms',
+    title: 'Design System/Atoms/Icon Button',
     component: IconButtonComponent,
 } as Meta;

@@ -16,6 +16,6 @@ ExpandableCard.args = {
 } as IExpandableCardProps;
 
 export default {
-    title: 'Components/Atoms',
+    title: 'Design System/Atoms/Expandable Card',
     component: ExpandableCardComponent,
 } as Meta;
