@@ -13,6 +13,6 @@ Switch.args = {
 } as ISwitchProps;
 
 export default {
-    title: 'Components/Atoms',
+    title: 'Design System/Atoms/Switch',
     component: SwitchComponent,
 } as Meta;

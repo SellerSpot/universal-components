@@ -32,6 +32,6 @@ ImageCarousel.args = {
 } as IImageCarouselProps;
 
 export default {
-    title: 'Components/Atoms',
+    title: 'Design System/Atoms/Image Carousel',
     component: ImageCarouselComponent,
 } as Meta;

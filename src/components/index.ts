@@ -24,4 +24,5 @@ export * from './Skeleton/Skeleton';
 export * from './Checkbox/CheckBox';
 export * from './Menu/Menu';
 export * from './Popper/Popper';
+export * from './Slider/Slider';
 export { ThemeProvider, IThemeProviderProps } from './ThemeProvider/ThemeProvider';

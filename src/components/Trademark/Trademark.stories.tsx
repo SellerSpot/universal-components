@@ -8,6 +8,6 @@ export const TradeMark = Template.bind({});
 TradeMark.args = {};
 
 export default {
-    title: 'Components/Atoms',
+    title: 'Design System/Atoms/Trade Mark',
     component: TrademarkComponent,
 } as Meta;

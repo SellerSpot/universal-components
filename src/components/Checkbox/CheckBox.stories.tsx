@@ -11,6 +11,6 @@ CheckBox.args = {
 } as ICheckBoxProps;
 
 export default {
-    title: 'Components/Atoms',
+    title: 'Design System/Atoms/Check Box',
     component: CheckBoxComponent,
 } as Meta;
