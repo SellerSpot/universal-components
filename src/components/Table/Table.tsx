@@ -39,6 +39,7 @@ export const Table = (props: ITableProps): ReactElement => {
     const tableBody = body({ toggleRowExpansion });
     const tableContainerComponent = variant === 'simple' ? 'div' : Paper;
     const tableStyles: React.CSSProperties = {
+        boxShadow: 'none',
         height:
             height ??
             TableService.computeTableContainerHeight({
