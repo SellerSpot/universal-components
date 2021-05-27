@@ -7,7 +7,7 @@ export interface ICardProps {
         contentWrapper?: string;
         actionsWrapper?: string;
     };
-    media?: ReactElement;
+    image?: string;
     content?: ReactElement;
     actions?: JSX.Element;
     onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;

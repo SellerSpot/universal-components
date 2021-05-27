@@ -1,9 +1,8 @@
 .wrapper {
-    width: 40px;
-    min-width: 20px;
-    height: 40px;
-    min-height: 20px;
-    background-color: red;
+    min-width: 40px;
+    max-width: 40px;
+    min-height: 40px;
+    max-height: 40px;
     border-radius: $border-radius;
     cursor: pointer !important;
     font-weight: 600;
@@ -18,8 +17,10 @@
 }
 
 .smallWrapper {
-    width: 25px;
-    height: 25px;
+    min-width: 25px;
+    max-width: 25px;
+    min-height: 25px;
+    max-height: 25px;
     font-size: 14px;
 }
 
