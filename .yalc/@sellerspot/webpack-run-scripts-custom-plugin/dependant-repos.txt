@@ -1,5 +1,0 @@
-auth-server
-universal-types
-universal-functions
-database-models
-universal-components
