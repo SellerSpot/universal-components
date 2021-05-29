@@ -8,7 +8,7 @@ export * from './Button/Button';
 export * from './Card/Card';
 export * from './Chip/Chip';
 export * from './ExpandableCard/ExpandableCard';
-export * from './ExpandWorkspaceMenuButton/ExpandWorkspaceMenuButton';
+export * from './ExpandPluginMenuButton/ExpandPluginMenuButton';
 export * from './IconButton/IconButton';
 export { IInputFieldProps } from './InputField/InputField';
 export const InputField = InputFieldComponent;

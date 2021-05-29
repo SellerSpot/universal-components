@@ -1,13 +1,13 @@
 import React, { ReactElement } from 'react';
 import { IComponentEvents } from 'typings/common.types';
 import { ICONS } from '../../utilities/icons';
-import styles from './ExpandWorkspaceMenuButton.module.scss';
+import styles from './ExpandPluginMenuButton.module.scss';
 
-export interface IExpandWorkspaceMenuButtonProps {
+export interface IExpandPluginMenuButtonProps {
     onClick?: IComponentEvents['onClick'];
 }
 
-export const ExpandWorkspaceMenuButton = (props: IExpandWorkspaceMenuButtonProps): ReactElement => {
+export const ExpandPluginMenuButton = (props: IExpandPluginMenuButtonProps): ReactElement => {
     const { onClick } = props;
     return (
         <div className={styles.wrapper} onClick={onClick}>
