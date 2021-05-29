@@ -8,7 +8,7 @@ const Template: Story<ICardProps> = (args: ICardProps) => {
     };
     return (
         <div style={wrapperStyle}>
-            <CardComponent {...args} />;
+            <CardComponent {...args} />
         </div>
     );
 };

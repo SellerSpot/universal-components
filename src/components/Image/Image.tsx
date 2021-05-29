@@ -3,13 +3,23 @@ import { Skeleton } from '..';
 
 export interface IImageProps {
     src: string;
-    width: React.CSSProperties['width'];
-    height: React.CSSProperties['height'];
+    /**
+     * @default ```'100%'```
+     */
+    width?: React.CSSProperties['width'];
+    /**
+     * @default ```'100%'```
+     */
+    height?: React.CSSProperties['height'];
+    /**
+     * @default ```'cover'```
+     */
+    objectFit?: React.CSSProperties['objectFit'];
 }
 
 export const Image = (props: IImageProps): ReactElement => {
     // props
-    const { src, width, height } = props;
+    const { src, width = '100%', height = '100%', objectFit = 'cover' } = props;
     // state
     const [isLoading, setIsLoading] = useState(true);
 
@@ -20,6 +30,7 @@ export const Image = (props: IImageProps): ReactElement => {
         width,
         height,
         display: isLoading ? 'none' : 'block',
+        objectFit,
     };
 
     return (
