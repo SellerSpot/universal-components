@@ -15,7 +15,12 @@ export const Trademark = (props: ITradeMarkProps): ReactElement => {
     return (
         <div className={styles.wrapper}>
             <p className={styles.poweredBy}>Powered By</p>
-            <div className={styles.logoSpace} role="link" onClick={logoClickHandler}>
+            <div
+                className={styles.logoSpace}
+                role="link"
+                onClick={logoClickHandler}
+                title="Click to vist"
+            >
                 <Logo className={styles.logo} />
                 <LogoText className={styles.logoText} />
             </div>

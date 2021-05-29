@@ -14,6 +14,7 @@ export const Select = (props: ISelectProps): ReactElement => {
             value={value}
             label={label}
             onChange={onChange}
+            SelectProps={{ style: { translate: '10px' } }}
         >
             {options.map((option, index) => {
                 return (

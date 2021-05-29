@@ -1,17 +1,17 @@
 .sliderModalWrapper {
-    position: fixed;
-    z-index: 10;
     top: 0;
     right: -100%;
     width: 100vw;
     height: 100vh;
     // wait for other animations to finish before exit
-    transition: right 0s 0.35s ease;
+    opacity: 0;
+    transition: right 0s 0.35s ease, opacity 0s 0.35s ease;
 
     &.sliderModalWrapperShow {
         right: 0;
+        opacity: 1;
         // enter immidiately
-        transition: right 0s ease;
+        transition: right 0.1s ease;
     }
 
     .backdrop {

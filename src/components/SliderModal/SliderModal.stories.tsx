@@ -1,11 +1,6 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React, { useState } from 'react';
-import {
-    ISliderModalProps,
-    SliderModal as SliderModalComponent,
-    SliderModalBody,
-    SliderModalHeader,
-} from './SliderModal';
+import { ISliderModalProps, SliderModal as SliderModalComponent } from './SliderModal';
 
 const Content = (props: { message: string }) => {
     const { message } = props;
@@ -27,15 +22,42 @@ const Template: Story<ISliderModalProps> = (args) => {
     return (
         <>
             <button onClick={() => setShowModal(true)}>Show Modal</button>
-            <SliderModalComponent {...args} show={showModal}>
-                <SliderModalHeader showActionButton={'closeButton'}>
+            {args.type === 'fixed' && (
+                <SliderModalComponent
+                    {...args}
+                    show={showModal}
+                    headerProps={{ showActionButton: 'closeButton' }}
+                >
                     <Content message={'Header'} />
-                </SliderModalHeader>
-                <SliderModalBody>
-                    <button onClick={() => setShowModal(false)}>Close Modal</button>
-                    <Content message={'Body'} />
-                </SliderModalBody>
-            </SliderModalComponent>
+                    <div>
+                        <button onClick={() => setShowModal(false)}>Close Modal</button>
+                        <Content message={'Body'} />
+                    </div>
+                </SliderModalComponent>
+            )}
+            {args.type === 'absolute' && (
+                <div
+                    style={{
+                        width: '50%',
+                        height: '50%',
+                        background: '#f3f3f3',
+                        position: 'relative',
+                        overflow: 'hidden',
+                    }}
+                >
+                    <SliderModalComponent
+                        {...args}
+                        show={showModal}
+                        headerProps={{ showActionButton: 'closeButton' }}
+                    >
+                        <Content message={'Header'} />
+                        <div>
+                            <button onClick={() => setShowModal(false)}>Close Modal</button>
+                            <Content message={'Body'} />
+                        </div>
+                    </SliderModalComponent>
+                </div>
+            )}
         </>
     );
 };
@@ -43,6 +65,8 @@ const Template: Story<ISliderModalProps> = (args) => {
 export const SliderModal = Template.bind({});
 SliderModal.args = {
     width: '40%',
+    type: 'fixed',
+    zIndex: 10,
 } as ISliderModalProps;
 
 export default {
