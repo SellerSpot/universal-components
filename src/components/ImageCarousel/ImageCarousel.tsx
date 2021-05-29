@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 import AliceCarousel from 'react-alice-carousel';
+import { Image } from '../Image/Image';
 import { IImageCarouselProps } from './ImageCarousel.types';
 
 export { IImageCarouselProps } from './ImageCarousel.types';
@@ -20,14 +21,18 @@ export const ImageCarousel = (props: IImageCarouselProps): ReactElement => {
             mouseTracking
             controlsStrategy="responsive"
             keyboardNavigation
-            disableButtonsControls
+            disableButtonsControls={true}
             touchTracking
             responsive={responsive}
             items={images.map((image, imageIndex) => {
                 const { imageUrl } = image;
                 return (
-                    <div key={imageIndex} style={{ height, padding: '0 5px' }}>
-                        <img src={imageUrl} onDragStart={handleDragStart} />
+                    <div
+                        key={imageIndex}
+                        style={{ height, padding: '0 5px' }}
+                        onDragStart={handleDragStart}
+                    >
+                        <Image src={imageUrl} />
                     </div>
                 );
             })}
