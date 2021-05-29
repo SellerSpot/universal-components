@@ -1,5 +1,3 @@
-import InputFieldComponent from './InputField/InputField';
-
 export * from './Alert/Alert';
 export * from './AppPreloader/AppPreloader';
 export * from './Avatar/Avatar';
@@ -10,8 +8,7 @@ export * from './Chip/Chip';
 export * from './ExpandableCard/ExpandableCard';
 export * from './ExpandPluginMenuButton/ExpandPluginMenuButton';
 export * from './IconButton/IconButton';
-export { IInputFieldProps } from './InputField/InputField';
-export const InputField = InputFieldComponent;
+export * from './InputField/InputField';
 export * from './Select/Select';
 export * from './Table/Table';
 export * from './ToolTip/ToolTip';
@@ -25,4 +22,5 @@ export * from './Checkbox/CheckBox';
 export * from './Menu/Menu';
 export * from './Popper/Popper';
 export * from './Slider/Slider';
-export { ThemeProvider, IThemeProviderProps } from './ThemeProvider/ThemeProvider';
+export * from './ThemeProvider/ThemeProvider';
+export * from './Image/Image';
