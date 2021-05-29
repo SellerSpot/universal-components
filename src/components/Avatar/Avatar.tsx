@@ -14,14 +14,24 @@ export const Avatar = (props: IAvatarProps): ReactElement => {
               { [styles.selectedNoBg]: theme === 'selectedNoBg' },
               { [styles.selected]: theme === 'selected' },
               { [styles.unselected]: theme === 'unselected' },
-              { [styles.smallWrapper]: size === 'small' },
+              {
+                  [styles.smallWrapper]: size === 'small',
+              },
+              {
+                  [styles.mediumWrapper]: size === 'medium',
+              },
               { [styles.circular]: variant === 'circular' },
               { [styles.rounded]: variant === 'rounded' },
               { [styles.square]: variant === 'square' },
           )
-        : cn(styles.wrapper, styles.disabled, {
-              [styles.smallWrapper]: size === 'small',
-          });
+        : cn(
+              styles.wrapper,
+              styles.disabled,
+              {
+                  [styles.smallWrapper]: size === 'small',
+              },
+              { [styles.mediumWrapper]: size === 'medium' },
+          );
 
     return (
         <div

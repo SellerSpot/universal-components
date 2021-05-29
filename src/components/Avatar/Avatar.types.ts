@@ -26,5 +26,5 @@ export interface IAvatarProps {
      * Sizes for the component
      * @default default
      */
-    size?: 'default' | 'small';
+    size?: 'default' | 'medium' | 'small';
 }
