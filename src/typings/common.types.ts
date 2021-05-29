@@ -11,3 +11,8 @@ export interface IComponentEvents {
     oneMouseOver?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
     onMouseLeave?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
+
+/**
+ * used for any add event listener handlers for preparing callback handler separately (anonymously)
+ */
+export type TEventListenerHandler = (this: Element, event: Event & { target: Node }) => unknown;

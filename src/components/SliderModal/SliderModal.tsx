@@ -10,12 +10,12 @@ import {
 
 export { ISliderModalProps } from './SliderModal.types';
 
-export const SliderModalBody = (props: ISliderModalBodyProps): ReactElement => {
+const SliderModalBody = (props: ISliderModalBodyProps): ReactElement => {
     const { children } = props;
     return <div className={styles.modalContentBody}>{children}</div>;
 };
 
-export const SliderModalHeader = (props: ISliderModalHeaderProps): ReactElement => {
+const SliderModalHeader = (props: ISliderModalHeaderProps): ReactElement => {
     const { children, showActionButton, onActionButtonClick } = props;
     return (
         <div className={styles.modalContentHeader}>
@@ -37,11 +37,23 @@ export const SliderModalHeader = (props: ISliderModalHeaderProps): ReactElement 
 };
 
 export const SliderModal = (props: ISliderModalProps): ReactElement => {
-    const { show, children, onBackdropClick, width } = props;
+    const {
+        show,
+        children,
+        onBackdropClick,
+        width,
+        headerProps,
+        zIndex = 10,
+        type = 'fixed',
+    } = props;
+
     // custom styling to set the modal width
     const modalStyle: React.CSSProperties = {
+        zIndex,
         width,
+        position: type,
     };
+
     return (
         <div className={cn(styles.sliderModalWrapper, { [styles.sliderModalWrapperShow]: show })}>
             <div
@@ -49,7 +61,8 @@ export const SliderModal = (props: ISliderModalProps): ReactElement => {
                 onClick={onBackdropClick}
             >
                 <div className={cn(styles.modal, { [styles.modalShow]: show })} style={modalStyle}>
-                    {children}
+                    <SliderModalHeader {...headerProps}>{children[0]}</SliderModalHeader>
+                    <SliderModalBody>{children[1]}</SliderModalBody>
                 </div>
             </div>
         </div>
