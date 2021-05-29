@@ -16,7 +16,10 @@ import { IInputFieldProps } from './InputField.types';
 
 export { IInputFieldProps } from './InputField.types';
 
-const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): ReactElement => {
+const InputFieldComponent = (
+    props: IInputFieldProps,
+    ref: RefObject<HTMLInputElement>,
+): ReactElement => {
     // getting default global theme data
     const defaultConfigData = useThemeConfigState((state) => state.configData);
     const {
@@ -263,4 +266,4 @@ const InputField = (props: IInputFieldProps, ref: RefObject<HTMLInputElement>): 
     );
 };
 
-export default forwardRef(InputField) as typeof InputField;
+export const InputField = forwardRef(InputFieldComponent) as typeof InputFieldComponent;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { defaultColors, defaultFontSizes } from '../../theme/storybookTheme';
-import InputFieldComponent, { IInputFieldProps } from './InputField';
+import { InputField as InputFieldComponent, IInputFieldProps } from './InputField';
 
 const Template: Story<IInputFieldProps> = (args: IInputFieldProps) => {
     return (
