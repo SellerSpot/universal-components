@@ -3,6 +3,7 @@ import { Skeleton } from '..';
 
 export interface IImageProps {
     src: string;
+    className?: string;
     /**
      * @default ```'100%'```
      */
@@ -19,7 +20,7 @@ export interface IImageProps {
 
 export const Image = (props: IImageProps): ReactElement => {
     // props
-    const { src, width = '100%', height = '100%', objectFit = 'cover' } = props;
+    const { src, className, width = '100%', height = '100%', objectFit = 'cover' } = props;
     // state
     const [isLoading, setIsLoading] = useState(true);
 
@@ -31,14 +32,19 @@ export const Image = (props: IImageProps): ReactElement => {
         height,
         display: isLoading ? 'none' : 'block',
         objectFit,
+        transition: 'all 0.2s ease',
     };
+
+    const image = <img className={className} style={style} src={src} onLoad={onLoadHandler} />;
 
     return (
         <>
             {isLoading && (
-                <Skeleton width={width} height={height} variant="rect" animation="pulse" />
+                <Skeleton variant="rect" animation="pulse">
+                    {image}
+                </Skeleton>
             )}
-            <img style={style} src={src} onLoad={onLoadHandler} />
+            {image}
         </>
     );
 };
