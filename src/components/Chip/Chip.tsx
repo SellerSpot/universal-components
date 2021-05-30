@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { Chip as MUIChip, Theme, ThemeProvider } from '@material-ui/core';
-import { getTheme } from '../../theme/theme';
+import { getTheme } from '../../theme/MUITheme';
 import styles from './Chip.module.scss';
 import { IChipProps } from './Chip.types';
 

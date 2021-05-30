@@ -7,7 +7,7 @@ import {
 import cn from 'classnames';
 import { isNull, isUndefined } from 'lodash';
 import React, { forwardRef, ReactElement, RefObject, useEffect, useRef, useState } from 'react';
-import { getTheme } from '../../theme/theme';
+import { getTheme } from '../../theme/MUITheme';
 import { ICONS } from '../../utilities/icons';
 import { IconButton } from '../IconButton/IconButton';
 import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';

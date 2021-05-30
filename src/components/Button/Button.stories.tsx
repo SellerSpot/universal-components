@@ -1,6 +1,5 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { defaultColors, defaultFontSizes } from '../../theme/storybookTheme';
 import { ICONS } from '../../utilities/icons';
 import { Button as ButtonComponent, IButtonProps } from './Button';
 
@@ -14,8 +13,6 @@ Button.args = {
     theme: 'success',
     disabled: false,
     startIcon: <ICONS.MdNotifications />,
-    colors: defaultColors,
-    fontSizes: defaultFontSizes,
 } as IButtonProps;
 
 export default {

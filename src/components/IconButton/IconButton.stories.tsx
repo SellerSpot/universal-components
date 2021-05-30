@@ -1,6 +1,5 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { defaultColors, defaultFontSizes } from '../../theme/storybookTheme';
 import { ICONS } from '../../utilities/icons';
 import { IconButton as IconButtonComponent, IIconButtonProps } from './IconButton';
 
@@ -12,8 +11,6 @@ export const IconButton = Template.bind({});
 IconButton.args = {
     theme: 'warning',
     icon: <ICONS.MdHome />,
-    colors: defaultColors,
-    fontSizes: defaultFontSizes,
 } as IIconButtonProps;
 
 export default {

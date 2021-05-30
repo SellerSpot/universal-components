@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import React, { ReactElement } from 'react';
 import { Button as MUIButton, Theme, ThemeProvider } from '@material-ui/core';
-import { getTheme } from '../../theme/theme';
+import { getTheme } from '../../theme/MUITheme';
 import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
 import styles from './Button.module.scss';
 import { IButtonProps } from './Button.types';

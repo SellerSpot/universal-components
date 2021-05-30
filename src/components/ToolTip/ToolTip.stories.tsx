@@ -1,16 +1,10 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { defaultColors, defaultFontSizes } from '../../theme/storybookTheme';
 import { IToolTipProps, ToolTip as ToolTipComponent } from './ToolTip';
 
 const Template: Story<IToolTipProps> = () => {
     return (
-        <ToolTipComponent
-            content={'Sample Tooltip'}
-            placement={'right'}
-            colors={defaultColors}
-            fontSizes={defaultFontSizes}
-        >
+        <ToolTipComponent content={'Sample Tooltip'} placement={'right'}>
             <div
                 style={{
                     width: '100px',
