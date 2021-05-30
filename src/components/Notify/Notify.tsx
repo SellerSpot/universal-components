@@ -1,10 +1,11 @@
+import Icon from '@iconify/react';
 import { Snackbar, SnackbarCloseReason, SnackbarContent } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import { isUndefined } from 'lodash';
 import React, { ReactElement } from 'react';
 import create from 'zustand';
 import { introduceDelay } from '../../utilities/general';
-import { ICONS } from '../../utilities/icons';
+import { ICONS } from '../../utilities/icons/icons';
 import { IconButton } from '../IconButton/IconButton';
 import { NotifyService } from './Notify.service';
 import { TNotifyStore } from './Notify.types';
@@ -81,7 +82,7 @@ export const Notify = (): ReactElement => {
 
     const defaultCloseNotifyAction = (
         <IconButton
-            icon={<ICONS.MdClose />}
+            icon={<Icon icon={ICONS.close} />}
             theme="danger"
             size="small"
             inheritColorsFromParent

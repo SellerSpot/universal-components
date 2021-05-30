@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { TMuiThemes, IColors, IFontSizes } from '../../theme';
+import { TMuiThemes, IColors, IFontSizes } from '../../theme/theme';
 
 export interface IIconButtonProps {
     className?: string;

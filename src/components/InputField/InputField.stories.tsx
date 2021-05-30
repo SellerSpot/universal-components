@@ -1,6 +1,5 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { defaultColors, defaultFontSizes } from '../../theme/storybookTheme';
 import { InputField as InputFieldComponent, IInputFieldProps } from './InputField';
 
 const Template: Story<IInputFieldProps> = (args: IInputFieldProps) => {
@@ -38,8 +37,6 @@ InputField.args = {
         content: 'Loading data...',
         type: 'loading',
     },
-    colors: defaultColors,
-    fontSizes: defaultFontSizes,
 } as IInputFieldProps;
 
 export default {

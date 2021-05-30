@@ -6,7 +6,8 @@ import { IconButton } from '../IconButton/IconButton';
 import { Image } from '../Image/Image';
 import { IImageCarouselProps } from './ImageCarousel.types';
 import styles from './ImageCarousel.module.scss';
-import { ICONS } from '../../utilities/icons';
+import { ICONS } from '../../utilities/icons/icons';
+import Icon from '@iconify/react';
 
 export { IImageCarouselProps } from './ImageCarousel.types';
 
@@ -65,13 +66,13 @@ export const ImageCarousel = (props: IImageCarouselProps): ReactElement => {
             <IconButton
                 size="medium"
                 className={cn(styles.actionButton, styles.actionButtonLeft)}
-                icon={<ICONS.MdKeyboardArrowLeft className={styles.actionButtonIcon} />}
+                icon={<Icon icon={ICONS.keyboardArrowLeft} className={styles.actionButtonIcon} />}
                 onClick={onClickHandler('backward')}
             />
             <IconButton
                 size="medium"
                 className={cn(styles.actionButton, styles.actionButtonRight)}
-                icon={<ICONS.MdKeyboardArrowRight className={styles.actionButtonIcon} />}
+                icon={<Icon icon={ICONS.keyboardArrowRight} className={styles.actionButtonIcon} />}
                 onClick={onClickHandler('forward')}
             />
         </div>

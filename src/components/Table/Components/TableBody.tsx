@@ -3,6 +3,7 @@ import React, { ReactElement, Fragment } from 'react';
 import TableService from '../Table.service';
 import { ITableProps, ITableRow } from '../Table.types';
 import { CollapseTableIcon } from './CollapseTableIcon';
+import styles from '../Table.module.scss';
 
 const MainTableRow = (props: {
     rowIndex: number;
@@ -31,10 +32,11 @@ const MainTableRow = (props: {
         rowIndex,
         variant,
     });
+    const tableCellClassName = hasExpandableRows ? null : styles.tableBodyCell;
     return (
         <TableRow key={rowIndex} onClick={onClick} className={mainRowClassName}>
             {hasExpandableRows ? (
-                <TableCell>
+                <TableCell className={tableCellClassName}>
                     <CollapseTableIcon
                         isRowExpanded={isRowExpanded}
                         toggleRowExpansion={toggleRowExpansion}
@@ -47,6 +49,7 @@ const MainTableRow = (props: {
                 return (
                     <TableCell
                         key={cellIndex}
+                        className={tableCellClassName}
                         align={align}
                         colSpan={colSpan}
                         padding={padding}

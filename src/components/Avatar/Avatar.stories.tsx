@@ -1,13 +1,14 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { ICONS } from '../../utilities/icons';
+import { ICONS } from '../../utilities/icons/icons';
 import { Avatar as AvatarComponent, IAvatarProps } from './Avatar';
+import Icon from '@iconify/react';
 
 const Template: Story<IAvatarProps> = (args: IAvatarProps) => <AvatarComponent {...args} />;
 
 export const Avatar = Template.bind({});
 Avatar.args = {
-    content: <ICONS.MdHome />,
+    content: <Icon icon={ICONS.home} />,
     imgSrc: '',
     size: 'small',
     theme: 'selected',

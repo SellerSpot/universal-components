@@ -1,6 +1,7 @@
+import Icon from '@iconify/react';
 import cn from 'classnames';
 import React, { ReactElement } from 'react';
-import { ICONS } from '../../utilities/icons';
+import { ICONS } from '../../utilities/icons/icons';
 import styles from './SliderModal.module.scss';
 import {
     ISliderModalBodyProps,
@@ -25,9 +26,15 @@ const SliderModalHeader = (props: ISliderModalHeaderProps): ReactElement => {
                     onClick={onActionButtonClick}
                 >
                     {showActionButton === 'backButton' ? (
-                        <ICONS.MdArrowBack className={styles.modalContentHeaderActionButton} />
+                        <Icon
+                            icon={ICONS.arrowBack}
+                            className={styles.modalContentHeaderActionButton}
+                        />
                     ) : (
-                        <ICONS.MdClose className={styles.modalContentHeaderActionButton} />
+                        <Icon
+                            icon={ICONS.close}
+                            className={styles.modalContentHeaderActionButton}
+                        />
                     )}
                 </div>
             ) : null}

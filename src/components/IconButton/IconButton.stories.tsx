@@ -1,8 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { defaultColors, defaultFontSizes } from '../../theme/storybookTheme';
-import { ICONS } from '../../utilities/icons';
+import { ICONS } from '../../utilities/icons/icons';
 import { IconButton as IconButtonComponent, IIconButtonProps } from './IconButton';
+import Icon from '@iconify/react';
 
 const Template: Story<IIconButtonProps> = (args: IIconButtonProps) => (
     <IconButtonComponent {...args} />
@@ -11,9 +11,7 @@ const Template: Story<IIconButtonProps> = (args: IIconButtonProps) => (
 export const IconButton = Template.bind({});
 IconButton.args = {
     theme: 'warning',
-    icon: <ICONS.MdHome />,
-    colors: defaultColors,
-    fontSizes: defaultFontSizes,
+    icon: <Icon icon={ICONS.home} />,
 } as IIconButtonProps;
 
 export default {

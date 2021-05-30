@@ -40,6 +40,7 @@ export const Table = (props: ITableProps): ReactElement => {
     const tableContainerComponent = variant === 'simple' ? 'div' : Paper;
     const tableStyles: React.CSSProperties = {
         boxShadow: 'none',
+        backgroundColor: 'transparent',
         height:
             height ??
             TableService.computeTableContainerHeight({

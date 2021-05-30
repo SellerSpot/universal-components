@@ -1,13 +1,22 @@
-import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Table as TableComponent, ITableProps } from './Table';
+import React from 'react';
+import { ITableProps, Table as TableComponent } from './Table';
+import styles from './Table.module.scss';
 
-const Template: Story<ITableProps> = (args: ITableProps) => <TableComponent {...args} />;
+const Template: Story<ITableProps> = (args: ITableProps) => {
+    return (
+        <div className={styles.wrapper}>
+            <div className={styles.tableWrapper}>
+                <TableComponent {...args} />
+            </div>
+        </div>
+    );
+};
 
 export const Table = Template.bind({});
 
 Table.args = {
-    hasExpandableRows: true,
+    hasExpandableRows: false,
     stickyHeader: true,
     height: 700,
     headers: [
@@ -155,5 +164,8 @@ Table.args = {
 
 export default {
     title: 'Design System/Atoms/Table',
+    parameters: {
+        layout: 'fullscreen',
+    },
     component: TableComponent,
 } as Meta;

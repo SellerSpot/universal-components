@@ -1,5 +1,5 @@
 import { ReactElement, ChangeEvent } from 'react';
-import { IColors, IFontSizes, TMuiThemes } from '../../theme';
+import { IColors, IFontSizes, TMuiThemes } from '../../theme/theme';
 
 export interface IInputFieldProps {
     id?: string;

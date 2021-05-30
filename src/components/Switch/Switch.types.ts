@@ -1,4 +1,4 @@
-import { IColors, IFontSizes, TMuiThemes } from '../../theme';
+import { IColors, IFontSizes, TMuiThemes } from '../../theme/theme';
 
 export interface ISwitchProps {
     /**

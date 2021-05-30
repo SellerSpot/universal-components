@@ -1,8 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { defaultColors, defaultFontSizes } from '../../theme/storybookTheme';
-import { ICONS } from '../../utilities/icons';
+import { ICONS } from '../../utilities/icons/icons';
 import { Button as ButtonComponent, IButtonProps } from './Button';
+import Icon from '@iconify/react';
 
 const Template: Story<IButtonProps> = (args: IButtonProps) => <ButtonComponent {...args} />;
 
@@ -13,9 +13,7 @@ Button.args = {
     size: 'small',
     theme: 'success',
     disabled: false,
-    startIcon: <ICONS.MdNotifications />,
-    colors: defaultColors,
-    fontSizes: defaultFontSizes,
+    startIcon: <Icon icon={ICONS.notifications} />,
 } as IButtonProps;
 
 export default {

@@ -1,3 +1,4 @@
+import Icon from '@iconify/react';
 import {
     CircularProgress,
     InputAdornment,
@@ -7,8 +8,8 @@ import {
 import cn from 'classnames';
 import { isNull, isUndefined } from 'lodash';
 import React, { forwardRef, ReactElement, RefObject, useEffect, useRef, useState } from 'react';
-import { getTheme } from '../../theme/theme';
-import { ICONS } from '../../utilities/icons';
+import { getTheme } from '../../theme/MUITheme';
+import { ICONS } from '../../utilities/icons/icons';
 import { IconButton } from '../IconButton/IconButton';
 import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
 import styles from './InputField.module.scss';
@@ -95,7 +96,7 @@ const InputFieldComponent = (
                     />
                 );
             } else if (helperMessage.type === 'success') {
-                return <ICONS.MdCheck className={styles.successIcon} size={'16px'} />;
+                return <Icon icon={ICONS.check} className={styles.successIcon} height={'16px'} />;
             }
             return null;
         };
@@ -180,9 +181,9 @@ const InputFieldComponent = (
                 <IconButton
                     icon={
                         internalTypeState === 'password' ? (
-                            <ICONS.MdVisibility />
+                            <Icon icon={ICONS.visibility} />
                         ) : (
-                            <ICONS.MdVisibilityOff />
+                            <Icon icon={ICONS.visibilityOff} />
                         )
                     }
                     onClick={handleSpecialSuffixOnClick}

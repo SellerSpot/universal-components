@@ -1,6 +1,7 @@
+import Icon from '@iconify/react';
 import React, { ReactElement } from 'react';
 import { IComponentEvents } from 'typings/common.types';
-import { ICONS } from '../../utilities/icons';
+import { ICONS } from '../../utilities/icons/icons';
 import styles from './ExpandPluginMenuButton.module.scss';
 
 export interface IExpandPluginMenuButtonProps {
@@ -11,7 +12,7 @@ export const ExpandPluginMenuButton = (props: IExpandPluginMenuButtonProps): Rea
     const { onClick } = props;
     return (
         <div className={styles.wrapper} onClick={onClick}>
-            <ICONS.MdKeyboardArrowRight />
+            <Icon icon={ICONS.keyboardArrowRight} />
         </div>
     );
 };

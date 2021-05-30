@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 import { TableCell, TableHead, TableRow } from '@material-ui/core';
+import styles from '../Table.module.scss';
 import { ITableProps } from '../Table.types';
 
 export const TableHeader = (props: {
@@ -10,12 +11,13 @@ export const TableHeader = (props: {
     return (
         <TableHead>
             <TableRow>
-                {hasExpandableRows ? <TableCell /> : null}
+                {hasExpandableRows ? <TableCell className={styles.tableHeaderCell} /> : null}
                 {headers.map((header, headerIndex) => {
                     const { content, align, colSpan, padding, rowSpan, width } = header;
                     return (
                         <TableCell
                             key={headerIndex}
+                            className={styles.tableHeaderCell}
                             align={align}
                             colSpan={colSpan}
                             padding={padding}
