@@ -11,7 +11,7 @@
     .logoSpace {
         height: 100%;
         padding: 0px 5px;
-        border-radius: $border-radius;
+        border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.2s ease;
         @include flex(center, center, row, 4px);

@@ -47,15 +47,20 @@ export const SliderModal = (props: ISliderModalProps): ReactElement => {
         type = 'fixed',
     } = props;
 
+    const wrapperStyle: React.CSSProperties = {
+        zIndex,
+        position: type,
+    };
     // custom styling to set the modal width
     const modalStyle: React.CSSProperties = {
-        zIndex,
         width,
-        position: type,
     };
 
     return (
-        <div className={cn(styles.sliderModalWrapper, { [styles.sliderModalWrapperShow]: show })}>
+        <div
+            className={cn(styles.sliderModalWrapper, { [styles.sliderModalWrapperShow]: show })}
+            style={wrapperStyle}
+        >
             <div
                 className={cn(styles.backdrop, { [styles.backdropShow]: show })}
                 onClick={onBackdropClick}

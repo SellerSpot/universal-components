@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { CSSProperties, ReactElement } from 'react';
 import { IComponentEvents } from 'typings/common.types';
 
 export interface IAvatarProps {
@@ -26,5 +26,7 @@ export interface IAvatarProps {
      * Sizes for the component
      * @default default
      */
-    size?: 'default' | 'small';
+    size?: 'default' | 'medium' | 'small';
+    style?: CSSProperties;
+    className?: string;
 }

@@ -1,27 +1,23 @@
 .wrapper {
-    min-width: 40px;
-    max-width: 40px;
-    min-height: 40px;
-    max-height: 40px;
-    border-radius: $border-radius;
-    cursor: pointer !important;
-    font-weight: 600;
-    transition: all 0.2s ease;
-    transition-property: color, background-color, opacity;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    transition-property: color, background-color, width, height, border-radius;
+    transition-timing-function: ease;
     user-select: none;
-    @include flex(center, center);
 
-    &:hover {
-        opacity: 0.8;
-    }
+    @include flex(center, center);
 }
 
 .smallWrapper {
-    min-width: 25px;
-    max-width: 25px;
-    min-height: 25px;
-    max-height: 25px;
-    font-size: 14px;
+    width: 28px;
+    height: 28px;
+}
+
+.mediumWrapper {
+    width: 34px;
+    height: 34px;
 }
 
 .disabled {
@@ -31,22 +27,22 @@
 }
 
 .selected {
-    background-color: $primaryLight-color !important;
-    color: $primary-color !important;
+    background-color: $primaryLight-color;
+    color: $primary-color;
 }
 
 .unselected {
-    background-color: transparent !important;
-    color: $foregroundPrimary-color !important;
+    background-color: transparent;
+    color: $foregroundPrimary-color;
 }
 
 .selectedNoBg {
-    background-color: transparent !important;
-    color: $primary-color !important;
+    background-color: transparent;
+    color: $primary-color;
 }
 
 .circular {
-    border-radius: $border-radius-cirular;
+    border-radius: 20px;
 }
 
 .square {
@@ -54,5 +50,5 @@
 }
 
 .rounded {
-    border-radius: $border-radius;
+    border-radius: 5px;
 }

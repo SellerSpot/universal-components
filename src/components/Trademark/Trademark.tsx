@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 import { Logo, LogoText } from '../../assets/svgs/svgs';
+import { ToolTip } from '../ToolTip/ToolTip';
 import styles from './Trademark.module.scss';
 
 export interface ITradeMarkProps {
@@ -15,15 +16,12 @@ export const Trademark = (props: ITradeMarkProps): ReactElement => {
     return (
         <div className={styles.wrapper}>
             <p className={styles.poweredBy}>Powered By</p>
-            <div
-                className={styles.logoSpace}
-                role="link"
-                onClick={logoClickHandler}
-                title="Click to vist"
-            >
-                <Logo className={styles.logo} />
-                <LogoText className={styles.logoText} />
-            </div>
+            <ToolTip content="Click to visit">
+                <div className={styles.logoSpace} role="link" onClick={logoClickHandler}>
+                    <Logo className={styles.logo} />
+                    <LogoText className={styles.logoText} />
+                </div>
+            </ToolTip>
         </div>
     );
 };

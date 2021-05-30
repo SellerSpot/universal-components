@@ -6,30 +6,47 @@ import { IAvatarProps } from './Avatar.types';
 export { IAvatarProps } from './Avatar.types';
 
 export const Avatar = (props: IAvatarProps): ReactElement => {
-    const { content, disabled, events, size, theme, variant } = props;
+    const {
+        content = 'S',
+        disabled = false,
+        events,
+        size = 'default',
+        theme = 'selectedNoBg',
+        variant = 'rounded',
+        className: userClassName,
+        style: userStyle,
+    } = props;
 
-    const className = !disabled
-        ? cn(
-              styles.wrapper,
-              { [styles.selectedNoBg]: theme === 'selectedNoBg' },
-              { [styles.selected]: theme === 'selected' },
-              { [styles.unselected]: theme === 'unselected' },
-              { [styles.smallWrapper]: size === 'small' },
-              { [styles.circular]: variant === 'circular' },
-              { [styles.rounded]: variant === 'rounded' },
-              { [styles.square]: variant === 'square' },
-          )
-        : cn(styles.wrapper, styles.disabled, {
-              [styles.smallWrapper]: size === 'small',
-          });
+    const wrapperClassName = cn(
+        styles.wrapper,
+        {
+            [styles.circular]: variant === 'circular',
+            [styles.rounded]: variant === 'rounded',
+            [styles.square]: variant === 'square',
+        },
+        {
+            [styles.selected]: theme === 'selected',
+            [styles.selectedNoBg]: theme === 'selectedNoBg',
+            [styles.unselected]: theme === 'selectedNoBg',
+        },
+        {
+            [styles.mediumWrapper]: size === 'medium',
+            [styles.smallWrapper]: size === 'small',
+        },
+        {
+            [styles.disabled]: disabled,
+        },
+        userClassName,
+    );
 
     return (
         <div
-            className={className}
+            className={wrapperClassName}
             onClick={events?.onClick}
             onFocus={events?.onFocus}
             onMouseLeave={events?.onMouseLeave}
             onMouseOver={events?.oneMouseOver}
+            style={userStyle}
         >
             {content}
         </div>
