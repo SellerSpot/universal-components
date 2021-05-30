@@ -1,5 +1,6 @@
+import Icon from '@iconify/react';
 import React, { ReactElement } from 'react';
-import { ICONS } from '../../../utilities/icons';
+import { ICONS } from '../../../utilities/icons/icons';
 import { IconButton } from '../../IconButton/IconButton';
 
 export const CollapseTableIcon = (props: {
@@ -13,9 +14,9 @@ export const CollapseTableIcon = (props: {
         <IconButton
             icon={
                 isRowExpanded ? (
-                    <ICONS.MdKeyboardArrowUp size={iconSize} />
+                    <Icon icon={ICONS.keyboardArrowUp} height={iconSize} />
                 ) : (
-                    <ICONS.MdKeyboardArrowDown size={iconSize} />
+                    <Icon icon={ICONS.keyboardArrowDown} height={iconSize} />
                 )
             }
             size="small"

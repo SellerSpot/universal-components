@@ -1,7 +1,8 @@
+import Icon from '@iconify/react';
 import cn from 'classnames';
 import React, { ReactElement } from 'react';
 import { useHistory } from 'react-router-dom';
-import { ICONS } from '../../utilities/icons';
+import { ICONS } from '../../utilities/icons/icons';
 import styles from './BreadCrumbs.module.scss';
 
 export interface IBreadCrumbsProps {
@@ -22,7 +23,7 @@ export const BreadCrumbs = (props: IBreadCrumbsProps): ReactElement => {
                         <div className={cn(styles.breadCrumbNode)} key={key}>
                             {key !== 0 && (
                                 <div className={styles.breadCrumbSeparator}>
-                                    <ICONS.CgFormatSlash />
+                                    <Icon icon={ICONS.slashForward} />
                                 </div>
                             )}
                             <div

@@ -1,0 +1,10 @@
+export { default as visibility } from '@iconify/icons-ic/visibility';
+export { default as visibilityOff } from '@iconify/icons-ic/visibility-off';
+export { default as notifications } from '@iconify/icons-ic/notifications';
+export { default as keyboardArrowDown } from '@iconify/icons-ic/keyboard-arrow-down';
+export { default as keyboardArrowUp } from '@iconify/icons-ic/keyboard-arrow-up';
+export { default as keyboardArrowRight } from '@iconify/icons-ic/keyboard-arrow-right';
+export { default as keyboardArrowLeft } from '@iconify/icons-ic/keyboard-arrow-left';
+export { default as home } from '@iconify/icons-ic/home';
+export { default as close } from '@iconify/icons-ic/close';
+export { default as arrowBack } from '@iconify/icons-ic/arrow-back';
