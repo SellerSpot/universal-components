@@ -29,6 +29,7 @@ export interface IColors {
     backgroundPrimary: string;
     backgroundSecondary: string;
     backgroundTertiary: string;
+    backgroundSubTertiary: string;
     // primary colors
     primary: string;
     primaryLight: string;

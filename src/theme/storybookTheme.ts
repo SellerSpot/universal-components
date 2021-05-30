@@ -27,6 +27,7 @@ export const defaultColors: IColors = {
     backgroundPrimary: '#FAFAFA',
     backgroundSecondary: '#F2F2F2',
     backgroundTertiary: '#ECECEC',
+    backgroundSubTertiary: 'rgba(0, 0, 0, 0.1)',
     primary: '#1A73E8',
     primaryLight: '#D9E8FC',
     primaryDark: '#1152A7',
