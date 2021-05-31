@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import React, { ReactElement } from 'react';
-import { Button as MUIButton, Theme, ThemeProvider } from '@material-ui/core';
+import { Button as MUIButton, CircularProgress, Theme, ThemeProvider } from '@material-ui/core';
 import { getTheme } from '../../theme/MUITheme';
 import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
 import styles from './Button.module.scss';
@@ -26,7 +26,9 @@ export const Button = (props: IButtonProps): ReactElement => {
         variant,
         className,
         style,
+        tabIndex,
         inheritColorsFromParent,
+        isLoading = false,
     } = props;
     // holds the theme for the the component
     const buttonTheme: Theme = getTheme({
@@ -35,25 +37,37 @@ export const Button = (props: IButtonProps): ReactElement => {
         theme: theme ?? 'auto',
     });
 
+    // compute
     // if the button should inherit the parents colors or not
     const buttonColor = inheritColorsFromParent ? 'inherit' : 'primary';
+    const startIconComponent = isLoading ? (
+        <ThemeProvider theme={buttonTheme}>
+            <CircularProgress size={'16px'} color="inherit" />
+        </ThemeProvider>
+    ) : (
+        startIcon
+    );
+
+    // compute
+    const shouldFadeButton = disabled || isLoading;
+    const buttonClassName = cn({ [styles.fadeButton]: shouldFadeButton }, className?.button);
 
     return (
-        <div
-            className={cn(className?.wrapper, { [styles.fullWidthButton]: fullWidth })}
-            style={style?.wrapper}
-        >
+        <div className={cn(className?.wrapper, { [styles.fullWidthButton]: fullWidth })}>
             <ThemeProvider theme={buttonTheme}>
                 <MUIButton
+                    className={buttonClassName}
                     variant={variant}
                     color={buttonColor}
+                    tabIndex={tabIndex}
                     size={size}
+                    disableRipple={shouldFadeButton}
                     fullWidth={fullWidth}
                     type={type}
-                    disabled={disabled}
                     onClick={onClick}
-                    startIcon={startIcon}
+                    startIcon={startIconComponent}
                     endIcon={endIcon}
+                    style={style?.button}
                 >
                     {label}
                 </MUIButton>

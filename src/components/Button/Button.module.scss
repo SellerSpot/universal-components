@@ -1,3 +1,11 @@
 .fullWidthButton {
     width: 100%;
 }
+
+.fadeButton {
+    box-shadow: none !important;
+    opacity: 0.6;
+    &:hover {
+        cursor: default;
+    }
+}

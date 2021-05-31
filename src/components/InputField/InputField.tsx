@@ -56,6 +56,7 @@ const InputFieldComponent = (
         fontSizes,
         disableAutoComplete,
         disableHelperTextPlaceholderPadding,
+        tabIndex,
     } = props;
 
     // internal type state to use incase the field type is password and the suffix is not defined
@@ -247,6 +248,7 @@ const InputFieldComponent = (
                             textAlign: direction === 'rtl' ? 'right' : 'left',
                             fontWeight: 500,
                         },
+                        tabIndex,
                         autoComplete: autoComplete,
                         maxLength: maxLength,
                     }}

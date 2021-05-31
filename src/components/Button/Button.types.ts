@@ -31,9 +31,13 @@ export interface IButtonProps {
     colors?: IColors;
     /**style and classes */
     style?: Partial<{
-        wrapper: React.CSSProperties;
+        wrapper?: React.CSSProperties;
+        button?: React.CSSProperties;
     }>;
     className?: Partial<{
         wrapper: string;
+        button?: string;
     }>;
+    tabIndex?: number;
+    isLoading?: boolean;
 }
