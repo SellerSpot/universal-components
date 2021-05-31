@@ -9,7 +9,7 @@ import cn from 'classnames';
 import { isNull, isUndefined } from 'lodash';
 import React, { forwardRef, ReactElement, RefObject, useEffect, useRef, useState } from 'react';
 import { getTheme } from '../../theme/MUITheme';
-import { ICONS } from '../../utilities/icons/icons';
+import { ICONS } from '../../utilities';
 import { IconButton } from '../IconButton/IconButton';
 import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
 import styles from './InputField.module.scss';

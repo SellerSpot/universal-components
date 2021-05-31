@@ -1,7 +1,7 @@
 import Icon from '@iconify/react';
 import cn from 'classnames';
 import React, { ReactElement } from 'react';
-import { ICONS } from '../../utilities/icons/icons';
+import { ICONS } from '../../utilities';
 import styles from './SliderModal.module.scss';
 import {
     ISliderModalBodyProps,
