@@ -6,7 +6,7 @@ import { IconButton } from '../IconButton/IconButton';
 import { Image } from '../Image/Image';
 import { IImageCarouselProps } from './ImageCarousel.types';
 import styles from './ImageCarousel.module.scss';
-import { ICONS } from '../../utilities/icons/icons';
+import { ICONS } from '../../utilities';
 import Icon from '@iconify/react';
 
 export { IImageCarouselProps } from './ImageCarousel.types';

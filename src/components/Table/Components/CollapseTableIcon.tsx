@@ -1,6 +1,6 @@
 import Icon from '@iconify/react';
 import React, { ReactElement } from 'react';
-import { ICONS } from '../../../utilities/icons/icons';
+import { ICONS } from '../../../utilities';
 import { IconButton } from '../../IconButton/IconButton';
 
 export const CollapseTableIcon = (props: {

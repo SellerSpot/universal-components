@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { ICONS } from '../../utilities/icons/icons';
+import { ICONS } from '../../utilities';
 import { IconButton as IconButtonComponent, IIconButtonProps } from './IconButton';
 import Icon from '@iconify/react';
 

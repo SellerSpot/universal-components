@@ -9,7 +9,7 @@ import cn from 'classnames';
 import { isNull, isUndefined } from 'lodash';
 import React, { forwardRef, ReactElement, RefObject, useEffect, useRef, useState } from 'react';
 import { getTheme } from '../../theme/MUITheme';
-import { ICONS } from '../../utilities/icons/icons';
+import { ICONS } from '../../utilities';
 import { IconButton } from '../IconButton/IconButton';
 import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
 import styles from './InputField.module.scss';
@@ -56,6 +56,7 @@ const InputFieldComponent = (
         fontSizes,
         disableAutoComplete,
         disableHelperTextPlaceholderPadding,
+        tabIndex,
     } = props;
 
     // internal type state to use incase the field type is password and the suffix is not defined
@@ -247,6 +248,7 @@ const InputFieldComponent = (
                             textAlign: direction === 'rtl' ? 'right' : 'left',
                             fontWeight: 500,
                         },
+                        tabIndex,
                         autoComplete: autoComplete,
                         maxLength: maxLength,
                     }}

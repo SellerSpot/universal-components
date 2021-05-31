@@ -1,7 +1,7 @@
 import Icon from '@iconify/react';
 import React, { ReactElement } from 'react';
 import { IComponentEvents } from 'typings/common.types';
-import { ICONS } from '../../utilities/icons/icons';
+import { ICONS } from '../../utilities';
 import styles from './ExpandPluginMenuButton.module.scss';
 
 export interface IExpandPluginMenuButtonProps {

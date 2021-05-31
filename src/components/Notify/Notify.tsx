@@ -5,7 +5,7 @@ import { isUndefined } from 'lodash';
 import React, { ReactElement } from 'react';
 import create from 'zustand';
 import { introduceDelay } from '../../utilities/general';
-import { ICONS } from '../../utilities/icons/icons';
+import { ICONS } from '../../utilities';
 import { IconButton } from '../IconButton/IconButton';
 import { NotifyService } from './Notify.service';
 import { TNotifyStore } from './Notify.types';
