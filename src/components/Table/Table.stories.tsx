@@ -1,5 +1,6 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
+import { generateRandomString } from '../../utilities';
 import { ITableProps, Table as TableComponent } from './Table';
 import styles from './Table.module.scss';
 
@@ -21,15 +22,18 @@ Table.args = {
     height: 700,
     headers: [
         {
+            key: generateRandomString(),
             content: 'Sno',
             align: 'right',
             width: '5%',
         },
         {
+            key: generateRandomString(),
             content: 'Name',
             width: '50%',
         },
         {
+            key: generateRandomString(),
             content: 'Password',
             width: '45%',
         },
@@ -38,16 +42,20 @@ Table.args = {
         {
             cells: [
                 {
+                    key: generateRandomString(),
                     content: '1',
                     align: 'right',
                 },
                 {
+                    key: generateRandomString(),
                     content: 'Rohit',
                 },
                 {
+                    key: generateRandomString(),
                     content: 'passwordstring',
                 },
             ],
+            key: 'asdf',
             onClick: () => toggleRowExpansion(0),
             collapsedContent: (
                 <div
@@ -64,46 +72,58 @@ Table.args = {
         {
             cells: [
                 {
+                    key: generateRandomString(),
                     content: '2',
                     align: 'right',
                 },
                 {
+                    key: generateRandomString(),
                     content: 'Immi',
                 },
                 {
+                    key: generateRandomString(),
                     content: 'passwordstring',
                 },
             ],
+            key: 'asdfdfs',
             collapsedContent: <h6>This is Collapsed Content</h6>,
         },
         {
             cells: [
                 {
+                    key: generateRandomString(),
                     content: '3',
                     align: 'right',
                 },
                 {
+                    key: generateRandomString(),
                     content: 'Thaya',
                 },
                 {
+                    key: generateRandomString(),
                     content: 'passwordstring',
                 },
             ],
+            key: 'asdfdsfasd',
             collapsedContent: <h6>This is Collapsed Content</h6>,
         },
         {
             cells: [
                 {
+                    key: generateRandomString(),
                     content: '4',
                     align: 'right',
                 },
                 {
+                    key: generateRandomString(),
                     content: 'Immi',
                 },
                 {
+                    key: generateRandomString(),
                     content: 'passwordstring',
                 },
             ],
+            key: 'ass',
             // onClick={(event)=>toggleRowExpansion(3)}
             collapsedContent: (
                 <TableComponent
@@ -113,15 +133,18 @@ Table.args = {
                     unmountOnCollapse
                     headers={[
                         {
+                            key: generateRandomString(),
                             content: 'Sno',
                             align: 'right',
                             width: '5%',
                         },
                         {
+                            key: generateRandomString(),
                             content: 'Name',
                             width: '50%',
                         },
                         {
+                            key: generateRandomString(),
                             content: 'Password',
                             width: '45%',
                         },
@@ -130,30 +153,38 @@ Table.args = {
                         {
                             cells: [
                                 {
+                                    key: generateRandomString(),
                                     content: '1',
                                     align: 'right',
                                 },
                                 {
+                                    key: generateRandomString(),
                                     content: 'Rohit',
                                 },
                                 {
+                                    key: generateRandomString(),
                                     content: 'passwordstring',
                                 },
                             ],
+                            key: 'asdf1',
                         },
                         {
                             cells: [
                                 {
+                                    key: generateRandomString(),
                                     content: '1',
                                     align: 'right',
                                 },
                                 {
+                                    key: generateRandomString(),
                                     content: 'Rohit',
                                 },
                                 {
+                                    key: generateRandomString(),
                                     content: 'passwordstring',
                                 },
                             ],
+                            key: 'asdf123',
                         },
                     ]}
                 />
