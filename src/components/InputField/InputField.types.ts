@@ -65,4 +65,5 @@ export interface IInputFieldProps {
     };
     colors?: IColors;
     fontSizes?: IFontSizes;
+    tabIndex?: number;
 }

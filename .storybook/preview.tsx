@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from '../src/components/ThemeProvider/ThemeProvider';
 import '../src/styles/core.scss';
-import { defaultColors, defaultFontSizes } from '../src/theme/storybookTheme';
+import { colorThemes, fontSizeThemes } from '../src/theme/themes';
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },
@@ -11,7 +11,7 @@ export const parameters = {
 export const decorators = [
     (Story: () => ReactElement) => (
         <BrowserRouter>
-            <ThemeProvider colors={defaultColors} fontSizes={defaultFontSizes}>
+            <ThemeProvider colors={colorThemes.default} fontSizes={fontSizeThemes.default}>
                 {Story()}
             </ThemeProvider>
         </BrowserRouter>

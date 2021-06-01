@@ -1,8 +1,9 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { ICONS } from '../../utilities/icons/icons';
+
 import { Avatar as AvatarComponent, IAvatarProps } from './Avatar';
 import Icon from '@iconify/react';
+import { ICONS } from '../../utilities';
 
 const Template: Story<IAvatarProps> = (args: IAvatarProps) => <AvatarComponent {...args} />;
 

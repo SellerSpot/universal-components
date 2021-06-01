@@ -38,7 +38,7 @@ export const useThemeConfigState = create<TThemeConfigState>((set) => ({
 
 export function ThemeProvider(props: IThemeProviderProps): ReactElement {
     // props
-    const { children, colors, fontSizes } = props;
+    const { children, colors = colorThemes.default, fontSizes = fontSizeThemes.default } = props;
 
     // state
     const { initializeThemeConfig, configData } = useThemeConfigState();
@@ -48,8 +48,8 @@ export function ThemeProvider(props: IThemeProviderProps): ReactElement {
     // updating the local store
     useEffect(() => {
         const themeConfigData: TThemeConfigState['configData'] = {
-            colors: colors ?? colorThemes.default,
-            fontSizes: fontSizes ?? fontSizeThemes.default,
+            colors: colors,
+            fontSizes: fontSizes,
         };
         // pushing the passed theme data into the local store
         initializeThemeConfig(themeConfigData);
