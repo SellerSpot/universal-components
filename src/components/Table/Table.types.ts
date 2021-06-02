@@ -8,12 +8,12 @@ export interface ITableCell {
     content?: ReactNode;
     colSpan?: number;
     rowSpan?: number;
-    key: string;
+    key?: string; // send key if you want the react to do optimized list management.
 }
 
 export interface ITableRow {
     cells: ITableCell[];
-    key: string;
+    key?: string; // send key if you want the react to do optimized list management.
     onClick?: (event: React.MouseEvent<HTMLTableRowElement, MouseEvent>) => void;
     collapsedContent?: ReactElement;
 }
