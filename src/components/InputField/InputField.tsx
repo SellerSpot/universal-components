@@ -150,7 +150,6 @@ const InputFieldComponent = (
         if (type === 'number') {
             if (!isUndefined(maxNumericValue) || !isUndefined(minNumericValue)) {
                 let value = +event.target.value;
-                console.log(value);
 
                 // checking minimum condition
                 if (!isUndefined(minNumericValue) && value <= minNumericValue) {
