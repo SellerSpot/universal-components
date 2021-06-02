@@ -16,9 +16,25 @@ const Template: Story = () => {
         width: '100vw',
         height: '100vh',
         backgroundColor: colorThemes.default.backgroundTertiary,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    };
+    const tableWrapperStyle: CSSProperties = {
+        width: '600px',
+        height: '400px',
     };
 
     // props
+    const collapsedContent = () => {
+        const collapsedContentStyle: CSSProperties = {
+            width: '100%',
+            height: 300
+            // backgroundColor: 'white',
+        };
+        return <div style={collapsedContentStyle}>Collapsed Content</div>;
+    };
+
     const tableProps: ITableProps<IBrandData> = {
         data: [
             { id: 0, name: 'Adidas', value: 10 },
@@ -28,24 +44,32 @@ const Template: Story = () => {
         shape: [
             {
                 columnName: 'SNo',
+                align: 'center',
+                width: '5%',
                 customRenderer: ({ rowIndex }) => (rowIndex as number) + 1,
             },
             {
                 columnName: 'Name',
+                width: '70%',
                 dataKey: 'name',
             },
             {
                 columnName: 'Cost',
                 dataKey: 'value',
-                customRenderer: ({ rowIndex }) => (rowIndex as number) + 1,
+                align: 'right',
+                width: '20%',
+                customRenderer: ({ rowData }) => `₹${rowData.value}`,
             },
         ],
         uniqueKey: 'id',
+        collapsedContentRenderer: () => collapsedContent(),
     };
 
     return (
         <div style={wrapperStyle}>
-            <TableComponent {...tableProps} />
+            <div style={tableWrapperStyle}>
+                <TableComponent {...tableProps} />
+            </div>
         </div>
     );
 };

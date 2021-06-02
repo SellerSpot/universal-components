@@ -35,5 +35,13 @@ export interface ITableProps<T = TObj | any, K = T[]> {
      */
     uniqueKey?: keyof T;
     stickyHeader?: boolean;
-    onRowClick?: (rowIndex: number) => void;
+    /**
+     * Can multiple rows expand or can only one stay open at a time
+     */
+    multiRowExpansion?: boolean;
+    collapsedContentRenderer?: (props: { rowIndex?: number; rowData?: T }) => ReactElement;
+    onRowClick?: (props: {
+        event: React.MouseEvent<HTMLTableRowElement>;
+        rowIndex: number;
+    }) => void;
 }
