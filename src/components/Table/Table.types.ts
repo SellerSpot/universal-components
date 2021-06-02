@@ -1,44 +1,47 @@
-import React, { ReactElement, ReactNode } from 'react';
-import { TableCellProps, TableProps } from '@material-ui/core';
+import { TableCellProps } from '@material-ui/core';
+import { ReactElement } from 'react';
 
-export interface ITableCell {
-    width?: TableCellProps['width'];
+type TObj = { [key: string]: unknown };
+interface IShape<T = TObj> {
+    columnName: string | ReactElement;
+    width?: string | number;
     padding?: TableCellProps['padding'];
-    align?: TableCellProps['align'];
-    content?: ReactNode;
+    align?: 'left' | 'center' | 'right' | 'justify' | 'inherit';
     colSpan?: number;
     rowSpan?: number;
-    key?: string; // send key if you want the react to do optimized list management.
-}
-
-export interface ITableRow {
-    cells: ITableCell[];
-    key?: string; // send key if you want the react to do optimized list management.
-    onClick?: (event: React.MouseEvent<HTMLTableRowElement, MouseEvent>) => void;
-    collapsedContent?: ReactElement;
-}
-
-export interface ITableBodyProps {
-    bodyData: ITableRow[];
-    mainRowClassName: string;
-    hasExpandableRows: boolean;
-    expandedRowsSet: Set<number>;
-    unmountOnCollapse: boolean;
-    handleRowExpansionCallback: (rowIndex: number) => void;
-}
-
-export interface ITableProps {
-    stickyHeader?: boolean;
-    variant?: 'card' | 'simple';
-    size?: TableProps['size'];
-    height?: number;
-    maxHeight?: number;
-    multiExpandableRows?: boolean;
-    hasExpandableRows?: boolean;
-    headers?: ITableCell[];
     /**
-     * Unmount the expandable content on collapse (incase expandable rows are enabled)
+     * Key to fetch data from the 'data' prop
      */
-    unmountOnCollapse?: boolean;
-    body?: (props: { toggleRowExpansion: (rowIndex: number) => void }) => ITableRow[];
+    dataKey?: keyof T;
+    customRenderer?: (props: {
+        rowIndex?: number;
+        columnIndex?: number;
+        rowData?: T;
+    }) => ReactElement | number | string;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export interface ITableProps<T = TObj | any, K = T[]> {
+    /**
+     * Array of objects containing the data for the table
+     */
+    data: K;
+    /**
+     * Shape and custom properties for each column
+     */
+    shape: IShape<T>[];
+    /**
+     * Key of 'data' object to use as key for the table rows
+     */
+    uniqueKey?: keyof T;
+    stickyHeader?: boolean;
+    /**
+     * Can multiple rows expand or can only one stay open at a time
+     */
+    multiRowExpansion?: boolean;
+    collapsedContentRenderer?: (props: { rowIndex?: number; rowData?: T }) => ReactElement;
+    onRowClick?: (props: {
+        event: React.MouseEvent<HTMLTableRowElement>;
+        rowIndex: number;
+    }) => void;
 }
