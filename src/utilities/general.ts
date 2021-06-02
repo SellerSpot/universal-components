@@ -18,3 +18,10 @@ export const numberFormatINRCurrency = (value: number): string =>
         currency: 'INR',
         maximumFractionDigits: 2,
     }).format(value);
+
+/**
+ * Generate a string anywhere between zero and 12 characters long
+ * You can expect a duplicate after around 70M strings generated
+ * @returns string
+ */
+export const generateRandomString = (): string => Math.random().toString(36).slice(2);

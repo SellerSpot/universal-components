@@ -8,10 +8,12 @@ export interface ITableCell {
     content?: ReactNode;
     colSpan?: number;
     rowSpan?: number;
+    key: string;
 }
 
 export interface ITableRow {
     cells: ITableCell[];
+    key: string;
     onClick?: (event: React.MouseEvent<HTMLTableRowElement, MouseEvent>) => void;
     collapsedContent?: ReactElement;
 }

@@ -34,9 +34,9 @@ const MainTableRow = (props: {
     });
     const tableCellClassName = hasExpandableRows ? null : styles.tableBodyCell;
     return (
-        <TableRow key={rowIndex} onClick={onClick} className={mainRowClassName}>
+        <TableRow onClick={onClick} className={mainRowClassName}>
             {hasExpandableRows ? (
-                <TableCell className={tableCellClassName}>
+                <TableCell key={'collapseIcon'} className={tableCellClassName}>
                     <CollapseTableIcon
                         isRowExpanded={isRowExpanded}
                         toggleRowExpansion={toggleRowExpansion}
@@ -44,11 +44,11 @@ const MainTableRow = (props: {
                     />
                 </TableCell>
             ) : null}
-            {cells.map((cell, cellIndex) => {
-                const { content, align, colSpan, padding, rowSpan, width } = cell;
+            {cells.map((cell) => {
+                const { content, align, colSpan, padding, rowSpan, width, key } = cell;
                 return (
                     <TableCell
-                        key={cellIndex}
+                        key={key}
                         className={tableCellClassName}
                         align={align}
                         colSpan={colSpan}
@@ -69,11 +69,20 @@ const getCollapsedRow = (props: {
     isRowExpanded: boolean;
     unmountOnCollapse: boolean;
     collapsedContent: ReactElement;
+    key: string;
 }) => {
-    const { cells, isRowExpanded, unmountOnCollapse, collapsedContent } = props;
+    const { cells, isRowExpanded, unmountOnCollapse, collapsedContent, key } = props;
+    // adding 1 to make up for the collapse icon cell
+    const collapsedColSpan = cells.length + 1;
+    const rowKey = `${key}collapsedRow`;
+    const collapsedCellKey = `${key}collapsedCell`;
     return (
-        <TableRow>
-            <TableCell colSpan={cells.length + 1} style={{ paddingBottom: 0, paddingTop: 0 }}>
+        <TableRow key={rowKey}>
+            <TableCell
+                key={collapsedCellKey}
+                colSpan={collapsedColSpan}
+                style={{ paddingBottom: 0, paddingTop: 0 }}
+            >
                 <Collapse in={isRowExpanded} timeout="auto" unmountOnExit={unmountOnCollapse}>
                     {collapsedContent}
                 </Collapse>
@@ -102,10 +111,12 @@ export const TableBody = (props: {
     return (
         <MUITableBody>
             {tableBody.map((row, rowIndex) => {
-                const { cells, collapsedContent, onClick } = row;
+                const { cells, collapsedContent, onClick, key } = row;
                 const isRowExpanded = expandedRows.has(rowIndex);
+                const rowWrapperKey = `${key}wrapper`;
+
                 return (
-                    <Fragment key={rowIndex}>
+                    <Fragment key={rowWrapperKey}>
                         <MainTableRow
                             cells={cells}
                             variant={variant}
@@ -122,6 +133,7 @@ export const TableBody = (props: {
                                   collapsedContent,
                                   isRowExpanded,
                                   unmountOnCollapse,
+                                  key,
                               })
                             : null}
                     </Fragment>
