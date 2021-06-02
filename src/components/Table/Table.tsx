@@ -1,70 +1,86 @@
-import React, { ReactElement, useState } from 'react';
-import { Table as MUITable } from '@material-ui/core';
-import Paper from '@material-ui/core/Paper';
-import TableContainer from '@material-ui/core/TableContainer';
-import { TableBody } from './Components/TableBody';
-import { TableHeader } from './Components/TableHeader';
-import TableService from './Table.service';
+import {
+    Table as MUITable,
+    TableBody as MUITableBody,
+    TableCell,
+    TableHead as MUITableHead,
+    TableRow,
+} from '@material-ui/core';
+import React, { ReactElement } from 'react';
+import styles from './Table.module.scss';
 import { ITableProps } from './Table.types';
 
-export { ITableProps, ITableRow, ITableCell } from './Table.types';
+export { ITableProps } from './Table.types';
+
+const TableHead = (props: { shape: ITableProps['shape'] }) => {
+    const { shape } = props;
+    return (
+        <MUITableHead>
+            <TableRow>
+                {shape.map((column, columnIndex) => {
+                    // props
+                    const { columnName, align, colSpan, padding, rowSpan, width } = column;
+
+                    // compute
+                    const cellKey = columnIndex;
+
+                    // draw
+                    return (
+                        <TableCell
+                            key={cellKey}
+                            align={align}
+                            padding={padding}
+                            rowSpan={rowSpan}
+                            width={width}
+                            colSpan={colSpan}
+                        >
+                            {columnName}
+                        </TableCell>
+                    );
+                })}
+            </TableRow>
+        </MUITableHead>
+    );
+};
+
+const TableBody = (props: ITableProps) => {
+    // props
+    const { data, uniqueKey, shape } = props;
+
+    // draw
+    return (
+        <MUITableBody>
+            {data.map((rowData, rowIndex) => {
+                // compute
+                const rowKey = rowData[uniqueKey] ?? rowIndex;
+                return (
+                    <TableRow key={rowKey}>
+                        {shape.map((column, columnIndex) => {
+                            // props
+                            const { customRenderer, dataKey } = column;
+                            // compute
+                            const cellContent =
+                                customRenderer?.({
+                                    columnIndex,
+                                    rowIndex,
+                                    rowData,
+                                }) ?? rowData[dataKey];
+                            return <TableCell key={columnIndex}>{cellContent}</TableCell>;
+                        })}
+                    </TableRow>
+                );
+            })}
+        </MUITableBody>
+    );
+};
 
 export const Table = (props: ITableProps): ReactElement => {
-    const {
-        hasExpandableRows,
-        multiExpandableRows,
-        body,
-        headers,
-        stickyHeader,
-        variant,
-        size,
-        unmountOnCollapse,
-        maxHeight,
-        height,
-    } = props;
-
-    // state "Set" to hold the expanded rows (if the rows can expand)
-    const [expandedRows, setExpandedRows] = useState(new Set<number>());
-
-    // handles the callback to toggleRowExpansion from user
-    const toggleRowExpansion = (rowIndex: number) => {
-        TableService.toggleRowExpansion({
-            expandedRows,
-            setExpandedRows,
-            multiExpandableRows,
-            rowIndex,
-        });
-    };
-    // getting table body content
-    const tableBody = body({ toggleRowExpansion });
-    const tableContainerComponent = variant === 'simple' ? 'div' : Paper;
-    const tableStyles: React.CSSProperties = {
-        boxShadow: 'none',
-        backgroundColor: 'transparent',
-        height:
-            height ??
-            TableService.computeTableContainerHeight({
-                maxHeight,
-                numberOfRows: tableBody.length,
-                size,
-            }),
-    };
-
+    const { shape } = props;
     return (
-        <TableContainer component={tableContainerComponent} style={tableStyles}>
-            <MUITable stickyHeader={stickyHeader} size={size}>
-                {headers && <TableHeader hasExpandableRows={hasExpandableRows} headers={headers} />}
-                {body && (
-                    <TableBody
-                        expandedRows={expandedRows}
-                        variant={variant}
-                        hasExpandableRows={hasExpandableRows}
-                        tableBody={tableBody}
-                        toggleRowExpansion={toggleRowExpansion}
-                        unmountOnCollapse={unmountOnCollapse}
-                    />
-                )}
+        <div className={styles.tableWrapper}>
+            <MUITable>
+                <TableHead shape={shape} />
+                <TableBody {...props} />
             </MUITable>
-        </TableContainer>
+        </div>
     );
 };
