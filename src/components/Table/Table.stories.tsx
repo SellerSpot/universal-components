@@ -23,13 +23,14 @@ const Template: Story = () => {
     const tableWrapperStyle: CSSProperties = {
         width: '600px',
         height: '400px',
+        overflow: 'auto',
     };
 
     // props
     const collapsedContent = () => {
         const collapsedContentStyle: CSSProperties = {
             width: '100%',
-            height: 300
+            height: 300,
             // backgroundColor: 'white',
         };
         return <div style={collapsedContentStyle}>Collapsed Content</div>;
@@ -63,6 +64,7 @@ const Template: Story = () => {
         ],
         uniqueKey: 'id',
         collapsedContentRenderer: () => collapsedContent(),
+        multiRowExpansion: true,
     };
 
     return (
