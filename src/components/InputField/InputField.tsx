@@ -7,11 +7,12 @@ import {
 } from '@material-ui/core';
 import cn from 'classnames';
 import { isNull, isUndefined } from 'lodash';
-import React, { forwardRef, ReactElement, RefObject, useEffect, useRef, useState } from 'react';
+import React, { forwardRef, ReactElement, RefObject, useEffect, useRef } from 'react';
 import { getTheme } from '../../theme/MUITheme';
 import { ICONS } from '../../utilities';
 import { IconButton } from '../IconButton/IconButton';
-import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
+import { themeConfigStore } from '../ThemeProvider/ThemeProvider';
+import { useState } from '@hookstate/core';
 import styles from './InputField.module.scss';
 import { IInputFieldProps } from './InputField.types';
 
@@ -22,7 +23,7 @@ const InputFieldComponent = (
     ref: RefObject<HTMLInputElement>,
 ): ReactElement => {
     // getting default global theme data
-    const defaultConfigData = useThemeConfigState((state) => state.configData);
+    const defaultConfigData = useState(themeConfigStore).get();
     const {
         id,
         name,
@@ -60,7 +61,7 @@ const InputFieldComponent = (
     } = props;
 
     // internal type state to use incase the field type is password and the suffix is not defined
-    const [internalTypeState, setinternalTypeState] = useState<'text' | 'password'>('password');
+    const internalTypeState = useState<'text' | 'password'>('password');
     // internal ref object to manage autoFocus prop enforcing in case
     // and external ref is not provided
     const internalRef = useRef<HTMLInputElement>(null);
@@ -169,10 +170,10 @@ const InputFieldComponent = (
     // constructs the suffix component for the inputField
     const suffixComponent = (): ReactElement | string | number => {
         const handleSpecialSuffixOnClick = () => {
-            if (internalTypeState === 'password') {
-                setinternalTypeState('text');
+            if (internalTypeState.get() === 'password') {
+                internalTypeState.set('text');
             } else {
-                setinternalTypeState('password');
+                internalTypeState.set('password');
             }
         };
 
@@ -180,7 +181,7 @@ const InputFieldComponent = (
             return (
                 <IconButton
                     icon={
-                        internalTypeState === 'password' ? (
+                        internalTypeState.get() === 'password' ? (
                             <Icon icon={ICONS.visibility} />
                         ) : (
                             <Icon icon={ICONS.visibilityOff} />
@@ -197,7 +198,7 @@ const InputFieldComponent = (
     // returns the type of the inputField
     const inputFieldType = (): IInputFieldProps['type'] => {
         if (type === 'password' && !suffix) {
-            return internalTypeState;
+            return internalTypeState.get();
         }
         return type;
     };

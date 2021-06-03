@@ -1,67 +1,67 @@
+import { createState, State, useState } from '@hookstate/core';
 import Icon from '@iconify/react';
 import { Snackbar, SnackbarCloseReason, SnackbarContent } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import { isUndefined } from 'lodash';
 import React, { ReactElement } from 'react';
-import create from 'zustand';
-import { introduceDelay } from '../../utilities/general';
 import { ICONS } from '../../utilities';
+import { introduceDelay } from '../../utilities/general';
 import { IconButton } from '../IconButton/IconButton';
 import { NotifyService } from './Notify.service';
-import { TNotifyStore } from './Notify.types';
+import { INotifyStore, INotifyStoreActions } from './Notify.types';
+import { DevTools } from '@hookstate/core';
 
 export { INotifyState } from './Notify.types';
 
 /**
  * Used to call the notify component from anywhere in the application
  */
-const notifyStore = create<TNotifyStore>((set, get) => ({
+
+const notifyStore = createState<INotifyStore>({
     show: false,
     notifyState: null,
+});
+
+DevTools(notifyStore).label('Notify Store');
+
+const notifyStoreActions = (state: State<Partial<INotifyStore>>): INotifyStoreActions => ({
     onMUICloseNotify: () => {
-        set({ show: false });
+        state.show.set(false);
     },
     showNotify: async (message, options) => {
-        const currentNotifyState = get().notifyState;
-        const currentShowState = get().show;
+        const currentShowState = state.show.get();
+
         if (currentShowState) {
-            set({
-                show: false,
-            });
+            state.show.set(false);
             // waiting for the previous notify to close
             await introduceDelay(100);
         }
-        set({
-            show: true,
-            notifyState: {
-                ...currentNotifyState,
-                ...options,
-                message: message,
-            },
+        state.set((state) => {
+            return {
+                show: true,
+                notifyState: {
+                    ...state.notifyState,
+                    ...options,
+                    message,
+                },
+            };
         });
     },
     configureNotify: (props) => {
-        const { autoHideDuration, placement, theme, closeOnClickAway, showNotifyAction } = props;
-        const currentNotifyState = get().notifyState;
-        set({
-            notifyState: {
-                ...currentNotifyState,
-                autoHideDuration,
-                closeOnClickAway,
-                placement,
-                theme,
-                showNotifyAction,
-            },
-        });
+        state.notifyState.set(props);
     },
     hideNotify: () => {
-        set({ show: false });
+        state.show.set(false);
     },
-}));
+});
 
-export const { showNotify, hideNotify, configureNotify } = notifyStore.getState();
+const notifyActions = () => notifyStoreActions(notifyStore);
+const { configureNotify, hideNotify, showNotify } = notifyActions();
+export { showNotify, hideNotify, configureNotify };
 
 export const Notify = (): ReactElement => {
+    const { hideNotify, onMUICloseNotify } = notifyActions();
+    const { notifyState, show } = useState(notifyStore);
     const {
         message,
         onClose,
@@ -72,10 +72,7 @@ export const Notify = (): ReactElement => {
         closeOnClickAway,
         customNotifyAction,
         showNotifyAction,
-    } = notifyStore((theme) => theme.notifyState) || {};
-
-    const showNotify = notifyStore((theme) => theme.show);
-    const onMUICloseNotify = notifyStore((theme) => theme.onMUICloseNotify);
+    } = notifyState.get();
 
     // determining the placement
     const notifyPlacement = NotifyService.getNotifyPlacement(placement);
@@ -121,7 +118,7 @@ export const Notify = (): ReactElement => {
         <Snackbar
             action={actions}
             onClose={handleOnClose}
-            open={showNotify}
+            open={show.get()}
             autoHideDuration={autoHideDurationCalculated}
             anchorOrigin={notifyPlacement}
         >
