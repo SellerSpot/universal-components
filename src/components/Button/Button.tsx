@@ -2,15 +2,16 @@ import cn from 'classnames';
 import React, { ReactElement } from 'react';
 import { Button as MUIButton, CircularProgress, Theme, ThemeProvider } from '@material-ui/core';
 import { getTheme } from '../../theme/MUITheme';
-import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
+import { themeConfigStore } from '../ThemeProvider/ThemeProvider';
 import styles from './Button.module.scss';
 import { IButtonProps } from './Button.types';
+import { useState } from '@hookstate/core';
 
 export { IButtonProps } from './Button.types';
 
 export const Button = (props: IButtonProps): ReactElement => {
     // getting default global theme data
-    const defaultConfigData = useThemeConfigState((state) => state.configData);
+    const defaultConfigData = useState(themeConfigStore);
     const {
         colors,
         fontSizes,
@@ -32,8 +33,8 @@ export const Button = (props: IButtonProps): ReactElement => {
     } = props;
     // holds the theme for the the component
     const buttonTheme: Theme = getTheme({
-        colors: colors ?? defaultConfigData.colors,
-        fontSizes: fontSizes ?? defaultConfigData.fontSizes,
+        colors: colors ?? defaultConfigData.colors.get(),
+        fontSizes: fontSizes ?? defaultConfigData.fontSizes.get(),
         theme: theme ?? 'auto',
     });
 
@@ -51,6 +52,11 @@ export const Button = (props: IButtonProps): ReactElement => {
     // compute
     const shouldFadeButton = disabled || isLoading;
     const buttonClassName = cn({ [styles.fadeButton]: shouldFadeButton }, className?.button);
+    const onClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+        if (!shouldFadeButton) {
+            onClick(event);
+        }
+    };
 
     return (
         <div className={cn(className?.wrapper, { [styles.fullWidthButton]: fullWidth })}>
@@ -64,7 +70,7 @@ export const Button = (props: IButtonProps): ReactElement => {
                     disableRipple={shouldFadeButton}
                     fullWidth={fullWidth}
                     type={type}
-                    onClick={onClick}
+                    onClick={onClickHandler}
                     startIcon={startIconComponent}
                     endIcon={endIcon}
                     style={style?.button}

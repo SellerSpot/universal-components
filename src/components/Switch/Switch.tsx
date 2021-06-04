@@ -2,14 +2,15 @@ import React, { ReactElement } from 'react';
 import { Switch as MUISwitch, Theme, ThemeProvider } from '@material-ui/core';
 import { getTheme } from '../../theme/theme';
 import { ISwitchProps } from './Switch.types';
-import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
+import { themeConfigStore } from '../ThemeProvider/ThemeProvider';
+import { useState } from '@hookstate/core';
 
 export { ISwitchProps } from './Switch.types';
 
 export const Switch = (props: ISwitchProps): ReactElement => {
     const { checked, onChange, size, theme, colors, fontSizes } = props;
     // getting default global theme data
-    const defaultConfigData = useThemeConfigState((state) => state.configData);
+    const defaultConfigData = useState(themeConfigStore).get();
     // holds the theme for the the component
     const switchTheme: Theme = getTheme({
         colors: colors ?? defaultConfigData.colors,

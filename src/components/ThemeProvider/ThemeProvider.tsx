@@ -1,53 +1,45 @@
 import React, { ReactElement, useEffect } from 'react';
-import create from 'zustand';
+import { useState, createState, State } from '@hookstate/core';
 import { ThemeProvider as MUIThemeProvider } from '@material-ui/core';
 import '../../styles/core.scss';
 import { getTheme } from '../../theme/MUITheme';
 import { IColors, IFontSizes, IGetThemeProps } from '../../theme/theme.types';
 import { colorThemes, fontSizeThemes } from '../../theme/themes';
+import {
+    IGlobalThemeConfigState,
+    IThemeConfigActions,
+    IThemeProviderProps,
+} from './ThemeProvider.types';
 
-export interface IThemeProviderProps {
-    children?: ReactElement | ReactElement[] | string | number;
-    colors?: IColors;
-    fontSizes?: IFontSizes;
-}
-
-interface IGlobalThemeConfig {
-    colors: IColors;
-    fontSizes: IFontSizes;
-}
-
-type TThemeConfigState = {
-    configData: IGlobalThemeConfig;
-    initializeThemeConfig: (data: IGlobalThemeConfig) => void;
-};
+export const themeConfigStore = createState<IGlobalThemeConfigState>({
+    colors: colorThemes.default,
+    fontSizes: fontSizeThemes.default,
+});
 
 // holds the global shared themeConfig used instead of passing colors
 // and font sizes when each and every component is used in host app
-export const useThemeConfigState = create<TThemeConfigState>((set) => ({
-    configData: {
-        colors: colorThemes.default,
-        fontSizes: fontSizeThemes.default,
-    },
+const themeConfigStateActions = (state: State<IGlobalThemeConfigState>): IThemeConfigActions => ({
     initializeThemeConfig: (data) => {
-        set(() => ({
-            configData: data,
-        }));
+        state.set(data);
     },
-}));
+});
+
+const themeConfigActions = () => themeConfigStateActions(themeConfigStore);
+export const { initializeThemeConfig } = themeConfigActions();
 
 export function ThemeProvider(props: IThemeProviderProps): ReactElement {
     // props
     const { children, colors = colorThemes.default, fontSizes = fontSizeThemes.default } = props;
 
     // state
-    const { initializeThemeConfig, configData } = useThemeConfigState();
-    const { colors: currentColors, fontSizes: currentFontSizes } = configData;
+    const { initializeThemeConfig } = themeConfigActions();
+    const configState = useState(themeConfigStore);
+    const { colors: currentColors, fontSizes: currentFontSizes } = configState.get();
 
     // effects
     // updating the local store
     useEffect(() => {
-        const themeConfigData: TThemeConfigState['configData'] = {
+        const themeConfigData: IGlobalThemeConfigState = {
             colors: colors,
             fontSizes: fontSizes,
         };
@@ -69,7 +61,7 @@ export function ThemeProvider(props: IThemeProviderProps): ReactElement {
                 fontSizes[key as keyof IFontSizes],
             );
         });
-    }, [configData]);
+    }, [configState]);
 
     // constructing props early so that the jsx is clean
     const getThemeProps: IGetThemeProps = {

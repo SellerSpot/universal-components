@@ -1,7 +1,8 @@
 import React, { ReactElement } from 'react';
 import { IconButton as MUIIconButton, Theme, ThemeProvider } from '@material-ui/core';
 import { getTheme } from '../../theme/MUITheme';
-import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
+import { themeConfigStore } from '../ThemeProvider/ThemeProvider';
+import { useState } from '@hookstate/core';
 import { IIconButtonProps } from './IconButton.types';
 
 export { IIconButtonProps } from './IconButton.types';
@@ -20,7 +21,7 @@ export const IconButton = (props: IIconButtonProps): ReactElement => {
         inheritColorsFromParent,
     } = props;
     // getting default global theme data
-    const defaultConfigData = useThemeConfigState((state) => state.configData);
+    const defaultConfigData = useState(themeConfigStore).get();
     // holds the theme for the the component
     const buttonTheme: Theme = getTheme({
         colors: colors ?? defaultConfigData.colors,

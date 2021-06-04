@@ -99,6 +99,7 @@
     },
     "dependencies": {
         "@hookstate/core": "^3.0.7",
+        "@hookstate/devtools": "^3.0.0",
         "@iconify/icons-ic": "^1.1.4",
         "@iconify/icons-mdi": "^1.1.15",
         "@iconify/react": "^1.1.4",
@@ -108,8 +109,7 @@
         "lodash": "^4.17.21",
         "nanoid": "^3.1.22",
         "react-alice-carousel": "^2.5.1",
-        "react-router-dom": "^5.2.0",
-        "zustand": "^3.4.1"
+        "react-router-dom": "^5.2.0"
     },
     "bugs": {
         "url": "https://github.com/SellerSpot/universal-components/issues"

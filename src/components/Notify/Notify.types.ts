@@ -1,27 +1,6 @@
 import { ReactElement } from 'react';
 import { AlertProps } from '@material-ui/lab';
 
-export type TNotifyStore = {
-    show: boolean;
-    notifyState: INotifyState;
-    // used to manage the smooth closing of notify as per MUI method
-    onMUICloseNotify: () => void;
-    showNotify: (message: INotifyState['message'], options?: Omit<INotifyState, 'message'>) => void;
-    /**
-     * Configure notify beforehand
-     */
-    configureNotify: (
-        props: Pick<
-            INotifyState,
-            'placement' | 'theme' | 'autoHideDuration' | 'closeOnClickAway' | 'showNotifyAction'
-        >,
-    ) => void;
-    /**
-     * Used to hide the notify on demand (from custom action or buttons)
-     */
-    hideNotify: () => void;
-};
-
 export interface INotifyState {
     /**
      * Notify message
@@ -56,4 +35,28 @@ export interface INotifyState {
      * Visual theme of the notify component
      */
     theme?: 'default' | AlertProps['severity'];
+}
+
+export interface INotifyStore {
+    show: boolean;
+    notifyState: INotifyState;
+}
+
+export interface INotifyStoreActions {
+    // used to manage the smooth closing of notify as per MUI method
+    onMUICloseNotify: () => void;
+    showNotify: (message: INotifyState['message'], options?: Omit<INotifyState, 'message'>) => void;
+    /**
+     * Configure notify beforehand
+     */
+    configureNotify: (
+        props: Pick<
+            INotifyState,
+            'placement' | 'theme' | 'autoHideDuration' | 'closeOnClickAway' | 'showNotifyAction'
+        >,
+    ) => void;
+    /**
+     * Used to hide the notify on demand (from custom action or buttons)
+     */
+    hideNotify: () => void;
 }

@@ -1,7 +1,8 @@
 import React, { ReactElement } from 'react';
 import { createMuiTheme, ThemeProvider, Tooltip, TooltipProps } from '@material-ui/core';
 import { getTheme, IColors, IFontSizes } from '../../theme/theme';
-import { useThemeConfigState } from '../ThemeProvider/ThemeProvider';
+import { themeConfigStore } from '../ThemeProvider/ThemeProvider';
+import { useState } from '@hookstate/core';
 
 export interface IToolTipProps {
     children?: TooltipProps['children'];
@@ -18,7 +19,7 @@ export interface IToolTipProps {
 export const ToolTip = (props: IToolTipProps): ReactElement => {
     const { children, colors, fontSizes, content, placement, enterDelay } = props;
     // getting default global theme data
-    const defaultConfigData = useThemeConfigState((state) => state.configData);
+    const defaultConfigData = useState(themeConfigStore).get();
     // compiling the theme for the tooltip
     const tooltipMUITheme = createMuiTheme(
         getTheme({
