@@ -52,6 +52,11 @@ export const Button = (props: IButtonProps): ReactElement => {
     // compute
     const shouldFadeButton = disabled || isLoading;
     const buttonClassName = cn({ [styles.fadeButton]: shouldFadeButton }, className?.button);
+    const onClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+        if (!shouldFadeButton) {
+            onClick(event);
+        }
+    };
 
     return (
         <div className={cn(className?.wrapper, { [styles.fullWidthButton]: fullWidth })}>
@@ -65,7 +70,7 @@ export const Button = (props: IButtonProps): ReactElement => {
                     disableRipple={shouldFadeButton}
                     fullWidth={fullWidth}
                     type={type}
-                    onClick={onClick}
+                    onClick={onClickHandler}
                     startIcon={startIconComponent}
                     endIcon={endIcon}
                     style={style?.button}
