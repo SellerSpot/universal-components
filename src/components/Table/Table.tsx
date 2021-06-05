@@ -11,8 +11,8 @@ import styles from './Table.module.scss';
 import { ITableProps } from './Table.types';
 
 export {
-    ITableProps,
     ITableCollapsedCustomRenderer,
+    ITableProps,
     TTableCellCustomRenderer,
 } from './Table.types';
 
@@ -63,6 +63,7 @@ const TableHead = (props: ITableProps) => {
 
 export const Table = (props: ITableProps): ReactElement => {
     const { size } = props;
+
     // draw
     return (
         <div className={styles.tableWrapper}>

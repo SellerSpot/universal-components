@@ -17,13 +17,20 @@ const ExpandRowIcon = (props: {
     mainRowClassName: string;
     rowKey: string;
     isRowExpanded: boolean;
-    handleRowExpansion: () => void;
+    rowIndex: number;
+    handleRowExpansion: (rowIndex: number) => void;
 }) => {
     // props
-    const { handleRowExpansion, isRowExpanded, mainRowClassName, rowKey } = props;
+    const { handleRowExpansion, isRowExpanded, mainRowClassName, rowKey, rowIndex } = props;
 
     // compute
     const iconToShow = isRowExpanded ? ICONS.keyboardArrowDown : ICONS.keyboardArrowUp;
+
+    // handlers
+    const onClickHandler = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        event.stopPropagation();
+        handleRowExpansion(rowIndex);
+    };
 
     // draw
     return (
@@ -32,7 +39,7 @@ const ExpandRowIcon = (props: {
                 size="small"
                 icon={<Icon icon={iconToShow} height="22px" />}
                 theme="auto"
-                onClick={handleRowExpansion}
+                onClick={onClickHandler}
             />
         </TableCell>
     );
@@ -86,6 +93,7 @@ const CollapsedRow = (props: {
     collapsedContentCellWidth: number;
     rowData: ITableProps['data'][0];
     rowIndex: number;
+    toggleRowExpansion: (rowIndex: number) => void;
     collapsedContentRenderer: ITableProps['collapsedContentRenderer'];
     isRowExpanded: boolean;
 }) => {
@@ -94,6 +102,7 @@ const CollapsedRow = (props: {
         collapsedContentCellWidth,
         collapsedContentRenderer,
         isRowExpanded,
+        toggleRowExpansion,
         rowData,
         rowIndex,
         rowKey,
@@ -107,6 +116,7 @@ const CollapsedRow = (props: {
                     {collapsedContentRenderer({
                         rowData,
                         rowIndex,
+                        toggleRowExpansion,
                     })}
                 </Collapse>
             </TableCell>
@@ -128,6 +138,31 @@ export const TableBody = (props: ITableProps): ReactElement => {
     // state
     const expandedRows = useState<number[]>([]);
 
+    // handlers
+    const toggleRowExpansion = (rowIndex: number) => {
+        const isRowExpanded = expandedRows.get().includes(rowIndex);
+        debugger;
+        if (isRowExpanded) {
+            if (multiRowExpansion) {
+                expandedRows.set((state) => {
+                    const newState = state.filter((index) => index !== rowIndex);
+                    return newState;
+                });
+            } else {
+                expandedRows.set([]);
+            }
+        } else {
+            if (multiRowExpansion) {
+                expandedRows.set((state) => {
+                    const newState = [...state, rowIndex];
+                    return newState;
+                });
+            } else {
+                expandedRows.set([rowIndex]);
+            }
+        }
+    };
+
     // draw
     return (
         <MUITableBody>
@@ -148,35 +183,12 @@ export const TableBody = (props: ITableProps): ReactElement => {
                 // handlers
                 const rowOnClickHandler: TableRowProps['onClick'] = (event) => {
                     if (hasCollapsedContent) {
-                        handleRowExpansion();
+                        toggleRowExpansion(rowIndex);
                     } else {
                         onRowClick({
                             event,
                             rowIndex,
                         });
-                    }
-                };
-
-                // handlers
-                const handleRowExpansion = () => {
-                    if (isRowExpanded) {
-                        if (multiRowExpansion) {
-                            expandedRows.set((state) => {
-                                const newState = state.filter((index) => index !== rowIndex);
-                                return newState;
-                            });
-                        } else {
-                            expandedRows.set([]);
-                        }
-                    } else {
-                        if (multiRowExpansion) {
-                            expandedRows.set((state) => {
-                                const newState = [...state, rowIndex];
-                                return newState;
-                            });
-                        } else {
-                            expandedRows.set([rowIndex]);
-                        }
                     }
                 };
 
@@ -189,7 +201,8 @@ export const TableBody = (props: ITableProps): ReactElement => {
                                     mainRowClassName={mainRowCellClassName}
                                     rowKey={rowKey}
                                     isRowExpanded={isRowExpanded}
-                                    handleRowExpansion={handleRowExpansion}
+                                    handleRowExpansion={toggleRowExpansion}
+                                    rowIndex={rowIndex}
                                 />
                             ) : null}
                             <MainTableCells
@@ -203,6 +216,7 @@ export const TableBody = (props: ITableProps): ReactElement => {
                         {hasCollapsedContent ? (
                             <CollapsedRow
                                 rowKey={rowKey}
+                                toggleRowExpansion={toggleRowExpansion}
                                 collapsedContentCellWidth={collapsedContentCellWidth}
                                 rowData={rowData}
                                 rowIndex={rowIndex}
