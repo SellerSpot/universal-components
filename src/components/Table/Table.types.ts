@@ -2,6 +2,12 @@ import { TableCellProps } from '@material-ui/core';
 import { ReactElement } from 'react';
 
 type TObj = { [key: string]: unknown };
+
+export type TTableCellCustomRenderer<T> = (props: {
+    rowIndex?: number;
+    columnIndex?: number;
+    rowData?: T;
+}) => ReactElement | number | string;
 interface IShape<T = TObj> {
     columnName: string | ReactElement;
     width?: string | number;
@@ -13,12 +19,13 @@ interface IShape<T = TObj> {
      * Key to fetch data from the 'data' prop
      */
     dataKey?: keyof T;
-    customRenderer?: (props: {
-        rowIndex?: number;
-        columnIndex?: number;
-        rowData?: T;
-    }) => ReactElement | number | string;
+    customRenderer?: TTableCellCustomRenderer<T>;
 }
+
+export type ITableCollapsedCustomRenderer<T> = (props: {
+    rowIndex?: number;
+    rowData?: T;
+}) => ReactElement;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export interface ITableProps<T = TObj | any, K = T[]> {
@@ -30,6 +37,7 @@ export interface ITableProps<T = TObj | any, K = T[]> {
      * Shape and custom properties for each column
      */
     shape: IShape<T>[];
+    size?: 'medium' | 'small';
     /**
      * Key of 'data' object to use as key for the table rows
      */
@@ -39,7 +47,7 @@ export interface ITableProps<T = TObj | any, K = T[]> {
      * Can multiple rows expand or can only one stay open at a time
      */
     multiRowExpansion?: boolean;
-    collapsedContentRenderer?: (props: { rowIndex?: number; rowData?: T }) => ReactElement;
+    collapsedContentRenderer?: ITableCollapsedCustomRenderer<T>;
     onRowClick?: (props: {
         event: React.MouseEvent<HTMLTableRowElement>;
         rowIndex: number;

@@ -2,12 +2,35 @@
     width: 100%;
     height: 100%;
 
-    .mainRowCellExpanded {
-        border-bottom: unset;
-        cursor: pointer;
+    .headerRow {
+        border-bottom: 1px solid $tableHeaderCellBorder-color;
+        .headerCell {
+            border-bottom: unset;
+        }
     }
 
-    .collapsedCell {
-        padding: 0;
+    .bodyRow {
+        border-bottom: 1px solid $tableCellBorder-color;
+
+        &.bodyRowExpandableTable {
+            border-bottom: unset;
+        }
+
+        .bodyCell {
+            border-bottom: unset;
+            // styling for normal body cell when table can expand
+            &.bodyCellExpansibleTable {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .collapsedRow {
+        border-bottom: 1px solid $tableCellBorder-color;
+        // styling for cell which is collapsed
+        .collapsedCell {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
     }
 }

@@ -4,11 +4,18 @@ import { Card as CardComponent, ICardProps } from './Card';
 
 const Template: Story<ICardProps> = (args: ICardProps) => {
     const wrapperStyle: CSSProperties = {
+        height: '100vh',
+        width: '100vw',
+        backgroundColor: 'lightgray',
+    };
+    const cardWrapperStyle: CSSProperties = {
         maxWidth: '300px',
     };
     return (
         <div style={wrapperStyle}>
-            <CardComponent {...args} />
+            <div style={cardWrapperStyle}>
+                <CardComponent {...args} />
+            </div>
         </div>
     );
 };
@@ -22,4 +29,7 @@ Card.args = {
 export default {
     title: 'Design System/Atoms/Card',
     component: CardComponent,
+    parameters: {
+        layout: 'fullscreen',
+    },
 } as Meta;

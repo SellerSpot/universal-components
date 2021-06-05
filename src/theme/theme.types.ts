@@ -51,6 +51,10 @@ export interface IColors {
     accent: string;
     accentLight: string;
     accentDark: string;
+
+    // special colors
+    tableCellBorder: string;
+    tableHeaderCellBorder: string;
 }
 
 /**

@@ -51,6 +51,10 @@ const defaultColors: IColors = {
     accent: '#EE8572',
     accentLight: '#F8D0C9',
     accentDark: '#E65237',
+
+    // special colors
+    tableHeaderCellBorder: 'rgb(209, 207, 207)',
+    tableCellBorder: 'rgba(224, 224, 224, 1)',
 };
 
 /**
