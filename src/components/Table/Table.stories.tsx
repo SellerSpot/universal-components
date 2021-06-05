@@ -30,7 +30,7 @@ const Template: Story = () => {
     const collapsedContent = () => {
         const collapsedContentStyle: CSSProperties = {
             width: '100%',
-            height: 300,
+            height: 50,
             // backgroundColor: 'white',
         };
         return <div style={collapsedContentStyle}>Collapsed Content</div>;

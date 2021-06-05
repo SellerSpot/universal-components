@@ -25,6 +25,7 @@ interface IShape<T = TObj> {
 export type ITableCollapsedCustomRenderer<T> = (props: {
     rowIndex?: number;
     rowData?: T;
+    toggleRowExpansion?: (rowIndex: number) => void;
 }) => ReactElement;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

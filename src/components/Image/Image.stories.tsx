@@ -1,15 +1,18 @@
-import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { Image as ImageComponent, IImageProps } from './Image';
+import React from 'react';
+import { IImageProps, Image as ImageComponent } from './Image';
+import styles from './sample.module.scss';
 
-const Template: Story<IImageProps> = (args: IImageProps) => <ImageComponent {...args} />;
+const Template: Story<IImageProps> = (args: IImageProps) => {
+    return <ImageComponent {...args} />;
+};
 
 export const Image = Template.bind({});
 
 Image.args = {
-    src: 'https://via.placeholder.com/300/000000/FFFFFF/?text=SellerSpot',
-    width: 300,
-    height: 300,
+    src: 'https://wallpapercave.com/wp/wp4103107.jpg',
+    objectFit: 'cover',
+    className: styles.imageWrapper,
 } as IImageProps;
 
 export default {

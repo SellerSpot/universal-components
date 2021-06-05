@@ -13,6 +13,7 @@ Button.args = {
     size: 'small',
     theme: 'success',
     disabled: false,
+    onClick: () => console.log('Hi therer'),
     startIcon: <Icon icon={ICONS.notifications} />,
 } as IButtonProps;
 

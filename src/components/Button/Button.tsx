@@ -6,6 +6,7 @@ import { themeConfigStore } from '../ThemeProvider/ThemeProvider';
 import styles from './Button.module.scss';
 import { IButtonProps } from './Button.types';
 import { useState } from '@hookstate/core';
+import commonStyles from '../../styles/common.module.scss';
 
 export { IButtonProps } from './Button.types';
 
@@ -51,10 +52,12 @@ export const Button = (props: IButtonProps): ReactElement => {
 
     // compute
     const shouldFadeButton = disabled || isLoading;
-    const buttonClassName = cn({ [styles.fadeButton]: shouldFadeButton }, className?.button);
+    const buttonClassName = cn({ [styles.fadeButton]: shouldFadeButton }, className?.button, {
+        [commonStyles.pointEventsNone]: shouldFadeButton,
+    });
     const onClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
         if (!shouldFadeButton) {
-            onClick(event);
+            onClick?.(event);
         }
     };
 
