@@ -1,5 +1,6 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React, { useState } from 'react';
+import { Button } from '..';
 import { ISliderModalProps, SliderModal as SliderModalComponent } from './SliderModal';
 
 const Content = (props: { message: string }) => {
@@ -21,7 +22,12 @@ const Template: Story<ISliderModalProps> = (args) => {
     const [showModal, setShowModal] = useState(false);
     return (
         <>
-            <button onClick={() => setShowModal(true)}>Show Modal</button>
+            <Button
+                onClick={() => setShowModal(true)}
+                label={'Show Modal'}
+                theme="primary"
+                variant="contained"
+            />
             {args.type === 'fixed' && (
                 <SliderModalComponent
                     {...args}
@@ -30,7 +36,12 @@ const Template: Story<ISliderModalProps> = (args) => {
                 >
                     <Content message={'Header'} />
                     <div>
-                        <button onClick={() => setShowModal(false)}>Close Modal</button>
+                        <Button
+                            onClick={() => setShowModal(false)}
+                            label={'Close Modal'}
+                            variant="contained"
+                            theme="primary"
+                        />
                         <Content message={'Body'} />
                     </div>
                 </SliderModalComponent>

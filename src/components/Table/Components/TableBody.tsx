@@ -24,7 +24,7 @@ const ExpandRowIcon = (props: {
     const { handleRowExpansion, isRowExpanded, mainRowClassName, rowKey, rowIndex } = props;
 
     // compute
-    const iconToShow = isRowExpanded ? ICONS.keyboardArrowDown : ICONS.keyboardArrowUp;
+    const iconToShow = isRowExpanded ? ICONS.keyboardArrowUp : ICONS.keyboardArrowDown;
 
     // handlers
     const onClickHandler = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
