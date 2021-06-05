@@ -56,7 +56,6 @@ const TableHead = (props: ITableProps) => {
                         </TableCell>
                     );
                 })}
-                <hr className={styles.headerDivider} />
             </TableRow>
         </MUITableHead>
     );

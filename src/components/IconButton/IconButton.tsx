@@ -3,6 +3,8 @@ import { IconButton as MUIIconButton, Theme, ThemeProvider } from '@material-ui/
 import { getTheme } from '../../theme/MUITheme';
 import { themeConfigStore } from '../ThemeProvider/ThemeProvider';
 import { useState } from '@hookstate/core';
+import styles from './IconButton.module.scss';
+import cn from 'classnames';
 import { IIconButtonProps } from './IconButton.types';
 
 export { IIconButtonProps } from './IconButton.types';
@@ -30,10 +32,12 @@ export const IconButton = (props: IIconButtonProps): ReactElement => {
     });
     // if the button should inherit the parents colors or not
     const buttonColor = inheritColorsFromParent ? 'inherit' : 'primary';
+    const buttonClassName = cn({ [styles.smallSize]: size === 'small' }, className);
+
     return (
         <ThemeProvider theme={buttonTheme}>
             <MUIIconButton
-                className={className}
+                className={buttonClassName}
                 color={buttonColor}
                 size={size}
                 type={type}
