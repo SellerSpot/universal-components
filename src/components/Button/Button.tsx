@@ -54,7 +54,7 @@ export const Button = (props: IButtonProps): ReactElement => {
     const buttonClassName = cn({ [styles.fadeButton]: shouldFadeButton }, className?.button);
     const onClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
         if (!shouldFadeButton) {
-            onClick(event);
+            onClick?.(event);
         }
     };
 
