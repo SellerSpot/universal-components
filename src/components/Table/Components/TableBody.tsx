@@ -17,10 +17,10 @@ const ExpandRowIcon = (props: {
     mainRowClassName: string;
     rowKey: string;
     isRowExpanded: boolean;
-    handleExpandRowIconOnClick: () => void;
+    handleRowExpansion: () => void;
 }) => {
     // props
-    const { handleExpandRowIconOnClick, isRowExpanded, mainRowClassName, rowKey } = props;
+    const { handleRowExpansion, isRowExpanded, mainRowClassName, rowKey } = props;
 
     // compute
     const iconToShow = isRowExpanded ? (
@@ -32,7 +32,7 @@ const ExpandRowIcon = (props: {
     // draw
     return (
         <TableCell className={mainRowClassName} key={`${rowKey}expandRowIcon`} width="5%">
-            <IconButton icon={iconToShow} theme="auto" onClick={handleExpandRowIconOnClick} />
+            <IconButton icon={iconToShow} theme="auto" onClick={handleRowExpansion} />
         </TableCell>
     );
 };
@@ -100,7 +100,7 @@ const CollapsedRow = (props: {
 
     // draw
     return (
-        <TableRow className={styles.collapsedContentRow} key={`${rowKey}collapsedContent`}>
+        <TableRow className={styles.bodyRow} key={`${rowKey}collapsedContent`}>
             <TableCell className={styles.collapsedCell} colSpan={collapsedContentCellWidth}>
                 <Collapse in={isRowExpanded} timeout="auto">
                     {collapsedContentRenderer({
@@ -109,7 +109,7 @@ const CollapsedRow = (props: {
                     })}
                 </Collapse>
             </TableCell>
-            <hr className={styles.divider} />
+            <hr className={styles.bodyDivider} />
         </TableRow>
     );
 };
@@ -138,20 +138,24 @@ export const TableBody = (props: ITableProps): ReactElement => {
                 const collapsedContentCellWidth = shape.length + lengthOfCellsForExpandRowIcon;
                 const hasCollapsedContent = !!collapsedContentRenderer;
                 const isRowExpanded = expandedRows.get().includes(rowIndex);
-                const mainRowCellClassName = cn(styles.mainRowCell, {
-                    [styles.mainRowCellExpanded]: hasCollapsedContent,
+                const mainRowCellClassName = cn(styles.bodyCell, {
+                    [styles.bodyCellExpansibleTable]: hasCollapsedContent,
                 });
 
                 // handlers
                 const rowOnClickHandler: TableRowProps['onClick'] = (event) => {
-                    onRowClick({
-                        event,
-                        rowIndex,
-                    });
+                    if (hasCollapsedContent) {
+                        handleRowExpansion();
+                    } else {
+                        onRowClick({
+                            event,
+                            rowIndex,
+                        });
+                    }
                 };
 
                 // handlers
-                const handleExpandRowIconOnClick = () => {
+                const handleRowExpansion = () => {
                     if (isRowExpanded) {
                         if (multiRowExpansion) {
                             expandedRows.set((state) => {
@@ -176,13 +180,13 @@ export const TableBody = (props: ITableProps): ReactElement => {
                 // draw
                 return (
                     <Fragment key={rowKey}>
-                        <TableRow className={styles.mainContentRow} onClick={rowOnClickHandler}>
+                        <TableRow className={styles.bodyRow} onClick={rowOnClickHandler}>
                             {hasCollapsedContent ? (
                                 <ExpandRowIcon
                                     mainRowClassName={mainRowCellClassName}
                                     rowKey={rowKey}
                                     isRowExpanded={isRowExpanded}
-                                    handleExpandRowIconOnClick={handleExpandRowIconOnClick}
+                                    handleRowExpansion={handleRowExpansion}
                                 />
                             ) : null}
                             <MainTableCells
@@ -191,7 +195,7 @@ export const TableBody = (props: ITableProps): ReactElement => {
                                 rowData={rowData}
                                 mainRowClassName={mainRowCellClassName}
                             />
-                            {hasCollapsedContent ? null : <hr className={styles.divider} />}
+                            {hasCollapsedContent ? null : <hr className={styles.bodyDivider} />}
                         </TableRow>
                         {hasCollapsedContent ? (
                             <CollapsedRow

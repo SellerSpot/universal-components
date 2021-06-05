@@ -27,7 +27,13 @@ const TableHead = (props: ITableProps) => {
     return (
         <MUITableHead>
             <TableRow className={styles.headerRow}>
-                {hasCollapsedContent ? <TableCell key={'expandRowIconColumn'} width="5%" /> : null}
+                {hasCollapsedContent ? (
+                    <TableCell
+                        className={styles.headerCell}
+                        key={'expandRowIconColumn'}
+                        width="5%"
+                    />
+                ) : null}
                 {shape.map((column, columnIndex) => {
                     // props
                     const { columnName, align, colSpan, padding, rowSpan, width } = column;
