@@ -10,7 +10,11 @@ import { TableBody } from './Components/TableBody';
 import styles from './Table.module.scss';
 import { ITableProps } from './Table.types';
 
-export { ITableProps } from './Table.types';
+export {
+    ITableProps,
+    ITableCollapsedCustomRenderer,
+    TTableCellCustomRenderer,
+} from './Table.types';
 
 const TableHead = (props: ITableProps) => {
     // props
@@ -22,7 +26,7 @@ const TableHead = (props: ITableProps) => {
     // draw
     return (
         <MUITableHead>
-            <TableRow>
+            <TableRow className={styles.headerRow}>
                 {hasCollapsedContent ? <TableCell key={'expandRowIconColumn'} width="5%" /> : null}
                 {shape.map((column, columnIndex) => {
                     // props
@@ -34,6 +38,7 @@ const TableHead = (props: ITableProps) => {
                     // draw
                     return (
                         <TableCell
+                            className={styles.headerCell}
                             key={cellKey}
                             align={align}
                             padding={padding}
@@ -45,17 +50,19 @@ const TableHead = (props: ITableProps) => {
                         </TableCell>
                     );
                 })}
+                <hr className={styles.headerDivider} />
             </TableRow>
         </MUITableHead>
     );
 };
 
 export const Table = (props: ITableProps): ReactElement => {
+    const { size } = props;
     // draw
     return (
         <div className={styles.tableWrapper}>
             <TableContainer>
-                <MUITable>
+                <MUITable size={size}>
                     <TableHead {...props} />
                     <TableBody {...props} />
                 </MUITable>

@@ -2,12 +2,57 @@
     width: 100%;
     height: 100%;
 
-    .mainRowCellExpanded {
-        border-bottom: unset;
-        cursor: pointer;
+    .headerRow {
+        position: relative;
+        .headerCell {
+            border-bottom: unset;
+        }
+        .headerDivider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            border: unset;
+            background-color: rgb(209, 207, 207);
+        }
     }
 
-    .collapsedCell {
-        padding: 0;
+    .collapsedContentRow {
+        position: relative;
+        .collapsedCell {
+            padding-top: 0;
+            padding-bottom: 0;
+            border-bottom: unset;
+        }
+        .divider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            border: unset;
+            background-color: rgba(224, 224, 224, 1);
+        }
+    }
+
+    .mainContentRow {
+        position: relative;
+        .mainRowCell {
+            border-bottom: unset;
+            &.mainRowCellExpanded {
+                border-bottom: unset;
+                cursor: pointer;
+            }
+        }
+        .divider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            border: unset;
+            background-color: rgba(224, 224, 224, 1);
+        }
     }
 }
