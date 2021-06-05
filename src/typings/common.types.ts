@@ -1,3 +1,5 @@
+import { FormEvent } from 'react';
+
 export type TPrimitiveType = string | number;
 
 //const inferRouteTypes = <T extends { [key: string]: string }>(arg: T): T => arg; // Infering types from Route object with autocomplete support.
@@ -16,3 +18,8 @@ export interface IComponentEvents {
  * used for any add event listener handlers for preparing callback handler separately (anonymously)
  */
 export type TEventListenerHandler = (this: Element, event: Event & { target: Node }) => unknown;
+
+/**
+ * used for form submition event handler
+ */
+export type TFormSubmitionHandler = (event?: FormEvent<HTMLFormElement>) => void;
