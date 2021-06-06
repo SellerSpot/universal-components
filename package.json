@@ -105,11 +105,13 @@
         "@iconify/react": "^1.1.4",
         "@material-ui/core": "^4.11.3",
         "@material-ui/lab": "^4.0.0-alpha.57",
+        "@types/react-transition-group": "^4.4.1",
         "classnames": "^2.2.6",
         "lodash": "^4.17.21",
         "nanoid": "^3.1.22",
         "react-alice-carousel": "^2.5.1",
-        "react-router-dom": "^5.2.0"
+        "react-router-dom": "^5.2.0",
+        "react-transition-group": "^4.4.2"
     },
     "bugs": {
         "url": "https://github.com/SellerSpot/universal-components/issues"

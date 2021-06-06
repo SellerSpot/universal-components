@@ -1,0 +1,43 @@
+// slider modal
+.slider-modal-enter {
+    right: -100%;
+}
+.slider-modal-enter-active {
+    right: 0;
+    transition: right 0.3s ease;
+}
+.slider-modal-enter-done {
+    right: 0;
+}
+.slider-modal-exit {
+    right: 0;
+}
+.slider-modal-exit-active {
+    right: -100%;
+    transition: right 0.3s ease;
+}
+.slider-modal-exit-done {
+    right: -100%;
+}
+
+// backdrop
+.slider-modal-backdrop-enter {
+    opacity: 0;
+}
+.slider-modal-backdrop-enter-active {
+    opacity: 0.7;
+    transition: opacity 0.5s ease;
+}
+.slider-modal-backdrop-enter-done {
+    opacity: 0.7;
+}
+.slider-modal-backdrop-exit {
+    opacity: 0.7;
+}
+.slider-modal-backdrop-exit-active {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+.slider-modal-backdrop-exit-done {
+    opacity: 0;
+}
