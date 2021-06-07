@@ -14,7 +14,7 @@ export * from './Select/Select';
 export * from './Table/Table';
 export * from './ToolTip/ToolTip';
 export * from './Notify/Notify';
-// export * from './SliderModal/SliderModal';
+export * from './SliderModal/SliderModal';
 export * from './Switch/Switch';
 export * from './Trademark/Trademark';
 export * from './Dialog/Dialog';
