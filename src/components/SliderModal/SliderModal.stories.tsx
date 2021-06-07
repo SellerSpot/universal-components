@@ -81,7 +81,7 @@ SliderModal.args = {
 } as ISliderModalProps;
 
 export default {
-    title: 'Design System/Atoms/Slider Modal',
+    title: 'Universal Components/Atoms/Slider Modal',
     parameters: {
         layout: 'fullscreen',
     },

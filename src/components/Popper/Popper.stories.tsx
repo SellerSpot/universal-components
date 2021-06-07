@@ -41,6 +41,6 @@ const Template: Story<IPopperProps> = () => {
 export const Popper = Template.bind({});
 
 export default {
-    title: 'Design System/Atoms/Popper',
+    title: 'Universal Components/Atoms/Popper',
     component: PopperComponent,
 } as Meta;

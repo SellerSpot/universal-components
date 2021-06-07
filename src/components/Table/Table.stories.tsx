@@ -79,7 +79,7 @@ const Template: Story = () => {
 export const Table = Template.bind({});
 
 export default {
-    title: 'Design System/Atoms/Table',
+    title: 'Universal Components/Atoms/Table',
     component: TableComponent,
     parameters: {
         layout: 'fullscreen',

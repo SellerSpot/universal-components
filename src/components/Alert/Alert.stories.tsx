@@ -14,6 +14,6 @@ Alert.args = {
 } as IAlertProps;
 
 export default {
-    title: 'Design System/Atoms/Alert',
+    title: 'Universal Components/Atoms/Alert',
     component: AlertComponent,
 } as Meta;

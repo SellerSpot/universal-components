@@ -28,6 +28,6 @@ BreadCrumbs.args = {
 } as IBreadCrumbsProps;
 
 export default {
-    title: 'Design System/Atoms/Bread Crumbs',
+    title: 'Universal Components/Atoms/Bread Crumbs',
     component: BreadCrumbsComponent,
 } as Meta;

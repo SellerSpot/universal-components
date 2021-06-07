@@ -17,6 +17,6 @@ export const Skeleton = Template.bind({});
 Skeleton.args = {} as ISkeletonProps;
 
 export default {
-    title: 'Design System/Atoms/Skeleton',
+    title: 'Universal Components/Atoms/Skeleton',
     component: SkeletonComponent,
 } as Meta;

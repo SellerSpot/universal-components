@@ -18,6 +18,6 @@ Button.args = {
 } as IButtonProps;
 
 export default {
-    title: 'Design System/Atoms/Button',
+    title: 'Universal Components/Atoms/Button',
     component: ButtonComponent,
 } as Meta;

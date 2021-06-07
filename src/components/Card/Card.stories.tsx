@@ -27,7 +27,7 @@ Card.args = {
 } as ICardProps;
 
 export default {
-    title: 'Design System/Atoms/Card',
+    title: 'Universal Components/Atoms/Card',
     component: CardComponent,
     parameters: {
         layout: 'fullscreen',

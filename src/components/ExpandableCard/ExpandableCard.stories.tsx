@@ -25,7 +25,7 @@ ExpandableCard.args = {
 } as IExpandableCardProps;
 
 export default {
-    title: 'Design System/Atoms/Expandable Card',
+    title: 'Universal Components/Atoms/Expandable Card',
     component: ExpandableCardComponent,
     parameters: {
         layout: 'fullscreen',

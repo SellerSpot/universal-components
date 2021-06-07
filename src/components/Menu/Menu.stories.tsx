@@ -29,6 +29,6 @@ Menu.args = {
 } as IMenuProps;
 
 export default {
-    title: 'Design System/Atoms/Menu',
+    title: 'Universal Components/Atoms/Menu',
     component: MenuComponent,
 } as Meta;
