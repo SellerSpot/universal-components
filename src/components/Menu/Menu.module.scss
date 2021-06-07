@@ -1,11 +1,17 @@
 .menu {
     padding: 0 !important;
     margin: 0 !important;
-    background-color: $backgroundPrimary-color !important;
 
     .menuItem {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background-color: $backgroundPrimary-color !important;
         &:hover {
             background-color: $backgroundSecondary-color !important;
+        }
+
+        &:active {
+            background-color: $backgroundTertiary-color !important;
         }
     }
 }

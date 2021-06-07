@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { Card as MUICard, CardActions, CardContent } from '@material-ui/core';
+import { Card as MUICard, CardActions, CardContent, CardMedia } from '@material-ui/core';
 import { ICardProps } from './Card.types';
 import cn from 'classnames';
 import styles from './Card.module.scss';
@@ -12,7 +12,11 @@ export const Card = (props: ICardProps): ReactElement => {
     const cardClassName = cn(styles.cardWrapper, className?.cardWrapper);
     return (
         <MUICard elevation={0} onClick={onClick} className={cardClassName}>
-            {image && <Image height={200} src={image} />}
+            {image && (
+                <CardMedia>
+                    <Image objectFit="cover" height={200} src={image} />
+                </CardMedia>
+            )}
             {content && <CardContent className={className?.contentWrapper}>{content}</CardContent>}
             {actions && <CardActions className={className?.actionsWrapper}>{actions}</CardActions>}
         </MUICard>

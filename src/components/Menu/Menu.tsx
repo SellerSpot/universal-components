@@ -10,9 +10,9 @@ const getMenuItems = (props: {
     dense: IMenuProps['dense'];
     handleMenuClose: () => void;
 }) => {
-    const { dense, items, handleMenuClose } = props;
+    const { dense = false, items, handleMenuClose } = props;
     return items.map((item, itemIndex) => {
-        const { onClick, content, disableGutters } = item;
+        const { onClick, content, disableGutters, disabled } = item;
         const handleClick = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
             if (!!onClick) onClick(event);
             handleMenuClose();
@@ -22,6 +22,7 @@ const getMenuItems = (props: {
             <MenuItem
                 className={styles.menuItem}
                 disableGutters={disableGutters}
+                disabled={disabled}
                 dense={dense}
                 key={itemIndex}
                 onClick={handleClick}
