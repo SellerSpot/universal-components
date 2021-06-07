@@ -1,0 +1,43 @@
+// backdrop
+.dialog-backdrop-enter {
+    opacity: 0;
+}
+.dialog-backdrop-enter-active {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+.dialog-backdrop-enter-done {
+    opacity: 0.5;
+}
+.dialog-backdrop-exit {
+    opacity: 0.5;
+}
+.dialog-backdrop-exit-active {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.dialog-backdrop-exit-done {
+    opacity: 0;
+}
+
+// dialog
+.dialog-enter {
+    opacity: 0;
+}
+.dialog-enter-active {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+.dialog-enter-done {
+    opacity: 1;
+}
+.dialog-exit {
+    opacity: 1;
+}
+.dialog-exit-active {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.dialog-exit-done {
+    opacity: 0;
+}

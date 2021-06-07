@@ -12,7 +12,7 @@ import {
     ISliderModalLayoutWrapperProps,
     ISliderModalProps,
 } from './SliderModal.types';
-import './SliderModalTransition.scss';
+import './SliderModalTransitions.scss';
 
 export {
     ISliderModalBodyProps,
