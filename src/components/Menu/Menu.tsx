@@ -1,5 +1,6 @@
 import { Menu as MUIMenu, MenuItem } from '@material-ui/core';
 import React, { ReactElement } from 'react';
+import styles from './Menu.module.scss';
 import { IMenuProps } from './Menu.types';
 
 export { IMenuProps } from './Menu.types';
@@ -19,6 +20,7 @@ const getMenuItems = (props: {
 
         return (
             <MenuItem
+                className={styles.menuItem}
                 disableGutters={disableGutters}
                 dense={dense}
                 key={itemIndex}
@@ -50,11 +52,15 @@ export const Menu = (props: IMenuProps): ReactElement => {
             <MUIMenu
                 id="simple-menu"
                 anchorEl={anchorEl}
+                elevation={1}
                 keepMounted
                 getContentAnchorEl={null}
                 anchorOrigin={{
                     vertical: 'bottom',
                     horizontal: 'center',
+                }}
+                PaperProps={{
+                    className: styles.menu,
                 }}
                 open={!!anchorEl}
                 onClose={handleMenuClose}
