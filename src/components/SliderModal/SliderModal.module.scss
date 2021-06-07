@@ -69,6 +69,8 @@
             .modalFooter {
                 height: 45px;
                 margin: 0 15px;
+
+                @include flex(center, flex-end, $gap: 10px);
             }
         }
     }
