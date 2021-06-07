@@ -114,7 +114,7 @@ const Template: Story<ISliderModalProps> = () => {
 export const SliderModal = Template.bind({});
 
 export default {
-    title: 'Design System/Atoms/Slider Modal',
+    title: 'Universal Components/Atoms/Slider Modal',
     component: SliderModalComponent,
     parameters: {
         layout: 'fullscreen',
