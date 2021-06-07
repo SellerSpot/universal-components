@@ -48,6 +48,6 @@ const Template: Story<INotifyState> = () => {
 export const Notify = Template.bind({});
 
 export default {
-    title: 'Design System/Atoms/Notify',
+    title: 'Universal Components/Atoms/Notify',
     component: NotifyComponent,
 } as Meta;

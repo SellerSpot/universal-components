@@ -14,6 +14,6 @@ Chip.args = {
 } as IChipProps;
 
 export default {
-    title: 'Design System/Atoms/Chip',
+    title: 'Universal Components/Atoms/Chip',
     component: ChipComponent,
 } as Meta;

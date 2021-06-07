@@ -12,7 +12,7 @@ const Template: Story<IToolTipProps> = () => {
 
 export const ToolTip = Template.bind({});
 export default {
-    title: 'Design System/Atoms/Tool Tip',
+    title: 'Universal Components/Atoms/Tool Tip',
     component: ToolTipComponent,
     parameters: {
         layout: 'centered',

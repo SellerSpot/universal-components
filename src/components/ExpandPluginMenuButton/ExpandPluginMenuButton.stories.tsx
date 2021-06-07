@@ -11,6 +11,6 @@ export const ExpandPluginMenuButton = Template.bind({});
 ExpandPluginMenuButton.args = {} as IExpandPluginMenuButtonProps;
 
 export default {
-    title: 'Design System/Atoms/Expand Plugin Menu Button',
+    title: 'Universal Components/Atoms/Expand Plugin Menu Button',
     component: ExpandPluginMenuButtonComponent,
 } as Meta;

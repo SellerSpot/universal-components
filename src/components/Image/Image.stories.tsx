@@ -16,6 +16,6 @@ Image.args = {
 } as IImageProps;
 
 export default {
-    title: 'Design System/Atoms/Image',
+    title: 'Universal Components/Atoms/Image',
     component: ImageComponent,
 } as Meta;

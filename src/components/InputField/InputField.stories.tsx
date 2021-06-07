@@ -40,6 +40,6 @@ InputField.args = {
 } as IInputFieldProps;
 
 export default {
-    title: 'Design System/Atoms/Input Field',
+    title: 'Universal Components/Atoms/Input Field',
     component: InputFieldComponent,
 } as Meta;
