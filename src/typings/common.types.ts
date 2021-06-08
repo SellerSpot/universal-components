@@ -30,3 +30,10 @@ export type TFormSubmitionHandler = (event?: FormEvent<HTMLFormElement>) => void
 export type TOnChangeMiddleware = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
 ) => void;
+
+/**
+ * Used for Button onClick handlers
+ */
+export type TButtonOnClickHandler = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+) => void;

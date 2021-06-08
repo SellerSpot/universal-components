@@ -17,3 +17,8 @@
 .MuiAccordion-root.Mui-expanded {
     margin: 0 !important;
 }
+
+// disabling the slight jerk of accordion summary when expanding
+.MuiAccordionSummary-content.Mui-expanded {
+    margin: 12px 0 !important;
+}

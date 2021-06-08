@@ -74,7 +74,7 @@ const InputFieldComponent = (
             // so as to not create jank effects
             setTimeout(function () {
                 internalRef.current?.focus();
-            }, 100);
+            }, 150);
         }
     }, [autoFocus]);
 
@@ -234,7 +234,7 @@ const InputFieldComponent = (
                     fullWidth={fullWidth}
                     placeholder={placeHolder}
                     onKeyDown={onKeyDown}
-                    autoFocus={autoFocus}
+                    // autoFocus={autoFocus} manually controlled above due to animation jank issue
                     required={required}
                     disabled={disabled}
                     FormHelperTextProps={{
