@@ -1,3 +1,4 @@
+import { useState } from '@hookstate/core';
 import {
     Table as MUITable,
     TableCell,
@@ -5,8 +6,9 @@ import {
     TableHead as MUITableHead,
     TableRow,
 } from '@material-ui/core';
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect, useRef } from 'react';
 import { TableBody } from './Components/TableBody';
+import { TableSkeletonBody } from './Components/TableSkeletonBody';
 import styles from './Table.module.scss';
 import { ITableProps } from './Table.types';
 
@@ -62,15 +64,40 @@ const TableHead = (props: ITableProps) => {
 };
 
 export const Table = (props: ITableProps): ReactElement => {
-    const { size } = props;
+    // props
+    const { size, isLoading, shape, collapsedContentRenderer } = props;
+
+    // state
+    // table container height so that that skeleton can be properly sized
+    const containerHeight = useState(400);
+
+    // hooks
+    // to help get the height of table parent
+    const tableContainerRef = useRef<HTMLDivElement>(null);
+
+    // effects
+    // setting the table container height so that that skeleton can be properly sized
+    useEffect(() => {
+        if (!!tableContainerRef && isLoading) {
+            containerHeight.set(tableContainerRef.current.clientHeight);
+        }
+    }, [tableContainerRef]);
 
     // draw
     return (
-        <div className={styles.tableWrapper}>
+        <div ref={tableContainerRef} className={styles.tableWrapper}>
             <TableContainer>
                 <MUITable size={size}>
                     <TableHead {...props} />
-                    <TableBody {...props} />
+                    {isLoading ? (
+                        <TableSkeletonBody
+                            shape={shape}
+                            tableContainerHeight={containerHeight.get()}
+                            hasCollapsedContent={!!collapsedContentRenderer}
+                        />
+                    ) : (
+                        <TableBody {...props} />
+                    )}
                 </MUITable>
             </TableContainer>
         </div>
