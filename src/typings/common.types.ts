@@ -23,3 +23,10 @@ export type TEventListenerHandler = (this: Element, event: Event & { target: Nod
  * used for form submition event handler
  */
 export type TFormSubmitionHandler = (event?: FormEvent<HTMLFormElement>) => void;
+
+/**
+ * used for any element based onChagne event handlers
+ */
+export type TOnChangeMiddleware = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+) => void;

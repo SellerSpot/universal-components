@@ -6,7 +6,7 @@ interface IMenuItems {
      * If true, the left and right padding is removed.
      */
     disableGutters?: boolean;
-    disabled: boolean;
+    disabled?: boolean;
     onClick?: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
 }
 
