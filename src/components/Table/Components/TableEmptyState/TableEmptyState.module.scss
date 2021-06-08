@@ -1,0 +1,10 @@
+.wrapper {
+    width: 100%;
+
+    @include flex(center, center, column, 15px);
+
+    .icon {
+        width: 90px !important;
+        height: 90px !important;
+    }
+}

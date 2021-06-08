@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core';
 import React, { ReactElement, useEffect, useRef } from 'react';
 import { TableBody } from './Components/TableBody';
+import { TableEmptyState } from './Components/TableEmptyState/TableEmptyState';
 import { TableSkeletonBody } from './Components/TableSkeletonBody';
 import styles from './Table.module.scss';
 import { ITableProps } from './Table.types';
@@ -65,7 +66,15 @@ const TableHead = (props: ITableProps) => {
 
 export const Table = (props: ITableProps): ReactElement => {
     // props
-    const { size, isLoading, shape, collapsedContentRenderer } = props;
+    const {
+        size,
+        isLoading,
+        shape,
+        collapsedContentRenderer,
+        data,
+        emptyStateMessage,
+        emptyStatePrimaryCallToAction,
+    } = props;
 
     // state
     // table container height so that that skeleton can be properly sized
@@ -100,6 +109,13 @@ export const Table = (props: ITableProps): ReactElement => {
                     )}
                 </MUITable>
             </TableContainer>
+            {data?.length === 0 && !isLoading && (
+                <TableEmptyState
+                    message={emptyStateMessage}
+                    primaryCallToAction={emptyStatePrimaryCallToAction}
+                    tableContainerHeight={containerHeight.get()}
+                />
+            )}
         </div>
     );
 };

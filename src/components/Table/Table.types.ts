@@ -49,6 +49,8 @@ export interface ITableProps<T = TObj | any, K = T[]> {
      */
     multiRowExpansion?: boolean;
     isLoading?: boolean;
+    emptyStateMessage?: string;
+    emptyStatePrimaryCallToAction?: ReactElement;
     collapsedContentRenderer?: ITableCollapsedCustomRenderer<T>;
     onRowClick?: (props: {
         event: React.MouseEvent<HTMLTableRowElement>;

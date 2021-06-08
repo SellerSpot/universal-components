@@ -41,6 +41,10 @@ const webpackConfiguration = (env: {
                     },
                 },
                 {
+                    test: /\.svg$/,
+                    use: ['@svgr/webpack'],
+                },
+                {
                     test: /\.(png|jpe?g|gif|svg)$/i,
                     use: [
                         {
