@@ -1,0 +1,71 @@
+.wrapper {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    &.wrapperOpen {
+        right: 0;
+    }
+
+    &.wrapperClose {
+        right: -100%;
+        transition: right 0s 0.3s ease;
+    }
+
+    .backdrop {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+    }
+
+    .dialogCard {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        padding: 15px;
+        background-color: $backgroundPrimary-color;
+        border-radius: 4px;
+        box-shadow: 0px 11px 15px -7px rgb(0 0 0 / 20%), 0px 24px 38px 3px rgb(0 0 0 / 14%),
+            0px 9px 46px 8px rgb(0 0 0 / 12%);
+        transform: translate(-50%, -50%);
+
+        .layoutWrapper {
+            display: grid;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+
+            .dialogHeader {
+                width: 100%;
+                height: auto;
+                padding-bottom: 5px;
+
+                @include flex(center, space-between, $gap: 10px);
+
+                .dialogTitle {
+                    color: $foregroundPrimary-color;
+                    font-size: $h3-fontsize;
+                    font-weight: 600;
+                }
+            }
+
+            .dialogBody {
+                overflow: auto;
+                width: 100%;
+                height: 100%;
+                padding: 5px 0;
+            }
+
+            .dialogFooter {
+                display: flex;
+                width: 100%;
+                height: auto;
+                align-items: center;
+                padding-top: 5px;
+                gap: 10px;
+            }
+        }
+    }
+}

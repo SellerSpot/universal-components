@@ -1,82 +1,165 @@
 import Icon from '@iconify/react';
 import cn from 'classnames';
-import React, { ReactElement } from 'react';
+import React, { CSSProperties, ReactElement } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import { ICONS } from '../../utilities';
+import { IconButton } from '../IconButton/IconButton';
 import styles from './SliderModal.module.scss';
 import {
     ISliderModalBodyProps,
+    ISliderModalFooterProps,
     ISliderModalHeaderProps,
+    ISliderModalLayoutWrapperProps,
     ISliderModalProps,
 } from './SliderModal.types';
+import './SliderModalTransitions.scss';
 
-export { ISliderModalProps } from './SliderModal.types';
+export {
+    ISliderModalBodyProps,
+    ISliderModalFooterProps,
+    ISliderModalHeaderProps,
+    ISliderModalProps,
+    ISliderModalLayoutWrapperProps,
+} from './SliderModal.types';
 
-const SliderModalBody = (props: ISliderModalBodyProps): ReactElement => {
-    const { children } = props;
-    return <div className={styles.modalContentBody}>{children}</div>;
-};
+export const SliderModalLayoutWrapper = (props: ISliderModalLayoutWrapperProps): ReactElement => {
+    // props
+    const { gridRowStructure = ['auto', '1fr', 'auto'], children, subSliderModals } = props;
 
-const SliderModalHeader = (props: ISliderModalHeaderProps): ReactElement => {
-    const { children, showActionButton, onActionButtonClick } = props;
+    // styles
+    const layoutWrapperStyle: CSSProperties = {
+        gridTemplateRows: gridRowStructure.join(' '),
+    };
+    const childWrapperStyle: CSSProperties = {
+        width: '100%',
+        height: '100%',
+        overflow: 'auto',
+    };
+
+    // draw
     return (
-        <div className={styles.modalContentHeader}>
-            {!!showActionButton ? (
-                <div
-                    className={styles.modalContentHeaderActionButtonWrapper}
-                    onClick={onActionButtonClick}
-                >
-                    {showActionButton === 'backButton' ? (
-                        <Icon
-                            icon={ICONS.arrowBack}
-                            className={styles.modalContentHeaderActionButton}
-                        />
-                    ) : (
-                        <Icon
-                            icon={ICONS.close}
-                            className={styles.modalContentHeaderActionButton}
-                        />
-                    )}
-                </div>
-            ) : null}
-            <div className={styles.modalContentHeaderContent}>{children}</div>
+        <div className={styles.layoutWrapper} style={layoutWrapperStyle}>
+            {gridRowStructure.map((_, index) => {
+                return (
+                    <div key={index} style={childWrapperStyle}>
+                        {children[index]}
+                    </div>
+                );
+            })}
+            {subSliderModals}
         </div>
     );
 };
 
-export const SliderModal = (props: ISliderModalProps): ReactElement => {
-    const {
-        show,
-        children,
-        onBackdropClick,
-        width,
-        headerProps,
-        zIndex = 10,
-        type = 'fixed',
-    } = props;
+export const SliderModalHeader = (props: ISliderModalHeaderProps): ReactElement => {
+    // props
+    const { title, modalCloseCallback, modalGoBackCallback } = props;
 
-    const wrapperStyle: React.CSSProperties = {
-        zIndex,
-        position: type,
-    };
-    // custom styling to set the modal width
-    const modalStyle: React.CSSProperties = {
-        width,
-    };
-
+    // draw
     return (
-        <div
-            className={cn(styles.sliderModalWrapper, { [styles.sliderModalWrapperShow]: show })}
-            style={wrapperStyle}
-        >
-            <div
-                className={cn(styles.backdrop, { [styles.backdropShow]: show })}
-                onClick={onBackdropClick}
-            >
-                <div className={cn(styles.modal, { [styles.modalShow]: show })} style={modalStyle}>
-                    <SliderModalHeader {...headerProps}>{children[0]}</SliderModalHeader>
-                    <SliderModalBody>{children[1]}</SliderModalBody>
-                </div>
+        <div className={styles.modalHeader}>
+            <div className={styles.leftGroup}>
+                {!!modalGoBackCallback && (
+                    <IconButton
+                        icon={<Icon icon={ICONS.arrowBack} />}
+                        theme="auto"
+                        size="medium"
+                        onClick={modalGoBackCallback}
+                    />
+                )}
+                <div className={styles.modalTitle}>{title}</div>
             </div>
+            {!!modalCloseCallback && (
+                <IconButton
+                    icon={<Icon icon={ICONS.close} />}
+                    theme="danger"
+                    size="medium"
+                    onClick={modalCloseCallback}
+                />
+            )}
+        </div>
+    );
+};
+
+export const SliderModalBody = (props: ISliderModalBodyProps): ReactElement => {
+    // props
+    const { children } = props;
+    // draw
+    return <div className={styles.modalBody}>{children}</div>;
+};
+
+export const SliderModalFooter = (props: ISliderModalFooterProps): ReactElement => {
+    // props
+    const { children } = props;
+    // draw
+    return <div className={styles.modalFooter}>{children}</div>;
+};
+
+const Backdrop = (props: {
+    showModal: boolean;
+    onBackdropClick: ISliderModalProps['onBackdropClick'];
+}) => {
+    // props
+    const { showModal, onBackdropClick } = props;
+
+    // draw
+    return (
+        <CSSTransition
+            in={showModal}
+            unmountOnExit
+            classNames="slider-modal-backdrop"
+            timeout={500}
+        >
+            <div onClick={onBackdropClick} className={styles.backdrop} />
+        </CSSTransition>
+    );
+};
+
+/**
+ * Used to display a sliding on the screen
+ * The sibiling components of SliderModal should be used in the following order
+ * ```html
+ * <SliderModal>
+        <SliderModalLayoutWrapper>
+            <SliderModalHeader />
+            <SliderModalBody />                
+            <SliderModalFooter />                
+        </SliderModalLayoutWrapper>
+    </SliderModal>
+ * ```
+ */
+export const SliderModal = (props: ISliderModalProps): ReactElement => {
+    // props
+    const { showModal, onBackdropClick, children, width, type, showBackdrop = true } = props;
+
+    // styles
+    const wrapperClassName = cn(
+        styles.wrapper,
+        {
+            [styles.wrapperOpen]: showModal,
+            [styles.wrapperClose]: !showModal,
+        },
+        { [styles.wrapperAbsolute]: type === 'absolute' },
+    );
+    const modalStyle: CSSProperties = {
+        width,
+    };
+
+    // draw
+    return (
+        <div className={wrapperClassName}>
+            {showBackdrop && <Backdrop showModal={showModal} onBackdropClick={onBackdropClick} />}
+            <CSSTransition
+                in={showModal}
+                mountOnEnter
+                classNames="slider-modal"
+                unmountOnExit
+                timeout={300}
+            >
+                <div className={styles.modal} style={modalStyle}>
+                    {children}
+                </div>
+            </CSSTransition>
         </div>
     );
 };

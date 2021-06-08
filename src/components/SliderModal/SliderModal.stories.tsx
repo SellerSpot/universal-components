@@ -1,89 +1,122 @@
+import { State, useState } from '@hookstate/core';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import React, { useState } from 'react';
+import React, { CSSProperties } from 'react';
 import { Button } from '..';
-import { ISliderModalProps, SliderModal as SliderModalComponent } from './SliderModal';
+import {
+    ISliderModalProps,
+    SliderModal as SliderModalComponent,
+    SliderModalBody,
+    SliderModalFooter,
+    SliderModalHeader,
+    SliderModalLayoutWrapper,
+} from './SliderModal';
 
-const Content = (props: { message: string }) => {
-    const { message } = props;
-    const style: React.CSSProperties = {
+const SliderModalBodyContent = (props: { showInnerSlider: State<boolean> }) => {
+    // state
+    const { showInnerSlider } = props;
+
+    // wrapperStyle
+    const wrapperStyle: CSSProperties = {
+        width: '100%',
         height: '100%',
-        display: 'flex',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
+        display: 'grid',
+        placeItems: 'center',
     };
+
+    // draw
     return (
-        <div style={style}>
-            <h3>{message}</h3>
+        <div style={wrapperStyle}>
+            <Button
+                label="Open Inner Modal"
+                variant="outlined"
+                onClick={() => showInnerSlider.set(true)}
+            />
         </div>
     );
 };
 
-const Template: Story<ISliderModalProps> = (args) => {
-    const [showModal, setShowModal] = useState(false);
+const InnerSliderModal = (props: { showInnerSlider: State<boolean> }) => {
+    // props
+    const { showInnerSlider } = props;
+
+    // draw
     return (
-        <>
-            <Button
-                onClick={() => setShowModal(true)}
-                label={'Show Modal'}
-                theme="primary"
-                variant="contained"
-            />
-            {args.type === 'fixed' && (
-                <SliderModalComponent
-                    {...args}
-                    show={showModal}
-                    headerProps={{ showActionButton: 'closeButton' }}
+        <SliderModalComponent
+            showBackdrop={false}
+            type="absolute"
+            showModal={showInnerSlider.get()}
+            width={'100%'}
+        >
+            <SliderModalLayoutWrapper gridRowStructure={['auto', '1fr']}>
+                <SliderModalHeader
+                    title="Boom! Slider"
+                    modalGoBackCallback={() => showInnerSlider.set(false)}
+                />
+                <SliderModalBody>
+                    <h5>This is second modal</h5>
+                </SliderModalBody>
+            </SliderModalLayoutWrapper>
+        </SliderModalComponent>
+    );
+};
+
+const Template: Story<ISliderModalProps> = () => {
+    // state
+    const showSlider = useState(false);
+    const showInnerSlider = useState(false);
+
+    // styles
+    const wrapperStyle: CSSProperties = {
+        width: '100vw',
+        height: '100vh',
+        display: 'grid',
+        placeItems: 'center',
+    };
+
+    return (
+        <div style={wrapperStyle}>
+            <Button label={'Open Slider'} variant="outlined" onClick={() => showSlider.set(true)} />
+
+            {/* Main SliderModal */}
+            <SliderModalComponent
+                type="fixed"
+                showModal={showSlider.get()}
+                width="50%"
+                onBackdropClick={() => {
+                    if (showInnerSlider.get()) {
+                        showInnerSlider.set(false);
+                    } else {
+                        showSlider.set(false);
+                    }
+                }}
+            >
+                <SliderModalLayoutWrapper
+                    subSliderModals={[
+                        <InnerSliderModal key={'innerSlider1'} showInnerSlider={showInnerSlider} />,
+                    ]}
                 >
-                    <Content message={'Header'} />
-                    <div>
-                        <Button
-                            onClick={() => setShowModal(false)}
-                            label={'Close Modal'}
-                            variant="contained"
-                            theme="primary"
-                        />
-                        <Content message={'Body'} />
-                    </div>
-                </SliderModalComponent>
-            )}
-            {args.type === 'absolute' && (
-                <div
-                    style={{
-                        width: '50%',
-                        height: '50%',
-                        background: '#f3f3f3',
-                        position: 'relative',
-                        overflow: 'hidden',
-                    }}
-                >
-                    <SliderModalComponent
-                        {...args}
-                        show={showModal}
-                        headerProps={{ showActionButton: 'closeButton' }}
-                    >
-                        <Content message={'Header'} />
-                        <div>
-                            <button onClick={() => setShowModal(false)}>Close Modal</button>
-                            <Content message={'Body'} />
-                        </div>
-                    </SliderModalComponent>
-                </div>
-            )}
-        </>
+                    <SliderModalHeader
+                        title="Add Brands"
+                        modalCloseCallback={() => showSlider.set(false)}
+                    />
+                    <SliderModalBody>
+                        <SliderModalBodyContent showInnerSlider={showInnerSlider} />
+                    </SliderModalBody>
+                    <SliderModalFooter>
+                        <h5>This is slider modal footer</h5>
+                    </SliderModalFooter>
+                </SliderModalLayoutWrapper>
+            </SliderModalComponent>
+        </div>
     );
 };
 
 export const SliderModal = Template.bind({});
-SliderModal.args = {
-    width: '40%',
-    type: 'fixed',
-    zIndex: 10,
-} as ISliderModalProps;
 
 export default {
     title: 'Universal Components/Atoms/Slider Modal',
+    component: SliderModalComponent,
     parameters: {
         layout: 'fullscreen',
     },
-    component: SliderModalComponent,
 } as Meta;

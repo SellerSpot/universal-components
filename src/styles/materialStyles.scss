@@ -2,3 +2,13 @@
     width: 100% !important;
     height: 100% !important;
 }
+
+// menu component removing padding
+.MuiList-padding {
+    padding: 0 !important;
+}
+
+// bottom padding for card component
+.MuiCardContent-root:last-child {
+    padding-bottom: 16px !important;
+}

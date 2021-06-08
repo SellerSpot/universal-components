@@ -36,8 +36,8 @@ export const Image = (props: IImageProps): ReactElement => {
     }
 
     const style: CSSProperties = {
-        width,
-        height,
+        width: width ?? '100%',
+        height: height ?? '100%',
         display: isLoading ? 'none' : 'block',
         objectFit,
         transition: 'all 0.2s ease',

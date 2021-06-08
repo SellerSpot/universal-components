@@ -32,7 +32,10 @@ export const IconButton = (props: IIconButtonProps): ReactElement => {
     });
     // if the button should inherit the parents colors or not
     const buttonColor = inheritColorsFromParent ? 'inherit' : 'primary';
-    const buttonClassName = cn({ [styles.smallSize]: size === 'small' }, className);
+    const buttonClassName = cn(
+        { [styles.smallSize]: size === 'small', [styles.mediumSize]: size === 'medium' },
+        className,
+    );
 
     return (
         <ThemeProvider theme={buttonTheme}>

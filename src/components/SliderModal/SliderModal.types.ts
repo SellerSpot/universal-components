@@ -1,35 +1,36 @@
-import React, { ReactElement, ReactNode } from 'react';
+import { CSSProperties, ReactElement, ReactNode } from 'react';
 
-export type TSliderModalType = 'absolute' | 'fixed';
-
-export interface ISliderModalProps {
-    show?: boolean;
+export interface ISliderModalLayoutWrapperProps {
     /**
-     * @default ```fixed```
+     * Grid row structure to rearrange the components in the modal page
+     * @default ['auto','1fr','auto']
      */
-    type?: TSliderModalType;
-    /**
-     * @default ```10```
-     * Twek the zIndex if needed
-     */
-    zIndex?: number;
-    /**
-     * requires 2 react nodes
-     * 1. header
-     * 2. body
-     */
-    children?: [ReactElement, ReactElement];
-    onBackdropClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-    width?: React.CSSProperties['width'];
-    headerProps?: Omit<ISliderModalHeaderProps, 'children'>;
+    gridRowStructure?: string[];
+    children?: ReactElement[];
+    subSliderModals?: ReactElement[];
 }
-
 export interface ISliderModalHeaderProps {
-    children?: ReactElement;
-    showActionButton?: 'closeButton' | 'backButton';
-    onActionButtonClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+    title: string;
+    modalCloseCallback?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    modalGoBackCallback?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
 export interface ISliderModalBodyProps {
+    children?: ReactNode;
+}
+export interface ISliderModalFooterProps {
+    children?: ReactNode;
+}
+
+export interface ISliderModalProps {
+    showModal: boolean;
+    type: 'absolute' | 'fixed';
+    /**
+     * If the backdrop should be shown
+     * @default true
+     */
+    showBackdrop?: boolean;
+    width: CSSProperties['width'];
+    onBackdropClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
     children?: ReactNode;
 }

@@ -141,7 +141,7 @@ export const TableBody = (props: ITableProps): ReactElement => {
     // handlers
     const toggleRowExpansion = (rowIndex: number) => {
         const isRowExpanded = expandedRows.get().includes(rowIndex);
-        debugger;
+
         if (isRowExpanded) {
             if (multiRowExpansion) {
                 expandedRows.set((state) => {

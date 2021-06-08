@@ -1,5 +1,5 @@
 import { isUndefined } from 'lodash';
-import React, { ReactElement } from 'react';
+import React, { CSSProperties, ReactElement } from 'react';
 import { Alert as MUIAlert, AlertProps, AlertTitle } from '@material-ui/lab';
 
 export interface IAlertProps {
@@ -10,8 +10,14 @@ export interface IAlertProps {
 
 export const Alert = (props: IAlertProps): ReactElement => {
     const { type, title, children } = props;
+
+    // styles
+    const alertStyle: CSSProperties = {
+        width: '100%',
+    };
+
     return (
-        <MUIAlert severity={type}>
+        <MUIAlert style={alertStyle} severity={type}>
             {isUndefined(title) ? null : <AlertTitle>{title}</AlertTitle>}
             {children}
         </MUIAlert>
