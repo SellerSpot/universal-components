@@ -12,3 +12,8 @@
 .MuiCardContent-root:last-child {
     padding-bottom: 16px !important;
 }
+
+// removing expandable card margin (when expanded)
+.MuiAccordion-root.Mui-expanded {
+    margin: 0 !important;
+}
