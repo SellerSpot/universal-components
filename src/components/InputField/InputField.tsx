@@ -74,7 +74,7 @@ const InputFieldComponent = (
             // so as to not create jank effects
             setTimeout(function () {
                 internalRef.current?.focus();
-            }, 150);
+            }, 200);
         }
     }, [autoFocus]);
 
