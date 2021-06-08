@@ -3,6 +3,7 @@ import { Accordion, AccordionDetails, AccordionSummary } from '@material-ui/core
 import cn from 'classnames';
 import styles from './ExpandableCard.module.scss';
 import { IExpandableCardProps } from './ExpandableCard.types';
+import { CSSTransition } from 'react-transition-group';
 
 export { IExpandableCardProps } from './ExpandableCard.types';
 
@@ -15,7 +16,9 @@ export const ExpandableCard = (props: IExpandableCardProps): ReactElement => {
                 {content.summaryContent}
             </AccordionSummary>
             <AccordionDetails className={className?.detailsWrapper}>
-                {content.detailsContent}
+                <CSSTransition in={expanded} classNames={'fade-in-out'} unmountOnExit timeout={300}>
+                    {content.detailsContent}
+                </CSSTransition>
             </AccordionDetails>
         </Accordion>
     );
