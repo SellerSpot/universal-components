@@ -12,12 +12,7 @@ export const ExpandableCard = (props: IExpandableCardProps): ReactElement => {
     const { content, expanded, className } = props;
     const cardClassName = cn(styles.cardWrapper, className?.card);
     return (
-        <Accordion
-            TransitionProps={{ unmountOnExit: true }}
-            elevation={0}
-            className={cardClassName}
-            expanded={expanded}
-        >
+        <Accordion elevation={0} className={cardClassName} expanded={expanded}>
             <AccordionSummary className={className?.summaryWrapper}>
                 {content.summaryContent}
             </AccordionSummary>
