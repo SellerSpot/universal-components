@@ -7,6 +7,7 @@ export interface IInputFieldProps {
     className?: string;
     value?: string;
     label?: string;
+    variant?: 'outlined' | 'filled' | 'standard';
     type?: 'text' | 'password' | 'number' | 'email';
     /**
      * Preset themes

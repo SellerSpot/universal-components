@@ -34,6 +34,7 @@ const InputFieldComponent = (
         helperMessage,
         label,
         maxLength,
+        variant = 'outlined',
         maxNumericValue,
         minNumericValue,
         onBlur,
@@ -219,7 +220,7 @@ const InputFieldComponent = (
                     id={id}
                     name={name}
                     inputRef={ref ?? internalRef}
-                    variant={'outlined'}
+                    variant={variant}
                     onChange={onChangeHandler}
                     onBlur={onBlur}
                     autoComplete={autoComplete}
