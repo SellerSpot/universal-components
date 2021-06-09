@@ -1,3 +1,4 @@
+import { TextFieldProps } from '@material-ui/core';
 import { ReactElement, ChangeEvent } from 'react';
 import { IColors, IFontSizes, TMuiThemes } from '../../theme/theme';
 
@@ -7,7 +8,7 @@ export interface IInputFieldProps {
     className?: string;
     value?: string;
     label?: string;
-    variant?: 'outlined' | 'filled' | 'standard';
+    variant?: TextFieldProps['variant'];
     type?: 'text' | 'password' | 'number' | 'email';
     /**
      * Preset themes

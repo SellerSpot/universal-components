@@ -3,6 +3,7 @@ import {
     CircularProgress,
     InputAdornment,
     TextField as MUITextField,
+    TextFieldProps,
     ThemeProvider,
 } from '@material-ui/core';
 import cn from 'classnames';
@@ -45,7 +46,7 @@ const InputFieldComponent = (
         required,
         selectTextOnFocus,
         maxRows,
-        size,
+        size = 'small',
         theme,
         suffix,
         multiline,
@@ -213,6 +214,28 @@ const InputFieldComponent = (
         className,
     );
 
+    const InputProps: TextFieldProps['InputProps'] =
+        variant === 'standard'
+            ? {
+                  disableUnderline: true,
+                  autoComplete: autoComplete,
+                  startAdornment: prefix && (
+                      <InputAdornment position={'start'}>{prefix}</InputAdornment>
+                  ),
+                  endAdornment: suffixComponent() && (
+                      <InputAdornment position={'end'}>{suffixComponent()}</InputAdornment>
+                  ),
+              }
+            : {
+                  autoComplete: autoComplete,
+                  startAdornment: prefix && (
+                      <InputAdornment position={'start'}>{prefix}</InputAdornment>
+                  ),
+                  endAdornment: suffixComponent() && (
+                      <InputAdornment position={'end'}>{suffixComponent()}</InputAdornment>
+                  ),
+              };
+
     return (
         <div className={fieldWrapperClassName}>
             <ThemeProvider theme={textFieldTheme}>
@@ -253,15 +276,7 @@ const InputFieldComponent = (
                         autoComplete: autoComplete,
                         maxLength: maxLength,
                     }}
-                    InputProps={{
-                        autoComplete: autoComplete,
-                        startAdornment: prefix && (
-                            <InputAdornment position={'start'}>{prefix}</InputAdornment>
-                        ),
-                        endAdornment: suffixComponent() && (
-                            <InputAdornment position={'end'}>{suffixComponent()}</InputAdornment>
-                        ),
-                    }}
+                    InputProps={InputProps}
                     error={theme === 'danger'}
                 />
                 {helperMessage?.enabled ? <HelperComponent /> : null}
