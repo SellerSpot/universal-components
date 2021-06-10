@@ -9,7 +9,7 @@ import { useState } from '@hookstate/core';
 export { IChipProps } from './Chip.types';
 
 export const Chip = (props: IChipProps): ReactElement => {
-    const { colors, fontSizes, label, leadingIcon, theme } = props;
+    const { colors, fontSizes, label, leadingIcon, theme = 'primary' } = props;
     // getting default global theme data
     const defaultConfigData = useState(themeConfigStore);
     // holds the theme for the the component
