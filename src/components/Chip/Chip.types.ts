@@ -12,6 +12,6 @@ export interface IChipProps {
      * Leading icon for the chip
      */
     leadingIcon?: ReactElement;
-    colors: IColors;
-    fontSizes: IFontSizes;
+    colors?: IColors;
+    fontSizes?: IFontSizes;
 }

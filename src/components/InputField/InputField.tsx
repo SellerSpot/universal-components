@@ -3,6 +3,7 @@ import {
     CircularProgress,
     InputAdornment,
     TextField as MUITextField,
+    TextFieldProps,
     ThemeProvider,
 } from '@material-ui/core';
 import cn from 'classnames';
@@ -34,6 +35,7 @@ const InputFieldComponent = (
         helperMessage,
         label,
         maxLength,
+        variant = 'outlined',
         maxNumericValue,
         minNumericValue,
         onBlur,
@@ -44,7 +46,7 @@ const InputFieldComponent = (
         required,
         selectTextOnFocus,
         maxRows,
-        size,
+        size = 'small',
         theme,
         suffix,
         multiline,
@@ -74,7 +76,7 @@ const InputFieldComponent = (
             // so as to not create jank effects
             setTimeout(function () {
                 internalRef.current?.focus();
-            }, 100);
+            }, 200);
         }
     }, [autoFocus]);
 
@@ -212,6 +214,28 @@ const InputFieldComponent = (
         className,
     );
 
+    const InputProps: TextFieldProps['InputProps'] =
+        variant === 'standard'
+            ? {
+                  disableUnderline: true,
+                  autoComplete: autoComplete,
+                  startAdornment: prefix && (
+                      <InputAdornment position={'start'}>{prefix}</InputAdornment>
+                  ),
+                  endAdornment: suffixComponent() && (
+                      <InputAdornment position={'end'}>{suffixComponent()}</InputAdornment>
+                  ),
+              }
+            : {
+                  autoComplete: autoComplete,
+                  startAdornment: prefix && (
+                      <InputAdornment position={'start'}>{prefix}</InputAdornment>
+                  ),
+                  endAdornment: suffixComponent() && (
+                      <InputAdornment position={'end'}>{suffixComponent()}</InputAdornment>
+                  ),
+              };
+
     return (
         <div className={fieldWrapperClassName}>
             <ThemeProvider theme={textFieldTheme}>
@@ -219,7 +243,7 @@ const InputFieldComponent = (
                     id={id}
                     name={name}
                     inputRef={ref ?? internalRef}
-                    variant={'outlined'}
+                    variant={variant}
                     onChange={onChangeHandler}
                     onBlur={onBlur}
                     autoComplete={autoComplete}
@@ -234,7 +258,7 @@ const InputFieldComponent = (
                     fullWidth={fullWidth}
                     placeholder={placeHolder}
                     onKeyDown={onKeyDown}
-                    autoFocus={autoFocus}
+                    // autoFocus={autoFocus} manually controlled above due to animation jank issue
                     required={required}
                     disabled={disabled}
                     FormHelperTextProps={{
@@ -252,15 +276,7 @@ const InputFieldComponent = (
                         autoComplete: autoComplete,
                         maxLength: maxLength,
                     }}
-                    InputProps={{
-                        autoComplete: autoComplete,
-                        startAdornment: prefix && (
-                            <InputAdornment position={'start'}>{prefix}</InputAdornment>
-                        ),
-                        endAdornment: suffixComponent() && (
-                            <InputAdornment position={'end'}>{suffixComponent()}</InputAdornment>
-                        ),
-                    }}
+                    InputProps={InputProps}
                     error={theme === 'danger'}
                 />
                 {helperMessage?.enabled ? <HelperComponent /> : null}
