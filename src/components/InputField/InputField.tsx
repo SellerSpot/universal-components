@@ -10,7 +10,7 @@ import cn from 'classnames';
 import { isNull, isUndefined } from 'lodash';
 import React, { forwardRef, ReactElement, RefObject, useEffect, useRef } from 'react';
 import { getTheme } from '../../theme/MUITheme';
-import { ICONS } from '../../utilities';
+import { ICONS } from '../../utilities/icons';
 import { IconButton } from '../IconButton/IconButton';
 import { themeConfigStore } from '../ThemeProvider/ThemeProvider';
 import { useState } from '@hookstate/core';

@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { isArray } from 'lodash';
 import React, { CSSProperties, ReactElement, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { ICONS } from '../../utilities';
+import { ICONS } from '../../utilities/icons';
 import { IconButton } from '../IconButton/IconButton';
 import styles from './SliderModal.module.scss';
 import {
