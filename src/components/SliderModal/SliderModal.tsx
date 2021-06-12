@@ -32,11 +32,6 @@ export const SliderModalLayoutWrapper = (props: ISliderModalLayoutWrapperProps):
     const layoutWrapperStyle: CSSProperties = {
         gridTemplateRows: gridRowStructure.join(' '),
     };
-    // const childWrapperStyle: CSSProperties = {
-    //     width: '100%',
-    //     height: '100%',
-    //     overflow: 'auto',
-    // };
 
     const sanitizedChildren = isArray(children) ? children : [children];
 
