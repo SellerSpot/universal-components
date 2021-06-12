@@ -26,7 +26,7 @@ export {
 
 export const SliderModalLayoutWrapper = (props: ISliderModalLayoutWrapperProps): ReactElement => {
     // props
-    const { gridRowStructure = ['auto', '1fr', 'auto'], children, subSliderModals } = props;
+    const { gridRowStructure = ['auto', '1fr', 'auto'], children } = props;
 
     // styles
     const layoutWrapperStyle: CSSProperties = {
@@ -50,7 +50,6 @@ export const SliderModalLayoutWrapper = (props: ISliderModalLayoutWrapperProps):
                     </div>
                 );
             })}
-            {subSliderModals}
         </div>
     );
 };

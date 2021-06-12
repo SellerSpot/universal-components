@@ -7,7 +7,6 @@ export interface ISliderModalLayoutWrapperProps {
      */
     gridRowStructure?: string[];
     children?: ReactElement | ReactElement[];
-    subSliderModals?: ReactElement[];
 }
 export interface ISliderModalHeaderProps {
     title?: string;

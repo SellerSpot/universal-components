@@ -90,11 +90,7 @@ const Template: Story<ISliderModalProps> = () => {
                     }
                 }}
             >
-                <SliderModalLayoutWrapper
-                    subSliderModals={[
-                        <InnerSliderModal key={'innerSlider1'} showInnerSlider={showInnerSlider} />,
-                    ]}
-                >
+                <SliderModalLayoutWrapper>
                     <SliderModalHeader
                         title="Add Brands"
                         modalCloseCallback={() => showSlider.set(false)}
@@ -106,6 +102,7 @@ const Template: Story<ISliderModalProps> = () => {
                         <h5>This is slider modal footer</h5>
                     </SliderModalFooter>
                 </SliderModalLayoutWrapper>
+                <InnerSliderModal key={'innerSlider1'} showInnerSlider={showInnerSlider} />,
             </SliderModalComponent>
         </div>
     );
