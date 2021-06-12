@@ -1,7 +1,7 @@
 import Icon from '@iconify/react';
 import { TableCell, TableRow, TableBody as MUITableBody } from '@material-ui/core';
 import React, { ReactElement } from 'react';
-import { ICONS } from '../../..';
+import { ICONS } from '../../../utilities/icons';
 import { IconButton } from '../../IconButton/IconButton';
 import { Skeleton } from '../../Skeleton/Skeleton';
 import { ITableProps } from '../Table.types';

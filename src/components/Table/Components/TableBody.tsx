@@ -9,7 +9,8 @@ import {
 } from '@material-ui/core';
 import cn from 'classnames';
 import React, { Fragment, ReactElement } from 'react';
-import { IconButton, ICONS } from '../../..';
+import { IconButton } from '../../..';
+import { ICONS } from '../../../utilities/icons';
 import { ITableProps } from '../Table';
 import styles from '../Table.module.scss';
 
