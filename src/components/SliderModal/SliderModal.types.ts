@@ -6,11 +6,11 @@ export interface ISliderModalLayoutWrapperProps {
      * @default ['auto','1fr','auto']
      */
     gridRowStructure?: string[];
-    children?: ReactElement[];
+    children?: ReactElement | ReactElement[];
     subSliderModals?: ReactElement[];
 }
 export interface ISliderModalHeaderProps {
-    title: string;
+    title?: string;
     modalCloseCallback?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
     modalGoBackCallback?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }

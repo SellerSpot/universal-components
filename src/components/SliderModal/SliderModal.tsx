@@ -1,6 +1,8 @@
+import { State, useState } from '@hookstate/core';
 import Icon from '@iconify/react';
 import cn from 'classnames';
-import React, { CSSProperties, ReactElement } from 'react';
+import { isArray } from 'lodash';
+import React, { CSSProperties, ReactElement, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { ICONS } from '../../utilities';
 import { IconButton } from '../IconButton/IconButton';
@@ -36,13 +38,15 @@ export const SliderModalLayoutWrapper = (props: ISliderModalLayoutWrapperProps):
         overflow: 'auto',
     };
 
+    const sanitizedChildren = isArray(children) ? children : [children];
+
     // draw
     return (
         <div className={styles.layoutWrapper} style={layoutWrapperStyle}>
             {gridRowStructure.map((_, index) => {
                 return (
                     <div key={index} style={childWrapperStyle}>
-                        {children[index]}
+                        {sanitizedChildren[index]}
                     </div>
                 );
             })}
@@ -96,16 +100,16 @@ export const SliderModalFooter = (props: ISliderModalFooterProps): ReactElement 
 };
 
 const Backdrop = (props: {
-    showModal: boolean;
+    showTransition: State<boolean>;
     onBackdropClick: ISliderModalProps['onBackdropClick'];
 }) => {
     // props
-    const { showModal, onBackdropClick } = props;
+    const { showTransition, onBackdropClick } = props;
 
     // draw
     return (
         <CSSTransition
-            in={showModal}
+            in={showTransition.get()}
             unmountOnExit
             classNames="slider-modal-backdrop"
             timeout={500}
@@ -129,6 +133,9 @@ const Backdrop = (props: {
  * ```
  */
 export const SliderModal = (props: ISliderModalProps): ReactElement => {
+    // state
+    const showTransition = useState(false);
+
     // props
     const { showModal, onBackdropClick, children, width, type, showBackdrop = true } = props;
 
@@ -145,12 +152,19 @@ export const SliderModal = (props: ISliderModalProps): ReactElement => {
         width,
     };
 
+    // effects
+    useEffect(() => {
+        showTransition.set(showModal);
+    }, [showModal]);
+
     // draw
     return (
         <div className={wrapperClassName}>
-            {showBackdrop && <Backdrop showModal={showModal} onBackdropClick={onBackdropClick} />}
+            {showBackdrop && (
+                <Backdrop showTransition={showTransition} onBackdropClick={onBackdropClick} />
+            )}
             <CSSTransition
-                in={showModal}
+                in={showTransition.get()}
                 mountOnEnter
                 classNames="slider-modal"
                 unmountOnExit
