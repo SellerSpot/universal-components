@@ -46,7 +46,7 @@ const InputFieldComponent = (
         required,
         selectTextOnFocus,
         maxRows,
-        size = 'small',
+        size = 'medium',
         theme,
         suffix,
         multiline,
