@@ -54,6 +54,7 @@ const InputFieldComponent = (
         type,
         className,
         onKeyDown,
+        disableLabelAnimation = true,
         value,
         colors,
         fontSizes,
@@ -266,6 +267,9 @@ const InputFieldComponent = (
                             [styles.helperTextSuccess]: theme === 'success',
                             [styles.helperTextDanger]: theme === 'danger',
                         }),
+                    }}
+                    InputLabelProps={{
+                        shrink: disableLabelAnimation,
                     }}
                     inputProps={{
                         style: {
