@@ -11,6 +11,7 @@ import React, { ReactElement, useEffect, useRef } from 'react';
 import { TableBody } from './Components/TableBody';
 import { TableEmptyState } from './Components/TableEmptyState/TableEmptyState';
 import { TableSkeletonBody } from './Components/TableSkeletonBody';
+import cn from 'classnames';
 import styles from './Table.module.scss';
 import { ITableProps } from './Table.types';
 
@@ -33,7 +34,7 @@ const TableHead = (props: ITableProps) => {
             <TableRow className={styles.headerRow}>
                 {hasCollapsedContent ? (
                     <TableCell
-                        className={styles.headerCell}
+                        className={cn(styles.headerCell, styles.headerFirstColumnCell)}
                         key={'expandRowIconColumn'}
                         width="5%"
                     />
@@ -45,10 +46,15 @@ const TableHead = (props: ITableProps) => {
                     // compute
                     const cellKey = columnIndex;
 
+                    // styles
+                    const tableCellClassName = cn(styles.headerCell, {
+                        [styles.headerFirstColumnCell]: !hasCollapsedContent && columnIndex == 0,
+                    });
+
                     // draw
                     return (
                         <TableCell
-                            className={styles.headerCell}
+                            className={tableCellClassName}
                             key={cellKey}
                             align={align}
                             padding={padding}
