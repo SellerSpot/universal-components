@@ -196,7 +196,7 @@ export const TableBody = (props: ITableProps): ReactElement => {
                 // draw
                 return (
                     <Fragment key={rowKey}>
-                        <TableRow className={mainRowClassName} onClick={rowOnClickHandler}>
+                        <TableRow hover className={mainRowClassName} onClick={rowOnClickHandler}>
                             {hasCollapsedContent ? (
                                 <ExpandRowIcon
                                     mainRowClassName={mainRowCellClassName}

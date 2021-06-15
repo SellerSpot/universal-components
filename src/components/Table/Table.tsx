@@ -6,6 +6,7 @@ import {
     TableHead as MUITableHead,
     TableRow,
 } from '@material-ui/core';
+import { CSSProperties } from '@material-ui/styles';
 import React, { ReactElement, useEffect, useRef } from 'react';
 import { TableBody } from './Components/TableBody';
 import { TableEmptyState } from './Components/TableEmptyState/TableEmptyState';
@@ -74,6 +75,7 @@ export const Table = (props: ITableProps): ReactElement => {
         data,
         emptyStateMessage,
         emptyStatePrimaryCallToAction,
+        stickyHeader = true,
     } = props;
 
     // state
@@ -89,14 +91,20 @@ export const Table = (props: ITableProps): ReactElement => {
     useEffect(() => {
         if (!!tableContainerRef && isLoading) {
             containerHeight.set(tableContainerRef.current.clientHeight);
+            console.log(containerHeight.get());
         }
-    }, [tableContainerRef]);
+    }, [data]);
+
+    // style
+    const tableContainerStyle: CSSProperties = {
+        maxHeight: containerHeight.get(),
+    };
 
     // draw
     return (
         <div ref={tableContainerRef} className={styles.tableWrapper}>
-            <TableContainer>
-                <MUITable size={size}>
+            <TableContainer style={tableContainerStyle}>
+                <MUITable size={size} stickyHeader={stickyHeader}>
                     <TableHead {...props} />
                     {isLoading ? (
                         <TableSkeletonBody

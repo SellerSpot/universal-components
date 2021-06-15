@@ -6,10 +6,12 @@
         border-bottom: 1px solid $tableHeaderCellBorder-color;
         .headerCell {
             border-bottom: unset;
+            background-color: transparent !important;
         }
     }
 
     .bodyRow {
+        overflow: scroll;
         border-bottom: 1px solid $tableCellBorder-color;
 
         &.bodyRowExpandableTable {
