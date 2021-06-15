@@ -21,7 +21,7 @@ const responsive = {
 
 export const ImageCarousel = (props: IImageCarouselProps): ReactElement => {
     // props
-    const { images, height } = props;
+    const { images, height, showSpy = true } = props;
 
     // helpers
     const carouselRef = useRef<AliceCarousel>();
@@ -40,7 +40,10 @@ export const ImageCarousel = (props: IImageCarouselProps): ReactElement => {
         height,
     };
     return (
-        <div className={styles.imageCarouselWrapper} style={divStyle}>
+        <div
+            className={cn(styles.imageCarouselWrapper, { [styles.showSpy]: showSpy })}
+            style={divStyle}
+        >
             <AliceCarousel
                 mouseTracking
                 controlsStrategy="responsive"

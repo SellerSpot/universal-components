@@ -25,3 +25,4 @@ export * from './Popper/Popper';
 export * from './Slider/Slider';
 export * from './ThemeProvider/ThemeProvider';
 export * from './Image/Image';
+export * from './ImageCarousel/ImageCarousel';

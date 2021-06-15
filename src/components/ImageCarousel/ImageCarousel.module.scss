@@ -2,6 +2,10 @@
     position: relative;
     width: 100%;
 
+    &.showSpy {
+        margin-bottom: 50px;
+    }
+
     .actionButton {
         position: absolute;
         top: 50%;

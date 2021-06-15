@@ -8,4 +8,8 @@ interface ICarouselImage {
 export interface IImageCarouselProps {
     images: ICarouselImage[];
     height: React.CSSProperties['height'];
+    /**
+     * @default true
+     */
+    showSpy?: boolean;
 }

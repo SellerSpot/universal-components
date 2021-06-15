@@ -67,7 +67,7 @@ const defaultFontSizes: IFontSizes = {
     h4: '18px',
     h5: '15px',
     h6: '14px',
-    p: '12px',
+    p: '14px',
 };
 
 export const colorThemes: IColorThemes = {
