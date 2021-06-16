@@ -230,7 +230,6 @@ export const TableBody = (props: ITableProps): ReactElement => {
                                 <ExpandRowIcon dataCollection={dataCollection} />
                             ) : null}
                             <MainTableCells dataCollection={dataCollection} />
-                            {hasCollapsedContent ? null : <div className={styles.bodyDivider} />}
                         </TableRow>
                         {hasCollapsedContent ? (
                             <CollapsedRow dataCollection={dataCollection} />
