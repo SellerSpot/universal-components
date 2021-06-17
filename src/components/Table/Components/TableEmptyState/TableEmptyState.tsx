@@ -24,7 +24,7 @@ export const TableEmptyState = (props: {
     return (
         <div className={styles.wrapper} style={wrapperStyle}>
             <EmptyStateIcon className={styles.icon} />
-            <h5>{message}</h5>
+            {message && <h5>{message}</h5>}
             {primaryCallToAction}
         </div>
     );

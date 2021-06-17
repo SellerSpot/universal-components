@@ -12,6 +12,7 @@ export * from './IconButton/IconButton';
 export * from './InputField/InputField';
 export * from './Select/Select';
 export * from './Table/Table';
+export * from './Table/Components/TableEmptyState/TableEmptyState';
 export * from './ToolTip/ToolTip';
 export * from './Notify/Notify';
 export * from './SliderModal/SliderModal';
