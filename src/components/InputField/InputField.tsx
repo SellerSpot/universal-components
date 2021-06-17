@@ -1,9 +1,9 @@
+import { useState } from '@hookstate/core';
 import Icon from '@iconify/react';
 import {
     CircularProgress,
     InputAdornment,
     TextField as MUITextField,
-    TextFieldProps,
     ThemeProvider,
 } from '@material-ui/core';
 import cn from 'classnames';
@@ -13,7 +13,6 @@ import { getTheme } from '../../theme/MUITheme';
 import { ICONS } from '../../utilities/icons';
 import { IconButton } from '../IconButton/IconButton';
 import { themeConfigStore } from '../ThemeProvider/ThemeProvider';
-import { useState } from '@hookstate/core';
 import styles from './InputField.module.scss';
 import { IInputFieldProps } from './InputField.types';
 
@@ -215,28 +214,6 @@ const InputFieldComponent = (
         className,
     );
 
-    const InputProps: TextFieldProps['InputProps'] =
-        variant === 'standard'
-            ? {
-                  disableUnderline: true,
-                  autoComplete: autoComplete,
-                  startAdornment: prefix && (
-                      <InputAdornment position={'start'}>{prefix}</InputAdornment>
-                  ),
-                  endAdornment: suffixComponent() && (
-                      <InputAdornment position={'end'}>{suffixComponent()}</InputAdornment>
-                  ),
-              }
-            : {
-                  autoComplete: autoComplete,
-                  startAdornment: prefix && (
-                      <InputAdornment position={'start'}>{prefix}</InputAdornment>
-                  ),
-                  endAdornment: suffixComponent() && (
-                      <InputAdornment position={'end'}>{suffixComponent()}</InputAdornment>
-                  ),
-              };
-
     return (
         <div className={fieldWrapperClassName}>
             <ThemeProvider theme={textFieldTheme}>
@@ -280,7 +257,15 @@ const InputFieldComponent = (
                         autoComplete: autoComplete,
                         maxLength: maxLength,
                     }}
-                    InputProps={InputProps}
+                    InputProps={{
+                        autoComplete: autoComplete,
+                        startAdornment: prefix && (
+                            <InputAdornment position={'start'}>{prefix}</InputAdornment>
+                        ),
+                        endAdornment: suffixComponent() && (
+                            <InputAdornment position={'end'}>{suffixComponent()}</InputAdornment>
+                        ),
+                    }}
                     error={theme === 'danger'}
                 />
                 {helperMessage?.enabled ? <HelperComponent /> : null}
