@@ -8,5 +8,5 @@ export const useIsMounted = (): RefObject<boolean> => {
             isMountedRef.current = false;
         };
     });
-    return isMountedRef;
+    return isMountedRef.current;
 };
