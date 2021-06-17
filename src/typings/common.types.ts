@@ -34,6 +34,6 @@ export type TOnChangeMiddleware = (
 /**
  * Used for Button onClick handlers
  */
-export type TButtonOnClickHandler = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+export type TOnNodeClickHandler<T = Element | HTMLDivElement> = (
+    event: React.MouseEvent<T, MouseEvent> & { target?: Node },
 ) => void;

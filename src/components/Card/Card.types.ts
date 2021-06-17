@@ -1,4 +1,5 @@
 import { ReactElement } from 'react';
+import { TOnNodeClickHandler } from '../../typings/common.types';
 
 export interface ICardProps {
     className?: {
@@ -10,5 +11,5 @@ export interface ICardProps {
     image?: string;
     content?: ReactElement;
     actions?: JSX.Element;
-    onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+    onClick?: TOnNodeClickHandler<HTMLDivElement>;
 }

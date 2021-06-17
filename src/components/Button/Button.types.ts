@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, RefObject } from 'react';
 import { IColors, IFontSizes, TMuiThemes } from '../../theme/theme.types';
 
 export interface IButtonProps {
@@ -40,4 +40,5 @@ export interface IButtonProps {
     }>;
     tabIndex?: number;
     isLoading?: boolean;
+    ref?: RefObject<HTMLButtonElement>;
 }
