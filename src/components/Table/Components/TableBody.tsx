@@ -200,7 +200,7 @@ export const TableBody = (props: ITableProps): ReactElement => {
                     if (hasCollapsedContent) {
                         toggleRowExpansion(rowIndex);
                     } else {
-                        onRowClick({
+                        onRowClick?.({
                             event,
                             rowIndex,
                         });
@@ -225,7 +225,7 @@ export const TableBody = (props: ITableProps): ReactElement => {
                 // draw
                 return (
                     <Fragment key={rowKey}>
-                        <TableRow hover className={mainRowClassName} onClick={rowOnClickHandler}>
+                        <TableRow className={mainRowClassName} onClick={rowOnClickHandler}>
                             {hasCollapsedContent ? (
                                 <ExpandRowIcon dataCollection={dataCollection} />
                             ) : null}
