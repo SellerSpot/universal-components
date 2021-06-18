@@ -1,36 +1,54 @@
+$border-styling: 1px solid $tableCellBorder-color;
+
 .tableWrapper {
     width: 100%;
     height: 100%;
 
     .headerRow {
-        border-bottom: 1px solid $tableHeaderCellBorder-color;
+        .headerFirstColumnCell {
+            border-left: $border-styling !important;
+        }
+
         .headerCell {
-            border-bottom: unset;
+            border: $border-styling;
+            border-left: unset;
+            background-color: $backgroundTertiary-color !important;
+            font-weight: 600;
         }
     }
 
     .bodyRow {
-        border-bottom: 1px solid $tableCellBorder-color;
+        overflow: scroll;
 
-        &.bodyRowExpandableTable {
-            border-bottom: unset;
+        .bodyFirstColumnCell {
+            border-left: $border-styling;
         }
 
         .bodyCell {
-            border-bottom: unset;
+            border-right: $border-styling;
+            border-bottom: $border-styling;
             // styling for normal body cell when table can expand
             &.bodyCellExpansibleTable {
                 cursor: pointer;
+            }
+
+            &.bodyCellWithTableExpanded {
+                border-bottom: unset;
             }
         }
     }
 
     .collapsedRow {
-        border-bottom: 1px solid $tableCellBorder-color;
         // styling for cell which is collapsed
         .collapsedCell {
             padding-top: 0;
             padding-bottom: 0;
+            border-right: $border-styling;
+            border-left: $border-styling;
+
+            &.collapsedCellExpandedState {
+                border-bottom: $border-styling;
+            }
         }
     }
 }

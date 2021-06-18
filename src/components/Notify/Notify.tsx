@@ -4,7 +4,7 @@ import { Snackbar, SnackbarCloseReason, SnackbarContent } from '@material-ui/cor
 import { Alert } from '@material-ui/lab';
 import { isUndefined } from 'lodash';
 import React, { ReactElement } from 'react';
-import { ICONS } from '../../utilities';
+import { ICONS } from '../../utilities/icons';
 import { introduceDelay } from '../../utilities/general';
 import { IconButton } from '../IconButton/IconButton';
 import { NotifyService } from './Notify.service';

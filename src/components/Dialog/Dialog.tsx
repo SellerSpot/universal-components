@@ -11,7 +11,7 @@ import {
 } from './Dialog.types';
 import { IconButton } from '../IconButton/IconButton';
 import Icon from '@iconify/react';
-import { ICONS } from '../../utilities';
+import { ICONS } from '../../utilities/icons';
 import { IDialogBodyProps } from '..';
 
 export {

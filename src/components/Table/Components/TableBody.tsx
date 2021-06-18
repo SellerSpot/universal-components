@@ -9,19 +9,29 @@ import {
 } from '@material-ui/core';
 import cn from 'classnames';
 import React, { Fragment, ReactElement } from 'react';
-import { IconButton, ICONS } from '../../..';
+import { IconButton } from '../../..';
+import { ICONS } from '../../../utilities/icons';
 import { ITableProps } from '../Table';
 import styles from '../Table.module.scss';
 
-const ExpandRowIcon = (props: {
-    mainRowClassName: string;
+interface IDataCollection {
     rowKey: string;
-    isRowExpanded: boolean;
+    hasCollapsedContent: boolean;
+    shape: ITableProps['shape'];
+    mainRowCellClassName: string;
     rowIndex: number;
+    rowData: ITableProps['data'][0];
+    isRowExpanded: boolean;
+    collapsedContentCellWidth: number;
     handleRowExpansion: (rowIndex: number) => void;
-}) => {
+    toggleRowExpansion: (rowIndex: number) => void;
+    collapsedContentRenderer: ITableProps['collapsedContentRenderer'];
+}
+
+const ExpandRowIcon = (props: { dataCollection: IDataCollection }) => {
     // props
-    const { handleRowExpansion, isRowExpanded, mainRowClassName, rowKey, rowIndex } = props;
+    const { handleRowExpansion, isRowExpanded, mainRowCellClassName, rowKey, rowIndex } =
+        props.dataCollection;
 
     // compute
     const iconToShow = isRowExpanded ? ICONS.keyboardArrowUp : ICONS.keyboardArrowDown;
@@ -32,9 +42,14 @@ const ExpandRowIcon = (props: {
         handleRowExpansion(rowIndex);
     };
 
+    // styles
+    const tableCellClassName = cn(mainRowCellClassName, styles.bodyFirstColumnCell, {
+        [styles.bodyCellWithTableExpanded]: !isRowExpanded,
+    });
+
     // draw
     return (
-        <TableCell className={mainRowClassName} key={`${rowKey}expandRowIcon`} width="5%">
+        <TableCell className={tableCellClassName} key={`${rowKey}expandRowIcon`} width="5%">
             <IconButton
                 size="small"
                 icon={<Icon icon={iconToShow} height="22px" />}
@@ -45,14 +60,10 @@ const ExpandRowIcon = (props: {
     );
 };
 
-const MainTableCells = (props: {
-    shape: ITableProps['shape'];
-    mainRowClassName: string;
-    rowIndex: number;
-    rowData: ITableProps['data'][0];
-}) => {
+const MainTableCells = (props: { dataCollection: IDataCollection }) => {
     // props
-    const { mainRowClassName, rowData, shape, rowIndex } = props;
+    const { mainRowCellClassName, rowData, shape, rowIndex, hasCollapsedContent, isRowExpanded } =
+        props.dataCollection;
 
     // draw
     return (
@@ -69,10 +80,19 @@ const MainTableCells = (props: {
                         rowData,
                     }) ?? rowData[dataKey];
 
+                // styles
+                const tableCellClassName = cn(
+                    mainRowCellClassName,
+                    {
+                        [styles.bodyFirstColumnCell]: !hasCollapsedContent && columnIndex === 0,
+                    },
+                    { [styles.bodyCellWithTableExpanded]: !isRowExpanded && hasCollapsedContent },
+                );
+
                 // draw
                 return (
                     <TableCell
-                        className={mainRowClassName}
+                        className={tableCellClassName}
                         align={align}
                         padding={padding}
                         rowSpan={rowSpan}
@@ -88,15 +108,7 @@ const MainTableCells = (props: {
     );
 };
 
-const CollapsedRow = (props: {
-    rowKey: string;
-    collapsedContentCellWidth: number;
-    rowData: ITableProps['data'][0];
-    rowIndex: number;
-    toggleRowExpansion: (rowIndex: number) => void;
-    collapsedContentRenderer: ITableProps['collapsedContentRenderer'];
-    isRowExpanded: boolean;
-}) => {
+const CollapsedRow = (props: { dataCollection: IDataCollection }) => {
     // props
     const {
         collapsedContentCellWidth,
@@ -106,12 +118,17 @@ const CollapsedRow = (props: {
         rowData,
         rowIndex,
         rowKey,
-    } = props;
+    } = props.dataCollection;
+
+    // styles
+    const collapsedCellStyle = cn(styles.collapsedCell, {
+        [styles.collapsedCellExpandedState]: isRowExpanded,
+    });
 
     // draw
     return (
         <TableRow className={styles.collapsedRow} key={`${rowKey}collapsedContent`}>
-            <TableCell className={styles.collapsedCell} colSpan={collapsedContentCellWidth}>
+            <TableCell className={collapsedCellStyle} colSpan={collapsedContentCellWidth}>
                 <Collapse in={isRowExpanded} timeout="auto" unmountOnExit={true}>
                     {collapsedContentRenderer({
                         rowData,
@@ -173,9 +190,7 @@ export const TableBody = (props: ITableProps): ReactElement => {
                 const collapsedContentCellWidth = shape.length + lengthOfCellsForExpandRowIcon;
                 const hasCollapsedContent = !!collapsedContentRenderer;
                 const isRowExpanded = expandedRows.get().includes(rowIndex);
-                const mainRowClassName = cn(styles.bodyRow, {
-                    [styles.bodyRowExpandableTable]: hasCollapsedContent,
-                });
+                const mainRowClassName = cn(styles.bodyRow);
                 const mainRowCellClassName = cn(styles.bodyCell, {
                     [styles.bodyCellExpansibleTable]: hasCollapsedContent,
                 });
@@ -185,11 +200,26 @@ export const TableBody = (props: ITableProps): ReactElement => {
                     if (hasCollapsedContent) {
                         toggleRowExpansion(rowIndex);
                     } else {
-                        onRowClick({
+                        onRowClick?.({
                             event,
                             rowIndex,
                         });
                     }
+                };
+
+                // data collection
+                const dataCollection: IDataCollection = {
+                    rowKey,
+                    toggleRowExpansion,
+                    collapsedContentCellWidth,
+                    hasCollapsedContent,
+                    shape,
+                    mainRowCellClassName,
+                    handleRowExpansion: toggleRowExpansion,
+                    rowData,
+                    rowIndex,
+                    collapsedContentRenderer,
+                    isRowExpanded,
                 };
 
                 // draw
@@ -197,32 +227,12 @@ export const TableBody = (props: ITableProps): ReactElement => {
                     <Fragment key={rowKey}>
                         <TableRow className={mainRowClassName} onClick={rowOnClickHandler}>
                             {hasCollapsedContent ? (
-                                <ExpandRowIcon
-                                    mainRowClassName={mainRowCellClassName}
-                                    rowKey={rowKey}
-                                    isRowExpanded={isRowExpanded}
-                                    handleRowExpansion={toggleRowExpansion}
-                                    rowIndex={rowIndex}
-                                />
+                                <ExpandRowIcon dataCollection={dataCollection} />
                             ) : null}
-                            <MainTableCells
-                                shape={shape}
-                                rowIndex={rowIndex}
-                                rowData={rowData}
-                                mainRowClassName={mainRowCellClassName}
-                            />
-                            {hasCollapsedContent ? null : <div className={styles.bodyDivider} />}
+                            <MainTableCells dataCollection={dataCollection} />
                         </TableRow>
                         {hasCollapsedContent ? (
-                            <CollapsedRow
-                                rowKey={rowKey}
-                                toggleRowExpansion={toggleRowExpansion}
-                                collapsedContentCellWidth={collapsedContentCellWidth}
-                                rowData={rowData}
-                                rowIndex={rowIndex}
-                                collapsedContentRenderer={collapsedContentRenderer}
-                                isRowExpanded={isRowExpanded}
-                            />
+                            <CollapsedRow dataCollection={dataCollection} />
                         ) : null}
                     </Fragment>
                 );

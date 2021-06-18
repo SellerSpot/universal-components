@@ -10,7 +10,7 @@ export * from './Dialog/Dialog';
 export * from './ExpandPluginMenuButton/ExpandPluginMenuButton';
 export * from './IconButton/IconButton';
 export * from './InputField/InputField';
-export * from './Select/Select';
+export * from './CircularProgress/CircularProgress';
 export * from './Table/Table';
 export * from './ToolTip/ToolTip';
 export * from './Notify/Notify';

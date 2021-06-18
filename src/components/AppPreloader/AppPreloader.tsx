@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { CircularProgress } from '@material-ui/core';
+import { CircularProgress } from '..';
 import styles from './AppPreloader.module.scss';
 
 interface IAppPreloaderProps {

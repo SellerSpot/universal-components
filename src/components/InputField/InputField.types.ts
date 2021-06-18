@@ -27,6 +27,10 @@ export interface IInputFieldProps {
      */
     maxLength?: number;
     /**
+     * If the label animation on focus should be disabled
+     */
+    disableLabelAnimation?: boolean;
+    /**
      * If the default padding to serve as placeholder for helper text should be disabled
      */
     disableHelperTextPlaceholderPadding?: boolean;
