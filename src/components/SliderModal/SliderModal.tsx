@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { isArray } from 'lodash';
 import React, { CSSProperties, ReactElement, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { ICONS } from '../../utilities';
+import { ICONS } from '../../utilities/icons';
 import { IconButton } from '../IconButton/IconButton';
 import styles from './SliderModal.module.scss';
 import {
@@ -26,16 +26,11 @@ export {
 
 export const SliderModalLayoutWrapper = (props: ISliderModalLayoutWrapperProps): ReactElement => {
     // props
-    const { gridRowStructure = ['auto', '1fr', 'auto'], children, subSliderModals } = props;
+    const { gridRowStructure = ['auto', '1fr', 'auto'], children } = props;
 
     // styles
     const layoutWrapperStyle: CSSProperties = {
         gridTemplateRows: gridRowStructure.join(' '),
-    };
-    const childWrapperStyle: CSSProperties = {
-        width: '100%',
-        height: '100%',
-        overflow: 'auto',
     };
 
     const sanitizedChildren = isArray(children) ? children : [children];
@@ -44,13 +39,8 @@ export const SliderModalLayoutWrapper = (props: ISliderModalLayoutWrapperProps):
     return (
         <div className={styles.layoutWrapper} style={layoutWrapperStyle}>
             {gridRowStructure.map((_, index) => {
-                return (
-                    <div key={index} style={childWrapperStyle}>
-                        {sanitizedChildren[index]}
-                    </div>
-                );
+                return sanitizedChildren[index];
             })}
-            {subSliderModals}
         </div>
     );
 };

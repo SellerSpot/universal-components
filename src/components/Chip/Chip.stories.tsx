@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import { ICONS } from '../../utilities';
+import { ICONS } from '../../utilities/icons';
 import { Chip as ChipComponent, IChipProps } from './Chip';
 import Icon from '@iconify/react';
 

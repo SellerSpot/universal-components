@@ -4,7 +4,7 @@
 }
 .slider-modal-enter-active {
     right: 0;
-    transition: right 0.3s ease;
+    transition: right 0.3s cubic-bezier(0, 0.99, 0.07, 0.99);
 }
 .slider-modal-enter-done {
     right: 0;
@@ -14,7 +14,7 @@
 }
 .slider-modal-exit-active {
     right: -100%;
-    transition: right 0.3s ease;
+    transition: right 0.3s cubic-bezier(0, 0, 1, 0.01);
 }
 .slider-modal-exit-done {
     right: -100%;

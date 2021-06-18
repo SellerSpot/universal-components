@@ -6,10 +6,12 @@ import {
     TableHead as MUITableHead,
     TableRow,
 } from '@material-ui/core';
+import { CSSProperties } from '@material-ui/styles';
 import React, { ReactElement, useEffect, useRef } from 'react';
 import { TableBody } from './Components/TableBody';
 import { TableEmptyState } from './Components/TableEmptyState/TableEmptyState';
 import { TableSkeletonBody } from './Components/TableSkeletonBody';
+import cn from 'classnames';
 import styles from './Table.module.scss';
 import { ITableProps } from './Table.types';
 
@@ -32,7 +34,7 @@ const TableHead = (props: ITableProps) => {
             <TableRow className={styles.headerRow}>
                 {hasCollapsedContent ? (
                     <TableCell
-                        className={styles.headerCell}
+                        className={cn(styles.headerCell, styles.headerFirstColumnCell)}
                         key={'expandRowIconColumn'}
                         width="5%"
                     />
@@ -44,10 +46,15 @@ const TableHead = (props: ITableProps) => {
                     // compute
                     const cellKey = columnIndex;
 
+                    // styles
+                    const tableCellClassName = cn(styles.headerCell, {
+                        [styles.headerFirstColumnCell]: !hasCollapsedContent && columnIndex == 0,
+                    });
+
                     // draw
                     return (
                         <TableCell
-                            className={styles.headerCell}
+                            className={tableCellClassName}
                             key={cellKey}
                             align={align}
                             padding={padding}
@@ -74,6 +81,7 @@ export const Table = (props: ITableProps): ReactElement => {
         data,
         emptyStateMessage,
         emptyStatePrimaryCallToAction,
+        stickyHeader = true,
     } = props;
 
     // state
@@ -87,16 +95,21 @@ export const Table = (props: ITableProps): ReactElement => {
     // effects
     // setting the table container height so that that skeleton can be properly sized
     useEffect(() => {
-        if (!!tableContainerRef && isLoading) {
+        if (!!tableContainerRef) {
             containerHeight.set(tableContainerRef.current.clientHeight);
         }
-    }, [tableContainerRef]);
+    }, []);
+
+    // style
+    const tableContainerStyle: CSSProperties = {
+        maxHeight: containerHeight.get(),
+    };
 
     // draw
     return (
         <div ref={tableContainerRef} className={styles.tableWrapper}>
-            <TableContainer>
-                <MUITable size={size}>
+            <TableContainer style={tableContainerStyle}>
+                <MUITable size={size} stickyHeader={stickyHeader}>
                     <TableHead {...props} />
                     {isLoading ? (
                         <TableSkeletonBody
