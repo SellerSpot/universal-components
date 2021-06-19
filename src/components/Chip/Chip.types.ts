@@ -1,6 +1,5 @@
 import { ReactElement } from 'react';
-import { TMuiThemes } from 'theme/theme';
-import { IColors, IFontSizes } from '../../theme/theme.types';
+import { IColors, IFontSizes, TMuiThemes } from '../../theme/theme.types';
 
 export interface IChipProps {
     label?: string;
