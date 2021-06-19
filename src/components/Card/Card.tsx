@@ -13,8 +13,8 @@ export const Card = (props: ICardProps): ReactElement => {
     return (
         <MUICard elevation={0} onClick={onClick} className={cardClassName}>
             {image && (
-                <CardMedia className={className?.mediaWrapper}>
-                    <Image objectFit="cover" height={200} src={image} />
+                <CardMedia style={{ height: 200 }} className={className?.mediaWrapper}>
+                    <Image objectFit="cover" src={image} />
                 </CardMedia>
             )}
             {content && <CardContent className={className?.contentWrapper}>{content}</CardContent>}
