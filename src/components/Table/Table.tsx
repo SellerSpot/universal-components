@@ -95,7 +95,7 @@ export const Table = (props: ITableProps): ReactElement => {
     // effects
     // setting the table container height so that that skeleton can be properly sized
     useEffect(() => {
-        if (!!tableContainerRef) {
+        if (tableContainerRef.current) {
             containerHeight.set(tableContainerRef.current.clientHeight);
         }
     }, []);
