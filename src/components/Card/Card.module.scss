@@ -1,3 +1,7 @@
 .cardWrapper {
     background-color: $backgroundPrimary-color !important;
+
+    &.overflowUnset {
+        overflow: unset;
+    }
 }
