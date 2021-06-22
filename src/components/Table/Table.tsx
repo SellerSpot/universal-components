@@ -14,6 +14,9 @@ import { TableSkeletonBody } from './Components/TableSkeletonBody';
 import cn from 'classnames';
 import styles from './Table.module.scss';
 import { ITableProps } from './Table.types';
+import Icon from '@iconify/react';
+import { ICONS } from '../../utilities/icons';
+import { IconButton } from '..';
 
 export {
     ITableCollapsedCustomRenderer,
@@ -37,7 +40,14 @@ const TableHead = (props: ITableProps) => {
                         className={cn(styles.headerCell, styles.headerFirstColumnCell)}
                         key={'expandRowIconColumn'}
                         width="5%"
-                    />
+                    >
+                        <IconButton
+                            size="small"
+                            icon={<Icon icon={ICONS.keyboardArrowDown} height="22px" />}
+                            theme="auto"
+                            disabled
+                        />
+                    </TableCell>
                 ) : null}
                 {shape.map((column, columnIndex) => {
                     // props
