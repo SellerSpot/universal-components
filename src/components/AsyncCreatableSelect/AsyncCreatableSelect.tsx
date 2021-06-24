@@ -25,25 +25,27 @@ export const AsyncCreatableSelect = (props: IAsyncCreatableSelectProps): ReactEl
 
     // draw
     return (
-        <ReactSelectAsyncCreatable
-            className="react-select-container"
-            classNamePrefix={'custom-select'}
-            isClearable
-            name={name}
-            onChange={onChange}
-            onCreateOption={onCreateOption}
-            isDisabled={isDisabled}
-            isMulti={isMulti}
-            value={value}
-            isLoading={isLoading}
-            defaultValue={defaultValue}
-            closeMenuOnSelect={closeMenuOnSelect}
-            menuIsOpen={menuIsOpen}
-            autoFocus={autoFocus}
-            cacheOptions
-            loadOptions={loadOptions}
-            defaultOptions={defaultOptions}
-            formatCreateLabel={formatCreateLabel}
-        />
+        <div className={'react-select-component-wrapper'}>
+            <ReactSelectAsyncCreatable
+                className="react-select-container"
+                classNamePrefix={'custom-select'}
+                isClearable
+                name={name}
+                onChange={onChange}
+                onCreateOption={onCreateOption}
+                isDisabled={isDisabled}
+                isMulti={isMulti}
+                value={value}
+                isLoading={isLoading}
+                defaultValue={defaultValue}
+                closeMenuOnSelect={closeMenuOnSelect}
+                menuIsOpen={menuIsOpen}
+                autoFocus={autoFocus}
+                cacheOptions
+                loadOptions={loadOptions}
+                defaultOptions={defaultOptions}
+                formatCreateLabel={formatCreateLabel}
+            />
+        </div>
     );
 };

@@ -24,23 +24,25 @@ export const CreatableSelect = (props: ICreatableSelectProps): ReactElement => {
 
     // draw
     return (
-        <ReactSelectCreatable
-            className="react-select-container"
-            classNamePrefix={'custom-select'}
-            isClearable
-            name={name}
-            onChange={onChange}
-            onCreateOption={onCreateOption}
-            isDisabled={isDisabled}
-            isMulti={isMulti}
-            value={value}
-            isLoading={isLoading}
-            defaultValue={defaultValue}
-            closeMenuOnSelect={closeMenuOnSelect}
-            menuIsOpen={menuIsOpen}
-            autoFocus={autoFocus}
-            options={options}
-            formatCreateLabel={formatCreateLabel}
-        />
+        <div className={'react-select-component-wrapper'}>
+            <ReactSelectCreatable
+                className="react-select-container"
+                classNamePrefix={'custom-select'}
+                isClearable
+                name={name}
+                onChange={onChange}
+                onCreateOption={onCreateOption}
+                isDisabled={isDisabled}
+                isMulti={isMulti}
+                value={value}
+                isLoading={isLoading}
+                defaultValue={defaultValue}
+                closeMenuOnSelect={closeMenuOnSelect}
+                menuIsOpen={menuIsOpen}
+                autoFocus={autoFocus}
+                options={options}
+                formatCreateLabel={formatCreateLabel}
+            />
+        </div>
     );
 };

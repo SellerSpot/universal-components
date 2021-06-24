@@ -22,21 +22,23 @@ export const Select = (props: ISelectProps): ReactElement => {
 
     // draw
     return (
-        <ReactSelect
-            className="react-select-container"
-            classNamePrefix={'custom-select'}
-            isClearable
-            name={name}
-            onChange={onChange}
-            isDisabled={isDisabled}
-            isMulti={isMulti}
-            value={value}
-            isLoading={isLoading}
-            defaultValue={defaultValue}
-            closeMenuOnSelect={closeMenuOnSelect}
-            menuIsOpen={menuIsOpen}
-            autoFocus={autoFocus}
-            options={options}
-        />
+        <div className={'react-select-component-wrapper'}>
+            <ReactSelect
+                className="react-select-container"
+                classNamePrefix={'custom-select'}
+                isClearable
+                name={name}
+                onChange={onChange}
+                isDisabled={isDisabled}
+                isMulti={isMulti}
+                value={value}
+                isLoading={isLoading}
+                defaultValue={defaultValue}
+                closeMenuOnSelect={closeMenuOnSelect}
+                menuIsOpen={menuIsOpen}
+                autoFocus={autoFocus}
+                options={options}
+            />
+        </div>
     );
 };
