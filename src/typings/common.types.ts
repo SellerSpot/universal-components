@@ -37,3 +37,11 @@ export type TOnChangeMiddleware = (
 export type TOnNodeClickHandler<T = Element | HTMLDivElement> = (
     event: React.MouseEvent<T, MouseEvent> & { target?: Node },
 ) => void;
+
+/**
+ * Typings for the options for any Select component
+ */
+export interface ISelectOption {
+    value: string;
+    label: string;
+}

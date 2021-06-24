@@ -1,19 +1,8 @@
 import React, { ReactElement } from 'react';
-import styles from './CreatableSelect.module.scss';
 import ReactSelectCreatable from 'react-select/creatable';
 import { ICreatableSelectProps } from './CreatableSelect.types';
-import { CircularProgress } from '../CircularProgress/CircularProgress';
 
 export { ICreatableSelectProps } from './CreatableSelect.types';
-
-// components
-const LoadingIndicator = () => {
-    return (
-        <div className={styles.loadingIndicatorHolder}>
-            <CircularProgress theme="auto" size="16px" />
-        </div>
-    );
-};
 
 export const CreatableSelect = (props: ICreatableSelectProps): ReactElement => {
     // props
@@ -52,9 +41,6 @@ export const CreatableSelect = (props: ICreatableSelectProps): ReactElement => {
             autoFocus={autoFocus}
             options={options}
             formatCreateLabel={formatCreateLabel}
-            components={{
-                LoadingIndicator,
-            }}
         />
     );
 };

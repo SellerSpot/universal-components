@@ -1,6 +1,7 @@
 import { useState } from '@hookstate/core';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
+import { introduceDelay } from '../..';
 import {
     CreatableSelect as CreatableSelectComponent,
     ICreatableSelectProps,
@@ -23,12 +24,14 @@ const Template: Story = () => {
         },
     ]);
     const selectedOption = useState<ICreatableSelectProps['options'][0]>({ ...options.get()[0] });
+    const isAdding = useState(false);
 
     const args: ICreatableSelectProps = {
         options: options.get(),
         formatCreateLabel: (inputValue) => `Create new brand "${inputValue}"`,
         closeMenuOnSelect: true,
-        onCreateOption: (option) => {
+        onCreateOption: async (option) => {
+            isAdding.set(true);
             const newOption: ICreatableSelectProps['options'][0] = {
                 label: option,
                 value: option,
@@ -38,12 +41,15 @@ const Template: Story = () => {
                 return state;
             });
             selectedOption.set(newOption);
+            await introduceDelay(2000);
+            isAdding.set(false);
         },
+        isDisabled: isAdding.get(),
+        isLoading: isAdding.get(),
         onChange: (option) => {
             selectedOption.set({ ...option });
         },
         value: selectedOption.get(),
-        menuIsOpen: true,
         defaultValue: options.get()[2],
     };
 

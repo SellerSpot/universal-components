@@ -53,3 +53,9 @@
     padding: 0 !important;
     background-color: $backgroundPrimary-color !important;
 }
+
+// container to hold the custom loading container
+.custom-select-loading-indicator-holder {
+    padding: 0 10px;
+    padding-top: 5px;
+}
