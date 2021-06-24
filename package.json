@@ -57,6 +57,7 @@
         "@types/react-dom": "^17.0.0",
         "@types/react-redux": "^7.1.12",
         "@types/react-router-dom": "^5.1.6",
+        "@types/react-select": "^4.0.15",
         "@types/react-sortable-tree": "^0.3.13",
         "@types/webpack": "^4.41.25",
         "@types/webpack-bundle-analyzer": "^3.9.0",
@@ -111,6 +112,7 @@
         "nanoid": "^3.1.22",
         "react-alice-carousel": "^2.5.1",
         "react-router-dom": "^5.2.0",
+        "react-select": "^4.3.1",
         "react-transition-group": "^4.4.2"
     },
     "bugs": {

@@ -1,0 +1,55 @@
+// overall select element container
+.react-select-container {
+    width: 100% !important;
+}
+
+// setting styling for the control prop
+.custom-select__control {
+    min-height: 56px !important;
+    background-color: $backgroundPrimary-color !important;
+}
+
+// setting focused properties
+.custom-select__control--is-focused {
+    border-color: $primary-color !important;
+    box-shadow: 0 0 0 1px $primary-color !important;
+}
+
+// multi value
+.custom-select__multi-value {
+    background-color: $backgroundSubTertiary-color !important;
+    color: $foregroundPrimary-color !important;
+}
+
+// single value container
+.custom-select__single-value {
+    color: $foregroundPrimary-color !important;
+}
+
+// option container
+.custom-select__option {
+    padding: 12px 12px !important;
+    color: $foregroundPrimary-color !important;
+}
+
+// option container focused
+.custom-select__option--is-focused {
+    background-color: $primaryLight-color !important;
+}
+
+// option container selected
+.custom-select__option--is-selected {
+    background-color: $primary-color !important;
+    color: $foregroundLight-color !important;
+}
+
+// when the option is both selected and focused
+.custom-select__option--is-selected.custom-select__option--is-focused {
+    background-color: $primary-color !important;
+}
+
+// menu container
+.custom-select__menu {
+    padding: 0 !important;
+    background-color: $backgroundPrimary-color !important;
+}
