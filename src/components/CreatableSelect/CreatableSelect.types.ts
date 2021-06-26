@@ -7,6 +7,7 @@ export interface ICreatableSelectProps {
     options: ICreatableSelectOption[];
     name?: string;
     autoFocus?: boolean;
+    label?: string;
     formatCreateLabel?: (inputValue: string) => string;
     onCreateOption?: (option: string) => void;
     closeMenuOnSelect?: boolean;

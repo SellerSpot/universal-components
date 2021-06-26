@@ -1,5 +1,7 @@
+import { useState } from '@hookstate/core';
 import React, { ReactElement } from 'react';
 import ReactSelectCreatable from 'react-select/creatable';
+import cn from 'classnames';
 import { ICreatableSelectProps } from './CreatableSelect.types';
 
 export { ICreatableSelectProps } from './CreatableSelect.types';
@@ -15,21 +17,44 @@ export const CreatableSelect = (props: ICreatableSelectProps): ReactElement => {
         menuIsOpen,
         defaultValue,
         name,
+        label,
         onChange,
         closeMenuOnSelect,
         isDisabled,
         onCreateOption,
         value,
     } = props;
+    // state
+    const isFocused = useState(false);
+
+    // handlers
+    const handleFocus = () => {
+        isFocused.set(true);
+    };
+    const handleBlur = () => {
+        isFocused.set(false);
+    };
+
+    // compute
+    const labelClassName = cn('react-select-component-label', {
+        ['react-select-component-label--is-focused']: isFocused.get(),
+    });
 
     // draw
     return (
         <div className={'react-select-component-wrapper'}>
+            {label && (
+                <label className={labelClassName} htmlFor="reactSelect">
+                    {label}
+                </label>
+            )}
             <ReactSelectCreatable
                 className="react-select-container"
                 classNamePrefix={'custom-select'}
                 isClearable
                 name={name}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
                 onChange={onChange}
                 onCreateOption={onCreateOption}
                 isDisabled={isDisabled}

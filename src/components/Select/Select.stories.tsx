@@ -24,6 +24,7 @@ const Template: Story = () => {
     const args: ISelectProps = {
         options: options.get(),
         closeMenuOnSelect: true,
+        label: 'Brand Name',
         onChange: (option) => {
             selectedOption.set({ ...option });
         },

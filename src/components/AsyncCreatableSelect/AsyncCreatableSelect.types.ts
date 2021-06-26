@@ -4,6 +4,8 @@ export interface IAsyncCreatableSelectProps {
     defaultOptions?: ISelectOption[];
     loadOptions: (value: string) => Promise<ISelectOption[]>;
     name?: string;
+    placeholder?: string;
+    label?: string;
     autoFocus?: boolean;
     formatCreateLabel?: (inputValue: string) => string;
     onCreateOption?: (option: string) => void;

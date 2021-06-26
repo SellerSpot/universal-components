@@ -38,6 +38,7 @@ const Template: Story = () => {
     const args: IAsyncCreatableSelectProps = {
         formatCreateLabel: (inputValue) => `Create new brand "${inputValue}"`,
         closeMenuOnSelect: true,
+        label: 'Brand Name',
         onCreateOption: handleOptionCreation,
         onChange: (option) => {
             selectedOption.set({ ...option });

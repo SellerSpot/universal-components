@@ -46,6 +46,7 @@ const Template: Story = () => {
         },
         isDisabled: isAdding.get(),
         isLoading: isAdding.get(),
+        label: 'Brand Name',
         onChange: (option) => {
             selectedOption.set({ ...option });
         },

@@ -6,6 +6,7 @@ interface ISelectOption {
 export interface ISelectProps {
     options: ISelectOption[];
     name?: string;
+    label?: string;
     autoFocus?: boolean;
     closeMenuOnSelect?: boolean;
     value?: ISelectOption;
