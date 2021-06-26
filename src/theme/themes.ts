@@ -55,6 +55,9 @@ const defaultColors: IColors = {
     // special colors
     tableHeaderCellBorder: 'rgb(209, 207, 207)',
     tableCellBorder: 'rgba(224, 224, 224, 1)',
+    inputFieldPlaceholder: '#b7b7b7',
+    inputFieldBorderDefault: '#c0c0c0',
+    inputFieldLabelDefault: '#767676',
 };
 
 /**

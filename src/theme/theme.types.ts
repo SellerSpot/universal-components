@@ -55,6 +55,9 @@ export interface IColors {
     // special colors
     tableCellBorder: string;
     tableHeaderCellBorder: string;
+    inputFieldPlaceholder: string;
+    inputFieldLabelDefault: string;
+    inputFieldBorderDefault: string;
 }
 
 /**

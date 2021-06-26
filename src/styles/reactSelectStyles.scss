@@ -6,13 +6,22 @@
 // setting styling for the control prop
 .custom-select__control {
     min-height: 56px !important;
+    border-color: $inputFieldBorderDefault-color !important;
     background-color: $backgroundPrimary-color !important;
+
+    &:hover {
+        border-color: #283545 !important;
+    }
 }
 
 // setting focused properties
 .custom-select__control--is-focused {
     border-color: $primary-color !important;
     box-shadow: 0 0 0 1px $primary-color !important;
+
+    &:hover {
+        border-color: $primary-color !important;
+    }
 }
 
 // multi value
@@ -61,12 +70,16 @@
 
 .react-select-component-label {
     margin-left: 1px;
-    color: $foregroundPrimary-color;
-    font-size: 16px;
-    font-weight: 500;
+    color: $inputFieldLabelDefault-color;
+    font-size: 14px;
+    font-weight: 400;
     transition: color 0.2s ease;
 
     &.react-select-component-label--is-focused {
         color: $primary-color;
     }
+}
+
+.custom-select__placeholder {
+    color: $inputFieldPlaceholder-color !important;
 }
