@@ -12,4 +12,9 @@ export interface ICardProps {
     content?: ReactElement;
     actions?: JSX.Element;
     onClick?: TOnNodeClickHandler<HTMLDivElement>;
+    /**
+     * should the component apply the overflow unset class natively ?
+     * @default true
+     */
+    applyOverflowUnsetClass?: boolean;
 }
