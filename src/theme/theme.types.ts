@@ -58,6 +58,7 @@ export interface IColors {
     inputFieldPlaceholder: string;
     inputFieldLabelDefault: string;
     inputFieldBorderDefault: string;
+    inputFieldBorderHover: string;
 }
 
 /**

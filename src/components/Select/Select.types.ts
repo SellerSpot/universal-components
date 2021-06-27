@@ -7,6 +7,11 @@ export interface ISelectProps {
     options: ISelectOption[];
     name?: string;
     label?: string;
+    helperMessage?: {
+        enabled: boolean;
+        content?: string;
+        type?: 'error' | 'message';
+    };
     autoFocus?: boolean;
     closeMenuOnSelect?: boolean;
     value?: ISelectOption;

@@ -58,6 +58,7 @@ const defaultColors: IColors = {
     inputFieldPlaceholder: '#b7b7b7',
     inputFieldBorderDefault: '#c0c0c0',
     inputFieldLabelDefault: '#767676',
+    inputFieldBorderHover: '#283545',
 };
 
 /**

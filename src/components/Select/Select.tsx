@@ -16,6 +16,7 @@ export const Select = (props: ISelectProps): ReactElement => {
         menuIsOpen,
         defaultValue,
         name,
+        helperMessage,
         onChange,
         label,
         closeMenuOnSelect,
@@ -38,10 +39,17 @@ export const Select = (props: ISelectProps): ReactElement => {
     const labelClassName = cn('react-select-component-label', {
         ['react-select-component-label--is-focused']: isFocused.get(),
     });
+    const bottomMessageContent = helperMessage?.content;
+    const bottomMessageClassName = cn('react-select-component-bottom-message', {
+        ['react-select-component-bottom-message--is-error']: helperMessage?.type === 'error',
+    });
+    const wrapperClassName = cn('react-select-component-wrapper', {
+        ['react-select-component-wrapper--no-bottom-message']: !bottomMessageContent,
+    });
 
     // draw
     return (
-        <div className={'react-select-component-wrapper'}>
+        <div className={wrapperClassName}>
             {label && (
                 <label className={labelClassName} htmlFor="reactSelect">
                     {label}
@@ -66,6 +74,11 @@ export const Select = (props: ISelectProps): ReactElement => {
                 autoFocus={autoFocus}
                 options={options}
             />
+            {helperMessage?.enabled && (
+                <label className={bottomMessageClassName} htmlFor="reactSelect">
+                    {bottomMessageContent}
+                </label>
+            )}
         </div>
     );
 };

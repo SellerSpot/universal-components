@@ -10,7 +10,7 @@
     background-color: $backgroundPrimary-color !important;
 
     &:hover {
-        border-color: #283545 !important;
+        border-color: $inputFieldBorderHover-color !important;
     }
 }
 
@@ -66,6 +66,9 @@
 // wrapper for all select components
 .react-select-component-wrapper {
     width: 100%;
+    &.react-select-component-wrapper--no-bottom-message {
+        padding-bottom: 20px;
+    }
 }
 
 .react-select-component-label {
@@ -77,6 +80,18 @@
 
     &.react-select-component-label--is-focused {
         color: $primary-color;
+    }
+}
+
+.react-select-component-bottom-message {
+    margin-left: 1px;
+    color: $inputFieldLabelDefault-color;
+    font-size: 12px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+
+    &.react-select-component-bottom-message--is-error {
+        color: $danger-color;
     }
 }
 
