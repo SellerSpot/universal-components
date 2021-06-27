@@ -8,6 +8,11 @@ export interface ICreatableSelectProps {
     name?: string;
     autoFocus?: boolean;
     label?: string;
+    helperMessage?: {
+        enabled: boolean;
+        content?: string;
+        type?: 'error' | 'message';
+    };
     formatCreateLabel?: (inputValue: string) => string;
     onCreateOption?: (option: string) => void;
     closeMenuOnSelect?: boolean;

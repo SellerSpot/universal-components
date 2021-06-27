@@ -16,6 +16,7 @@ export const CreatableSelect = (props: ICreatableSelectProps): ReactElement => {
         isMulti,
         menuIsOpen,
         defaultValue,
+        helperMessage,
         name,
         label,
         onChange,
@@ -39,10 +40,17 @@ export const CreatableSelect = (props: ICreatableSelectProps): ReactElement => {
     const labelClassName = cn('react-select-component-label', {
         ['react-select-component-label--is-focused']: isFocused.get(),
     });
+    const bottomMessageContent = helperMessage?.content;
+    const bottomMessageClassName = cn('react-select-component-bottom-message', {
+        ['react-select-component-bottom-message--is-error']: helperMessage?.type === 'error',
+    });
+    const wrapperClassName = cn('react-select-component-wrapper', {
+        ['react-select-component-wrapper--no-bottom-message']: !bottomMessageContent,
+    });
 
     // draw
     return (
-        <div className={'react-select-component-wrapper'}>
+        <div className={wrapperClassName}>
             {label && (
                 <label className={labelClassName} htmlFor="reactSelect">
                     {label}
@@ -68,6 +76,11 @@ export const CreatableSelect = (props: ICreatableSelectProps): ReactElement => {
                 options={options}
                 formatCreateLabel={formatCreateLabel}
             />
+            {helperMessage?.enabled && (
+                <label className={bottomMessageClassName} htmlFor="reactSelect">
+                    {bottomMessageContent}
+                </label>
+            )}
         </div>
     );
 };

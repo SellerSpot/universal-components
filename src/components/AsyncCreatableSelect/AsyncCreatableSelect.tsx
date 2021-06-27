@@ -17,6 +17,7 @@ export const AsyncCreatableSelect = (props: IAsyncCreatableSelectProps): ReactEl
         isMulti,
         menuIsOpen,
         defaultValue,
+        helperMessage,
         name,
         label,
         placeholder,
@@ -41,10 +42,17 @@ export const AsyncCreatableSelect = (props: IAsyncCreatableSelectProps): ReactEl
     const labelClassName = cn('react-select-component-label', {
         ['react-select-component-label--is-focused']: isFocused.get(),
     });
+    const bottomMessageContent = helperMessage?.content;
+    const bottomMessageClassName = cn('react-select-component-bottom-message', {
+        ['react-select-component-bottom-message--is-error']: helperMessage?.type === 'error',
+    });
+    const wrapperClassName = cn('react-select-component-wrapper', {
+        ['react-select-component-wrapper--no-bottom-message']: !bottomMessageContent,
+    });
 
     // draw
     return (
-        <div className={'react-select-component-wrapper'}>
+        <div className={wrapperClassName}>
             {label && (
                 <label className={labelClassName} htmlFor="reactSelect">
                     {label}
@@ -73,6 +81,11 @@ export const AsyncCreatableSelect = (props: IAsyncCreatableSelectProps): ReactEl
                 defaultOptions={defaultOptions}
                 formatCreateLabel={formatCreateLabel}
             />
+            {helperMessage?.enabled && (
+                <label className={bottomMessageClassName} htmlFor="reactSelect">
+                    {bottomMessageContent}
+                </label>
+            )}
         </div>
     );
 };

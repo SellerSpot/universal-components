@@ -6,6 +6,11 @@ export interface IAsyncCreatableSelectProps {
     name?: string;
     placeholder?: string;
     label?: string;
+    helperMessage?: {
+        enabled: boolean;
+        content?: string;
+        type?: 'error' | 'message';
+    };
     autoFocus?: boolean;
     formatCreateLabel?: (inputValue: string) => string;
     onCreateOption?: (option: string) => void;
