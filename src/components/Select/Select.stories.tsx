@@ -26,11 +26,6 @@ const Template: Story = () => {
         options: options.get(),
         closeMenuOnSelect: true,
         label: 'Brand Name',
-        helperMessage: {
-            enabled: false,
-            content: 'Hi there dude!',
-            type: 'error',
-        },
         onChange: (option) => {
             selectedOption.set({ ...(option as ISelectOption) });
         },

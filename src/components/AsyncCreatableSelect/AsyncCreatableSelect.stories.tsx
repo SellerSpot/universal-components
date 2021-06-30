@@ -10,23 +10,7 @@ import {
 
 const Template: Story = () => {
     // state
-    const options = useState<ISelectOption[]>([
-        {
-            label: 'Value 1',
-            value: 'value1',
-        },
-        {
-            label: 'Value 2',
-            value: 'value2',
-        },
-        {
-            label: 'Value 3',
-            value: 'value3',
-        },
-    ]);
-    const selectedOption = useState<ISelectOption>({
-        ...options.get()[0],
-    });
+    const selectedOptions = useState<ISelectOption[]>([]);
     const isAdding = useState(false);
 
     const handleOptionCreation = async () => {
@@ -47,18 +31,22 @@ const Template: Story = () => {
         },
         onCreateOption: handleOptionCreation,
         onChange: (option) => {
-            selectedOption.set({ ...(option as ISelectOption) });
+            selectedOptions.set(option as ISelectOption[]);
         },
         isDisabled: isAdding.get(),
         isLoading: isAdding.get(),
         loadOptions: async (value) => {
             const response = await fetch('https://jsonplaceholder.typicode.com/users');
-            await introduceDelay(2000);
             const data = await response.json();
             const optionData: ISelectOption[] = [];
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             data.map((user: any) => {
-                if (user['name'].toString().toLocaleLowerCase().startsWith(value)) {
+                if (
+                    user['name']
+                        .toString()
+                        .toLocaleLowerCase()
+                        .startsWith(value.toLocaleLowerCase())
+                ) {
                     optionData.push({
                         label: user['name'],
                         value: user['id'],

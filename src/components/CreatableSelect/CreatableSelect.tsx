@@ -25,8 +25,10 @@ export const CreatableSelect = (props: ICreatableSelectProps): ReactElement => {
         onCreateOption,
         value,
     } = props;
+
     // state
     const isFocused = useState(false);
+    const isHovered = useState(false);
 
     // handlers
     const handleFocus = () => {
@@ -35,22 +37,38 @@ export const CreatableSelect = (props: ICreatableSelectProps): ReactElement => {
     const handleBlur = () => {
         isFocused.set(false);
     };
+    const onWrapperMouseEnterHandler = () => {
+        isHovered.set(true);
+    };
+    const onWrapperMouseLeaveHandler = () => {
+        isHovered.set(false);
+    };
 
     // compute
     const labelClassName = cn('custom-select__label', {
-        ['custom-select__label--is-focused']: isFocused.get(),
+        ['custom-select__label--is-focused']: isFocused.get() && !isDisabled,
+        ['custom-select__label--is-error']: helperMessage?.type === 'error' && !isDisabled,
     });
     const bottomMessageContent = helperMessage?.content;
     const bottomMessageClassName = cn('custom-select__bottom-message', {
-        ['custom-select__bottom-message--is-error']: helperMessage?.type === 'error',
+        ['custom-select__bottom-message--is-error']: helperMessage?.type === 'error' && !isDisabled,
     });
     const wrapperClassName = cn('custom-select__wrapper', {
         ['custom-select__wrapper--no-bottom-message']: !bottomMessageContent,
     });
+    const fieldSetClassName = cn('custom-select__fieldset', {
+        ['custom-select__fieldset--is-hovered']: isHovered.get() && !isDisabled && !isFocused.get(),
+        ['custom-select__fieldset--is-focused']: isFocused.get() && !isDisabled,
+        ['custom-select__fieldset--is-error']: helperMessage?.type === 'error' && !isDisabled,
+    });
 
     // draw
     return (
-        <div className={wrapperClassName}>
+        <div
+            className={wrapperClassName}
+            onMouseEnter={onWrapperMouseEnterHandler}
+            onMouseLeave={onWrapperMouseLeaveHandler}
+        >
             {label && (
                 <label className={labelClassName} htmlFor="reactSelect">
                     {label}
@@ -76,6 +94,9 @@ export const CreatableSelect = (props: ICreatableSelectProps): ReactElement => {
                 options={options}
                 formatCreateLabel={formatCreateLabel}
             />
+            <fieldset className={fieldSetClassName}>
+                <legend className={'custom-select__fieldset__legend'}>{label}</legend>
+            </fieldset>
             {helperMessage?.enabled && (
                 <label className={bottomMessageClassName} htmlFor="reactSelect">
                     {bottomMessageContent}
