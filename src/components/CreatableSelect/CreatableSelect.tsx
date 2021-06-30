@@ -37,15 +37,15 @@ export const CreatableSelect = (props: ICreatableSelectProps): ReactElement => {
     };
 
     // compute
-    const labelClassName = cn('react-select-component-label', {
-        ['react-select-component-label--is-focused']: isFocused.get(),
+    const labelClassName = cn('custom-select__label', {
+        ['custom-select__label--is-focused']: isFocused.get(),
     });
     const bottomMessageContent = helperMessage?.content;
-    const bottomMessageClassName = cn('react-select-component-bottom-message', {
-        ['react-select-component-bottom-message--is-error']: helperMessage?.type === 'error',
+    const bottomMessageClassName = cn('custom-select__bottom-message', {
+        ['custom-select__bottom-message--is-error']: helperMessage?.type === 'error',
     });
-    const wrapperClassName = cn('react-select-component-wrapper', {
-        ['react-select-component-wrapper--no-bottom-message']: !bottomMessageContent,
+    const wrapperClassName = cn('custom-select__wrapper', {
+        ['custom-select__wrapper--no-bottom-message']: !bottomMessageContent,
     });
 
     // draw

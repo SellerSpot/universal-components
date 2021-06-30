@@ -6,22 +6,13 @@
 // setting styling for the control prop
 .custom-select__control {
     min-height: 56px !important;
-    border-color: $inputFieldBorderDefault-color !important;
-    background-color: $backgroundPrimary-color !important;
-
-    &:hover {
-        border-color: $inputFieldBorderHover-color !important;
-    }
+    border: none !important;
+    background-color: transparent !important;
 }
 
-// setting focused properties
 .custom-select__control--is-focused {
-    border-color: $primary-color !important;
-    box-shadow: 0 0 0 1px $primary-color !important;
-
-    &:hover {
-        border-color: $primary-color !important;
-    }
+    border: none !important;
+    box-shadow: none !important;
 }
 
 // multi value
@@ -64,37 +55,92 @@
 }
 
 // wrapper for all select components
-.react-select-component-wrapper {
+.custom-select__wrapper {
+    position: relative;
     width: 100%;
-    &.react-select-component-wrapper--no-bottom-message {
+    &.custom-select__wrapper--no-bottom-message {
         padding-bottom: 20px;
     }
 }
 
-.react-select-component-label {
-    margin-left: 1px;
+.custom-select__label {
+    position: absolute;
+    z-index: 1;
+    top: -8px;
+    left: 9px;
+    padding: 0 5px;
+    background-color: inherit;
     color: $inputFieldLabelDefault-color;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
     transition: color 0.2s ease;
 
-    &.react-select-component-label--is-focused {
+    &.custom-select__label--is-focused {
         color: $primary-color;
+    }
+
+    &.custom-select__label--is-error {
+        color: $danger-color;
     }
 }
 
-.react-select-component-bottom-message {
-    margin-left: 1px;
+.custom-select__bottom-message {
+    margin-left: 4px;
     color: $inputFieldLabelDefault-color;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
     transition: color 0.2s ease;
 
-    &.react-select-component-bottom-message--is-error {
+    &.custom-select__bottom-message--is-error {
         color: $danger-color;
     }
 }
 
 .custom-select__placeholder {
     color: $inputFieldPlaceholder-color !important;
+}
+
+.custom-select__fieldset {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    height: 56px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $inputFieldBorderDefault-color;
+    border-collapse: collapse;
+    border-radius: 4px;
+    pointer-events: none;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+        border-color: $inputFieldBorderHover-color !important;
+    }
+
+    &.custom-select__fieldset--is-focused {
+        border-width: 2px !important;
+        border-color: $primary-color !important;
+    }
+
+    &.custom-select__fieldset--is-hovered {
+        border-width: 1px !important;
+        border-color: $inputFieldBorderHover-color !important;
+    }
+
+    &.custom-select__fieldset--is-error {
+        border-color: $danger-color !important;
+    }
+
+    .custom-select__fieldset__legend {
+        padding: 0 5px;
+        margin-left: 8px;
+        background-color: transparent;
+        color: transparent;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 0;
+    }
 }

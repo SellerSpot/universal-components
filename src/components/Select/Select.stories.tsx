@@ -1,6 +1,7 @@
 import { useState } from '@hookstate/core';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
+import { ISelectOption } from '../../typings/common.types';
 import { Select as SelectComponent, ISelectProps } from './Select';
 
 const Template: Story = () => {
@@ -31,7 +32,7 @@ const Template: Story = () => {
             type: 'error',
         },
         onChange: (option) => {
-            selectedOption.set({ ...option });
+            selectedOption.set({ ...(option as ISelectOption) });
         },
         value: selectedOption.get(),
         defaultValue: options.get()[2],

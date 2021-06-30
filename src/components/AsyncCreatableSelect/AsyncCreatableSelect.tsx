@@ -29,6 +29,7 @@ export const AsyncCreatableSelect = (props: IAsyncCreatableSelectProps): ReactEl
     } = props;
     // state
     const isFocused = useState(false);
+    const isHovered = useState(false);
 
     // handlers
     const handleFocus = () => {
@@ -37,22 +38,38 @@ export const AsyncCreatableSelect = (props: IAsyncCreatableSelectProps): ReactEl
     const handleBlur = () => {
         isFocused.set(false);
     };
+    const onWrapperMouseEnterHandler = () => {
+        isHovered.set(true);
+    };
+    const onWrapperMouseLeaveHandler = () => {
+        isHovered.set(false);
+    };
 
     // compute
-    const labelClassName = cn('react-select-component-label', {
-        ['react-select-component-label--is-focused']: isFocused.get(),
+    const labelClassName = cn('custom-select__label', {
+        ['custom-select__label--is-focused']: isFocused.get() && !isDisabled,
+        ['custom-select__label--is-error']: helperMessage?.type === 'error' && !isDisabled,
     });
     const bottomMessageContent = helperMessage?.content;
-    const bottomMessageClassName = cn('react-select-component-bottom-message', {
-        ['react-select-component-bottom-message--is-error']: helperMessage?.type === 'error',
+    const bottomMessageClassName = cn('custom-select__bottom-message', {
+        ['custom-select__bottom-message--is-error']: helperMessage?.type === 'error' && !isDisabled,
     });
-    const wrapperClassName = cn('react-select-component-wrapper', {
-        ['react-select-component-wrapper--no-bottom-message']: !bottomMessageContent,
+    const wrapperClassName = cn('custom-select__wrapper', {
+        ['custom-select__wrapper--no-bottom-message']: !bottomMessageContent,
+    });
+    const fieldSetClassName = cn('custom-select__fieldset', {
+        ['custom-select__fieldset--is-hovered']: isHovered.get() && !isDisabled && !isFocused.get(),
+        ['custom-select__fieldset--is-focused']: isFocused.get() && !isDisabled,
+        ['custom-select__fieldset--is-error']: helperMessage?.type === 'error' && !isDisabled,
     });
 
     // draw
     return (
-        <div className={wrapperClassName}>
+        <div
+            className={wrapperClassName}
+            onMouseEnter={onWrapperMouseEnterHandler}
+            onMouseLeave={onWrapperMouseLeaveHandler}
+        >
             {label && (
                 <label className={labelClassName} htmlFor="reactSelect">
                     {label}
@@ -61,13 +78,14 @@ export const AsyncCreatableSelect = (props: IAsyncCreatableSelectProps): ReactEl
             <ReactSelectAsyncCreatable
                 className="react-select-container"
                 classNamePrefix={'custom-select'}
-                isClearable
                 name={name}
                 placeholder={placeholder}
                 onChange={onChange}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 onCreateOption={onCreateOption}
+                formatCreateLabel={formatCreateLabel}
+                loadOptions={loadOptions}
                 isDisabled={isDisabled}
                 isMulti={isMulti}
                 value={value}
@@ -76,11 +94,13 @@ export const AsyncCreatableSelect = (props: IAsyncCreatableSelectProps): ReactEl
                 closeMenuOnSelect={closeMenuOnSelect}
                 menuIsOpen={menuIsOpen}
                 autoFocus={autoFocus}
-                cacheOptions
-                loadOptions={loadOptions}
                 defaultOptions={defaultOptions}
-                formatCreateLabel={formatCreateLabel}
+                isClearable
+                cacheOptions
             />
+            <fieldset className={fieldSetClassName}>
+                <legend className={'custom-select__fieldset__legend'}>{label}</legend>
+            </fieldset>
             {helperMessage?.enabled && (
                 <label className={bottomMessageClassName} htmlFor="reactSelect">
                     {bottomMessageContent}

@@ -1,10 +1,7 @@
-interface ICreatableSelectOption {
-    value: string;
-    label: string;
-}
+import { ISelectOption } from '../../typings/common.types';
 
 export interface ICreatableSelectProps {
-    options: ICreatableSelectOption[];
+    options: ISelectOption[];
     name?: string;
     autoFocus?: boolean;
     label?: string;
@@ -16,11 +13,11 @@ export interface ICreatableSelectProps {
     formatCreateLabel?: (inputValue: string) => string;
     onCreateOption?: (option: string) => void;
     closeMenuOnSelect?: boolean;
-    value?: ICreatableSelectOption;
+    value?: ISelectOption | ISelectOption[];
     isLoading?: boolean;
     isDisabled?: boolean;
     menuIsOpen?: boolean;
     isMulti?: boolean;
-    defaultValue?: ICreatableSelectOption;
-    onChange?: (option: ICreatableSelectOption) => void;
+    defaultValue?: ISelectOption;
+    onChange?: (option: ISelectOption | ISelectOption[]) => void;
 }

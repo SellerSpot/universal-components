@@ -14,11 +14,11 @@ export interface ISelectProps {
     };
     autoFocus?: boolean;
     closeMenuOnSelect?: boolean;
-    value?: ISelectOption;
+    value?: ISelectOption | ISelectOption;
     isLoading?: boolean;
     isDisabled?: boolean;
     menuIsOpen?: boolean;
     isMulti?: boolean;
     defaultValue?: ISelectOption;
-    onChange?: (option: ISelectOption) => void;
+    onChange?: (option: ISelectOption | ISelectOption[]) => void;
 }

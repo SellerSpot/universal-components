@@ -28,7 +28,7 @@ InputField.args = {
     // prefix: <h6>₹</h6>,
     // suffix: <h6>.sellerspot.in</h6>,
     placeHolder: 'Placeholder text',
-    theme: 'primary',
+    theme: 'danger',
     required: false,
     selectTextOnFocus: true,
     fullWidth: true,

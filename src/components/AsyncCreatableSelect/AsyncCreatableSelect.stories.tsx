@@ -39,9 +39,15 @@ const Template: Story = () => {
         formatCreateLabel: (inputValue) => `Create new brand "${inputValue}"`,
         closeMenuOnSelect: true,
         label: 'Brand Name',
+        isMulti: true,
+        helperMessage: {
+            enabled: true,
+            content: 'asdfasd',
+            type: 'message',
+        },
         onCreateOption: handleOptionCreation,
         onChange: (option) => {
-            selectedOption.set({ ...option });
+            selectedOption.set({ ...(option as ISelectOption) });
         },
         isDisabled: isAdding.get(),
         isLoading: isAdding.get(),
