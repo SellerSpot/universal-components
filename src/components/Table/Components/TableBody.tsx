@@ -8,7 +8,7 @@ import {
     TableRowProps,
 } from '@material-ui/core';
 import cn from 'classnames';
-import React, { Fragment, ReactElement } from 'react';
+import React, { Fragment, ReactElement, useEffect } from 'react';
 import { IconButton } from '../../..';
 import { ICONS } from '../../../utilities/icons';
 import { ITableProps } from '../Table';
@@ -154,6 +154,11 @@ export const TableBody = (props: ITableProps): ReactElement => {
 
     // state
     const expandedRows = useState<number[]>([]);
+
+    // effects
+    useEffect(() => {
+        expandedRows.set([]);
+    }, [data]);
 
     // handlers
     const toggleRowExpansion = (rowIndex: number) => {
