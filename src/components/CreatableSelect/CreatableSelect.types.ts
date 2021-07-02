@@ -10,6 +10,7 @@ export interface ICreatableSelectProps {
         content?: string;
         type?: 'error' | 'message';
     };
+    placeholder?: string;
     formatCreateLabel?: (inputValue: string) => string;
     onCreateOption?: (option: string) => void;
     closeMenuOnSelect?: boolean;

@@ -21,6 +21,7 @@ export const CreatableSelect = (props: ICreatableSelectProps): ReactElement => {
         label,
         onChange,
         closeMenuOnSelect,
+        placeholder,
         isDisabled,
         onCreateOption,
         value,
@@ -77,12 +78,13 @@ export const CreatableSelect = (props: ICreatableSelectProps): ReactElement => {
             <ReactSelectCreatable
                 className="react-select-container"
                 classNamePrefix={'custom-select'}
-                isClearable
-                name={name}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 onChange={onChange}
                 onCreateOption={onCreateOption}
+                formatCreateLabel={formatCreateLabel}
+                placeholder={placeholder}
+                name={name}
                 isDisabled={isDisabled}
                 isMulti={isMulti}
                 value={value}
@@ -92,7 +94,7 @@ export const CreatableSelect = (props: ICreatableSelectProps): ReactElement => {
                 menuIsOpen={menuIsOpen}
                 autoFocus={autoFocus}
                 options={options}
-                formatCreateLabel={formatCreateLabel}
+                isClearable
             />
             <fieldset className={fieldSetClassName}>
                 <legend className={'custom-select__fieldset__legend'}>{label}</legend>
