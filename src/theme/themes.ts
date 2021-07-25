@@ -41,6 +41,7 @@ const defaultColors: IColors = {
     backgroundSecondary: '#F2F2F2',
     backgroundTertiary: '#ECECEC',
     backgroundSubTertiary: 'rgba(0, 0, 0, 0.1)',
+    backgroundQuarternary: '#e0e0e0',
 
     // app theme color
     primary: '#1A73E8',

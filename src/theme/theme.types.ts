@@ -41,6 +41,7 @@ export interface IColors {
     backgroundSecondary: string;
     backgroundTertiary: string;
     backgroundSubTertiary: string;
+    backgroundQuarternary: string;
 
     // primary app color
     primary: string;
