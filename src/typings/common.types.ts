@@ -49,3 +49,8 @@ export interface ISelectOption<T = string | number> {
      */
     key?: T;
 }
+
+export interface IDimension {
+    width: number;
+    height: number;
+}
