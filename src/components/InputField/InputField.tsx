@@ -207,6 +207,7 @@ const InputFieldComponent = (
 
     const addPseudoBottomPadding = !helperMessage?.enabled && !disableHelperTextPlaceholderPadding;
     const fieldWrapperClassName = cn(
+        styles.wrapper,
         {
             [styles.inputFieldBottomSpace]: addPseudoBottomPadding,
         },
