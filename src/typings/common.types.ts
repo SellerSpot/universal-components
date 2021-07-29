@@ -1,4 +1,4 @@
-import { FormEvent } from 'react';
+import { FormEvent, ReactNode } from 'react';
 
 export type TPrimitiveType = string | number;
 
@@ -43,5 +43,5 @@ export type TOnNodeClickHandler<T = Element | HTMLDivElement> = (
  */
 export interface ISelectOption {
     value: string;
-    label: string;
+    label: ReactNode;
 }

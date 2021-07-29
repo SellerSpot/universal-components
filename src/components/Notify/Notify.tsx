@@ -72,7 +72,7 @@ export const Notify = (): ReactElement => {
         closeOnClickAway,
         customNotifyAction,
         showNotifyAction,
-    } = notifyState.get();
+    } = notifyState.get() || {};
 
     // determining the placement
     const notifyPlacement = NotifyService.getNotifyPlacement(placement);

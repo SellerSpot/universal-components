@@ -1,8 +1,7 @@
 import { useState } from '@hookstate/core';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import React from 'react';
-import { ISelectOption } from '../../typings/common.types';
-import { Select as SelectComponent, ISelectProps } from './Select';
+import { ISelectProps, Select as SelectComponent } from './Select';
 
 const Template: Story = () => {
     // state
@@ -26,9 +25,7 @@ const Template: Story = () => {
         options: options.get(),
         closeMenuOnSelect: true,
         label: 'Brand Name',
-        onChange: (option) => {
-            selectedOption.set({ ...(option as ISelectOption) });
-        },
+        onChange: () => null,
         value: selectedOption.get(),
         defaultValue: options.get()[2],
     };

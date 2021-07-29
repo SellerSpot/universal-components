@@ -1,5 +1,5 @@
 import { TextFieldProps } from '@material-ui/core';
-import { ReactElement, ChangeEvent } from 'react';
+import { ReactElement, ChangeEvent, ReactNode } from 'react';
 import { IColors, IFontSizes, TMuiThemes } from '../../theme/theme';
 
 export interface IInputFieldProps {
@@ -66,7 +66,7 @@ export interface IInputFieldProps {
     disabled?: boolean;
     helperMessage?: {
         enabled: boolean;
-        content?: string;
+        content?: ReactNode;
         type?: 'loading' | 'success' | 'error' | 'warning' | 'none';
     };
     colors?: IColors;
