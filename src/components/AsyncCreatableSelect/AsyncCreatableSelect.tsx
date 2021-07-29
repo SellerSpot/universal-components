@@ -3,6 +3,7 @@ import React, { ReactElement } from 'react';
 import ReactSelectAsyncCreatable from 'react-select/async-creatable';
 import cn from 'classnames';
 import { IAsyncCreatableSelectProps } from './AsyncCreatableSelect.types';
+import { ReactSelectOptionComponent } from '../../utilities';
 
 export { IAsyncCreatableSelectProps } from './AsyncCreatableSelect.types';
 
@@ -87,6 +88,9 @@ export const AsyncCreatableSelect = (props: IAsyncCreatableSelectProps): ReactEl
                 formatCreateLabel={formatCreateLabel}
                 loadOptions={loadOptions}
                 isDisabled={isDisabled}
+                components={{
+                    Option: ReactSelectOptionComponent,
+                }}
                 isMulti={isMulti}
                 value={value}
                 isLoading={isLoading}

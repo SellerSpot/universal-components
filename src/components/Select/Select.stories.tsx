@@ -9,14 +9,17 @@ const Template: Story = () => {
         {
             label: 'Value 1',
             value: 'value1',
+            labelToShow: 'dance',
         },
         {
             label: 'Value 2',
             value: 'value2',
+            labelToShow: 'dance',
         },
         {
             label: 'Value 3',
             value: 'value3',
+            labelToShow: 'dance',
         },
     ]);
     const selectedOption = useState<ISelectProps['options'][0]>({ ...options.get()[0] });

@@ -43,5 +43,6 @@ export type TOnNodeClickHandler<T = Element | HTMLDivElement> = (
  */
 export interface ISelectOption {
     value: string;
-    label: ReactNode;
+    label: string;
+    labelToShow?: ReactNode;
 }
