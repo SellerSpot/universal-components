@@ -256,6 +256,7 @@ const InputFieldComponent = (
                         style: {
                             textAlign: direction === 'rtl' ? 'right' : 'left',
                             fontWeight: 500,
+                            lineHeight: '22px', // it will give a better height to the input field on textarea type default will be 20px
                         },
                         tabIndex,
                         autoComplete: autoComplete,
