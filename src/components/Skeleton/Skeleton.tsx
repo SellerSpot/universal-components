@@ -14,7 +14,7 @@ export const Skeleton = (props: ISkeletonProps): ReactElement => {
     return (
         <div className={className} style={spanStyle}>
             <MUISkeleton
-                style={{ margin: 0, padding: 0, height: '100%', width: '100%' }}
+                style={{ margin: 0, padding: 0, height: '100%', width: '100%', transform: 'unset' }}
                 variant={variant}
                 animation={animation}
             >

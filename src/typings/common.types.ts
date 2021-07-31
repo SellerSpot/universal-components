@@ -41,8 +41,17 @@ export type TOnNodeClickHandler<T = Element | HTMLDivElement> = (
 /**
  * Typings for the options for any Select component
  */
-export interface ISelectOption {
+export interface ISelectOption<T = string | number> {
     value: string;
     label: string;
     labelToShow?: ReactNode;
+    /**
+     * used to have some hidden value in value field for some other purpose
+     */
+    key?: T;
+}
+
+export interface IDimension {
+    width: number;
+    height: number;
 }

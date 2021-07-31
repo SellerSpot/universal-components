@@ -11,6 +11,9 @@
     padding: 0;
     margin: 0;
     font-family: 'Inter', Helvetica, sans-serif;
+    // all component will have p tag's font-size as base font-size,
+    //if specific font-size is needed use one of the available height patterns / create your own with scss variables
+    font-size: $p-fontsize;
     scroll-behavior: smooth;
     vertical-align: baseline;
 }

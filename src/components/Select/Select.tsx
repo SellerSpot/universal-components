@@ -23,6 +23,7 @@ export const Select = (props: ISelectProps): ReactElement => {
         closeMenuOnSelect,
         isDisabled,
         value,
+        isClearable = true,
     } = props;
 
     // state
@@ -78,7 +79,7 @@ export const Select = (props: ISelectProps): ReactElement => {
                 id={'reactSelect'}
                 className="react-select-container"
                 classNamePrefix={'custom-select'}
-                isClearable
+                isClearable={isClearable}
                 name={name}
                 onChange={onChange}
                 onFocus={handleFocus}

@@ -9,6 +9,7 @@ export interface ISelectProps {
         content?: string;
         type?: 'error' | 'message';
     };
+    isClearable?: boolean;
     autoFocus?: boolean;
     closeMenuOnSelect?: boolean;
     value?: ISelectOption | ISelectOption;
