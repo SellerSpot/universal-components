@@ -1,7 +1,8 @@
 import { useState } from '@hookstate/core';
+import cn from 'classnames';
 import React, { ReactElement } from 'react';
 import ReactSelect from 'react-select';
-import cn from 'classnames';
+import { ReactSelectOptionComponent } from '../../utilities';
 import { ISelectProps } from './Select.types';
 
 export { ISelectProps } from './Select.types';
@@ -87,6 +88,9 @@ export const Select = (props: ISelectProps): ReactElement => {
                 isMulti={isMulti}
                 value={value}
                 isLoading={isLoading}
+                components={{
+                    Option: ReactSelectOptionComponent,
+                }}
                 defaultValue={defaultValue}
                 closeMenuOnSelect={closeMenuOnSelect}
                 menuIsOpen={menuIsOpen}

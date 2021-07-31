@@ -50,6 +50,7 @@
 
 // menu container
 .custom-select__menu {
+    z-index: 2 !important;
     padding: 0 !important;
     background-color: $backgroundPrimary-color !important;
 }
@@ -60,8 +61,9 @@
     width: 100%;
     margin-top: 5px; // for label legend positioned at top
     &.custom-select__wrapper--no-bottom-message {
-        padding-bottom: 20px;
+        padding-bottom: 22px;
     }
+    margin-top: 5px;
 }
 
 .custom-select__label {

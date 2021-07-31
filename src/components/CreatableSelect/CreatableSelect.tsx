@@ -3,6 +3,7 @@ import React, { ReactElement } from 'react';
 import ReactSelectCreatable from 'react-select/creatable';
 import cn from 'classnames';
 import { ICreatableSelectProps } from './CreatableSelect.types';
+import { ReactSelectOptionComponent } from '../../utilities';
 
 export { ICreatableSelectProps } from './CreatableSelect.types';
 
@@ -85,6 +86,9 @@ export const CreatableSelect = (props: ICreatableSelectProps): ReactElement => {
                 formatCreateLabel={formatCreateLabel}
                 placeholder={placeholder}
                 name={name}
+                components={{
+                    Option: ReactSelectOptionComponent,
+                }}
                 isDisabled={isDisabled}
                 isMulti={isMulti}
                 value={value}

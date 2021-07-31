@@ -1,7 +1,4 @@
-interface ISelectOption {
-    value: string;
-    label: string;
-}
+import { ISelectOption } from '../../typings/common.types';
 
 export interface ISelectProps {
     options: ISelectOption[];

@@ -3,6 +3,7 @@ import React, { ReactElement } from 'react';
 import ReactSelectAsyncCreatable from 'react-select/async-creatable';
 import cn from 'classnames';
 import { IAsyncCreatableSelectProps } from './AsyncCreatableSelect.types';
+import { ReactSelectOptionComponent } from '../../utilities';
 
 export { IAsyncCreatableSelectProps } from './AsyncCreatableSelect.types';
 
@@ -55,7 +56,7 @@ export const AsyncCreatableSelect = (props: IAsyncCreatableSelectProps): ReactEl
         ['custom-select__bottom-message--is-error']: helperMessage?.type === 'error' && !isDisabled,
     });
     const wrapperClassName = cn('custom-select__wrapper', {
-        ['custom-select__wrapper--no-bottom-message']: !bottomMessageContent,
+        ['custom-select__wrapper--no-bottom-message']: !helperMessage?.enabled,
     });
     const fieldSetClassName = cn('custom-select__fieldset', {
         ['custom-select__fieldset--is-hovered']: isHovered.get() && !isDisabled && !isFocused.get(),
@@ -87,6 +88,9 @@ export const AsyncCreatableSelect = (props: IAsyncCreatableSelectProps): ReactEl
                 formatCreateLabel={formatCreateLabel}
                 loadOptions={loadOptions}
                 isDisabled={isDisabled}
+                components={{
+                    Option: ReactSelectOptionComponent,
+                }}
                 isMulti={isMulti}
                 value={value}
                 isLoading={isLoading}

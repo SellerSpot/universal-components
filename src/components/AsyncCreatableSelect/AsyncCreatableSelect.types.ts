@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { ISelectOption } from '../../typings/common.types';
 
 export interface IAsyncCreatableSelectProps {
@@ -12,7 +13,7 @@ export interface IAsyncCreatableSelectProps {
         type?: 'error' | 'message';
     };
     autoFocus?: boolean;
-    formatCreateLabel?: (inputValue: string) => string;
+    formatCreateLabel?: (inputValue: string) => ReactNode;
     onCreateOption?: (option: string) => void;
     closeMenuOnSelect?: boolean;
     value?: ISelectOption | ISelectOption[];
