@@ -1,4 +1,5 @@
 import { TableCellProps } from '@material-ui/core';
+import { CSSProperties } from '@material-ui/core/styles/withStyles';
 import { ReactElement } from 'react';
 
 type TObj = { [key: string]: unknown };
@@ -51,6 +52,18 @@ export interface ITableProps<T = TObj | any, K = T[]> {
     isLoading?: boolean;
     emptyStateMessage?: string;
     emptyStatePrimaryCallToAction?: ReactElement;
+    style?: {
+        tableWrapper?: CSSProperties;
+        headerRow?: {
+            backgroundColor?: string;
+        };
+        collapsedRow?: {
+            backgroundColor?: string;
+        };
+        bodyRow?: {
+            backgroundColor?: string;
+        };
+    };
     collapsedContentRenderer?: ITableCollapsedCustomRenderer<T>;
     onRowClick?: (props: {
         event: React.MouseEvent<HTMLTableRowElement>;

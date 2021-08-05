@@ -7,6 +7,7 @@ import {
     TableRow,
     TableRowProps,
 } from '@material-ui/core';
+import { CSSProperties } from '@material-ui/core/styles/withStyles';
 import cn from 'classnames';
 import React, { Fragment, ReactElement, useEffect } from 'react';
 import { IconButton } from '../../..';
@@ -108,26 +109,35 @@ const MainTableCells = (props: { dataCollection: IDataCollection }) => {
     );
 };
 
-const CollapsedRow = (props: { dataCollection: IDataCollection }) => {
+const CollapsedRow = (props: { dataCollection: IDataCollection; style: ITableProps['style'] }) => {
     // props
+    const { style, dataCollection } = props;
     const {
         collapsedContentCellWidth,
-        collapsedContentRenderer,
         isRowExpanded,
-        toggleRowExpansion,
         rowData,
         rowIndex,
         rowKey,
-    } = props.dataCollection;
+        toggleRowExpansion,
+        collapsedContentRenderer,
+    } = dataCollection;
 
     // styles
     const collapsedCellStyle = cn(styles.collapsedCell, {
         [styles.collapsedCellExpandedState]: isRowExpanded,
     });
 
+    const rowStyle: CSSProperties = {
+        backgroundColor: style?.collapsedRow?.backgroundColor ?? style?.bodyRow?.backgroundColor,
+    };
+
     // draw
     return (
-        <TableRow className={styles.collapsedRow} key={`${rowKey}collapsedContent`}>
+        <TableRow
+            style={rowStyle}
+            className={styles.collapsedRow}
+            key={`${rowKey}collapsedContent`}
+        >
             <TableCell className={collapsedCellStyle} colSpan={collapsedContentCellWidth}>
                 <Collapse in={isRowExpanded} timeout="auto" unmountOnExit={true}>
                     {collapsedContentRenderer({
@@ -147,9 +157,10 @@ export const TableBody = (props: ITableProps): ReactElement => {
         data,
         uniqueKey,
         shape,
+        multiRowExpansion = false,
+        style,
         onRowClick,
         collapsedContentRenderer,
-        multiRowExpansion = false,
     } = props;
 
     // state
@@ -183,6 +194,10 @@ export const TableBody = (props: ITableProps): ReactElement => {
                 expandedRows.set([rowIndex]);
             }
         }
+    };
+
+    const tableRowStyle: CSSProperties = {
+        backgroundColor: style?.bodyRow?.backgroundColor,
     };
 
     // draw
@@ -230,14 +245,18 @@ export const TableBody = (props: ITableProps): ReactElement => {
                 // draw
                 return (
                     <Fragment key={rowKey}>
-                        <TableRow className={mainRowClassName} onClick={rowOnClickHandler}>
+                        <TableRow
+                            style={tableRowStyle}
+                            className={mainRowClassName}
+                            onClick={rowOnClickHandler}
+                        >
                             {hasCollapsedContent ? (
                                 <ExpandRowIcon dataCollection={dataCollection} />
                             ) : null}
                             <MainTableCells dataCollection={dataCollection} />
                         </TableRow>
                         {hasCollapsedContent ? (
-                            <CollapsedRow dataCollection={dataCollection} />
+                            <CollapsedRow dataCollection={dataCollection} style={style} />
                         ) : null}
                     </Fragment>
                 );

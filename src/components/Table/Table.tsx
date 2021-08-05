@@ -26,15 +26,19 @@ export {
 
 const TableHead = (props: ITableProps) => {
     // props
-    const { shape, collapsedContentRenderer } = props;
+    const { shape, style, collapsedContentRenderer } = props;
 
     // compute
     const hasCollapsedContent = !!collapsedContentRenderer;
 
+    const headerStyle: CSSProperties = {
+        backgroundColor: style?.headerRow?.backgroundColor,
+    };
+
     // draw
     return (
         <MUITableHead>
-            <TableRow className={styles.headerRow}>
+            <TableRow className={styles.headerRow} style={headerStyle}>
                 {hasCollapsedContent ? (
                     <TableCell
                         className={cn(styles.headerCell, styles.headerFirstColumnCell)}
@@ -87,11 +91,12 @@ export const Table = (props: ITableProps): ReactElement => {
         size,
         isLoading,
         shape,
-        collapsedContentRenderer,
         data,
         emptyStateMessage,
         emptyStatePrimaryCallToAction,
+        style,
         stickyHeader = true,
+        collapsedContentRenderer,
     } = props;
 
     // state
@@ -117,7 +122,7 @@ export const Table = (props: ITableProps): ReactElement => {
 
     // draw
     return (
-        <div ref={tableContainerRef} className={styles.tableWrapper}>
+        <div ref={tableContainerRef} className={styles.tableWrapper} style={style?.tableWrapper}>
             <TableContainer style={tableContainerStyle}>
                 <MUITable size={size} stickyHeader={stickyHeader}>
                     <TableHead {...props} />

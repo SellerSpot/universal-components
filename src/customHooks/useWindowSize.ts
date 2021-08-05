@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { IDimension } from '../../typings/common.types';
+import { IDimension } from '../typings/common.types';
 
 export const useWindowSize = (): IDimension => {
     const [windowSize, setWindowSize] = useState<IDimension>({

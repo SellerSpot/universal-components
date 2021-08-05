@@ -6,6 +6,8 @@ $border-styling: 1px solid $tableCellBorder-color;
     height: 100%;
 
     .headerRow {
+        background-color: $backgroundTertiary-color !important;
+
         .headerFirstColumnCell {
             border-left: $border-styling !important;
         }
@@ -13,7 +15,6 @@ $border-styling: 1px solid $tableCellBorder-color;
         .headerCell {
             border: $border-styling;
             border-left: unset;
-            background-color: $backgroundTertiary-color !important;
             font-weight: 600;
         }
     }
