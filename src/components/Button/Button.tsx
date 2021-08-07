@@ -32,6 +32,7 @@ export const Button = (props: IButtonProps): ReactElement => {
         inheritColorsFromParent,
         isLoading = false,
         ref,
+        disableElevation,
     } = props;
     // holds the theme for the the component
     const buttonTheme: Theme = getTheme({
@@ -79,6 +80,7 @@ export const Button = (props: IButtonProps): ReactElement => {
                     endIcon={endIcon}
                     style={style?.button}
                     ref={ref}
+                    disableElevation={disableElevation}
                 >
                     {label}
                 </MUIButton>

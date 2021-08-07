@@ -4,6 +4,11 @@ import { Theme } from '@material-ui/core';
  * Typings for the color system used throughout SellerSpot
  */
 export interface IColors {
+    // auto (default)
+    autoLight: string;
+    auto: string;
+    autoDark: string;
+
     // success
     success: string;
     successLight: string;
@@ -24,10 +29,20 @@ export interface IColors {
     infoLight: string;
     infoDark: string;
 
-    // auto (default)
-    autoLight: string;
-    auto: string;
-    autoDark: string;
+    // light
+    light: string;
+    lightLight: string;
+    lightDark: string;
+
+    // primary app color
+    primary: string;
+    primaryLight: string;
+    primaryDark: string;
+
+    // secondary app color
+    accent: string;
+    accentLight: string;
+    accentDark: string;
 
     //foreground (text)
     foregroundLight: string;
@@ -42,16 +57,6 @@ export interface IColors {
     backgroundTertiary: string;
     backgroundSubTertiary: string;
     backgroundQuarternary: string;
-
-    // primary app color
-    primary: string;
-    primaryLight: string;
-    primaryDark: string;
-
-    // secondary app color
-    accent: string;
-    accentLight: string;
-    accentDark: string;
 
     // special colors
     tableCellBorder: string;
@@ -94,6 +99,7 @@ export type TMuiThemes = {
     danger: Theme;
     warning: Theme;
     auto: Theme;
+    light: Theme;
 };
 
 // interface for the different properties being applied to each theme
@@ -103,6 +109,7 @@ export interface ICustomThemeProperties {
             light: string;
             main: string;
             dark: string;
+            contrastText?: string;
         };
     };
     text: {

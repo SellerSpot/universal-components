@@ -107,24 +107,42 @@ export const getTheme = (props: IGetThemeProps): Theme => {
                 },
             };
             break;
+        case 'light':
+            customThemeProperties = {
+                palette: {
+                    primary: {
+                        light: colors.lightLight,
+                        main: colors.light,
+                        dark: colors.lightDark,
+                        contrastText: colors.foregroundPrimary,
+                    },
+                },
+                text: {
+                    primary: colors.foregroundPrimary,
+                    secondary: colors.foregroundSecondary,
+                },
+            };
+            break;
     }
 
-    return createMuiTheme(commonMUITheme, {
+    const primaryPalette: Partial<Theme['palette']['primary']> = {
+        light: customThemeProperties.palette.primary.light,
+        main: customThemeProperties.palette.primary.main,
+        dark: customThemeProperties.palette.primary.dark,
+    };
+
+    if (customThemeProperties.palette.primary.contrastText) {
+        primaryPalette.contrastText = customThemeProperties.palette.primary.contrastText;
+    }
+
+    return createMuiTheme(commonMUITheme, <Theme>{
         palette: {
-            primary: {
-                light: customThemeProperties.palette.primary.light,
-                main: customThemeProperties.palette.primary.main,
-                dark: customThemeProperties.palette.primary.dark,
-            },
-            text: {
-                primary: customThemeProperties.text.primary,
-                secondary: customThemeProperties.text.secondary,
-            },
+            primary: primaryPalette,
         },
         typography: {
             button: {
                 textTransform: 'none',
             },
         },
-    } as Theme);
+    });
 };

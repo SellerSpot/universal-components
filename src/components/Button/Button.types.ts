@@ -41,4 +41,5 @@ export interface IButtonProps {
     tabIndex?: number;
     isLoading?: boolean;
     ref?: RefObject<HTMLButtonElement>;
+    disableElevation?: boolean;
 }
