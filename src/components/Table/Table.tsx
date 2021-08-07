@@ -38,12 +38,13 @@ const TableHead = (props: ITableProps) => {
     // draw
     return (
         <MUITableHead>
-            <TableRow className={styles.headerRow} style={headerStyle}>
+            <TableRow className={styles.headerRow}>
                 {hasCollapsedContent ? (
                     <TableCell
                         className={cn(styles.headerCell, styles.headerFirstColumnCell)}
                         key={'expandRowIconColumn'}
                         width="5%"
+                        style={headerStyle}
                     >
                         <IconButton
                             size="small"
@@ -75,6 +76,7 @@ const TableHead = (props: ITableProps) => {
                             rowSpan={rowSpan}
                             width={width}
                             colSpan={colSpan}
+                            style={headerStyle}
                         >
                             {columnName}
                         </TableCell>
