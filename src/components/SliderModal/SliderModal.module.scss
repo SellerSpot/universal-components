@@ -39,6 +39,7 @@
             height: 100%;
 
             .modalHeader {
+                overflow: hidden;
                 width: 100%;
                 height: 45px;
                 padding-right: 10px;
@@ -63,11 +64,13 @@
             }
 
             .modalBody {
+                overflow: hidden;
+                width: 100%;
                 height: 100%;
-                margin: 0 15px;
             }
 
             .modalFooter {
+                overflow: hidden;
                 width: 100%;
                 height: 65px;
                 padding: 0 15px;

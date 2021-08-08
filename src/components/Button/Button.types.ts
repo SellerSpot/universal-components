@@ -42,4 +42,8 @@ export interface IButtonProps {
     isLoading?: boolean;
     ref?: RefObject<HTMLButtonElement>;
     disableElevation?: boolean;
+    /**
+     * default will be true
+     */
+    whiteSpaceNoWrap?: boolean;
 }

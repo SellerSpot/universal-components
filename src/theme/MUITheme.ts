@@ -99,6 +99,7 @@ export const getTheme = (props: IGetThemeProps): Theme => {
                         light: colors.autoLight,
                         main: colors.auto,
                         dark: colors.autoDark,
+                        contrastText: colors.foregroundPrimary,
                     },
                 },
                 text: {

@@ -5,6 +5,7 @@ import { isArray } from 'lodash';
 import React, { CSSProperties, ReactElement, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { ICONS } from '../../utilities/icons';
+import { Button } from '../Button/Button';
 import { IconButton } from '../IconButton/IconButton';
 import styles from './SliderModal.module.scss';
 import {
@@ -47,20 +48,30 @@ export const SliderModalLayoutWrapper = (props: ISliderModalLayoutWrapperProps):
 
 export const SliderModalHeader = (props: ISliderModalHeaderProps): ReactElement => {
     // props
-    const { title, modalCloseCallback, modalGoBackCallback } = props;
+    const { title, modalGoBackText, modalCloseCallback, modalGoBackCallback } = props;
 
     // draw
     return (
         <div className={styles.modalHeader}>
             <div className={styles.leftGroup}>
-                {!!modalGoBackCallback && (
-                    <IconButton
-                        icon={<Icon icon={ICONS.arrowBack} />}
-                        theme="auto"
-                        size="medium"
-                        onClick={modalGoBackCallback}
-                    />
-                )}
+                {!!modalGoBackCallback &&
+                    (modalGoBackText ? (
+                        <Button
+                            startIcon={<Icon icon={ICONS.arrowBack} />}
+                            label="Go back to cart"
+                            onClick={modalGoBackCallback}
+                            theme="light"
+                            variant="contained"
+                            disableElevation
+                        />
+                    ) : (
+                        <IconButton
+                            icon={<Icon icon={ICONS.arrowBack} />}
+                            theme="auto"
+                            size="medium"
+                            onClick={modalGoBackCallback}
+                        />
+                    ))}
                 <div className={styles.modalTitle}>{title}</div>
             </div>
             {!!modalCloseCallback && (

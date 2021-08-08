@@ -12,6 +12,10 @@ export interface ISliderModalHeaderProps {
     title?: string;
     modalCloseCallback?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
     modalGoBackCallback?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    /**
+     * pass modalGoBackText if you want text along with the back button
+     */
+    modalGoBackText?: string;
 }
 
 export interface ISliderModalBodyProps {

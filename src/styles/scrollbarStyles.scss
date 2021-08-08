@@ -11,10 +11,10 @@
 ::-webkit-scrollbar-thumb {
     border: 0;
     background-clip: content-box;
-    background-color: $autoLight-color;
+    background-color: $foregroundTertiary-color;
     border-radius: 1px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: $auto-color;
+    background-color: $foregroundPrimary-color;
 }

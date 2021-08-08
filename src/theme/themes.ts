@@ -5,9 +5,9 @@ import { IColors, IColorThemes, IFontSizes, IFontSizeThemes } from './theme.type
  */
 const defaultColors: IColors = {
     // auto (default)
-    auto: '#878682',
-    autoLight: '#AFAEAC',
-    autoDark: '#5E5D5A',
+    auto: '#e0e0e0',
+    autoLight: '#ffffff',
+    autoDark: '#aeaeae',
 
     // success
     success: '#43AA8B',

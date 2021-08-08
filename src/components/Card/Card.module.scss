@@ -1,7 +1,28 @@
 .cardWrapper {
+    display: flex;
+    flex-direction: column;
     background-color: $backgroundPrimary-color !important;
 
+    &.columnGap {
+        gap: 10px;
+    }
+
+    &.inBuiltPadding {
+        padding: 10px;
+    }
     &.overflowUnset {
         overflow: unset;
+    }
+
+    .cardMedia {
+        padding: unset;
+    }
+
+    .cardContent {
+        padding: unset;
+    }
+
+    .cartActions {
+        padding: unset;
     }
 }
