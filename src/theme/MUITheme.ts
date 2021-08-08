@@ -124,6 +124,22 @@ export const getTheme = (props: IGetThemeProps): Theme => {
                 },
             };
             break;
+        case 'dark':
+            customThemeProperties = {
+                palette: {
+                    primary: {
+                        light: colors.darkLight,
+                        main: colors.dark,
+                        dark: colors.darkDark,
+                        contrastText: colors.foregroundLight,
+                    },
+                },
+                text: {
+                    primary: colors.foregroundPrimary,
+                    secondary: colors.foregroundSecondary,
+                },
+            };
+            break;
     }
 
     const primaryPalette: Partial<Theme['palette']['primary']> = {

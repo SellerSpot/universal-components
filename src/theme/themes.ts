@@ -2,6 +2,8 @@ import { IColors, IColorThemes, IFontSizes, IFontSizeThemes } from './theme.type
 
 /**
  * Contains the different color themes used in the app
+ * use material ui color palette to introduce new color themes
+ * @link https://material.io/resources/color/#!/?view.left=0&view.right=0
  */
 const defaultColors: IColors = {
     // auto (default)
@@ -33,6 +35,11 @@ const defaultColors: IColors = {
     light: '#FAFAFA',
     lightLight: '#ECECEC',
     lightDark: '#F2F2F2',
+
+    // dark
+    dark: '#424242',
+    darkLight: '#6d6d6d',
+    darkDark: '#1b1b1b',
 
     // app theme color
     primary: '#1A73E8',

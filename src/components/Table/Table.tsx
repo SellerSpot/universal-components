@@ -49,7 +49,7 @@ const TableHead = (props: ITableProps) => {
                         <IconButton
                             size="small"
                             icon={<Icon icon={ICONS.keyboardArrowDown} height="22px" />}
-                            theme="auto"
+                            theme="dark"
                             disabled
                         />
                     </TableCell>

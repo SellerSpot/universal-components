@@ -34,6 +34,11 @@ export interface IColors {
     lightLight: string;
     lightDark: string;
 
+    // dark
+    dark: string;
+    darkLight: string;
+    darkDark: string;
+
     // primary app color
     primary: string;
     primaryLight: string;
@@ -100,6 +105,7 @@ export type TMuiThemes = {
     warning: Theme;
     auto: Theme;
     light: Theme;
+    dark: Theme;
 };
 
 // interface for the different properties being applied to each theme

@@ -67,7 +67,7 @@ export const SliderModalHeader = (props: ISliderModalHeaderProps): ReactElement 
                     ) : (
                         <IconButton
                             icon={<Icon icon={ICONS.arrowBack} />}
-                            theme="auto"
+                            theme="dark"
                             size="medium"
                             onClick={modalGoBackCallback}
                         />
