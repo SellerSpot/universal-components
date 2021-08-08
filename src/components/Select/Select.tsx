@@ -22,6 +22,7 @@ export const Select = (props: ISelectProps): ReactElement => {
         label,
         closeMenuOnSelect,
         isDisabled,
+        disableHelperTextPlaceholderPadding,
         value,
         isClearable = true,
     } = props;
@@ -55,7 +56,7 @@ export const Select = (props: ISelectProps): ReactElement => {
     });
     const wrapperClassName = cn('custom-select__wrapper', {
         ['custom-select__wrapper--no-bottom-message']:
-            helperMessage?.enabled && !bottomMessageContent,
+            helperMessage?.enabled && !bottomMessageContent && disableHelperTextPlaceholderPadding,
     });
     const fieldSetClassName = cn('custom-select__fieldset', {
         ['custom-select__fieldset--is-hovered']: isHovered.get() && !isDisabled && !isFocused.get(),
