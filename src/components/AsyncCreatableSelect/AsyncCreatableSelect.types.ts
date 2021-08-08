@@ -13,7 +13,6 @@ export interface IAsyncCreatableSelectProps {
         type?: 'error' | 'message';
     };
     autoFocus?: boolean;
-    disableHelperTextPlaceholderPadding?: boolean;
     formatCreateLabel?: (inputValue: string) => ReactNode;
     onCreateOption?: (option: string) => void;
     closeMenuOnSelect?: boolean;

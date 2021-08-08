@@ -13,7 +13,6 @@ export interface ISelectProps {
     autoFocus?: boolean;
     closeMenuOnSelect?: boolean;
     value?: ISelectOption | ISelectOption;
-    disableHelperTextPlaceholderPadding?: boolean;
     isLoading?: boolean;
     isDisabled?: boolean;
     menuIsOpen?: boolean;

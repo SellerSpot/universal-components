@@ -24,7 +24,6 @@ export const CreatableSelect = (props: ICreatableSelectProps): ReactElement => {
         closeMenuOnSelect,
         placeholder,
         isDisabled,
-        disableHelperTextPlaceholderPadding,
         onCreateOption,
         value,
     } = props;
@@ -57,8 +56,7 @@ export const CreatableSelect = (props: ICreatableSelectProps): ReactElement => {
         ['custom-select__bottom-message--is-error']: helperMessage?.type === 'error' && !isDisabled,
     });
     const wrapperClassName = cn('custom-select__wrapper', {
-        ['custom-select__wrapper--no-bottom-message']:
-            !bottomMessageContent && disableHelperTextPlaceholderPadding,
+        ['custom-select__wrapper--no-bottom-message']: !bottomMessageContent,
     });
     const fieldSetClassName = cn('custom-select__fieldset', {
         ['custom-select__fieldset--is-hovered']: isHovered.get() && !isDisabled && !isFocused.get(),
