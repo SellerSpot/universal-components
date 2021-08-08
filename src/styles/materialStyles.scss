@@ -18,6 +18,11 @@
     margin: 0 !important;
 }
 
+// removed disgusting border in expandable card
+.MuiAccordion-root:before {
+    opacity: 0 !important;
+}
+
 // disabling the slight jerk of accordion summary when expanding
 .MuiAccordionSummary-content.Mui-expanded {
     margin: 12px 0 !important;
