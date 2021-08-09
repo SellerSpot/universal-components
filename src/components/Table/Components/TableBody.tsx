@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import { CSSProperties } from '@material-ui/core/styles/withStyles';
 import cn from 'classnames';
-import React, { Fragment, ReactElement, useEffect } from 'react';
+import React, { Fragment, MouseEventHandler, ReactElement, useEffect } from 'react';
 import { IconButton } from '../../..';
 import { ICONS } from '../../../utilities/icons';
 import { ITableProps } from '../Table';
@@ -63,15 +63,31 @@ const ExpandRowIcon = (props: { dataCollection: IDataCollection }) => {
 
 const MainTableCells = (props: { dataCollection: IDataCollection }) => {
     // props
+    const { dataCollection } = props;
     const { mainRowCellClassName, rowData, shape, rowIndex, hasCollapsedContent, isRowExpanded } =
-        props.dataCollection;
+        dataCollection;
 
     // draw
     return (
         <>
             {shape.map((column, columnIndex) => {
                 // props
-                const { customRenderer, dataKey, align, colSpan, padding, rowSpan, width } = column;
+                const {
+                    dataKey,
+                    align,
+                    colSpan,
+                    padding,
+                    rowSpan,
+                    width,
+                    blockClickEventBubbling = false,
+                    customRenderer,
+                } = column;
+
+                // handlers
+                const blockClickEventBubblingHanlder: MouseEventHandler<HTMLTableHeaderCellElement> =
+                    (event) => {
+                        if (blockClickEventBubbling) event.stopPropagation();
+                    };
 
                 // compute
                 const cellContent =
@@ -100,6 +116,7 @@ const MainTableCells = (props: { dataCollection: IDataCollection }) => {
                         width={width}
                         colSpan={colSpan}
                         key={columnIndex}
+                        onClick={blockClickEventBubblingHanlder}
                     >
                         {cellContent}
                     </TableCell>

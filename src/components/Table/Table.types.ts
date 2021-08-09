@@ -21,6 +21,11 @@ interface IShape<T = TObj> {
      */
     dataKey?: keyof T;
     customRenderer?: TTableCellCustomRenderer<T>;
+    /**
+     * when true, the click on this cell will not trigger the row expansion, event will only appicable to this cell
+     * @default false
+     */
+    blockClickEventBubbling?: boolean;
 }
 
 export type ITableCollapsedCustomRenderer<T> = (props: {
