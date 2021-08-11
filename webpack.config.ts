@@ -99,7 +99,7 @@ const webpackConfiguration = (env: {
             ],
         },
         plugins: [
-            new CleanWebpackPlugin(), // cleans dist only on hard and production builds
+            isProduction ? new CleanWebpackPlugin() : new DefinePlugin({}), // cleans dist only on hard and production builds
             new ForkTsCheckerWebpackPlugin({
                 eslint: {
                     files: './src',
