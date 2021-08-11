@@ -7,7 +7,7 @@ import {
     ThemeProvider,
 } from '@material-ui/core';
 import cn from 'classnames';
-import { isNull, isUndefined } from 'lodash';
+import { isUndefined } from 'lodash';
 import React, { forwardRef, ReactElement, RefObject, useEffect, useRef } from 'react';
 import { getTheme } from '../../theme/MUITheme';
 import { ICONS } from '../../utilities/icons';
@@ -71,11 +71,11 @@ const InputFieldComponent = (
     // runs when autoFocus value changes to force focus to field
     useEffect(() => {
         // also only runs when an external ref has not been provided
-        if (autoFocus && isNull(ref)) {
+        if (autoFocus) {
             // wait till other animations have been completed
             // so as to not create jank effects
             setTimeout(function () {
-                internalRef.current?.focus();
+                (ref ?? internalRef).current?.focus();
             }, 200);
         }
     }, [autoFocus]);
