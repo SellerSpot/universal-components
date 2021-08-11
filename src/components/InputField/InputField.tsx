@@ -22,8 +22,7 @@ const InputFieldComponent = (
     props: IInputFieldProps,
     ref: RefObject<HTMLInputElement>,
 ): ReactElement => {
-    // getting default global theme data
-    const defaultConfigData = useState(themeConfigStore).get();
+    // props
     const {
         id,
         name,
@@ -62,12 +61,17 @@ const InputFieldComponent = (
         tabIndex,
     } = props;
 
+    // state
+    const defaultConfigData = useState(themeConfigStore).get();
     // internal type state to use incase the field type is password and the suffix is not defined
     const internalTypeState = useState<'text' | 'password'>('password');
+
+    // hooks
     // internal ref object to manage autoFocus prop enforcing in case
     // and external ref is not provided
     const internalRef = useRef<HTMLInputElement>(null);
-    const autoComplete = disableAutoComplete ? 'none' : 'on';
+
+    // effects
     // runs when autoFocus value changes to force focus to field
     useEffect(() => {
         // also only runs when an external ref has not been provided
@@ -80,13 +84,7 @@ const InputFieldComponent = (
         }
     }, [autoFocus]);
 
-    // choosing theme
-    const textFieldTheme = getTheme({
-        colors: colors ?? defaultConfigData.colors,
-        fontSizes: fontSizes ?? defaultConfigData.fontSizes,
-        theme: theme ?? 'auto',
-    });
-
+    // handlers
     const HelperComponent = () => {
         const HelperIcon = (): ReactElement => {
             if (helperMessage.type === 'loading') {
@@ -206,6 +204,16 @@ const InputFieldComponent = (
         }
         return type;
     };
+
+    // compute
+    const autoComplete = disableAutoComplete ? 'none' : 'on';
+
+    // choosing theme
+    const textFieldTheme = getTheme({
+        colors: colors ?? defaultConfigData.colors,
+        fontSizes: fontSizes ?? defaultConfigData.fontSizes,
+        theme: theme ?? 'auto',
+    });
 
     const addPseudoBottomPadding = !helperMessage?.enabled && !disableHelperTextPlaceholderPadding;
     const addLabelSpace = label?.length > 0;
