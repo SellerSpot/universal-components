@@ -5,7 +5,7 @@
     "main": "dist/index.js",
     "scripts": {
         "dev": "webpack --mode development --env development",
-        "build:dev": "webpack --mode development  --env production && yalc push",
+        "build:dev": "yalc push",
         "build": "webpack --mode production --env NODE_ENV=production --env production",
         "build:analyze": "webpack --mode production --env NODE_ENV=production --env production --env analyze",
         "lint": "eslint src --max-warnings 0",

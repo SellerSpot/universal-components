@@ -162,11 +162,13 @@ const InputFieldComponent = (
                 if (!isUndefined(maxNumericValue) && value >= maxNumericValue) {
                     value = maxNumericValue;
                 }
+                // passing number as string, because we are allowing floating values,
+                // which can't be acheived throught input number type
                 // pushing controlled value into the event
-                event.target.value = value + '';
+                event.target.value = Number(value) as unknown as string;
             }
         }
-        if (onChange) onChange(event);
+        onChange?.(event);
     };
 
     // constructs the suffix component for the inputField
