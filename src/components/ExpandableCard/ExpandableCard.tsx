@@ -9,10 +9,13 @@ import { TRANSITIONS } from '../../utilities';
 export { IExpandableCardProps } from './ExpandableCard.types';
 
 export const ExpandableCard = (props: IExpandableCardProps): ReactElement => {
-    const { content, expanded, className } = props;
+    // props
+    const { content, expanded, className, elevation = 0 } = props;
+    // styling
     const cardClassName = cn(styles.cardWrapper, className?.card);
+    // draw
     return (
-        <Accordion elevation={0} className={cardClassName} expanded={expanded}>
+        <Accordion elevation={elevation} className={cardClassName} expanded={expanded}>
             <AccordionSummary className={className?.summaryWrapper}>
                 {content.summaryContent}
             </AccordionSummary>
