@@ -59,11 +59,10 @@
 .custom-select__wrapper {
     position: relative;
     width: 100%;
-    margin-top: 5px; // for label legend positioned at top
+    margin-top: 10px; // for label legend positioned at top
     &.custom-select__wrapper--no-bottom-message {
         padding-bottom: 22px;
     }
-    margin-top: 5px;
 }
 
 .custom-select__label {
