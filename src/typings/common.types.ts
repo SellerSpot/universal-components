@@ -41,7 +41,8 @@ export type TOnNodeClickHandler<T = Element | HTMLDivElement> = (
 /**
  * Typings for the options for any Select component
  */
-export interface ISelectOption<T = string | number> {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export interface ISelectOption<T = unknown> {
     value: string;
     label: string;
     /**
