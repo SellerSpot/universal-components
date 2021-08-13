@@ -14,6 +14,7 @@ export interface IAsyncCreatableSelectProps {
     };
     autoFocus?: boolean;
     formatCreateLabel?: (inputValue: string) => ReactNode;
+    formatOptionLabel?: (option: ISelectOption) => ReactNode;
     onCreateOption?: (option: string) => void;
     closeMenuOnSelect?: boolean;
     value?: ISelectOption | ISelectOption[];

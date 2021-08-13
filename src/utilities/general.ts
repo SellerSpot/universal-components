@@ -1,7 +1,3 @@
-import React from 'react';
-import { components, GroupTypeBase, OptionProps } from 'react-select';
-import { ISelectOption } from '../typings/common.types';
-
 /**
  *
  * @param delay in seconds
@@ -29,16 +25,3 @@ export const numberFormatINRCurrency = (value: number): string =>
  * @returns string
  */
 export const generateRandomString = (): string => Math.random().toString(36).slice(2);
-
-// custom components for react-select component
-/**
- * Custom Option Component
- */
-export const ReactSelectOptionComponent: React.ComponentType<
-    OptionProps<ISelectOption, boolean, GroupTypeBase<ISelectOption>>
-> = (props) => {
-    const { label, data } = props;
-    const currentOptionData = data as ISelectOption;
-    const lableToShow = currentOptionData.labelToShow ?? label;
-    return <components.Option {...props}>{lableToShow}</components.Option>;
-};
