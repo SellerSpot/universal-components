@@ -16,6 +16,11 @@ export interface ISliderModalHeaderProps {
      * pass modalGoBackText if you want text along with the back button
      */
     modalGoBackText?: string;
+    /**
+     * title Placement
+     * @default left
+     */
+    titlePlacement?: 'left' | 'center' | 'right';
 }
 
 export interface ISliderModalBodyProps {

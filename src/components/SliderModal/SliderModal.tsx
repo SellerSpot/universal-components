@@ -48,11 +48,23 @@ export const SliderModalLayoutWrapper = (props: ISliderModalLayoutWrapperProps):
 
 export const SliderModalHeader = (props: ISliderModalHeaderProps): ReactElement => {
     // props
-    const { title, modalGoBackText, modalCloseCallback, modalGoBackCallback } = props;
+    const {
+        title,
+        titlePlacement = 'left',
+        modalGoBackText,
+        modalCloseCallback,
+        modalGoBackCallback,
+    } = props;
 
     // draw
     return (
-        <div className={styles.modalHeader}>
+        <div
+            className={cn(styles.modalHeader, {
+                [styles.modalTitleWithLeftOrRightAlignment]:
+                    titlePlacement === 'left' || titlePlacement === 'right',
+                [styles.modalTitleWithCenterAlignment]: titlePlacement === 'center',
+            })}
+        >
             <div className={styles.leftGroup}>
                 {!!modalGoBackCallback &&
                     (modalGoBackText ? (
@@ -72,16 +84,26 @@ export const SliderModalHeader = (props: ISliderModalHeaderProps): ReactElement 
                             onClick={modalGoBackCallback}
                         />
                     ))}
-                <div className={styles.modalTitle}>{title}</div>
             </div>
-            {!!modalCloseCallback && (
-                <IconButton
-                    icon={<Icon icon={ICONS.close} />}
-                    theme="danger"
-                    size="medium"
-                    onClick={modalCloseCallback}
-                />
-            )}
+            <div
+                className={cn(styles.centerGroup, styles.modalTitle, {
+                    [styles.modalTitlePlacementLeft]: titlePlacement === 'left',
+                    [styles.modalTitlePlacementCenter]: titlePlacement === 'center',
+                    [styles.modalTitlePlacementRigth]: titlePlacement === 'right',
+                })}
+            >
+                {title}
+            </div>
+            <div className={styles.rightGroup}>
+                {!!modalCloseCallback && (
+                    <IconButton
+                        icon={<Icon icon={ICONS.close} />}
+                        theme="danger"
+                        size="medium"
+                        onClick={modalCloseCallback}
+                    />
+                )}
+            </div>
         </div>
     );
 };
