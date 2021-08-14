@@ -87,6 +87,9 @@ const MainTableCells = (props: { dataCollection: IDataCollection }) => {
                         [styles.bodyFirstColumnCell]: !hasCollapsedContent && columnIndex === 0,
                     },
                     { [styles.bodyCellWithTableExpanded]: !isRowExpanded && hasCollapsedContent },
+                    {
+                        [styles.bodyLastColumnCell]: columnIndex === shape.length - 1,
+                    },
                 );
 
                 // draw

@@ -48,6 +48,7 @@ export const TableSkeletonBody = (props: {
                             const tableCellClassName = cn(styles.bodyCell, {
                                 [styles.bodyFirstColumnCell]:
                                     !hasCollapsedContent && columnIndex === 0,
+                                [styles.bodyLastColumnCell]: columnIndex === shape.length - 1,
                             });
                             // draw
                             return (

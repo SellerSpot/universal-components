@@ -63,7 +63,7 @@ const Template: Story = () => {
             },
         ],
         uniqueKey: 'id',
-        isLoading: false,
+        isLoading: true,
         collapsedContentRenderer: () => collapsedContent(),
         multiRowExpansion: true,
     };

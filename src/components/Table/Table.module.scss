@@ -10,8 +10,12 @@ $border-styling: 1px solid $tableCellBorder-color;
             border-left: $border-styling !important;
         }
 
+        .headerLastColumnCell {
+            border-right: $border-styling !important;
+        }
+
         .headerCell {
-            border: $border-styling;
+            border-top: $border-styling;
             border-left: unset;
             background-color: $backgroundTertiary-color !important;
             font-weight: 600;
@@ -25,9 +29,11 @@ $border-styling: 1px solid $tableCellBorder-color;
             border-left: $border-styling;
         }
 
-        .bodyCell {
+        .bodyLastColumnCell {
             border-right: $border-styling;
-            border-bottom: $border-styling;
+        }
+
+        .bodyCell {
             // styling for normal body cell when table can expand
             &.bodyCellExpansibleTable {
                 cursor: pointer;

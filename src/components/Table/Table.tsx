@@ -59,6 +59,7 @@ const TableHead = (props: ITableProps) => {
                     // styles
                     const tableCellClassName = cn(styles.headerCell, {
                         [styles.headerFirstColumnCell]: !hasCollapsedContent && columnIndex == 0,
+                        [styles.headerLastColumnCell]: columnIndex === shape.length - 1,
                     });
 
                     // draw
