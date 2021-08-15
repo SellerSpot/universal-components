@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "sourceMap": false,
+        "sourceMap": true,
         "noImplicitAny": true,
         "module": "CommonJS",
         "target": "ES5",
@@ -15,9 +15,9 @@
         "downlevelIteration": true,
         "baseUrl": "src",
         "declaration": true,
-        "declarationMap": false,
         "declarationDir": "./dist",
         "outDir": "./dist"
     },
-    "include": ["src/**/*"]
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "dist"]
 }

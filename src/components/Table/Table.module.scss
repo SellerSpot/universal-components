@@ -6,14 +6,20 @@ $border-styling: 1px solid $tableCellBorder-color;
     height: 100%;
 
     .headerRow {
+        background-color: $backgroundTertiary-color;
+
         .headerFirstColumnCell {
             border-left: $border-styling !important;
         }
 
+        .headerLastColumnCell {
+            border-right: $border-styling !important;
+        }
+
         .headerCell {
-            border: $border-styling;
+            border-top: $border-styling !important;
             border-left: unset;
-            background-color: $backgroundTertiary-color !important;
+            background-color: $backgroundTertiary-color;
             font-weight: 600;
         }
     }
@@ -22,12 +28,14 @@ $border-styling: 1px solid $tableCellBorder-color;
         overflow: scroll;
 
         .bodyFirstColumnCell {
-            border-left: $border-styling;
+            border-left: $border-styling !important;
+        }
+
+        .bodyLastColumnCell {
+            border-right: $border-styling !important;
         }
 
         .bodyCell {
-            border-right: $border-styling;
-            border-bottom: $border-styling;
             // styling for normal body cell when table can expand
             &.bodyCellExpansibleTable {
                 cursor: pointer;
@@ -44,11 +52,11 @@ $border-styling: 1px solid $tableCellBorder-color;
         .collapsedCell {
             padding-top: 0;
             padding-bottom: 0;
-            border-right: $border-styling;
-            border-left: $border-styling;
+            border-right: $border-styling !important;
+            border-left: $border-styling !important;
 
             &.collapsedCellExpandedState {
-                border-bottom: $border-styling;
+                border-bottom: $border-styling !important;
             }
         }
     }

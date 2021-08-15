@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { ISelectOption } from '../../typings/common.types';
 
 export interface ISelectProps {
@@ -18,5 +19,6 @@ export interface ISelectProps {
     menuIsOpen?: boolean;
     isMulti?: boolean;
     defaultValue?: ISelectOption;
+    formatOptionLabel?: (option: ISelectOption) => ReactNode;
     onChange?: (option: ISelectOption | ISelectOption[]) => void;
 }

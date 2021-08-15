@@ -1,4 +1,5 @@
 import { TableCellProps } from '@material-ui/core';
+import { CSSProperties } from '@material-ui/core/styles/withStyles';
 import { ReactElement } from 'react';
 
 type TObj = { [key: string]: unknown };
@@ -20,6 +21,11 @@ interface IShape<T = TObj> {
      */
     dataKey?: keyof T;
     customRenderer?: TTableCellCustomRenderer<T>;
+    /**
+     * when true, the click on this cell will not trigger the row expansion, event will only appicable to this cell
+     * @default false
+     */
+    blockClickEventBubbling?: boolean;
 }
 
 export type ITableCollapsedCustomRenderer<T> = (props: {
@@ -51,6 +57,18 @@ export interface ITableProps<T = TObj | any, K = T[]> {
     isLoading?: boolean;
     emptyStateMessage?: string;
     emptyStatePrimaryCallToAction?: ReactElement;
+    style?: {
+        tableWrapper?: CSSProperties;
+        headerRow?: {
+            backgroundColor?: string;
+        };
+        collapsedRow?: {
+            backgroundColor?: string;
+        };
+        bodyRow?: {
+            backgroundColor?: string;
+        };
+    };
     collapsedContentRenderer?: ITableCollapsedCustomRenderer<T>;
     onRowClick?: (props: {
         event: React.MouseEvent<HTMLTableRowElement>;

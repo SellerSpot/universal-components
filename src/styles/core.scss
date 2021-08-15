@@ -11,9 +11,6 @@
     padding: 0;
     margin: 0;
     font-family: 'Inter', Helvetica, sans-serif;
-    // all component will have p tag's font-size as base font-size,
-    //if specific font-size is needed use one of the available height patterns / create your own with scss variables
-    font-size: $p-fontsize;
     scroll-behavior: smooth;
     vertical-align: baseline;
 }
@@ -22,46 +19,44 @@ body {
     overflow: hidden;
     width: 100vw;
     height: 100vh;
+    // global color for all elements in the app, if not specified explicitly throught available variables
+    color: $foregroundPrimary-color;
+    // all component will have p tag's font-size as base font-size,
+    //if specific font-size is needed use one of the available height patterns / create your own with scss variables
+    font-size: $p-fontsize;
 }
 
 h1 {
-    color: $foregroundPrimary-color;
     font-size: $h1-fontsize;
     font-weight: bold;
 }
 
 h2 {
-    color: $foregroundPrimary-color;
     font-size: $h2-fontsize;
     font-weight: bold;
 }
 
 h3 {
-    color: $foregroundPrimary-color;
     font-size: $h3-fontsize;
     font-weight: bold;
 }
 
 h4 {
-    color: $foregroundPrimary-color;
     font-size: $h4-fontsize;
     font-weight: 600;
 }
 
 h5 {
-    color: $foregroundPrimary-color;
     font-size: $h5-fontsize;
     font-weight: 600;
 }
 
 h6 {
-    color: $foregroundPrimary-color;
     font-size: $h6-fontsize;
     font-weight: 600;
 }
 
 p {
-    color: $foregroundPrimary-color;
     font-size: $p-fontsize;
     font-weight: 400;
 }

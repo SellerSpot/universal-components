@@ -17,4 +17,14 @@ export interface ICardProps {
      * @default true
      */
     applyOverflowUnsetClass?: boolean;
+    /**
+     * should the component do not apply the padding of 10px natively
+     * @default true
+     */
+    inBuiltPadding?: boolean;
+    /**
+     * should the component do not apply the padding of 10px natively
+     * @default true
+     */
+    gapBetweenSections?: boolean;
 }

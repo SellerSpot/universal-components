@@ -2,7 +2,6 @@ import { useState } from '@hookstate/core';
 import cn from 'classnames';
 import React, { ReactElement } from 'react';
 import ReactSelect from 'react-select';
-import { ReactSelectOptionComponent } from '../../utilities';
 import { ISelectProps } from './Select.types';
 
 export { ISelectProps } from './Select.types';
@@ -21,6 +20,7 @@ export const Select = (props: ISelectProps): ReactElement => {
         onChange,
         label,
         closeMenuOnSelect,
+        formatOptionLabel,
         isDisabled,
         value,
         isClearable = true,
@@ -84,13 +84,11 @@ export const Select = (props: ISelectProps): ReactElement => {
                 onChange={onChange}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
+                formatOptionLabel={formatOptionLabel}
                 isDisabled={isDisabled}
                 isMulti={isMulti}
                 value={value}
                 isLoading={isLoading}
-                components={{
-                    Option: ReactSelectOptionComponent,
-                }}
                 defaultValue={defaultValue}
                 closeMenuOnSelect={closeMenuOnSelect}
                 menuIsOpen={menuIsOpen}

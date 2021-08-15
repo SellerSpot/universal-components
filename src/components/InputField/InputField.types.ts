@@ -1,5 +1,5 @@
 import { TextFieldProps } from '@material-ui/core';
-import { ReactElement, ChangeEvent, ReactNode } from 'react';
+import { ReactElement, ChangeEvent, ReactNode, RefObject } from 'react';
 import { IColors, IFontSizes, TMuiThemes } from '../../theme/theme';
 
 export interface IInputFieldProps {
@@ -72,4 +72,8 @@ export interface IInputFieldProps {
     colors?: IColors;
     fontSizes?: IFontSizes;
     tabIndex?: number;
+    /**
+     * pass ref to the input field, to access the field actions (focus, blur, etc) directly from the parent
+     */
+    ref?: RefObject<HTMLInputElement>;
 }

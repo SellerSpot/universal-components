@@ -14,6 +14,7 @@ export interface ICreatableSelectProps {
     placeholder?: string;
     formatCreateLabel?: (inputValue: string) => ReactNode;
     onCreateOption?: (option: string) => void;
+    formatOptionLabel?: (option: ISelectOption) => ReactNode;
     closeMenuOnSelect?: boolean;
     value?: ISelectOption | ISelectOption[];
     isLoading?: boolean;
