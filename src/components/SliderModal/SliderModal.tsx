@@ -5,6 +5,7 @@ import { isArray } from 'lodash';
 import React, { CSSProperties, ReactElement, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { ICONS } from '../../utilities/icons';
+import { Button } from '../Button/Button';
 import { IconButton } from '../IconButton/IconButton';
 import styles from './SliderModal.module.scss';
 import {
@@ -47,30 +48,62 @@ export const SliderModalLayoutWrapper = (props: ISliderModalLayoutWrapperProps):
 
 export const SliderModalHeader = (props: ISliderModalHeaderProps): ReactElement => {
     // props
-    const { title, modalCloseCallback, modalGoBackCallback } = props;
+    const {
+        title,
+        titlePlacement = 'left',
+        modalGoBackText,
+        modalCloseCallback,
+        modalGoBackCallback,
+    } = props;
 
     // draw
     return (
-        <div className={styles.modalHeader}>
+        <div
+            className={cn(styles.modalHeader, {
+                [styles.modalTitleWithLeftOrRightAlignment]:
+                    titlePlacement === 'left' || titlePlacement === 'right',
+                [styles.modalTitleWithCenterAlignment]: titlePlacement === 'center',
+            })}
+        >
             <div className={styles.leftGroup}>
-                {!!modalGoBackCallback && (
+                {!!modalGoBackCallback &&
+                    (modalGoBackText ? (
+                        <Button
+                            startIcon={<Icon icon={ICONS.arrowBack} />}
+                            label="Go back to cart"
+                            onClick={modalGoBackCallback}
+                            theme="light"
+                            variant="contained"
+                            disableElevation
+                        />
+                    ) : (
+                        <IconButton
+                            icon={<Icon icon={ICONS.arrowBack} />}
+                            theme="dark"
+                            size="medium"
+                            onClick={modalGoBackCallback}
+                        />
+                    ))}
+            </div>
+            <div
+                className={cn(styles.centerGroup, styles.modalTitle, {
+                    [styles.modalTitlePlacementLeft]: titlePlacement === 'left',
+                    [styles.modalTitlePlacementCenter]: titlePlacement === 'center',
+                    [styles.modalTitlePlacementRigth]: titlePlacement === 'right',
+                })}
+            >
+                {title}
+            </div>
+            <div className={styles.rightGroup}>
+                {!!modalCloseCallback && (
                     <IconButton
-                        icon={<Icon icon={ICONS.arrowBack} />}
-                        theme="auto"
+                        icon={<Icon icon={ICONS.close} />}
+                        theme="danger"
                         size="medium"
-                        onClick={modalGoBackCallback}
+                        onClick={modalCloseCallback}
                     />
                 )}
-                <div className={styles.modalTitle}>{title}</div>
             </div>
-            {!!modalCloseCallback && (
-                <IconButton
-                    icon={<Icon icon={ICONS.close} />}
-                    theme="danger"
-                    size="medium"
-                    onClick={modalCloseCallback}
-                />
-            )}
         </div>
     );
 };

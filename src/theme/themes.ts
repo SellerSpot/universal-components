@@ -2,8 +2,15 @@ import { IColors, IColorThemes, IFontSizes, IFontSizeThemes } from './theme.type
 
 /**
  * Contains the different color themes used in the app
+ * use material ui color palette to introduce new color themes
+ * @link https://material.io/resources/color/#!/?view.left=0&view.right=0
  */
 const defaultColors: IColors = {
+    // auto (default)
+    auto: '#e0e0e0',
+    autoLight: '#ffffff',
+    autoDark: '#aeaeae',
+
     // success
     success: '#43AA8B',
     successLight: '#EDF7ED',
@@ -24,10 +31,25 @@ const defaultColors: IColors = {
     infoLight: '#77BEF8',
     infoDark: '#0A6FC2',
 
-    // auto (default)
-    autoLight: '#AFAEAC',
-    auto: '#878682',
-    autoDark: '#5E5D5A',
+    // light
+    light: '#FAFAFA',
+    lightLight: '#ECECEC',
+    lightDark: '#F2F2F2',
+
+    // dark
+    dark: '#424242',
+    darkLight: '#6d6d6d',
+    darkDark: '#1b1b1b',
+
+    // app theme color
+    primary: '#1A73E8',
+    primaryLight: '#D9E8FC',
+    primaryDark: '#1152A7',
+
+    // app secondary theme color
+    accent: '#EE8572',
+    accentLight: '#F8D0C9',
+    accentDark: '#E65237',
 
     // foreground (text)
     foregroundLight: '#FAFAFA',
@@ -42,16 +64,6 @@ const defaultColors: IColors = {
     backgroundTertiary: '#ECECEC',
     backgroundSubTertiary: 'rgba(0, 0, 0, 0.1)',
     backgroundQuarternary: '#e0e0e0',
-
-    // app theme color
-    primary: '#1A73E8',
-    primaryLight: '#D9E8FC',
-    primaryDark: '#1152A7',
-
-    // app secondary theme color
-    accent: '#EE8572',
-    accentLight: '#F8D0C9',
-    accentDark: '#E65237',
 
     // special colors
     tableHeaderCellBorder: 'rgb(209, 207, 207)',

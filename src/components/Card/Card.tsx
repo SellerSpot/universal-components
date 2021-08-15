@@ -8,21 +8,44 @@ import { Image } from '../Image/Image';
 export { ICardProps } from './Card.types';
 
 export const Card = (props: ICardProps): ReactElement => {
-    const { actions, className, content, image, onClick, applyOverflowUnsetClass = true } = props;
-    const cardClassName = cn(styles.cardWrapper, className?.cardWrapper);
+    const {
+        actions,
+        className,
+        content,
+        image,
+        onClick,
+        applyOverflowUnsetClass = true,
+        gapBetweenSections = true,
+        inBuiltPadding = true,
+    } = props;
     return (
         <MUICard
             elevation={0}
             onClick={onClick}
-            className={cn(cardClassName, { [styles.overflowUnset]: applyOverflowUnsetClass })}
+            className={cn(styles.cardWrapper, className?.cardWrapper, {
+                [styles.overflowUnset]: applyOverflowUnsetClass,
+                [styles.inBuiltPadding]: inBuiltPadding,
+                [styles.columnGap]: gapBetweenSections,
+            })}
         >
             {image && (
-                <CardMedia style={{ height: 200 }} className={className?.mediaWrapper}>
+                <CardMedia
+                    style={{ height: 200 }}
+                    className={cn(styles.cardMedia, className?.mediaWrapper)}
+                >
                     <Image objectFit="cover" src={image} />
                 </CardMedia>
             )}
-            {content && <CardContent className={className?.contentWrapper}>{content}</CardContent>}
-            {actions && <CardActions className={className?.actionsWrapper}>{actions}</CardActions>}
+            {content && (
+                <CardContent className={cn(styles.cardContent, className?.contentWrapper)}>
+                    {content}
+                </CardContent>
+            )}
+            {actions && (
+                <CardActions className={cn(styles.cartActions, className?.actionsWrapper)}>
+                    {actions}
+                </CardActions>
+            )}
         </MUICard>
     );
 };

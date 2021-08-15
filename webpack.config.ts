@@ -14,6 +14,7 @@ const webpackConfiguration = (env: {
         resolve: {
             extensions: ['.ts', '.tsx', '.js'],
         },
+        mode: isProduction ? 'production' : 'development',
         externals: {
             // Don't bundle react or react-dom
             // https://itnext.io/how-to-package-your-react-component-for-distribution-via-npm-d32d4bf71b4f
@@ -22,6 +23,7 @@ const webpackConfiguration = (env: {
                 commonjs2: 'react',
                 amd: 'React',
                 root: 'React',
+                publicPath: '',
             },
         },
         output: {
@@ -97,7 +99,7 @@ const webpackConfiguration = (env: {
             ],
         },
         plugins: [
-            new CleanWebpackPlugin(),
+            isProduction ? new CleanWebpackPlugin() : new DefinePlugin({}), // cleans dist only on hard and production builds
             new ForkTsCheckerWebpackPlugin({
                 eslint: {
                     files: './src',
@@ -107,7 +109,7 @@ const webpackConfiguration = (env: {
                 ? new WebpackCustomRunScriptsPlugin({ command: 'npm run build:dev' })
                 : new DefinePlugin({}),
         ],
-        devtool: false,
+        devtool: isProduction ? false : 'eval-source-map', // eval super fast for development (don't allow it on production as it exposes source code)
         watch: !isProduction,
     };
 };

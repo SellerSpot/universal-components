@@ -32,6 +32,8 @@ export const Button = (props: IButtonProps): ReactElement => {
         inheritColorsFromParent,
         isLoading = false,
         ref,
+        disableElevation,
+        whiteSpaceNoWrap = false,
     } = props;
     // holds the theme for the the component
     const buttonTheme: Theme = getTheme({
@@ -53,8 +55,10 @@ export const Button = (props: IButtonProps): ReactElement => {
 
     // compute
     const shouldFadeButton = disabled || isLoading;
-    const buttonClassName = cn({ [styles.fadeButton]: shouldFadeButton }, className?.button, {
+    const buttonClassName = cn(className?.button, {
+        [styles.fadeButton]: shouldFadeButton,
         [commonStyles.pointEventsNone]: shouldFadeButton,
+        [commonStyles.whiteSpaceNoWrap]: whiteSpaceNoWrap,
     });
     const onClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
         if (!shouldFadeButton) {
@@ -79,6 +83,7 @@ export const Button = (props: IButtonProps): ReactElement => {
                     endIcon={endIcon}
                     style={style?.button}
                     ref={ref}
+                    disableElevation={disableElevation}
                 >
                     {label}
                 </MUIButton>
